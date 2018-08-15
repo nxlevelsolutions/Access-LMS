@@ -1,0 +1,26 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" class="" viewBox="0 0 22 22">
+  <defs>
+    <style>
+      .outline{
+          fill:none;
+          stroke-width:1px;
+            fill-opacity: 0;
+            stroke: #000;
+            stroke-dasharray: 55;
+            stroke-dashoffset: 55;
+            animation-name: draw;
+            animation-duration: 3s;
+            animation-fill-mode: forwards; // Stay on the last frame
+            animation-iteration-count: 1; // Run only once
+            animation-timing-function: linear;
+        }
+        @keyframes draw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }    
+    </style>
+  </defs>
+  <path class="outline" d="M1,20 a10,8 0 0,1 20,0z"></path>
+  <circle class="outline" r="4" cy="5" cx="10"/>
+</svg>

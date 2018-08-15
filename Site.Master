@@ -1,0 +1,91 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="NXLevel.LMS.Site" %>
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <title><%# Page.Title %></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="~/css/site.css" type="text/css" />
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server" />    
+</head>
+<body>
+    <div id="wrap">
+
+        <!-- header bar -->
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="<%= Page.ResolveUrl("~/default.aspx") %>">Company Name Goes Here</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <% if (HttpContext.Current.User.Identity.IsAuthenticated){ %>
+                        <li class=""><a href="<%= Page.ResolveUrl("~/default.aspx") %>">Home</a></li>
+                        <li><a href="<%= Page.ResolveUrl("~/curriculum.aspx") %>">My Curriculum</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="<%= Page.ResolveUrl("~/admin/account.aspx") %>">My Account</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="<%= Page.ResolveUrl("~/admin/users.aspx") %>">Users</a></li>
+                                <li><a href="<%= Page.ResolveUrl("~/admin/courses.aspx") %>">Courses</a></li>
+                                <li><a href="<%= Page.ResolveUrl("~/admin/reports.aspx") %>">Reports</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="<%= Page.ResolveUrl("~/logoff.aspx") %>">Logoff</a></li>
+                        <% } %>
+                        <li><a href="<%= Page.ResolveUrl("~/help.aspx") %>">Help</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+
+        <!-- page contents -->
+        <form id="SiteForm" runat="server">
+            <div class="container">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>    
+            </div>
+        </form>
+    </div>
+
+    <!-- footer -->
+    <div id="footer">
+        <div class="container">
+            <p class="text-muted credit" align="center">Powered by <i>i-prism EZ-LMS</i> &nbsp;&mdash;&nbsp; © 2003-<% =DateTime.Now.Year %>, NXLevel Solutions, Inc. </p>
+        </div>
+    </div>
+
+<script>
+$(document).ready(function () {
+    //highlight current menu item
+    var url = window.location;
+    //$('.navbar .nav').find('.active').removeClass('active');
+    $('.navbar .nav li a').each(function () {
+        if (this.href == url) {
+            $(this).parents('li').addClass('active');
+        }
+    }); 
+});
+</script>
+</body>
+</html>

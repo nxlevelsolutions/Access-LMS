@@ -1,0 +1,764 @@
+8/14/2018 9:17:47 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:18:05 AM UID=(no context)A session has ended.
+8/14/2018 9:18:05 AM UID=(no context)LMS application module shut down/restart.
+Shutdown Message=CONFIG change
+HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnConfigChange(String message)
+   at System.Configuration.BaseConfigurationRecord.OnStreamChanged(String streamname)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+8/14/2018 9:18:07 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:18:12 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:18:33 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:18:35 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:18:35 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:18:37 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:18:39 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:18:39 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:18:42 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:18:42 AM UID=122 User: Assessor Administrator logged in.
+8/14/2018 9:18:42 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:18:42 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:18:44 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:18:46 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:18:46 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:18:56 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:18:56 AM UID=122 User '' logged off.
+8/14/2018 9:18:56 AM UID=(no context)A session has ended.
+8/14/2018 9:18:56 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:18:57 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:18:57 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:18:58 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:19:04 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:19:04 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:19:07 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:19:07 AM UID=122 User: Assessor Administrator logged in.
+8/14/2018 9:19:07 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:19:07 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:20:41 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:20:41 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:21:57 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:21:57 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:22:09 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:22:11 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:22:11 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:25:45 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:25:54 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:25:55 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:25:55 AM UID=122 User '' logged off.
+8/14/2018 9:25:55 AM UID=(no context)A session has ended.
+8/14/2018 9:25:55 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:26:28 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:29:17 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:29:17 AM UID=122 User: Assessor Administrator logged in.
+8/14/2018 9:29:17 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:30:59 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:31:02 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:31:02 AM UID=(no context):Application error:The file '/LMS-Master/curriculum.aspx' does not exist.
+8/14/2018 9:31:02 AM UID=(no context):Source:System.Web
+8/14/2018 9:31:02 AM UID=(no context):Stack Trace:   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+8/14/2018 9:31:22 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:32:28 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:33:45 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:33:45 AM UID=(no context):Application error:The file '/LMS-Master/curriculum.aspx' does not exist.
+8/14/2018 9:33:45 AM UID=(no context):Source:System.Web
+8/14/2018 9:33:45 AM UID=(no context):Stack Trace:   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+8/14/2018 9:34:42 AM UID=(no context)A session has ended.
+8/14/2018 9:34:42 AM UID=(no context)LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+8/14/2018 9:34:47 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:34:50 AM UID=(no context):Application error:The file '/LMS-Master/curriculum.aspx' does not exist.
+8/14/2018 9:34:50 AM UID=(no context):Source:System.Web
+8/14/2018 9:34:50 AM UID=(no context):Stack Trace:   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+8/14/2018 9:34:54 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:34:54 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:34:55 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:34:56 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:34:56 AM UID=122 User: Assessor Administrator logged in.
+8/14/2018 9:34:56 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:35:17 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:35:19 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:35:24 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:35:24 AM UID=(no context):Application error:The file '/LMS-Master/curriculum.aspx' does not exist.
+8/14/2018 9:35:24 AM UID=(no context):Source:System.Web
+8/14/2018 9:35:24 AM UID=(no context):Stack Trace:   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+8/14/2018 9:36:02 AM UID=(no context)A session has ended.
+8/14/2018 9:36:02 AM UID=(no context)LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+8/14/2018 9:36:06 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:36:09 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:36:11 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:36:11 AM UID=122 User: Assessor Administrator logged in.
+8/14/2018 9:36:11 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:36:16 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:36:19 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:36:22 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:41:04 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:41:07 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:41:11 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:41:13 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:41:16 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:41:16 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:41:16 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:41:17 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:41:29 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:41:30 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:41:31 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:41:31 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:45:52 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:45:52 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:46:01 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:46:03 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:46:03 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:46:07 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:46:26 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:46:30 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:46:30 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:46:35 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:46:46 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:46:50 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:46:53 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:47:57 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:48:01 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:48:29 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:48:31 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:48:31 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:48:34 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:48:37 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:48:37 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:48:38 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:48:40 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:48:42 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:48:45 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:52:16 AM UID=(no context)A session has ended.
+8/14/2018 9:52:16 AM UID=(no context)LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+8/14/2018 9:52:21 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:52:24 AM UID=(no context):Application error:The file '/LMS-Master/account.aspx' does not exist.
+8/14/2018 9:52:24 AM UID=(no context):Source:System.Web
+8/14/2018 9:52:24 AM UID=(no context):Stack Trace:   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+8/14/2018 9:52:29 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:52:29 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:52:31 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:52:31 AM UID=122 User: Assessor Administrator logged in.
+8/14/2018 9:52:31 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:52:33 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:52:46 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:52:46 AM UID=(no context):Application error:The file '/LMS-Master/admin/curriculum.aspx' does not exist.
+8/14/2018 9:52:46 AM UID=(no context):Source:System.Web
+8/14/2018 9:52:46 AM UID=(no context):Stack Trace:   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+8/14/2018 9:52:56 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:52:56 AM UID=(no context):Application error:The file '/LMS-Master/admin/curriculum.aspx' does not exist.
+8/14/2018 9:52:56 AM UID=(no context):Source:System.Web
+8/14/2018 9:52:56 AM UID=(no context):Stack Trace:   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+8/14/2018 9:54:46 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:54:47 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:54:47 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:54:48 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:54:53 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:54:55 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:54:56 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:55:02 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:55:13 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:55:13 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:55:28 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:55:28 AM UID=122 User: Assessor Administrator logged in.
+8/14/2018 9:55:28 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:55:28 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:55:28 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:55:40 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:55:50 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:55:50 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:56:02 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:56:02 AM UID=122 User '' logged off.
+8/14/2018 9:56:02 AM UID=(no context)A session has ended.
+8/14/2018 9:56:02 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:56:55 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:57:12 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:57:16 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:57:16 AM UID=(no context):Application error:The file '/LMS-Master/admin/users.aspx' does not exist.
+8/14/2018 9:57:16 AM UID=(no context):Source:System.Web
+8/14/2018 9:57:16 AM UID=(no context):Stack Trace:   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+8/14/2018 9:57:21 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:57:22 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:57:28 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:59:00 AM UID=(no context)A session has ended.
+8/14/2018 9:59:00 AM UID=(no context)A session has ended.
+8/14/2018 9:59:00 AM UID=(no context)LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+8/14/2018 9:59:04 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:59:07 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:59:26 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:59:26 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:59:30 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:59:30 AM UID=122 User: Assessor Administrator logged in.
+8/14/2018 9:59:30 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:59:33 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:59:36 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:59:38 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:59:41 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:59:43 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:59:45 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:59:56 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 9:59:58 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:00:32 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:00:33 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:00:35 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:00:36 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:00:36 AM UID=122 User '' logged off.
+8/14/2018 10:00:36 AM UID=(no context)A session has ended.
+8/14/2018 10:00:36 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:00:47 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:00:47 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:00:57 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:00:57 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:01:13 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:01:19 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:01:19 AM UID=122 User: Assessor Administrator logged in.
+8/14/2018 10:01:19 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:01:23 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:01:25 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:01:25 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:01:49 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:01:53 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:01:54 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:01:57 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:02:01 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:02:27 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:02:30 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:02:32 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:02:33 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:02:36 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:03:11 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:06:17 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:06:42 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:06:44 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:06:49 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:09:14 AM UID=(no context)A session has ended.
+8/14/2018 10:09:14 AM UID=(no context)LMS application module shut down/restart.
+Shutdown Message=Recompilation limit of 15 reached
+HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.Compilation.DiskBuildResultCache.ShutdownCallBack(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+8/14/2018 10:09:19 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:09:22 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:09:24 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:09:24 AM UID=122 User: Assessor Administrator logged in.
+8/14/2018 10:09:24 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:09:26 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:09:29 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:09:32 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:09:35 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:09:38 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:10:12 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:10:15 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:10:17 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:10:19 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:16:22 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:20:23 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:20:40 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:20:42 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:21:00 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:21:06 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:21:09 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:21:12 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:21:17 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:21:19 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:21:21 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:22:10 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:22:13 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:22:15 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:22:19 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:23:56 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:24:01 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:24:02 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:24:04 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:24:16 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:25:40 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:25:43 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:25:46 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:25:48 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:25:51 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:25:54 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:27:27 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:27:47 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:29:26 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:29:56 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:29:56 AM UID=122 User '' logged off.
+8/14/2018 10:29:56 AM UID=(no context)A session has ended.
+8/14/2018 10:29:56 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:35:20 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:35:23 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:38:48 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:40:06 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:42:13 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:42:13 AM UID=122 User: Assessor Administrator logged in.
+8/14/2018 10:42:13 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:42:17 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:42:17 AM UID=(no context):Application error:c:\Development\LMS-Master\Admin\Account.aspx(48): error CS1061: 'ASP.admin_account_aspx' does not contain a definition for 'btnSubmit_Click' and no extension method 'btnSubmit_Click' accepting a first argument of type 'ASP.admin_account_aspx' could be found (are you missing a using directive or an assembly reference?)
+8/14/2018 10:42:17 AM UID=(no context):Source:System.Web
+8/14/2018 10:42:17 AM UID=(no context):Stack Trace:   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+8/14/2018 10:42:56 AM UID=(no context)A session has ended.
+8/14/2018 10:42:56 AM UID=(no context)LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+8/14/2018 10:43:01 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:43:05 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:43:06 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:43:07 AM UID=122 User: Assessor Administrator logged in.
+8/14/2018 10:43:07 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:43:09 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:44:17 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:44:36 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:44:54 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:49:06 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:49:06 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:51:36 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:52:04 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:52:10 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:52:32 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:55:30 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:55:51 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:56:00 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:56:12 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:58:50 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 10:59:32 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:00:37 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:01:27 AM UID=(no context)A session has ended.
+8/14/2018 11:01:27 AM UID=(no context)A session has ended.
+8/14/2018 11:01:27 AM UID=(no context)LMS application module shut down/restart.
+Shutdown Message=Recompilation limit of 15 reached
+HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.Compilation.DiskBuildResultCache.ShutdownCallBack(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+8/14/2018 11:01:28 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:01:32 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:07:18 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:07:18 AM UID=122 User: Assessor Administrator logged in.
+8/14/2018 11:07:18 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:07:20 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:07:20 AM UID=122 User '' logged off.
+8/14/2018 11:07:20 AM UID=(no context)A session has ended.
+8/14/2018 11:07:20 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:07:22 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:07:22 AM UID=122 User: Assessor Administrator logged in.
+8/14/2018 11:07:22 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:07:24 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:19:48 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:19:49 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:40:00 AM UID=(no context)A session has ended.
+8/14/2018 11:40:08 AM UID=(no context)LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+8/14/2018 11:41:17 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:41:20 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:41:22 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:41:22 AM UID=122 User: Assessor Administrator logged in.
+8/14/2018 11:41:22 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:41:26 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:41:32 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:41:34 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:41:37 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:41:41 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:42:26 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:42:28 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:42:32 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:42:37 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:54:22 AM UID=(no context)A session has ended.
+8/14/2018 11:54:22 AM UID=(no context)LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment caused shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+8/14/2018 11:54:27 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:54:30 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:54:32 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:54:32 AM UID=122 User: Assessor Administrator logged in.
+8/14/2018 11:54:32 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:54:34 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:54:34 AM UID=122 Application error:LINQ to Entities does not recognize the method 'System.Object get_Item(System.String)' method, and this method cannot be translated into a store expression.
+8/14/2018 11:54:34 AM UID=122 Source:EntityFramework
+8/14/2018 11:54:34 AM UID=122 Stack Trace:   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.DefaultTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.UnaryTranslator.TypedTranslate(ExpressionConverter parent, UnaryExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.EqualsTranslator.TypedTranslate(ExpressionConverter parent, BinaryExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.UnarySequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.Convert()
+   at System.Data.Entity.Core.Objects.ELinq.ELinqQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at System.Linq.Queryable.FirstOrDefault[TSource](IQueryable`1 source)
+   at nxlevel.lms.Account.Page_Load(Object sender, EventArgs e) in \\ds3\Dev\LMS-Master\Admin\Account.aspx.cs:line 16
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+8/14/2018 11:59:36 AM UID=(no context)A session has ended.
+8/14/2018 11:59:36 AM UID=(no context)LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+8/14/2018 11:59:46 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:59:50 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:59:51 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:59:51 AM UID=122 User: Assessor Administrator logged in.
+8/14/2018 11:59:51 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:59:54 AM UID=(no context):Initializing 192.168.1.14
+8/14/2018 11:59:54 AM UID=122 Application error:Object reference not set to an instance of an object.
+8/14/2018 11:59:54 AM UID=122 Source:LMS
+8/14/2018 11:59:54 AM UID=122 Stack Trace:   at nxlevel.lms.Account.Page_Load(Object sender, EventArgs e) in \\ds3\Dev\LMS-Master\Admin\Account.aspx.cs:line 17
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+8/14/2018 12:00:24 PM UID=(no context)A session has ended.
+8/14/2018 12:00:24 PM UID=(no context)LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+8/14/2018 12:00:30 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:00:34 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:00:35 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:00:35 PM UID=122 User: Assessor Administrator logged in.
+8/14/2018 12:00:35 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:00:36 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:05:10 PM UID=(no context)A session has ended.
+8/14/2018 12:05:10 PM UID=(no context)LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+8/14/2018 12:05:17 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:05:21 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:05:22 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:05:22 PM UID=122 User: Assessor Administrator logged in.
+8/14/2018 12:05:22 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:05:25 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:05:48 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:05:58 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:06:17 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:06:19 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:08:53 PM UID=(no context)A session has ended.
+8/14/2018 12:08:53 PM UID=(no context)LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+8/14/2018 12:08:58 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:09:02 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:09:18 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:09:18 PM UID=122 User: Assessor Administrator logged in.
+8/14/2018 12:09:18 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:09:21 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:09:21 PM UID=122 User '' logged off.
+8/14/2018 12:09:21 PM UID=(no context)A session has ended.
+8/14/2018 12:09:21 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:09:22 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:09:22 PM UID=122 User: Assessor Administrator logged in.
+8/14/2018 12:09:22 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:09:24 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:09:28 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:09:30 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:09:32 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:09:35 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:09:36 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:11:34 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:11:36 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:11:38 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:11:40 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:11:41 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:11:41 PM UID=122 User '' logged off.
+8/14/2018 12:11:41 PM UID=(no context)A session has ended.
+8/14/2018 12:11:41 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:11:48 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:11:48 PM UID=122 User: Assessor Administrator logged in.
+8/14/2018 12:11:48 PM UID=(no context):Initializing 192.168.1.14
+8/14/2018 12:32:00 PM UID=(no context)A session has ended.
+8/14/2018 12:32:18 PM UID=(no context)LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+

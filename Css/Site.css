@@ -1,0 +1,30 @@
+﻿html, body, form {
+    margin: 0;
+    padding: 0;
+    height:100%;
+}
+
+/* wrapper to push footer down */
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -60px; 
+    padding: 0 0 60px;
+}
+    #wrap > form > .container {
+        padding: 50px 15px 0;
+    }
+
+/* footer */
+#footer {
+    height: 60px;
+    background-color: #f5f5f5;
+}
+    #footer > .container p {
+        margin: 20px 0;
+    }
+
+ 
+     
+/** miscellaneous **/

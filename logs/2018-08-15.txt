@@ -1,0 +1,4 @@
+02:33:12PM;122;Information;User: 122 logged in.
+02:33:34PM;122;Information;User '' logged off.
+02:33:34PM;0;Information;User Id=122's session has ended.
+02:35:55PM;122;Information;User: 122 logged in.
