@@ -7,63 +7,54 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NXLevel.LMS {
+namespace NXLevel.LMS.Controls {
     
     
-    public partial class AccessCode {
+    public partial class Pager {
         
         /// <summary>
-        /// lblErrMsg control.
+        /// PreviousPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblErrMsg;
+        protected global::System.Web.UI.WebControls.LinkButton PreviousPage;
         
         /// <summary>
-        /// txtEmail control.
+        /// RptPages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.WebControls.Repeater RptPages;
         
         /// <summary>
-        /// txtPwd1 control.
+        /// NextPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPwd1;
+        protected global::System.Web.UI.WebControls.LinkButton NextPage;
         
         /// <summary>
-        /// txtPwd2 control.
+        /// PagerClickedIndex control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPwd2;
+        protected global::System.Web.UI.WebControls.HiddenField PagerClickedIndex;
         
         /// <summary>
-        /// txtAccessCode control.
+        /// ddlPageSize control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAccessCode;
-        
-        /// <summary>
-        /// btnSubmit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmit;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPageSize;
     }
 }

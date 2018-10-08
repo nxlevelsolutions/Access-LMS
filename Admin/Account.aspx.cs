@@ -12,20 +12,37 @@ namespace NXLevel.LMS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lms_Entities db = new lms_Entities();
-            int userId = (int)Session["userId"];
-            User p = db.Users.Where(u => u.userId == userId).FirstOrDefault();
-            FName.Text = p.firstName;
-            LName.Text = p.lastName;
-            Pwd1.Text = p.password;
-            Pwd2.Text = p.password;
+            if (!IsPostBack)
+            {
+                lms_Entities db = new lms_Entities();
+                User p = db.Users.Where(u => u.userId == LmsUser.UserId).FirstOrDefault();
+                FName.Text = p.firstName;
+                LName.Text = p.lastName;
+                Pwd1.Text = p.password;
+                Pwd2.Text = p.password;
 
-            Pwd1.Attributes["type"] = "password";
-            Pwd2.Attributes["type"] = "password";
+                Pwd1.Attributes["type"] = "password";
+                Pwd2.Attributes["type"] = "password";
+            }
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            Msg.Visible = true;
+
+            //check password
+            if (Pwd1.Text!= Pwd2.Text)
+            {
+                Msg.Text = "Your passwords don't match. Please try again.";
+                return;
+            }
+            if (!Utilities.IsPasswordValid(Pwd1.Text))
+            {
+                Msg.Text = "Your password needs to be at last 6 alphanumeric characters.";
+                return;
+            }
+
+            //update user info
             lms_Entities db = new lms_Entities();
             int userId = (int)Session["userId"];
             User p = db.Users.Where(u => u.userId == userId).FirstOrDefault();

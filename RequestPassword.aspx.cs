@@ -15,34 +15,35 @@ namespace NXLevel.LMS
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblError.Text = string.Empty;
+
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            string emailMessage = string.Empty;
             if (txtEmail.Text=="")
             {
+                lblError.Visible = true;
                 lblError.Text = "Please enter a valid email address.";
                 return;
             }
 
             // Check if the user currently has a registered email address.
-            User_InfoGet_Result userInfo = db.User_InfoGet(txtEmail.Text).FirstOrDefault<User_InfoGet_Result>();
+            User_Info_Result userInfo = db.User_Info(txtEmail.Text).FirstOrDefault<User_Info_Result>();
 
             if (userInfo == null)
             {
+                lblError.Visible = true;
                 lblError.Text = "The system does not have your email address. Please make sure it is spelled correctly.";
             }
             else
             {
-                emailMessage = Utilities.GetFileContents("Templates/ForgotPassword.html");
-                emailMessage = string.Format(emailMessage, userInfo.password);
+                string emailMsg = Utilities.GetFileContents("Templates/ForgotPassword.html");
+                emailMsg = string.Format(emailMsg, userInfo.password);
 
-                Utilities.SendEmail(ConfigurationManager.AppSettings.Get("SystemEmail"), txtEmail.Text, "Pharmacertify access", emailMessage);
-                lblError.Text = "";
+                Utilities.SendEmail(ConfigurationManager.AppSettings.Get("SystemEmail"), txtEmail.Text, "Pharmacertify access", emailMsg);
+                lblError.Visible = false;
 
-                lblRequestPassword.Style.Add("color", "#008000");
+                lblRequestPassword.ForeColor = System.Drawing.Color.Green;
                 lblRequestPassword.Text = "Your password was emailed to '" + txtEmail.Text + "'. If this is not your email address, please contact your administrator to have this corrected.";
             }
         }

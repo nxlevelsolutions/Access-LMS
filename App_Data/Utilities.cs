@@ -15,13 +15,6 @@ namespace NXLevel.LMS
 {
     public class Utilities
     {
-        public enum UserStatus
-        {
-            INACTIVE = 0,
-            ACTIVE = 1,
-            EX_EMPLOYEE = 2
-        }
-
         public enum ModuleStatus
         {
             INACTIVE = 0,
@@ -29,28 +22,10 @@ namespace NXLevel.LMS
             RETIRED = 2
         }
   
-
-        //public static string ApplicationRoot
-        //{
-        //    get
-        //    {
-        //        if (HttpContext.Current.Request.ApplicationPath == "/")
-        //        {
-        //            return "";
-        //        }
-        //        else
-        //        {
-        //            return HttpContext.Current.Request.ApplicationPath;
-        //        }
-
-        //    }
-        //}
- 
-
         public static string RandomAccessCode()
         {
             const int numLength = 6;
-            string str = string.Empty;
+            string str = "";
             Random rnd = new Random(Environment.TickCount);       
             char p;
 
@@ -157,12 +132,6 @@ namespace NXLevel.LMS
         //    }
         //}
 
- 
-        public static string GetAppSetting(string key)
-        {
-            return WebConfigurationManager.AppSettings["key"];
-        }
-
         public static void SendEmail(string fromEmail, string toEmail, string subject, string body, bool skipLoggerOnException = false)
         {
             // Sends emails in html format.
@@ -171,19 +140,22 @@ namespace NXLevel.LMS
 
             try
             {
-                SmtpClient client = new SmtpClient();
-                client.Send(mail);
+                if (!HttpContext.Current.Request.IsLocal)
+                {
+                    SmtpClient client = new SmtpClient();
+                    client.Send(mail);
+                }
             }
             catch (Exception ex)
             {
-                LmsLog.Info(ex.ToString());
+                Log.Info(ex.ToString());
                 HttpContext.Current.Response.Write("The following exception occurred: " + ex.ToString());
 
                 // Check the InnerException.
                 while (ex.InnerException != null)
                 {
                     HttpContext.Current.Response.Write("The following exception occurred in SendEmail(\"" + toEmail + "\"): " + ex.ToString());
-                    if (!skipLoggerOnException) LmsLog.Error(ex, true);
+                    if (!skipLoggerOnException) Log.Error(ex, true);
                 }
             }
         }
@@ -196,12 +168,15 @@ namespace NXLevel.LMS
 
             try
             {
-                SmtpClient client = new SmtpClient();
-                client.Send(mail);
+                if (!HttpContext.Current.Request.IsLocal)
+                {
+                    SmtpClient client = new SmtpClient();
+                    client.Send(mail);
+                }
             }
             catch (Exception ex)
             {
-                LmsLog.Error(ex.ToString());
+                Log.Error(ex.ToString());
                 HttpContext.Current.Response.Write("The following exception occurred: " + ex.ToString());
 
                 //check the InnerException
@@ -216,7 +191,7 @@ namespace NXLevel.LMS
 
         public static string GetFileContents(string filename)
         {
-            string str = string.Empty;
+            string str = "";
             try
             {
                 filename = HttpContext.Current.Server.MapPath(filename);
@@ -264,7 +239,7 @@ namespace NXLevel.LMS
                 MethodInfo methodInfo = monitor.GetType().GetMethod("StopMonitoring", BindingFlags.Instance | BindingFlags.NonPublic);
                 methodInfo.Invoke(monitor, new object[0]);
 
-                LmsLog.Info("Initializing " + domain, false);
+                Log.Info("Initializing " + domain, false);
 
                 // Get access level list data from the database.            
                 Hashtable accessLevelList = new Hashtable();
@@ -289,6 +264,7 @@ namespace NXLevel.LMS
 
         public static bool IsPasswordValid(string pwd)
         {
+            //get at least 6 alphanumeric characters
             string req = @"^[A-Za-z0-9]{6,}$";
             return Regex.IsMatch(pwd, req);
         }

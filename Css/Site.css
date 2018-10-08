@@ -28,3 +28,11 @@
  
      
 /** miscellaneous **/
+div[onclick], a[onclick]:hover {
+    cursor: pointer;
+}
+
+/* hovering color  */
+.row-highlight {
+    background-color: #f9f9f9;
+}

@@ -51,6 +51,10 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.0.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Runtime.Serialization" />
@@ -73,9 +77,14 @@
   <ItemGroup>
     <Content Include="AccessCode.aspx" />
     <Content Include="Admin\Account.aspx" />
+    <Content Include="Admin\Certificate.aspx" />
     <Content Include="Admin\Courses.aspx" />
+    <Content Include="Admin\lms_message.aspx" />
     <Content Include="Admin\Reports.aspx" />
     <Content Include="Admin\Users.aspx" />
+    <Content Include="aicc.aspx" />
+    <Content Include="Controls\Pager.ascx" />
+    <Content Include="course_scorm.aspx" />
     <Content Include="Css\Site.css" />
     <Content Include="Curriculum.aspx" />
     <Content Include="DataModel\DataModel.Context.tt">
@@ -86,15 +95,14 @@
     <Content Include="DataModel\DataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DataModel.edmx</DependentUpon>
-      <LastGenOutput>DataModel.cs</LastGenOutput>
+      <LastGenOutput>DataModel1.cs</LastGenOutput>
     </Content>
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="help.aspx" />
-    <Content Include="Images\header_lefttop.jpg" />
-    <Content Include="Images\header_topright.jpg" />
-    <Content Include="Images\homepage_leftbar.gif" />
-    <Content Include="Images\square_bullet_blue.gif" />
+    <Content Include="js\lms.js" />
+    <Content Include="js\scorm.js" />
+    <Content Include="js\utils.js" />
     <Content Include="junk.html" />
     <Content Include="Login.aspx" />
     <EntityDeploy Include="DataModel\DataModel.edmx">
@@ -137,12 +145,26 @@
     <Compile Include="Admin\Account.aspx.designer.cs">
       <DependentUpon>Account.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Certificate.aspx.cs">
+      <DependentUpon>Certificate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Certificate.aspx.designer.cs">
+      <DependentUpon>Certificate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Courses.aspx.cs">
       <DependentUpon>Courses.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Courses.aspx.designer.cs">
       <DependentUpon>Courses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\lms_message.aspx.cs">
+      <DependentUpon>lms_message.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\lms_message.aspx.designer.cs">
+      <DependentUpon>lms_message.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Reports.aspx.cs">
       <DependentUpon>Reports.aspx</DependentUpon>
@@ -158,14 +180,42 @@
     <Compile Include="Admin\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
+    <Compile Include="aicc.aspx.cs">
+      <DependentUpon>aicc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aicc.aspx.designer.cs">
+      <DependentUpon>aicc.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Data\Breadcrumb.cs" />
     <Compile Include="App_Data\DailyLogTraceListener.cs" />
+    <Compile Include="App_Data\LmsUser.cs" />
+    <Compile Include="Controls\Pager.ascx.cs">
+      <DependentUpon>Pager.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Pager.ascx.designer.cs">
+      <DependentUpon>Pager.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="course_scorm.aspx.cs">
+      <DependentUpon>course_scorm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="course_scorm.aspx.designer.cs">
+      <DependentUpon>course_scorm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Curriculum.aspx.cs">
       <DependentUpon>Curriculum.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Curriculum.aspx.designer.cs">
       <DependentUpon>Curriculum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Course_BasicInfo_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Course_StartupDefaults_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\DataModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -182,11 +232,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="App_Data\LmsLog.cs" />
+    <Compile Include="App_Data\Log.cs" />
+    <Compile Include="DataModel\DataModel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataModel\User.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\User_InfoGet_Result.cs">
+    <Compile Include="DataModel\Users_All_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\User_Curriculum_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\User_Info_Result.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
@@ -238,7 +299,9 @@
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

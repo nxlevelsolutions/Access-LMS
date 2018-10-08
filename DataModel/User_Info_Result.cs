@@ -11,14 +11,15 @@ namespace NXLevel.LMS.DataModel
 {
     using System;
     
-    public partial class User_InfoGet_Result
+    public partial class User_Info_Result
     {
         public int userId { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
+        public bool active { get; set; }
         public int accessId { get; set; }
         public string password { get; set; }
         public string activationCode { get; set; }
-        public bool active { get; set; }
+        public string clientName { get; set; }
     }
 }

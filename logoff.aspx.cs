@@ -12,9 +12,9 @@ namespace NXLevel.LMS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Log.Info("User '" + LmsUser.UserId + "' logged off.");
             Session.Abandon();
             FormsAuthentication.SignOut();
-            LmsLog.Info("User '" + Session["ses_s_dispay_name"] + "' logged off.");
             Response.Redirect("login.aspx");
         }
     }

@@ -29,13 +29,95 @@ namespace NXLevel.LMS.DataModel
     
         public virtual DbSet<User> Users { get; set; }
     
-        public virtual ObjectResult<User_InfoGet_Result> User_InfoGet(string email)
+        public virtual ObjectResult<User_Curriculum_Result> User_Curriculum(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<User_Curriculum_Result>("User_Curriculum", userIdParameter);
+        }
+    
+        public virtual int Course_Started(Nullable<int> userId, Nullable<int> courseId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            var courseIdParameter = courseId.HasValue ?
+                new ObjectParameter("courseId", courseId) :
+                new ObjectParameter("courseId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Course_Started", userIdParameter, courseIdParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Course_ScormValueSet(Nullable<int> userId, Nullable<int> courseId, string key, string val)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            var courseIdParameter = courseId.HasValue ?
+                new ObjectParameter("courseId", courseId) :
+                new ObjectParameter("courseId", typeof(int));
+    
+            var keyParameter = key != null ?
+                new ObjectParameter("key", key) :
+                new ObjectParameter("key", typeof(string));
+    
+            var valParameter = val != null ?
+                new ObjectParameter("val", val) :
+                new ObjectParameter("val", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Course_ScormValueSet", userIdParameter, courseIdParameter, keyParameter, valParameter);
+        }
+    
+        public virtual ObjectResult<Course_BasicInfo_Result> Course_BasicInfo(Nullable<int> courseId, Nullable<int> userId)
+        {
+            var courseIdParameter = courseId.HasValue ?
+                new ObjectParameter("courseId", courseId) :
+                new ObjectParameter("courseId", typeof(int));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Course_BasicInfo_Result>("Course_BasicInfo", courseIdParameter, userIdParameter);
+        }
+    
+        public virtual ObjectResult<Course_StartupDefaults_Result> Course_StartupDefaults(Nullable<int> userId, Nullable<int> courseId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            var courseIdParameter = courseId.HasValue ?
+                new ObjectParameter("courseId", courseId) :
+                new ObjectParameter("courseId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Course_StartupDefaults_Result>("Course_StartupDefaults", userIdParameter, courseIdParameter);
+        }
+    
+        public virtual ObjectResult<User_Info_Result> User_Info(string email)
         {
             var emailParameter = email != null ?
                 new ObjectParameter("email", email) :
                 new ObjectParameter("email", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<User_InfoGet_Result>("User_InfoGet", emailParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<User_Info_Result>("User_Info", emailParameter);
+        }
+    
+        public virtual ObjectResult<Users_All_Result> Users_All(Nullable<int> pageIndex, Nullable<int> pageSize, ObjectParameter recordCount)
+        {
+            var pageIndexParameter = pageIndex.HasValue ?
+                new ObjectParameter("PageIndex", pageIndex) :
+                new ObjectParameter("PageIndex", typeof(int));
+    
+            var pageSizeParameter = pageSize.HasValue ?
+                new ObjectParameter("PageSize", pageSize) :
+                new ObjectParameter("PageSize", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Users_All_Result>("Users_All", pageIndexParameter, pageSizeParameter, recordCount);
         }
     }
 }

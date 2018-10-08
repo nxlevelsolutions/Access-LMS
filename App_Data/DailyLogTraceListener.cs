@@ -29,7 +29,7 @@ namespace NXLevel.LMS
         public override void Write(string message, string category)
         {
             CheckRollover();
-            _traceWriter.Write(category + LmsLog.DELIMITER + message);
+            _traceWriter.Write(category + Log.DELIMITER + message);
         }
 
 
@@ -38,9 +38,9 @@ namespace NXLevel.LMS
             CheckRollover();
             StringBuilder sb = new StringBuilder();
             sb.Append(DateTime.Now.ToString("hh:mm:sstt"));
-            sb.Append(LmsLog.DELIMITER);
+            sb.Append(Log.DELIMITER);
             sb.Append(HttpContext.Current?.Session?["userId"]==null ? 0: HttpContext.Current.Session["userId"]);
-            sb.Append(LmsLog.DELIMITER);
+            sb.Append(Log.DELIMITER);
             sb.Append(message);
             _traceWriter.WriteLine(sb.ToString());
         }
@@ -50,11 +50,11 @@ namespace NXLevel.LMS
             CheckRollover();
             StringBuilder sb = new StringBuilder();
             sb.Append(DateTime.Now.ToString("HH:mm:ss tt"));
-            sb.Append(LmsLog.DELIMITER);
+            sb.Append(Log.DELIMITER);
             sb.Append(HttpContext.Current?.Session["userId"] == null ? 0 : HttpContext.Current.Session["userId"]);
-            sb.Append(LmsLog.DELIMITER);
+            sb.Append(Log.DELIMITER);
             sb.Append(message);
-            sb.Append(LmsLog.DELIMITER);
+            sb.Append(Log.DELIMITER);
             sb.Append(category);
             _traceWriter.WriteLine(sb.ToString());
         }

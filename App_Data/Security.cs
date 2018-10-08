@@ -5,8 +5,6 @@ namespace NXLevel.LMS
 {
     public class Security
     {
-        #region Enums
-
         public enum Roles
         {
             ACC_USER = 1,       // End-user, bottom level
@@ -15,8 +13,6 @@ namespace NXLevel.LMS
             ACC_GLOBAL = 4,     // Administrator - global (all) report
             ACC_SYSTEM = 5      // Access to the system
         }
-
-        #endregion
 
         public static bool HasAccess(int requestedAccessCode)
         {

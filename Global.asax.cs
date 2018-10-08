@@ -11,6 +11,7 @@ namespace NXLevel.LMS
 {
     public class Global : System.Web.HttpApplication
     {
+        public const string USERINFO_SESSION_KEY = "UserInfo";
 
         protected void Application_Start(object sender, EventArgs e)
         {
@@ -24,11 +25,7 @@ namespace NXLevel.LMS
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
-            //HttpApplication app = (HttpApplication)sender;
-            //HttpContext context = app.Context;
 
-            //// Perform first request initialization.
-            //Utilities.InitializeApplication(context);
         }
 
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
@@ -39,20 +36,20 @@ namespace NXLevel.LMS
         protected void Application_Error(object sender, EventArgs e)
         {
             Exception err = Server.GetLastError().GetBaseException();
-            LmsLog.Error("Application error:" + err.Message, true);
-            LmsLog.Error("Source:" + err.Source, true);
-            LmsLog.Error("Stack Trace:" + err.StackTrace, true);
+            Log.Error("Application error:" + err.Message + 
+                         "Source:" + err.Source +
+                         "Stack Trace:" + err.StackTrace, true);
         }
 
         protected void Session_End(object sender, EventArgs e)
         {
-            if ( Session["userId"] == null)
+            if (Session[USERINFO_SESSION_KEY] == null)
             {
-                LmsLog.Info("A session has ended.", true);
+                Log.Info("A session has ended.");
             }
             else
             {
-                LmsLog.Info("User Id=" + Session["userId"] + "'s session has ended.");
+                Log.Info("User Id=" + LmsUser.UserId + "'s session has ended.");
             }
         }
 
@@ -67,7 +64,7 @@ namespace NXLevel.LMS
             runtime = (HttpRuntime)t.InvokeMember("_theRuntime", BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.GetField, null, null, null);
             if (runtime == null)
             {
-                LmsLog.Info(logEntries.ToString());
+                Log.Info(logEntries.ToString());
                 return;
             }
 
@@ -77,7 +74,7 @@ namespace NXLevel.LMS
             logEntries.Append("Shutdown Message=" + shutDownMessage + Environment.NewLine);
             logEntries.Append("Shutdown Stack=" + shutDownStack + Environment.NewLine);
 
-            LmsLog.Info(logEntries.ToString());
+            Log.Info(logEntries.ToString());
         }
     }
 }

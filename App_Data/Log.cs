@@ -9,7 +9,7 @@ using System.Web.Configuration;
 
 namespace NXLevel.LMS
 {
-    public class LmsLog
+    public class Log
     {
         public const string DELIMITER = ";";
 

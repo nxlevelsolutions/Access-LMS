@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="Site.Master" CodeBehind="RequestPassword.aspx.cs" Inherits="NXLevel.LMS.RequestPassword" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <style type="text/css">
       
@@ -6,25 +7,34 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
- 
-    <div class="col-xs-7 col-sm-6 col-md-5 col-lg-4">
-        <div class="row">
-            <asp:Label ID="lblError" runat="server" CssClass="errorMessage" Text="" />
+
+    <div class="page-header">
+        <h2>Forgot password</h2>
+    </div>
+
+    <div class="row" style="background-color: #f1f7fd; border-radius: 10px; margin: 0px">
+
+        <div class="col-md-1 hidden-xs">
+            &nbsp;
         </div>
-        <div class="row">
-            Please enter your Email Address.<br />
-            <asp:Label ID="lblRequestPassword" runat="server" Text="We will email you your password." />   
+        <div class="col-md-5">
+            
+            <asp:Label ID="lblError" runat="server" CssClass="alert alert-danger btn-block" Visible="false" Text="" />
+            <br />
+            <p>
+                <asp:Label ID="lblRequestPassword" runat="server" Text="Please enter your Email Address. We will email you your password." />
+            </p>
+                     
+            <asp:TextBox name="Email" size="19" ID="txtEmail" runat="server" placeholder="Email address" CssClass="form-control"></asp:TextBox><br />
+            <asp:Button ID="btnRequestPasswordSubmit" runat="server" CssClass="btn btn-primary form-control" Text="Submit" OnClick="btnSubmit_Click" />
+
+            <p>&nbsp;</p>
+            <p><a href="Login.aspx">Return to Login</a></p>
         </div>
-        <div class="row">
-            <div class="request-password">
-                <p>Email Address:</p>
-                <asp:TextBox name="Email" size="19" ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox><br />                    
-                <asp:Button ID="btnRequestPasswordSubmit" runat="server" CssClass="btn btn-primary btn-sm form-control" Text="Submit" OnClick="btnSubmit_Click" />
-            </div>
+        <div class="col-md-1 hidden-xs">
+            &nbsp;
         </div>
-        <div class="row">
-            <a href="Login.aspx">Return to Login</a>
-        </div>  
-    </div>        
-    
+
+    </div>
+
 </asp:Content>

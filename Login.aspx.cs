@@ -24,7 +24,7 @@ namespace NXLevel.LMS
             }
 
             lms_Entities db = new lms_Entities();
-            User_InfoGet_Result userInfo = db.User_InfoGet(Email.Text).FirstOrDefault();
+            User_Info_Result userInfo = db.User_Info(Email.Text).FirstOrDefault();
 
             if (userInfo == null)
             {
@@ -41,12 +41,10 @@ namespace NXLevel.LMS
                     if (userInfo.password == Pwd.Text)
                     {
                         //password is good.. log user in
-                        Session["userId"] = userInfo.userId;
-                        Session["DisplayName"] = userInfo.firstName + " " + userInfo.lastName;
-                        Session["AccessLevel"] = userInfo.accessId;
+                        LmsUser.SetInfo(userInfo.userId, userInfo.accessId, userInfo.firstName, userInfo.lastName, userInfo.clientName, "", 123); //LMSUsr.connStr, LMSUsr.dbId
 
                         // Write the session data to the log.
-                        LmsLog.Info("User: " + Session["userId"] + " logged in.");
+                        Log.Info("User: " + userInfo.userId + " logged in.");
                         FormsAuthentication.RedirectFromLoginPage(Email.Text, false);
                     }
                     else
@@ -70,7 +68,7 @@ namespace NXLevel.LMS
                                                 "http://" + Request.ServerVariables["HTTP_HOST"] + Request.ApplicationPath + "/AccessCode.aspx",
                                                 "http://" + Request.ServerVariables["HTTP_HOST"]);
                         Utilities.SendEmail(ConfigurationManager.AppSettings.Get("SystemEmail"), Email.Text, "PharmaCertify Account Activation Instructions", emailBody);
-                        LmsLog.Info("Access code: " + activationCode + " was sent.");
+                        Log.Info("Access code: " + activationCode + " was sent.");
 
                         // Update the user's account with the Activation Code.
                         userInfo.activationCode = activationCode;

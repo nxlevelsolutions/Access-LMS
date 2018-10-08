@@ -2,25 +2,15 @@
 {
     public class Breadcrumb
     {
-        #region Fields
-
-        private string _pageTitle = string.Empty;
-        private string _pageUrl = string.Empty;
-
-        #endregion
-
-        #region Constructor
-
+        private string _pageTitle = "";
+        private string _pageUrl = "";
+ 
         public Breadcrumb (string newTitle, string newUrl)
         {
             _pageTitle = newTitle;
             _pageUrl = newUrl;
         }
-
-        #endregion
-
-        #region Properties
-
+ 
         public string PageUrl
         {
             get
@@ -32,6 +22,5 @@
             get { return _pageTitle; }
         }
 
-        #endregion
     }
 }

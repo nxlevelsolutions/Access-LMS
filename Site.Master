@@ -18,6 +18,7 @@
     <!--[if lt IE 9]>
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <script src='<%= ResolveUrl("~/js/utils.js") %>'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -71,17 +72,17 @@
     <!-- footer -->
     <div id="footer">
         <div class="container">
-            <p class="text-muted credit" align="center">Powered by <i>i-prism EZ-LMS</i> &nbsp;&mdash;&nbsp; © 2003-<% =DateTime.Now.Year %>, NXLevel Solutions, Inc. </p>
+            <p class="text-muted credit" align="center">Powered by <i>Access LMS</i> &nbsp;&mdash;&nbsp; © 2003-<% =DateTime.Now.Year %>, NXLevel Solutions, Inc. </p>
         </div>
     </div>
 
 <script>
 $(document).ready(function () {
-    //highlight current menu item
+    //highlight current top menu item
     var url = window.location;
     //$('.navbar .nav').find('.active').removeClass('active');
     $('.navbar .nav li a').each(function () {
-        if (this.href == url) {
+        if (this.href === url) {
             $(this).parents('li').addClass('active');
         }
     }); 

@@ -5,7 +5,7 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="lms_masterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="User">
+        <EntityType Name="Users">
           <Key>
             <PropertyRef Name="userId" />
           </Key>
@@ -24,49 +24,132 @@
           <Property Name="telephone" Type="varchar" MaxLength="50" />
           <Property Name="timestamp" Type="datetime" Nullable="false" />
         </EntityType>
-        <Function Name="User_InfoGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="Course_BasicInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="courseId" Type="int" Mode="In" />
+          <Parameter Name="userId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Course_ScormValueSet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="courseId" Type="int" Mode="In" />
+          <Parameter Name="key" Type="varchar(max)" Mode="In" />
+          <Parameter Name="val" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Course_Started" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="courseId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Course_StartupDefaults" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="courseId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="User_Curriculum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="User_Info" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="email" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="Users_All" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
         <EntityContainer Name="lms_masterModelStoreContainer">
-          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="lms_masterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="lms_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="lms_masterModel.User" />
+          <FunctionImport Name="User_Curriculum" ReturnType="Collection(lms_masterModel.User_Curriculum_Result)">
+          <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Course_Started">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="courseId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Course_ScormValueSet" ReturnType="Collection(Int32)">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="courseId" Mode="In" Type="Int32" />
+            <Parameter Name="key" Mode="In" Type="String" />
+            <Parameter Name="val" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Course_BasicInfo" ReturnType="Collection(lms_masterModel.Course_BasicInfo_Result)">
+            <Parameter Name="courseId" Mode="In" Type="Int32" />
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Course_StartupDefaults" ReturnType="Collection(lms_masterModel.Course_StartupDefaults_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="courseId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="User_Info" ReturnType="Collection(lms_masterModel.User_Info_Result)">
+          <Parameter Name="email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Users_All" ReturnType="Collection(lms_masterModel.Users_All_Result)">
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="userId" />
           </Key>
           <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <Property Name="accessId" Type="Int32" Nullable="false" />
+          <Property Name="activationCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="middleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="country" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="activationCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="timestamp" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="accessId" Type="Int32" Nullable="false" />
-          <Property Name="active" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="lms_Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Users" EntityType="Self.User" />
-          <FunctionImport Name="User_InfoGet" ReturnType="Collection(lms_masterModel.User_InfoGet_Result)">
-          <Parameter Name="email" Mode="In" Type="String" />
-          </FunctionImport>
-        </EntityContainer>
-        <ComplexType Name="User_InfoGet_Result">
+        <ComplexType Name="User_Curriculum_Result">
+          <Property Type="Int16" Name="courseId" Nullable="false" />
+          <Property Type="String" Name="title" Nullable="true" MaxLength="70" />
+          <Property Type="String" Name="aicc" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="scorm" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="jsWinParams" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="url" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="language" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Course_BasicInfo_Result">
+          <Property Type="DateTime" Name="startDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="completedDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="maxScore" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="String" Name="title" Nullable="true" MaxLength="70" />
+        </ComplexType>
+        <ComplexType Name="Course_StartupDefaults_Result">
+          <Property Type="String" Name="lesson_status" Nullable="true" />
+          <Property Type="String" Name="lesson_location" Nullable="true" />
+          <Property Type="Decimal" Name="maxScore" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="String" Name="suspend_data" Nullable="true" />
+          <Property Type="String" Name="student_name" Nullable="true" />
+          <Property Type="Time" Name="totalTimeUsage" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="User_Info_Result">
           <Property Type="Int32" Name="userId" Nullable="false" />
           <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="active" Nullable="false" />
           <Property Type="Int32" Name="accessId" Nullable="false" />
           <Property Type="String" Name="password" Nullable="true" MaxLength="255" />
           <Property Type="String" Name="activationCode" Nullable="true" MaxLength="10" />
-          <Property Type="Boolean" Name="active" Nullable="false" />
+          <Property Type="String" Name="clientName" Nullable="true" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="Users_All_Result">
+          <Property Type="Int32" Name="rowNumber" Nullable="true" />
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -76,34 +159,83 @@
         <EntityContainerMapping StorageEntityContainer="lms_masterModelStoreContainer" CdmEntityContainer="lms_Entities">
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="lms_masterModel.User">
-              <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="active" ColumnName="active" />
-                <ScalarProperty Name="accessId" ColumnName="accessId" />
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="firstName" ColumnName="firstName" />
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="lastName" ColumnName="lastName" />
                 <ScalarProperty Name="middleName" ColumnName="middleName" />
-                <ScalarProperty Name="state" ColumnName="state" />
-                <ScalarProperty Name="country" ColumnName="country" />
-                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
                 <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="activationCode" ColumnName="activationCode" />
-                <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="activationCode" ColumnName="activationCode" />
+                <ScalarProperty Name="accessId" ColumnName="accessId" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="User_InfoGet" FunctionName="lms_masterModel.Store.User_InfoGet" >
+          <FunctionImportMapping FunctionImportName="User_Curriculum" FunctionName="lms_masterModel.Store.User_Curriculum">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="lms_masterModel.User_InfoGet_Result">
+              <ComplexTypeMapping TypeName="lms_masterModel.User_Curriculum_Result">
+                <ScalarProperty Name="courseId" ColumnName="courseId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="aicc" ColumnName="aicc" />
+                <ScalarProperty Name="scorm" ColumnName="scorm" />
+                <ScalarProperty Name="jsWinParams" ColumnName="jsWinParams" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="language" ColumnName="language" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Course_Started" FunctionName="lms_masterModel.Store.Course_Started" />
+          <FunctionImportMapping FunctionImportName="Course_ScormValueSet" FunctionName="lms_masterModel.Store.Course_ScormValueSet" />
+          <FunctionImportMapping FunctionImportName="Course_BasicInfo" FunctionName="lms_masterModel.Store.Course_BasicInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="lms_masterModel.Course_BasicInfo_Result">
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="completedDate" ColumnName="completedDate" />
+                <ScalarProperty Name="maxScore" ColumnName="maxScore" />
+                <ScalarProperty Name="title" ColumnName="title" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Course_StartupDefaults" FunctionName="lms_masterModel.Store.Course_StartupDefaults">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="lms_masterModel.Course_StartupDefaults_Result">
+                <ScalarProperty Name="lesson_status" ColumnName="lesson_status" />
+                <ScalarProperty Name="lesson_location" ColumnName="lesson_location" />
+                <ScalarProperty Name="maxScore" ColumnName="maxScore" />
+                <ScalarProperty Name="suspend_data" ColumnName="suspend_data" />
+                <ScalarProperty Name="student_name" ColumnName="student_name" />
+                <ScalarProperty Name="totalTimeUsage" ColumnName="totalTimeUsage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="User_Info" FunctionName="lms_masterModel.Store.User_Info">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="lms_masterModel.User_Info_Result">
                 <ScalarProperty Name="userId" ColumnName="userId" />
                 <ScalarProperty Name="firstName" ColumnName="firstName" />
                 <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="active" ColumnName="active" />
                 <ScalarProperty Name="accessId" ColumnName="accessId" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="activationCode" ColumnName="activationCode" />
-                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="clientName" ColumnName="clientName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Users_All" FunctionName="lms_masterModel.Store.Users_All">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="lms_masterModel.Users_All_Result">
+                <ScalarProperty Name="rowNumber" ColumnName="rowNumber" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="email" ColumnName="email" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

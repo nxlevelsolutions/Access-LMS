@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="lms_message.aspx.cs" Inherits="NXLevel.LMS.Admin.lms_message" %>
