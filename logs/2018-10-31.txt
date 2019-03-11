@@ -1,0 +1,72 @@
+02:02:57PM;0;Information;User: 122 logged in.
+02:15:53PM;0;Information;User Id=0's session has ended.
+02:15:53PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Web.Util.WorkItem.OnQueueUserWorkItemCompletion(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+02:25:10PM;0;Information;User: 122 logged in.
+02:25:15PM;0;Error;Application error:Object reference not set to an instance of an object.Source:LMSStack Trace:   at NXLevel.LMS.Admin.EmailEditor.Page_Load(Object sender, EventArgs e) in C:\Projects\LMS\Admin\EmailEditor.aspx.cs:line 23
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+02:46:20PM;0;Information;User Id=0's session has ended.
+02:46:45PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+03:35:15PM;0;Error;Application error:Object reference not set to an instance of an object.Source:LMSStack Trace:   at NXLevel.LMS.LmsUser.get_DBConnString() in C:\Projects\LMS\App_Data\LmsUser.cs:line 147
+   at NXLevel.LMS.DataModel.ClientDBEntities..ctor() in C:\Projects\LMS\DataModel\LMSContextExtension.cs:line 33
+   at NXLevel.LMS.Admin.EmailEditor.Page_Load(Object sender, EventArgs e) in C:\Projects\LMS\Admin\EmailEditor.aspx.cs:line 21
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+03:35:17PM;0;Error;Application error:Object reference not set to an instance of an object.Source:LMSStack Trace:   at NXLevel.LMS.LmsUser.get_DBConnString() in C:\Projects\LMS\App_Data\LmsUser.cs:line 147
+   at NXLevel.LMS.DataModel.ClientDBEntities..ctor() in C:\Projects\LMS\DataModel\LMSContextExtension.cs:line 33
+   at NXLevel.LMS.Admin.EmailEditor.Page_Load(Object sender, EventArgs e) in C:\Projects\LMS\Admin\EmailEditor.aspx.cs:line 21
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+03:35:31PM;0;Information;User: 122 logged in.
+03:55:40PM;0;Information;User Id=0's session has ended.
+03:56:15PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+

@@ -1,0 +1,164 @@
+body {
+	background:transparent!important;
+}
+#closeButton {
+    position: absolute;
+    right: 10px;
+	top:4px;
+    top:1vw;
+	width:80px;
+	width:9.5vw;
+    cursor: pointer;
+    z-index: 30;
+	font-size:1.57vw;
+	color:#ffffff;
+}
+#closeButton img {
+	display: inline;
+    padding-left: 10px;
+    vertical-align: middle;
+    width: 3vw!important;
+    height: 3vw!important;
+}
+/*#frameNav {
+	position:absolute;
+	left:0px;
+	width:100%;
+	height:44px;
+    bottom: 10px;
+}*/
+
+
+#frameNav {
+	position: absolute;
+	right: 79px;
+	width: 173px;
+	height: 39px;
+	bottom: 4px;
+}
+
+
+
+#framePrompt {
+	display:none;
+	position:absolute;
+	right:8px;
+	width:180px;
+	height:60px;
+    top: 50px;
+	z-index: 50;
+}
+#frameAudio{
+	position:absolute;
+	z-index:60;
+	right:257px;
+	bottom:4px;
+	width:241px; /* must be wider than media query which determines whether audio is displayed */
+	height:39px;
+}
+#frameContents {
+	position:absolute;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	overflow:hidden;
+	background-color:#ffffff;
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+#ssr-frameContents {
+	position:absolute;
+	left:50px;
+	top:15px;	
+	width:440px;
+	height:363px; 
+}
+#framePageIndicator {
+	display:none;
+	position:absolute;
+	left:60%;
+    bottom:0px;
+	width:150px;
+	height:40px;
+	z-index:2;
+}
+#bottomLogo{
+	position:absolute;
+	left:35px;
+	top:590px;
+}
+/*#bottomBar{
+	position: absolute;
+	left: 0px;
+	top: 477px;
+	height: 53px;
+	width: 100%;
+	background-image: url('../interface/bg.png');
+	background-repeat: no-repeat;
+}*/
+#subControlsBkgd {
+	position:absolute;
+	width:365px;
+	height:50px;
+	background-color:#DAD9DA;
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+	right:235px;
+	bottom:0;
+	z-index: 40; /* frameSubCourse is z-index 30 in components.css */
+	-webkit-box-shadow: 0 14px 30px #333333;
+	-moz-box-shadow: 0 14px 30px #333333;
+	box-shadow: 0 14px 30px #333333;
+	zoom: 1;
+	filter: progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=5, Direction=0),
+         progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=5, Direction=90),
+         progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=5, Direction=180),
+         progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=5, Direction=270);
+
+}
+#frameTranscript{
+	display:none;
+	position:absolute;
+	left: 0px;
+	top: 30px;
+	width: 525px;
+	height:450px;
+	z-index:50;
+}
+#frameTranscriptButton{
+	display:none;
+	position:absolute;
+	z-index:50;
+	right:515px;
+	bottom:4px;
+	width:70px;
+	height:37px;
+}
+#popBackground {
+	display:none;
+	position:absolute;
+	left:0px;
+	top:0px;
+	height:100%;
+	width:100%;
+	/* Fallback for web browsers that doesn't support RGBa */
+	background: rgb(0, 0, 0) transparent;
+	/* RGBa with 0.6 opacity */
+	background: rgba(0, 0, 0, 0.3);
+	/* For IE 5.5 - 7*/
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4d333333, endColorstr=#4d444444);
+	/* For IE 
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#4d333333, endColorstr=#4d444444)";8*/
+}
+#frameSideBar {
+    display:none;
+	position:absolute;
+    right: 0px;
+    top: 110px;
+    width: 450px;
+    height: 270px;
+	overflow:hidden;
+}

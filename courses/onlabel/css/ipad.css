@@ -1,0 +1,26 @@
+ /*This css is only to shift various controls up a bit in the IPAD*/
+
+#footerText {
+    bottom: 20px;
+}
+#courseTitle {
+    bottom: 30px;
+}
+#frameNav {
+    bottom: 60px;
+}
+#frameContents {
+    bottom: 110px;
+}
+#frameTranscriptButton {
+    bottom: 50px;
+}
+#frameAudio {
+    bottom: 55px;
+}
+#framePageIndicator {
+    bottom: 50px;
+}
+#framePrompt {
+    bottom:100px;
+}

@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="page-header">
-        <h2>Help</h2>
+        <h3><span class="fa fa-question-circle"></span> Help</h3>
     </div>
 
     <ul>

@@ -1,0 +1,73 @@
+10:27:05AM;0;Information;User: 122 logged in.
+10:54:20AM;0;Information;User Id=0's session has ended.
+10:54:58AM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+11:16:07AM;0;Information;User: 122 logged in.
+11:17:39AM;0;Information;User 122 launched course:2
+11:17:47AM;0;Information;User 122 launched course:4
+11:17:55AM;0;Information;User 122 launched course:4
+11:21:32AM;0;Information;User 122 launched course:4
+11:21:38AM;0;Information;User 122 launched course:4
+11:22:00AM;0;Information;User 122 launched course:4
+11:22:08AM;0;Information;User 122 launched course:4
+11:22:19AM;0;Information;User 122 launched course:4
+11:42:40AM;0;Information;User Id=0's session has ended.
+11:43:04AM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+02:25:00PM;0;Information;A session has ended.
+02:25:39PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+03:49:00PM;0;Information;A session has ended.
+03:49:54PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+03:52:23PM;0;Information;User: 122 logged in.
+04:22:40PM;0;Information;User Id=0's session has ended.
+04:23:21PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+04:48:51PM;0;Information;User: 122 logged in.
+05:09:40PM;0;Information;User Id=0's session has ended.
+05:11:48PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+05:36:38PM;0;Information;User: 122 logged in.

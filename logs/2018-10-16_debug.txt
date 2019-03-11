@@ -1,0 +1,32 @@
+03:30:20PM;0;Information;User: 122 logged in.
+04:36:22PM;0;Information;User: 122 logged in.
+04:56:40PM;0;Information;User Id=0's session has ended.
+04:59:19PM;0;Information;User: 122 logged in.
+04:59:34PM;0;Error;Application error:Unknown web method SaveCourse.
+Parameter name: methodNameSource:System.Web.ExtensionsStack Trace:   at System.Web.Script.Services.WebServiceData.GetMethodData(String methodName)
+   at System.Web.Handlers.ScriptModule.OnPostAcquireRequestState(Object sender, EventArgs eventArgs)
+   at System.Web.HttpApplication.SyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+05:01:34PM;0;Error;Application error:Unknown web method SaveCourse.
+Parameter name: methodNameSource:System.Web.ExtensionsStack Trace:   at System.Web.Script.Services.WebServiceData.GetMethodData(String methodName)
+   at System.Web.Handlers.ScriptModule.OnPostAcquireRequestState(Object sender, EventArgs eventArgs)
+   at System.Web.HttpApplication.SyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+05:06:12PM;0;Error;Application error:Unknown web method SaveCourse.
+Parameter name: methodNameSource:System.Web.ExtensionsStack Trace:   at System.Web.Script.Services.WebServiceData.GetMethodData(String methodName)
+   at System.Web.Handlers.ScriptModule.OnPostAcquireRequestState(Object sender, EventArgs eventArgs)
+   at System.Web.HttpApplication.SyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+05:07:32PM;0;Information;User: 122 logged in.
+05:07:56PM;0;Error;Application error:Unknown web method SaveCourse.
+Parameter name: methodNameSource:System.Web.ExtensionsStack Trace:   at System.Web.Script.Services.WebServiceData.GetMethodData(String methodName)
+   at System.Web.Handlers.ScriptModule.OnPostAcquireRequestState(Object sender, EventArgs eventArgs)
+   at System.Web.HttpApplication.SyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+05:10:39PM;0;Information;User: 122 logged in.
+05:12:37PM;0;Information;User '122' logged off.
+05:12:37PM;0;Information;User Id=0's session has ended.

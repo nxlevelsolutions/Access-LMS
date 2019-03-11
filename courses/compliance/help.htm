@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/globals.css" />
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+
+        body {
+            line-height: 1px;
+            margin: 0px;
+            height: 100%;
+            background: transparent;
+        }
+
+        .content {
+            color: #6b6b6b;
+            border: 1px solid #6b6b6b;
+            background-color: white;
+            line-height: 15px;
+            font-size: 12px;
+            padding: 8px;
+            text-align: left;
+            position: absolute;
+            box-sizing: border-box;
+            box-shadow: 0px 0px 20px #BBB;
+            -webkit-box-shadow: 0px 0px 20px #BBB;
+        }
+
+        .title {
+            font-size: 13px;
+            font-weight: bolder;
+        }
+
+        p {
+            margin: 4px 0px;
+        }
+
+        ul {
+            padding-left: 22px;
+        }
+
+        #close {
+            position: absolute;
+            top: 100px;
+            right: 90px;
+            width: 100px;
+            height: 69px;
+            background: #ffffff url('interface/popupClose5.png') no-repeat center 31px;
+            cursor: pointer;
+        }
+
+        #titles {
+            width: 220px;
+            left: 20px;
+            top: 110px;
+        }
+
+        #globalNav {
+            width: 170px;
+            left: 20px;
+            bottom: 60px;
+        }
+
+        #transcript {
+            width: 145px;
+            right: 489px;
+            bottom: 60px;
+        }
+
+        #media {
+            width: 188px;
+            right: 291px;
+            bottom: 60px;
+        }
+
+        #nav {
+            width: 140px;
+            right: 140px;
+            bottom: 60px;
+        }
+
+        #exit {
+            width: 110px;
+            right: 20px;
+            bottom: 60px;
+        }
+
+        .arrow_top, .arrow_bottom {
+            position: absolute;
+            width: 29px;
+            height: 12px;
+        }
+
+        .arrow_left, .arrow_right {
+            position: absolute;
+            width: 12px;
+            height: 29px;
+        }
+
+        .arrow_top {
+            background: url('interface/help_arrow_top.png') no-repeat;
+            top: -11px;
+        }
+
+        .arrow_right {
+            background: url('interface/help_arrow_right.png') no-repeat;
+            right: -11px;
+        }
+
+        .arrow_bottom {
+            background: url('interface/help_arrow_bottom.png') no-repeat;
+            bottom: -11px;
+        }
+
+        .arrow_left {
+            background: url('interface/help_arrow_left.png') no-repeat;
+            left: -11px;
+        }
+
+        .top {
+            top: 20px;
+        }
+
+        .right {
+            right: 20px;
+        }
+
+        .bottom {
+            bottom: 20px;
+        }
+
+        .left {
+            left: 20px;
+        }
+    </style>
+    <!--<script language="javascript" src="js/jquery-1.7.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js" crossorigin="anonymous"></script>
+    <script language="javascript">
+        function closeWin() {
+            parent.course.hideHelp();
+        }
+        function orientationChanged(angle) {
+            var pHeight = parent.$(parent).height();
+            $(document.body).height(pHeight);
+        }
+        orientationChanged(parent.orientation);
+        //close window on ESC
+        $(document).keyup(function (e) {
+            if (e.keyCode == 27) {
+                closeWin();
+            }
+        });
+        $(document).ready(function () {
+            var getColor1 = $("#dummyDiv").css("background-color");
+            $(".title").css("color", getColor1);
+        });
+
+    </script>
+</head>
+<body>
+	<div id="titles" class="content">
+    	<span class="title">Titles</span>
+		<p>The titles are displayed at the top left of the screen in the following order:</p>
+		<ul>
+			<li>Module title</li>
+			<li>Section title: Topic title</li>
+		</ul>
+		<div class="arrow_top left"></div>
+	</div>
+
+	<div id="globalNav" class="content">
+    	<span class="title">Global Navigation</span>
+		<p><img src="interface/help_toc.png" align="left" alt="contents"/>&nbsp;The <b>Table of Contents</b> lists all screens in the module.</p>
+		<p><img src="interface/help_help.png" align="left" alt="help" />&nbsp;<b>Help</b> displays this help screen.</p>
+  		<div class="arrow_bottom left"></div>
+	</div>
+
+	<div id="transcript" class="content">
+    	<span class="title">Transcript</span>
+		<p><img src="interface/help_transcript.png" align="left" alt="transcript"/>&nbsp;The <b>Transcript</b> icon my be used to display the transcript window, which contains the text of the audio. To close the transcript, select the icon again or select the <img src="interface/nav_left_sm.png" width="15" align="left" alt="close" /> in the upper right of the transcript window.</p>
+		<div class="arrow_bottom right"></div>
+	</div>
+
+	<div id="media" class="content">
+    	<span class="title">Media Controller</span>
+		<p><img src="interface/audio_handle.png" width="15" align="left" alt="scrubber"/>&nbsp;The <b>Media Controller</b> offers control over the playback of media including audio and screen sequences.</p>
+		<p><img src="interface/help_play.png" width="14" align="left" alt="play" /><img src="interface/help_pause.png" width="14" align="left" alt="pause" />&nbsp;The <b>Play</b> or <b>Pause</b> icon may be used to pause and resume playback. Selecting <b>Play</b> when the playback counter is at 0 will cause the screen to play again.</p>
+		<div class="arrow_bottom left"></div>
+	</div>
+
+	<div id="nav" class="content">
+    	<span class="title">Navigation and Prompts</span>
+		<p><img src="interface/help_back.png" align="left" alt="back" /><img src="interface/help_next.png" align="left" alt="next" />&nbsp;The <b>Back</b> and <b>Next</b> icons are used to navigate through the module. When active, an instructional prompt will appear above them to indicate the next step.</p>
+  		<p><img src="interface/nav_progress.png" height="14" align="left" alt="progress" />&nbsp;Between the icons is the progress indicator.</p>
+		<div class="arrow_bottom right"></div>
+	</div>
+
+	<div id="exit" class="content">
+    	<span class="title">Exit Module</span>
+  		<p><img src="interface/help_close.png" align="left" alt="close" />&nbsp;Select <b>Exit</b> at the bottom right of the screen to close the module.</p>
+		<div class="arrow_bottom right"></div>
+    </div>
+
+	<div id="close" class="content" onclick="javascript:closeWin()"><span class="title">Close Help</span></div>
+   	<div id="dummyDiv" class="primaryColor1" style="display:none;"></div>
+</body>
+</html>

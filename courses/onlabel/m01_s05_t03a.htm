@@ -1,0 +1,46 @@
+﻿<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+	<link rel="stylesheet" type="text/css" href="css/page.css" />
+	<link rel="stylesheet" type="text/css" href="css/globals.css" />
+	<link rel="stylesheet" type="text/css" href="css/tooltips.css" />
+	<script src="https://code.jquery.com/jquery-3.0.0.min.js" crossorigin="anonymous"></script>
+	<script src="js/utils.js" ></script>
+	<script src="js/effects.js"></script>
+	<script src="js/checkmarks.js"></script>
+	<script src="js/page.js"></script>
+	<script src="js/graphicButton.js"></script>    
+	<script src="js/tooltips.js"></script>
+	<script src="js/subcourseCheck.js"></script>
+	<script type="text/javascript">
+		// used if chapter title is displayed above this template; SectionTitle may be used instead
+		parent.setChapterTitle("Layered Graphics"); 
+	 
+		parent.setPageTitle("<span>Layered Graphics:</span>&nbsp;Subscreen Example (template: graphic_right_50)");		
+
+		$(document).ready(function () {
+			document.body.style["font-size"] = $(parent.document.body).css("font-size");
+		});			
+	
+	</script>
+</head>
+<!-- graphic_right_50.htm template -->
+<body>
+	<div class="txtArea txtBlock50">
+		<style>
+.txtArea {
+top:0!important;
+}
+</style>
+<P>Note that subscreen graphics are taller but narrower than regular screen graphics. For example, a graphic_right_50 regular screen is 984px x 1030px and a graphic_right_50 subscreen is 944px
+ x 1080px.</p>
+<p><i>30 words; 187 characters</p>
+	</div>
+	<div class="imgArea imgBlock50">
+		<img id="graphic" class="fadeIn" src="images/m01_s05_t03a.jpg"/>
+	</div>
+</body>
+</html>

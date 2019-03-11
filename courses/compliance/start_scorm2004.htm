@@ -1,0 +1,194 @@
+<HTML>
+<HEAD>
+<title>Start Scorm 2004</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+.st {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.grayTxt{
+ color:#999999;
+}
+.style1 {
+	color: #d6000e;
+	font-weight: bold;
+}
+-->
+</style>
+</HEAD>
+<BODY bgcolor="#b8d3df">
+<script language="javascript">
+//window.moveTo (1024,0);
+var alive = true;    
+
+var winWidth = 1024;  //width of course window
+var winHeight = 710;//530; //height of course window
+function openCourse(){
+var modWin=window.open("course_root_scorm2004.htm",null,"dependent,toolbar=no,status=no,menubar=no,scrollbars=no,resizable=no,width=" + winWidth + ",height=" + winHeight);
+}
+function setSelectedIndex(s, v) {
+    for ( var i = 0; i < s.options.length; i++ ) {
+        if ( s.options[i].value == v ) {
+            s.options[i].selected = true;
+            return;
+        }
+    }
+}
+function setStatus(str){
+    var box = document.getElementById("statusBox");
+    if (str.length > 80) str = str.substring(0, 80) + "....<i>(Partial string)</i>";
+	box.innerHTML += ("+ " + str + "<br>");
+}
+function ScormAPI(){ }
+ScormAPI.prototype.Initialize = function (){
+	setStatus("Initialize called");
+	return "true";
+}
+ScormAPI.prototype.SetValue = function(key, value){
+	switch (key){
+	case "cmi.success_status":
+		setSelectedIndex(document.getElementById("sStatus"), value);
+		break;
+	case "cmi.completion_status":
+		setSelectedIndex(document.getElementById("cStatus"), value);
+		break;
+	case "cmi.location":
+		document.getElementById("prevLoc").value = value;	
+		break;
+	case "cmi.suspend_data":
+		document.getElementById("bookmark").value = value;	
+		break;
+	case "cmi.score.raw":
+		document.getElementById("lastScore").value = value;
+		break;
+	}
+	setStatus("key=" + key + " set to:\"" + value + "\"");
+	return "true";
+}
+ScormAPI.prototype.GetValue = function(key){
+	setStatus("get value of key=" + key);
+	switch (key){
+	case "cmi.success_status":
+		ret = document.getElementById("sStatus").value;
+		break;
+	case "cmi.completion_status":
+		ret = document.getElementById("cStatus").value;
+		break;
+	case "cmi.location":
+		ret = document.getElementById("prevLoc").value;	
+		break;
+	case "cmi.suspend_data":
+		ret = document.getElementById("bookmark").value;	
+		break;
+	case "cmi.learner_name":
+		ret = document.getElementById("studentName").value;	
+		break;
+	case "cmi.mode":
+		ret = document.getElementById("mode").value;	
+		break;	
+	case "cmi.score.raw":
+		ret = document.getElementById("lastScore").value;	
+		break;	
+	default:
+		alert("Key \"" + key +"\" not implemented in start_scorm.");
+		ret = null;
+	}
+	
+	if (ret==null) ret = "";
+	setStatus("returned value=\"" + ret + "\"");
+	return ret;
+}
+ScormAPI.prototype.Commit = function(){
+	setStatus("Commit called");
+	return "true";
+}
+ScormAPI.prototype.Terminate = function(){
+	setStatus("Terminate called");
+	return "";
+}
+ScormAPI.prototype.GetLastError = function(){
+	return "";
+}
+ScormAPI.prototype.GetErrorString = function(code){
+	return "";
+}
+ScormAPI.prototype.GetDiagnostic = function(){
+	return "";
+}
+var API_1484_11 = new ScormAPI();
+</script>
+<p>&nbsp;</p>
+
+<!--div style="width:250px;padding:10px;filter:shadow(color:gray, strength:5, direction:135);">
+<div style="width:250px;text-align:left;padding:10px;background-color:gold;border:1px 
+solid black;">shadowed box</div></div-->
+
+<table width="500" border="0" align="center" cellpadding="8" cellspacing="1" bgcolor="#666666">
+  <tr>
+    <td align="center" bgcolor="#FFFFFF" class="st"> 
+	  <p><img alt="Embedded Image" width="26" height="23" 
+  src="data:image/gif;base64,R0lGODlhGgAXAPcAAOhoGv7+/gYGBvv7++hnGvz8/Pj4+L6+vu3t7erq6v39/YqKivHx8dnZ2dra2vPz8/Lx8e/v79zc3Jqamp2cnOnp6fb19bu7u+bl5cXFxcfHxycmJqWlpZubm+fn5/38+//+/vf399vb2+Df397e3o2NjYuLi7y7u5WUlKGgoFhXV/79/t3d3QsKCsvLy+Pj47S0tJKSkvT09KSkpNfX1729vVdXV9zb3AgICNPT05mZmaurq87NzczMzPz699XV1cjIyKOjoy8uLqalpQ0MDJeXl6Cgn+Hh4fPOuejn55CPj/bgv6Cfn9DQ0GhoaKenp5+envv48rCvr7e3t+Lh4fz6+eTk5BEREQYFBvju3bKysvPKsvXVpfKzVfGuSvTKhqysrPfl2+2XYvv38PGtRu+pftLR0fjs5LGxsfG7m7m5ufjs2fry5vK6ZfXZybi3t+qAQPjp1PG4YsPDw8HBwfbbs+2dbXx8fFpZWZGRkfGjL/G2XRQTEw8ODqyrq4iIiPCvjP37+uhrH+yNWj49Pfbdz/z49vjo3vnv4MjHyPGoO+l3Mfflyfjr1zc2NvPJi/PNtjQzM+2fb+uFSu2RW+qERkhHSO+viPTRvKyrrNzc2+6leH9/f769vul4NfXcsvCkM2dmZuqCRFZVVehsIjIxMehsIfCjMRkYGKalpul1Lvnu5RUVFfv17iMiIigoKPCzj/r06ulxKB4eHmBgYO2cbz09Pep9PiEhIfPEfe2bbDExMfKtO+rp6ehvLBsaGmJhYvTLjBYVFa6trfGwT/v18vGqP+rp6u+rgvrx7Kqpqfv18W5ubvK/c/jp0z49PudnG/XctlhXWPbasc7OzTY1Ne+mfO6jePrz7vrx63Rzc87OznR0czMzM/PMjfnw4vjr466urvK1W0hHR/GqQOl3M/v39V1dXfGpPL69vfC5lvv59OhlGfjq1ampqZSTk/ChLfG/ofbduOhwLfjr2FVVVfrz7MjHx+2aavz5+AcGBvChK4mJif///wAAAAAAACH5BAEAAP0ALAAAAAAaABcAAAj/APsJHEhw4LItYhZ5klRoRcGHBRUgKQcAAAGLBKz5gAgxX5mLFS2GtPOBI8EqdipeXEmgJYB4JgUGQBYSpEiRps7ERBJSpUubADYFkJllzEBssmreBAqAFDiB0fR0KdkPlk+mPS+m6RdAzr59a/qZg5O1oipdgGqx8ynKUIA9X7/0CyPoJoBKkJI5DBDmlkoAh7p+RRelmK+QkzBt5BoLUYBV80JuAfHo6z5vINwMuuaGaiBGbeDtk8uzYpl+Syzv+1Rw3RK4lnnZ+0AWgJh+bFTvC/ZtzBouXXTvI9OqXxoC0Cj1+9BGNyhjeoR/bTb0TMVLAuVJ376vnUx1+LIJPYxChrvuXEMFgnA4kIt5y16ixPTh5f2pLDEF0jOvKE7+galJJw4b/xHkDDGqkTNNFQUW9EEjddQRx2L5BQQAOw%3D%3D" />  <span class="style1"><font face="Verdana">SCORM 2004 Testing Page</font></span></p>
+	  <table width="100%" border="0" cellpadding="2" cellspacing="0">
+        <tr bgcolor="#eeeeee">
+          <td bgcolor="#eeeeee" class="st">Student Name: <span class="grayTxt">(cmi.learner_name)</span></td>
+          <td align="center"><input name="studentName" type="text" class="st" id="studentName" style="width:180px;" value="John Doe"></td>
+        </tr>
+        <tr >
+          <td class="st">Previous Location: 
+          <span class="grayTxt">(cmi.location)</span></td>
+          <td align="center">
+          <input name="prevLoc" type="text" class="st" id="prevLoc" style="width:180px;">          </td>
+        </tr>
+        <tr bgcolor="#eeeeee" >
+          <td class="st">Previous Bookmark: 
+          <span class="grayTxt">(cmi.suspend_data)</span></td>
+          <td align="center"><textarea name="bookmark" rows="8" class="st" id="bookmark" style="width:180px;"></textarea></td>
+        </tr>
+        <tr >
+          <td   class="st">Previous Status: 
+          <span class="grayTxt">(cmi.success_status)</span></td>
+          <td align="center"><select class="st" name="sStatus" id="sStatus" style="width:180px;" >
+              <option value="unknown">unknown</option>
+              <option value="passed">passed</option>
+              <option value="failed">failed</option>
+          </select></td>
+        </tr>
+        <tr bgcolor="#eeeeee">
+          <td class="st">Previous Status: 
+          <span class="grayTxt">(cmi.completion_status)</span></td>
+          <td align="center">
+            <select class="st" name="cStatus" id="cStatus" style="width:180px;" >
+              <option value="unknown">unknown</option>
+              <option value="completed">completed</option>
+              <option value="incomplete">incomplete</option>
+              <option value="not_attempted">not_attempted</option>
+          </select></td>
+        </tr>
+        <tr>
+          <td class="st">Previous Score:
+          <span class="grayTxt">(cmi.score.raw)</span></td>
+          <td align="center"><input name="lastScore" type="text" class="st" id="lastScore" style="width:180px;"></td>
+        </tr>
+        <tr bgcolor="#eeeeee">
+          <td class="st">Lesson Mode:
+          <span class="grayTxt">(cmi.mode)</span></td>
+          <td align="center"><select class="st" name="mode" id="mode" style="width:180px;" >
+            <option value="browse">browse</option>
+            <option value="normal">normal</option>
+            <option value="review">review</option>
+          </select>          </td>
+        </tr>
+      </table>
+	  <p><a href="#" onClick="javascript:openCourse()" ><font color="000000" size="2" face="Arial, Helvetica, sans-serif"><u>Click here to open course</u></font></a></p>
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td><font size="2" face="Arial, Helvetica, sans-serif"><a name="statusBox" id="statusBox"></a></font></td>
+        </tr>
+    </table>	  </td>
+  </tr>
+</table>
+</BODY>
+</HTML>
+

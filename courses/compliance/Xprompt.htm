@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/globals.css" />
+    <style>
+        body {
+            margin: 0px;
+            background-color: transparent;
+        }
+
+        #promptBox {
+            position: absolute;
+            display: none;
+            width: 150px;
+            bottom: 0px;
+            right: 17px;
+        }
+
+            #promptBox img {
+                position: absolute;
+                right: 0px;
+                margin: -15px -12px 0px 0px;
+                cursor: pointer;
+            }
+
+        #header {
+            height: 8px;
+            border-top-right-radius: 4px;
+            -webkit-border-top-right-radius: 4px;
+            border-top-left-radius: 4px;
+            -webkit-border-top-left-radius: 4px;
+            box-shadow: 2px 4px 5px 1px rgba(0, 0, 0, .20);
+            -webkit-box-shadow: 2px 4px 5px 1px rgba(0, 0, 0, .20);
+        }
+
+        #promptText {
+            font-size: 12px;
+            font-style: italic;
+            background-color: #fff;
+            height: auto !important;
+            border-right: 1px solid #979797;
+            border-bottom: 1px solid #979797;
+            border-left: 1px solid #979797;
+            border-bottom-right-radius: 4px;
+            -webkit-border-bottom-right-radius: 4px;
+            border-bottom-left-radius: 4px;
+            -webkit-border-bottom-left-radius: 4px;
+            -webkit-background-clip: padding-box;
+            box-shadow: 2px 4px 5px 1px rgba(0, 0, 0, .20);
+            -webkit-box-shadow: 2px 4px 5px 1px rgba(0, 0, 0, .20);
+            padding: 2px 8px 8px 8px;
+            margin-bottom: 8px;
+            cursor: default;
+        }
+
+        /* Prompt button images */
+        .next, .back, .closex, .closeright, .closeleft, .closeup, .closedown {
+            position: relative;
+            top: 3px;
+            width: 20px;
+            height: 21px;
+            display: inline-block;
+            vertical-align: text-bottom;
+            background-repeat: no-repeat;
+        }
+
+        .next {
+            background-image: url(interface/prompt_next_sm.png);
+        }
+
+        .back {
+            background-image: url(interface/prompt_back.png);
+        }
+
+        .closex {
+            background-image: url(interface/prompt_closex.png);
+        }
+
+        .closeright {
+            background-image: url(interface/prompt_closeright.png);
+        }
+
+        .closeleft {
+            background-image: url(interface/prompt_closeleft.png);
+        }
+
+        .closeup {
+            background-image: url(interface/prompt_closeup.png);
+        }
+
+        .closedown {
+            background-image: url(interface/popupClose5.png);
+            margin-left: 3px;
+        }
+    </style>
+    <!--<script src="js/jquery-1.7.min.js"></script>
+    <script src="js/jquery-ui-1.8.16.custom.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js" crossorigin="anonymous"></script>
+    <script src="js/utils.js"></script>
+    <script language="javascript">
+
+        var pageLoaded = false,
+            isClosed = true,
+            tmr = null,
+            pb,
+            origBottom;
+
+        function onAllowToNavigate(nav) {
+            //enable next when gated
+            if (parent.nav.getPage().prompt != undefined && parent.nav.getPage().prompt.length > 0) {
+                if (isClosed) {
+                    var delay = Number(nav.settings.nextPromptDelay);
+                    if (isNaN(delay)) delay = 0;
+                    tmr = setTimeout(function () {
+                        if (tmr != null) closePrompt(false);
+                    }, delay * 1000);
+                }
+            }
+        }
+        function onUpdateUI(nav) {
+            parent.$("#framePrompt").fadeOut();
+            isClosed = true;
+            clearTimeout(tmr); tmr = null;
+            if (parent.nav.getPage().prompt == undefined || parent.nav.getPage().prompt.length == 0) {
+                $("#promptText").html("");
+            }
+            else {
+                var delay = Number(nav.settings.nextPromptDelay);
+                if (isNaN(delay)) delay = 0;
+                $("#promptText").html(parent.nav.getPage().prompt);
+                if (!nav.settings.gated || nav.getPage().completed) {
+                    tmr = setTimeout(function () {
+                        if (tmr != null) closePrompt(false);
+                    }, delay * 1000);
+                }
+            }
+        }
+
+        function closePrompt(closeBox) {
+            if (closeBox) { //close it
+                if (isClosed) return;
+                pb.animate({ bottom: -pb.height() - Number(origBottom) }, 300, function () {
+                    isClosed = true;
+                    parent.$("#framePrompt").fadeOut();
+                });
+            }
+            else { //open it..
+                if (!isClosed) return;
+                pb.css({ bottom: -pb.height() - Number(origBottom) });
+                pb.show();
+                parent.$("#framePrompt").show();
+                isClosed = false;
+                pb.animate({ bottom: origBottom + 'px' }, 600);
+            }
+        }
+
+        function onPageLoad() {
+            pageLoaded = true;
+            pb = $("#promptBox");
+            origBottom = pb.css("bottom").replace('px', '');
+        }
+    </script>
+</head>
+<body onload="javascript:onPageLoad()">
+    <div id="promptBox">
+        <img src="interface/prompt_close.png" onclick="closePrompt(true);" width="28" height="28" />
+        <div id="header" class="primaryColor2"></div>
+        <div id="promptText"></div>
+    </div>
+</body>
+</html>

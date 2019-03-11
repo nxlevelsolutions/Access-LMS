@@ -1,0 +1,73 @@
+﻿<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" type="text/css" href="css/globals.css" />
+    <link rel="stylesheet" type="text/css" href="css/page.css" />
+    <link rel="stylesheet" type="text/css" href="css/components_small.css" media="(min-width: 0px) and (max-width: 830px)" />
+    <link rel="stylesheet" type="text/css" href="css/components_large.css" media="(min-width: 1290px)" />
+    <style>
+.fadeIn {
+	display:inline-block; /* required for strict mode */
+}	
+.navButton{ 
+	cursor:pointer;
+}
+#hotSpotTemplate{
+	display:none;
+	position:absolute;
+}
+.hotSpotBackground{
+	position:relative; 
+	width:100%;
+	height:100%;
+	background-color:#FC0;
+	opacity:0;
+	-moz-opacity:0;		
+	border:1px solid #000000;
+	filter:alpha(opacity=0);
+}
+.hotSpot{
+	position:absolute;
+	cursor:pointer;
+}
+.pageIndicators{
+	font-size:12px;
+	position: relative;
+	top:-7px;
+}
+#controls {
+    height:28px;
+}
+	</style>
+    <script src="js/jquery-1.7.min.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/hotSpotPager.js"></script>
+    <script src="js/effects.js"></script>
+    <script src="js/tooltips.js"></script>
+    <script src="js/subcourseCheck.js"></script>
+    <script type="text/javascript">
+		parent.setChapterTitle("Hotspots, Subscreens, and More");	 
+	</script>  
+</head>
+<!-- EditorHotSpotPager_exporter.htm template -->
+<body onload="onPageLoaded();" onunload="setPageViewed();">
+<div id="hotSpotTemplate">
+	<img style="position:absolute;left:-15px;top:-15px;" src="interface/checkmark.gif" width="30" height="30"/>
+	<div class="hotSpotBackground"></div>
+</div>
+<div class="pageTitle">Hotspot Pager</div>
+    <div class="txtArea txtBlock50">
+        <div id="txtMain" style="position:relative; width:100%; height:100%; overflow:auto;"></div>
+    </div>
+    <div class="imgArea imgBlock50">
+        <img id="graphic" src="interface/waitanimation.gif" />
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" id="controls">
+            <tr>
+                <td height="28" align="center" valign="middle"><img src="interface/back_hs.gif" width="27" height="23" class="navButton fadeIn" id="backButton" />&nbsp;&nbsp;<span class="pageIndicators"><span id="pageX"></span> <span id="labelOf">of</span> <span id="pageY"></span></span>&nbsp;&nbsp;&nbsp;<img src="interface/next_hs.gif" width="27" height="23" class="navButton fadeIn" id="nextButton" /></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

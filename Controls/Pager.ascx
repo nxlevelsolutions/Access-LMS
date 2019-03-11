@@ -13,29 +13,31 @@
     }
 </style>
 <script>
-
- 
-</script>
+    function gotoPage(index) {
+        var opt = {<% = KEY_PAGE_SIZE %>: $('#ddlPageSize').val() };
+        if (index != null) opt.<% = KEY_PAGE_INDEX %> = index;
+        document.location.href = Utils.setQueryVariable(opt);
+    }
+ </script>
 
 <ul class="pagination">
     <li class="<% =(PageIndex==1 ? "disabled": "") %>">
-        <asp:LinkButton ID="PreviousPage" runat="server" OnClientClick="$('#PagerClickedIndex').val(Number($('#PagerClickedIndex').val()) - 1);"><span aria-hidden="true">&laquo;</span></asp:LinkButton>
+        <a onclick="gotoPage(<% =(PageIndex-1) %>)"><span aria-hidden="true">&laquo;</span></a>
     </li>
     <asp:Repeater ID="RptPages" runat="server">
         <ItemTemplate>
             <li class="<%# ((int)Container.DataItem)==PageIndex ? "active": "" %>">
-                <asp:LinkButton ID="hplPageUrl" runat="server" OnClientClick="$('#PagerClickedIndex').val(this.innerHTML);"><%# Container.DataItem %></asp:LinkButton>
+                <a onclick="gotoPage(<%# Container.DataItem %>)" ><%# Container.DataItem %></a>
             </li>
         </ItemTemplate>
     </asp:Repeater>
     <li class="<% =(PageIndex==PageTotal ? "disabled": "") %>">
-        <asp:LinkButton ID="NextPage" runat="server" OnClientClick="$('#PagerClickedIndex').val(Number($('#PagerClickedIndex').val()) + 1);" ><span aria-hidden="true">&raquo;</span></asp:LinkButton>
+        <a onclick="gotoPage(<% =(PageIndex+1) %>)"><span aria-hidden="true">&raquo;</span></a>
     </li>
 </ul>
-<asp:HiddenField ID="PagerClickedIndex" runat="server" ClientIDMode="Static" Value="<%# PageIndex %>"/>
 
 &nbsp;&nbsp;Items per page:
-<asp:DropDownList ID="ddlPageSize" runat="server" ClientIDMode="Static" AutoPostBack="true">
+<asp:DropDownList ID="ddlPageSize" runat="server" ClientIDMode="Static" onchange="gotoPage(null)">
     <asp:ListItem Text="10" Value="10" />
     <asp:ListItem Text="25" Value="25" />
     <asp:ListItem Text="50" Value="50" />

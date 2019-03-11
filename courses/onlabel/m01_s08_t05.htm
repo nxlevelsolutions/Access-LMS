@@ -1,0 +1,93 @@
+﻿<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" type="text/css" href="css/page.css" />  
+    <link rel="stylesheet" type="text/css" href="css/globals.css" />
+    <link rel="stylesheet" type="text/css" href="css/tooltips.css" />
+    <link rel="stylesheet" type="text/css" href="css/components_small.css" media="(min-width: 0px) and (max-width: 830px)" />
+    <link rel="stylesheet" type="text/css" href="css/components_large.css" media="(min-width: 1290px)" />
+    <style>
+		.imgBottom {
+/*			top:50%;*/
+		}
+		.txtTop {
+			height:50%;
+		}
+
+		/* REMOVE THIS STYLE SECTION IN ACTUAL COURSE MODULE -- FOR DEMO ONLY */
+		.imgArea {
+/*			outline:2px solid #F26822;	*/
+			background-color: #f5f5f5;	
+		}
+		#sizeOfImgArea {
+			font-size:30px;
+			line-height:normal;
+			text-align:center;
+			display:table-cell;
+			vertical-align:middle;
+			width:100%;
+		}
+		/* THROUGH HERE */
+	</style>
+	<script src="js/jquery-1.7.min.js"></script>
+	<script src="js/utils.js" ></script>
+	<script src="js/effects.js"></script>
+	<script src="js/page.js"></script>
+	<script src="js/tooltips.js"></script>
+	<script src="js/subcourseCheck.js"></script>
+	<script type="text/javascript">
+		function resizeDisplayArea() {
+			if ($('.subPageTitle').is(':visible')) {
+				var displayHeight = $(window).height() - $('.subPageTitle').outerHeight();
+				var displayWidth = $(window).width() - 40; /* add margin to subscreen */
+			} else {
+				var displayHeight = $(window).height() - $('.pageTitle').outerHeight();
+				var displayWidth = $(window).width();
+			}
+
+
+			var displayTop = $('.pageTitle').outerHeight();	
+			$('#displayArea').css('width', displayWidth);
+			$('#displayArea').css('height', displayHeight);
+			
+			var imgWidth = $('.imgArea').width();
+			var emSize = parseInt($(".txtArea").css("font-size")) ;
+			$(".imgArea").css("height", displayHeight);
+			//$(".imgArea").css("top", displayTop);
+			$(".txtArea").css("height", displayHeight + emSize);
+
+
+		/* REMOVE IN ACTUAL COURSE MODULE -- FOR DEMO ONLY */
+			var txt;
+			txt = "text_top_graphic_bottom:<br>1968px x 515px<br><span style='font-size:small;'>(as currently sized: " + (imgWidth*2) + " x " + (displayHeight*2) + ")</span>";
+			$("#sizeOfImgArea").html(txt);
+			$("#sizeOfImgArea").css("font-size", emSize);
+			$("#sizeOfImgArea").css("height", displayHeight);
+			$("#sizeOfImgArea").css("width", imgWidth);
+			$("#sizeOfImgArea").css("top", displayTop);
+		}
+		/* THROUGH HERE */
+
+		$( document ).ready(function() {
+			resizeDisplayArea();
+		});
+	</script>
+</head>
+<!-- graphic_bottom_text_top.htm template -->
+<body onresize="resizeDisplayArea();">
+	<div class="pageTitle">Acknowledgement:&nbsp;Text Top, Graphic Bottom</div>
+	<div id="displayArea">
+		<div class="txtArea txtBlock100 txtTop">
+			<p>Graphics are typically on the right side of the screen for various reasons, but they don't need to be. Some additonal programming would be needed, but graphics could be displayed on the left side of the screen.</p>
+<P>This template allows for text to appear on top half of screen and a graphic on the bottom. (This can be reversed as well with text on bottom and graphic on top). We can force the height of both content and graphic area by applying styles to page.css.</P>
+<P>Please note: This template does not scale well in a flexible framework.</P>
+		</div>
+		<div class="imgArea imgBlock100 imgBottom">
+    		<img id="graphic" class="fadeIn" src="images/s04_t07.jpg"/>
+            <div id="sizeOfImgArea"><!-- for demo only --></div>
+		</div>            
+	</div>
+</body>
+</html>

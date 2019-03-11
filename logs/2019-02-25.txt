@@ -1,0 +1,19 @@
+09:53:34AM;0;Information;User: 122 logged in.
+10:11:09AM;0;Pager Init Event: PageSize=10, PageIndex =1
+10:11:09AM;0;user page load size=10 index=1
+10:11:59AM;0;Pager Init Event: PageSize=10, PageIndex =1
+10:11:59AM;0;user page load size=10 index=1
+10:12:03AM;0;Pager Init Event: PageSize=10, PageIndex =6
+10:12:03AM;0;user page load size=10 index=6
+10:12:05AM;0;Pager Init Event: PageSize=10, PageIndex =4
+10:12:05AM;0;user page load size=10 index=4
+10:32:20AM;0;Information;User Id=0's session has ended.
+10:41:25AM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+

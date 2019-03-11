@@ -56,7 +56,12 @@
       <HintPath>bin\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -76,12 +81,41 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AccessCode.aspx" />
-    <Content Include="Admin\Account.aspx" />
+    <Content Include="Admin\AssignmentSettings1.aspx" />
+    <Content Include="Controls\Breadcrumbs.ascx" />
+    <Content Include="History.aspx" />
+    <Content Include="js\tinymce.plugin.js" />
+    <Content Include="Profile.aspx" />
+    <Content Include="Admin\AssignmentCourses.aspx" />
+    <Content Include="Admin\AssignmentEditor.aspx" />
+    <Content Include="Admin\AssignmentGroups.aspx" />
+    <Content Include="Admin\AssignmentSettings2.aspx" />
+    <Content Include="Admin\AssignmentUsers.aspx" />
+    <Content Include="Admin\CategoryEditor.aspx" />
     <Content Include="Admin\Certificate.aspx" />
+    <Content Include="Admin\CourseEditor.aspx" />
+    <Content Include="Admin\CoursePreview.aspx" />
     <Content Include="Admin\Courses.aspx" />
-    <Content Include="Admin\lms_message.aspx" />
-    <Content Include="Admin\Reports.aspx" />
+    <Content Include="Admin\EmailEditor.aspx" />
+    <Content Include="Admin\Emails.aspx" />
+    <Content Include="Admin\GroupAssignmentEditor.aspx" />
+    <Content Include="Admin\GroupEditor.aspx" />
+    <Content Include="Admin\Groups.aspx" />
+    <Content Include="Register.aspx" />
+    <Content Include="Reports\Assignment.aspx" />
+    <Content Include="Reports\Courses.aspx" />
+    <Content Include="Reports\CourseUsers.aspx" />
+    <Content Include="Reports\Default.aspx" />
+    <Content Include="Reports\Groups.aspx" />
+    <Content Include="Reports\Assignments.aspx" />
+    <Content Include="Reports\Group.aspx" />
+    <Content Include="Reports\UserCourse.aspx" />
+    <Content Include="Reports\UserCourses.aspx" />
+    <Content Include="Reports\Users.aspx" />
+    <Content Include="Admin\UserEditor.aspx" />
+    <Content Include="Admin\Assignments.aspx" />
     <Content Include="Admin\Users.aspx" />
+    <Content Include="Admin\UsersImport.aspx" />
     <Content Include="aicc.aspx" />
     <Content Include="Controls\Pager.ascx" />
     <Content Include="course_scorm.aspx" />
@@ -115,6 +149,12 @@
     <Content Include="logoff.aspx" />
     <Content Include="RequestPassword.aspx" />
     <Content Include="Site.Master" />
+    <Content Include="Basic.Master" />
+    <Content Include="Admin\ImportUserData.ashx" />
+    <Content Include="Admin\LmsMessage.ashx" />
+    <Content Include="Admin\ImportCourse.ashx" />
+    <Content Include="ClientSettings.config" />
+    <Content Include="Admin\Event_Scanner.ashx" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -138,12 +178,104 @@
     <Compile Include="AccessCode.aspx.designer.cs">
       <DependentUpon>AccessCode.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Account.aspx.cs">
-      <DependentUpon>Account.aspx</DependentUpon>
+    <Compile Include="Admin\AssignmentSettings1.aspx.cs">
+      <DependentUpon>AssignmentSettings1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Account.aspx.designer.cs">
-      <DependentUpon>Account.aspx</DependentUpon>
+    <Compile Include="Admin\AssignmentSettings1.aspx.designer.cs">
+      <DependentUpon>AssignmentSettings1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Event_Scanner.ashx.cs">
+      <DependentUpon>Event_Scanner.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Breadcrumbs.ascx.cs">
+      <DependentUpon>Breadcrumbs.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Breadcrumbs.ascx.designer.cs">
+      <DependentUpon>Breadcrumbs.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\DataModel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Report_AssignmentGroups_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Report_CategoryGroups_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Report_CourseUsers_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Report_UserCourses_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Report_UserCourseUsage_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Report_Users_All_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\User_UsageHistory_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="History.aspx.cs">
+      <DependentUpon>History.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="History.aspx.designer.cs">
+      <DependentUpon>History.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AssignmentCourses.aspx.cs">
+      <DependentUpon>AssignmentCourses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AssignmentCourses.aspx.designer.cs">
+      <DependentUpon>AssignmentCourses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AssignmentEditor.aspx.cs">
+      <DependentUpon>AssignmentEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AssignmentEditor.aspx.designer.cs">
+      <DependentUpon>AssignmentEditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AssignmentGroups.aspx.cs">
+      <DependentUpon>AssignmentGroups.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AssignmentGroups.aspx.designer.cs">
+      <DependentUpon>AssignmentGroups.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AssignmentSettings2.aspx.cs">
+      <DependentUpon>AssignmentSettings2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AssignmentSettings2.aspx.designer.cs">
+      <DependentUpon>AssignmentSettings2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AssignmentUsers.aspx.cs">
+      <DependentUpon>AssignmentUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AssignmentUsers.aspx.designer.cs">
+      <DependentUpon>AssignmentUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CategoryEditor.aspx.cs">
+      <DependentUpon>CategoryEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CategoryEditor.aspx.designer.cs">
+      <DependentUpon>CategoryEditor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Certificate.aspx.cs">
       <DependentUpon>Certificate.aspx</DependentUpon>
@@ -152,6 +284,20 @@
     <Compile Include="Admin\Certificate.aspx.designer.cs">
       <DependentUpon>Certificate.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\CourseEditor.aspx.cs">
+      <DependentUpon>CourseEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CourseEditor.aspx.designer.cs">
+      <DependentUpon>CourseEditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CoursePreview.aspx.cs">
+      <DependentUpon>CoursePreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CoursePreview.aspx.designer.cs">
+      <DependentUpon>CoursePreview.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Courses.aspx.cs">
       <DependentUpon>Courses.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -159,19 +305,159 @@
     <Compile Include="Admin\Courses.aspx.designer.cs">
       <DependentUpon>Courses.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\lms_message.aspx.cs">
-      <DependentUpon>lms_message.aspx</DependentUpon>
+    <Compile Include="Admin\EmailEditor.aspx.cs">
+      <DependentUpon>EmailEditor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\lms_message.aspx.designer.cs">
-      <DependentUpon>lms_message.aspx</DependentUpon>
+    <Compile Include="Admin\EmailEditor.aspx.designer.cs">
+      <DependentUpon>EmailEditor.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Reports.aspx.cs">
-      <DependentUpon>Reports.aspx</DependentUpon>
+    <Compile Include="Admin\Emails.aspx.cs">
+      <DependentUpon>Emails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Reports.aspx.designer.cs">
-      <DependentUpon>Reports.aspx</DependentUpon>
+    <Compile Include="Admin\Emails.aspx.designer.cs">
+      <DependentUpon>Emails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\GroupAssignmentEditor.aspx.cs">
+      <DependentUpon>GroupAssignmentEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\GroupAssignmentEditor.aspx.designer.cs">
+      <DependentUpon>GroupAssignmentEditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\GroupEditor.aspx.cs">
+      <DependentUpon>GroupEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\GroupEditor.aspx.designer.cs">
+      <DependentUpon>GroupEditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Groups.aspx.cs">
+      <DependentUpon>Groups.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Groups.aspx.designer.cs">
+      <DependentUpon>Groups.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ImportCourse.ashx.cs">
+      <DependentUpon>ImportCourse.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ImportUserData.ashx.cs">
+      <DependentUpon>ImportUserData.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\LmsMessage.ashx.cs">
+      <DependentUpon>LmsMessage.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Assignment.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Assignment_GroupsGet_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Assignment_UsersGet_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Categories_GroupsGet_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Category.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\User_GroupsGet_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Globals\JsonResponse.cs" />
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Assignment.aspx.cs">
+      <DependentUpon>Assignment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Assignment.aspx.designer.cs">
+      <DependentUpon>Assignment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Courses.aspx.cs">
+      <DependentUpon>Courses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Courses.aspx.designer.cs">
+      <DependentUpon>Courses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\CourseUsers.aspx.cs">
+      <DependentUpon>CourseUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\CourseUsers.aspx.designer.cs">
+      <DependentUpon>CourseUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Groups.aspx.cs">
+      <DependentUpon>Groups.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Groups.aspx.designer.cs">
+      <DependentUpon>Groups.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Assignments.aspx.cs">
+      <DependentUpon>Assignments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Assignments.aspx.designer.cs">
+      <DependentUpon>Assignments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Group.aspx.cs">
+      <DependentUpon>Group.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Group.aspx.designer.cs">
+      <DependentUpon>Group.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\UserCourse.aspx.cs">
+      <DependentUpon>UserCourse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\UserCourse.aspx.designer.cs">
+      <DependentUpon>UserCourse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\UserCourses.aspx.cs">
+      <DependentUpon>UserCourses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\UserCourses.aspx.designer.cs">
+      <DependentUpon>UserCourses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserEditor.aspx.cs">
+      <DependentUpon>UserEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserEditor.aspx.designer.cs">
+      <DependentUpon>UserEditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Assignments.aspx.cs">
+      <DependentUpon>Assignments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Assignments.aspx.designer.cs">
+      <DependentUpon>Assignments.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>
@@ -180,6 +466,13 @@
     <Compile Include="Admin\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\UsersImport.aspx.cs">
+      <DependentUpon>UsersImport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UsersImport.aspx.designer.cs">
+      <DependentUpon>UsersImport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="aicc.aspx.cs">
       <DependentUpon>aicc.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -187,9 +480,27 @@
     <Compile Include="aicc.aspx.designer.cs">
       <DependentUpon>aicc.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Data\Breadcrumb.cs" />
-    <Compile Include="App_Data\DailyLogTraceListener.cs" />
-    <Compile Include="App_Data\LmsUser.cs" />
+    <Compile Include="DataModel\AssignmentsStats_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Assignment_CoursesGet_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Group_UsersGet_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Globals\Breadcrumb.cs" />
+    <Compile Include="Globals\DailyLogTraceListener.cs" />
+    <Compile Include="Globals\ClientSettings.cs" />
+    <Compile Include="Globals\Roles.cs" />
+    <Compile Include="Globals\LmsUser.cs" />
+    <Compile Include="Basic.Master.cs">
+      <DependentUpon>Basic.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Basic.Master.designer.cs">
+      <DependentUpon>Basic.Master</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Pager.ascx.cs">
       <DependentUpon>Pager.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -210,6 +521,9 @@
     </Compile>
     <Compile Include="Curriculum.aspx.designer.cs">
       <DependentUpon>Curriculum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Course.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\Course_BasicInfo_Result.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
@@ -232,12 +546,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="App_Data\Log.cs" />
-    <Compile Include="DataModel\DataModel1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
+    <Compile Include="Globals\Log.cs" />
+    <Compile Include="DataModel\Email.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataModel\Group.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\LMSContextExtension.cs" />
     <Compile Include="DataModel\User.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
@@ -282,8 +598,8 @@
       <DependentUpon>logoff.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="App_Data\Utilities.cs" />
-    <Compile Include="App_Data\Security.cs" />
+    <Compile Include="Globals\Utilities.cs" />
+    <Compile Include="Globals\Security.cs" />
     <Compile Include="RequestPassword.aspx.cs">
       <DependentUpon>RequestPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

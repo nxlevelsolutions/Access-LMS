@@ -1,0 +1,116 @@
+﻿<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<title></title>
+	<meta name = "format-detection" content = "telephone=no">
+	<link rel="stylesheet" type="text/css" media="screen" href="css/page.css" />
+	<link rel="stylesheet" type="text/css" href="css/globals.css" />
+	<link rel="stylesheet" type="text/css" href="css/tooltips.css" />
+	<script language="javascript" src="js/jquery-1.7.min.js"></script>
+	<script language="javascript" src="js/utils.js" ></script>
+	<script src="js/resize.js"></script>
+	<!--<script src="js/page.js"></script>-->
+	<script src="js/tooltips.js"></script>
+	<script language="javascript">
+		// used if chapter title is displayed above this template; SectionTitle may be used instead
+/*
+		parent.setChapterTitle("Acknowledgement"); 
+*/	
+		
+	var pageLoaded = false,
+		quiz = new Object();
+	
+	/*var pageTitle = "Acknowledgement";
+	
+	parent.$("#sectionTitle").html(pageTitle);*/
+	
+	function onAllowToNavigate(nav){ 
+	// Required as per framework
+	}
+	function onUpdateUI(nav){ //required as per framework
+		document.location.href = parent.nav.getPage().url;
+	}
+	
+	function activeShellNav(val){
+		//parent.enableNavigation(val); 
+	}
+
+	function onPageLoaded(){
+		pageLoaded = true;
+		
+		var labelAgree = parent.nav.settings.labelAgree,
+				labelDisagree = parent.nav.settings.labelDisagree,
+				labelPrint = parent.nav.settings.labelPrintCert;
+				
+				$("#btnAgree").attr("value", labelAgree);
+				$("#btnDisagree").attr("value", labelDisagree);
+				$("#btnPrint").attr("value", labelPrintCert);
+				
+		//activeShellNav(false);
+		
+		if(parent.nav.getPage().completed == true) {
+			document.getElementById("printCert").style.display="block";
+			document.getElementById("agreeBtns").style.display="none";
+		}
+		
+		// Set current page
+		if (!parent.nav.settings.gated){
+			parent.nav.getPage().completed = true;
+			parent.nav.saveBookmark();
+		}
+	}
+	
+	function agree() {
+		parent.nav.eventCompleted("content");
+		parent.saveScore(null, true, null);
+		document.getElementById("printCert").style.display="block";
+		document.getElementById("agreeBtns").style.display="none";
+	}
+	
+	function printCertificate() {
+		parent.nav.writeToLog("Assessment: userName = " + parent.studentName);
+		var w, h;
+		if (Utilities.isChrome){
+			w = 760;
+			h = 457;
+		}
+		else{
+			w = 50;
+			h = 50;
+		}	
+		// Attach certificate data.. certificate will ask for it
+		
+		quiz.certificateData = {name:parent.studentName, 
+								<!--courseTitle:parent.courseTitle.innerHTML,-->
+								courseTitle:parent.document.title,
+								companyName:parent.nav.settings.companyName};
+		var printWin = window.open("certificate.htm", null,"dependent,toolbar=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=" + w +",height=" + h);
+		if (printWin==undefined){
+			alert("Unable to print. To print this page you must allow popups by checking your particular browser's permissions settings.")
+		}
+	}
+	
+	</script>
+	</head>
+	<!-- acknowledge.htm template -->
+	<body onload="onPageLoaded();">
+<!--<div class="chapterTitle">
+    Acknowledgement
+  </div>-->
+	<div id="pageTitle">
+    	<span>Acknowledgement:</span>&nbsp;Acknowledgement
+	</div>
+	<div id="displayArea">
+		<div class="txtArea txtBlockFull">
+    	    <P><I>Select <B>I Agree</B> below to affirm that you have reviewed and understand the material presented in this course, and to record your course completion. After <B>you</B> select <B>I Agree</B>, you will be able to print your course certificate.</I></P>
+    		<div id="agreeBtns">
+        		<INPUT id="btnAgree" onclick="showPop(parent.nav.settings.labelAgree,parent.nav.settings.agreeMsg);agree()" class="btn secondaryColor2" style="MARGIN-LEFT: 8px; WIDTH: 150px" type=button>
+        		<INPUT id="btnDisagree" onclick="showPop(parent.nav.settings.labelDisagree,parent.nav.settings.disagreeMsg);" class="btn secondaryColor2" style="MARGIN-LEFT: 20px; WIDTH: 150px" type=button>
+			</div>
+			<div id="printCert" style="display:none;">
+        		<INPUT id="btnPrint" onclick="printCertificate()" class="btn secondaryColor2" style="MARGIN-LEFT: 8px; WIDTH: 200px" type=button>
+			</div>
+  		</div>
+	</div>
+</body>
+</html>

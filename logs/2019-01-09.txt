@@ -1,0 +1,224 @@
+09:35:07AM;0;Information;User: 122 logged in.
+09:59:49AM;0;Information;User Id=0's session has ended.
+09:59:49AM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+10:15:21AM;0;Information;User: 122 logged in.
+10:16:47AM;0;Pager Init Event: PageSize=10, PageIndex =1
+10:16:47AM;0;user page load size=10 index=1
+10:27:08AM;0;Pager Init Event: PageSize=10, PageIndex =1
+10:27:08AM;0;user page load size=10 index=1
+10:50:40AM;0;Information;User Id=0's session has ended.
+10:51:17AM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+12:09:20PM;0;Information;User: 122 logged in.
+12:36:40PM;0;Information;User Id=0's session has ended.
+12:37:16PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+01:30:52PM;0;Information;User: 122 logged in.
+01:51:00PM;0;Information;User Id=0's session has ended.
+01:51:44PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+01:54:47PM;0;Error;Application error:Object reference not set to an instance of an object.Source:LMSStack Trace:   at NXLevel.LMS.LmsUser.get_DBConnString() in C:\Projects\LMS\App_Data\LmsUser.cs:line 147
+   at NXLevel.LMS.DataModel.ClientDBEntities..ctor() in C:\Projects\LMS\DataModel\LMSContextExtension.cs:line 33
+   at NXLevel.LMS.Admin.CourseEditor.Page_Load(Object sender, EventArgs e) in C:\Projects\LMS\Admin\CourseEditor.aspx.cs:line 22
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+01:54:53PM;0;Information;User: 122 logged in.
+02:17:40PM;0;Information;User Id=0's session has ended.
+02:17:44PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+02:20:38PM;0;Information;User: 122 logged in.
+02:49:00PM;0;Information;User Id=0's session has ended.
+02:49:09PM;0;Error;Application error:Object reference not set to an instance of an object.Source:LMSStack Trace:   at NXLevel.LMS.LmsUser.get_DBConnString() in C:\Projects\LMS\App_Data\LmsUser.cs:line 147
+   at NXLevel.LMS.DataModel.ClientDBEntities..ctor() in C:\Projects\LMS\DataModel\LMSContextExtension.cs:line 33
+   at NXLevel.LMS.Admin.CourseEditor.Page_Load(Object sender, EventArgs e) in C:\Projects\LMS\Admin\CourseEditor.aspx.cs:line 22
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+02:49:10PM;0;Error;Application error:Object reference not set to an instance of an object.Source:LMSStack Trace:   at NXLevel.LMS.LmsUser.get_DBConnString() in C:\Projects\LMS\App_Data\LmsUser.cs:line 147
+   at NXLevel.LMS.DataModel.ClientDBEntities..ctor() in C:\Projects\LMS\DataModel\LMSContextExtension.cs:line 33
+   at NXLevel.LMS.Admin.Courses.Page_Load(Object sender, EventArgs e) in C:\Projects\LMS\Admin\Courses.aspx.cs:line 15
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+02:49:11PM;0;Error;Application error:Object reference not set to an instance of an object.Source:LMSStack Trace:   at NXLevel.LMS.LmsUser.get_DBConnString() in C:\Projects\LMS\App_Data\LmsUser.cs:line 147
+   at NXLevel.LMS.DataModel.ClientDBEntities..ctor() in C:\Projects\LMS\DataModel\LMSContextExtension.cs:line 33
+   at NXLevel.LMS.Admin.Courses.Page_Load(Object sender, EventArgs e) in C:\Projects\LMS\Admin\Courses.aspx.cs:line 15
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+02:49:12PM;0;Error;Application error:Object reference not set to an instance of an object.Source:LMSStack Trace:   at NXLevel.LMS.LmsUser.get_DBConnString() in C:\Projects\LMS\App_Data\LmsUser.cs:line 147
+   at NXLevel.LMS.DataModel.ClientDBEntities..ctor() in C:\Projects\LMS\DataModel\LMSContextExtension.cs:line 33
+   at NXLevel.LMS.Admin.Courses.Page_Load(Object sender, EventArgs e) in C:\Projects\LMS\Admin\Courses.aspx.cs:line 15
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+02:49:22PM;0;Information;User '0' logged off.
+02:49:22PM;0;Information;A session has ended.
+02:49:23PM;0;Information;User: 122 logged in.
+03:19:59PM;0;Information;User Id=0's session has ended.
+03:19:59PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=Recompilation limit of 15 reached
+HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.Compilation.DiskBuildResultCache.ShutdownCallBack(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+03:20:03PM;0;Error;Application error:Object reference not set to an instance of an object.Source:LMSStack Trace:   at NXLevel.LMS.LmsUser.get_DBConnString() in C:\Projects\LMS\App_Data\LmsUser.cs:line 147
+   at NXLevel.LMS.DataModel.ClientDBEntities..ctor() in C:\Projects\LMS\DataModel\LMSContextExtension.cs:line 33
+   at NXLevel.LMS.Admin.CourseEditor.Page_Load(Object sender, EventArgs e) in C:\Projects\LMS\Admin\CourseEditor.aspx.cs:line 22
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+03:20:08PM;0;Information;User: 122 logged in.
+03:41:34PM;0;Information;User Id=0's session has ended.
+03:41:34PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+03:43:16PM;0;Error;Application error:Object reference not set to an instance of an object.Source:LMSStack Trace:   at NXLevel.LMS.LmsUser.get_DBConnString() in C:\Projects\LMS\App_Data\LmsUser.cs:line 147
+   at NXLevel.LMS.DataModel.ClientDBEntities..ctor() in C:\Projects\LMS\DataModel\LMSContextExtension.cs:line 33
+   at NXLevel.LMS.Admin.CourseEditor.Page_Load(Object sender, EventArgs e) in C:\Projects\LMS\Admin\CourseEditor.aspx.cs:line 22
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+03:43:21PM;0;Information;User: 122 logged in.
+03:52:12PM;0;Information;User Id=0's session has ended.
+03:52:12PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Web.Util.WorkItem.OnQueueUserWorkItemCompletion(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+04:50:19PM;0;Information;User: 122 logged in.
+04:50:23PM;0;Error;Application error:Invalid column name 'browserResizable'.Source:.Net SqlClient Data ProviderStack Trace:   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+04:53:14PM;0;Information;User Id=0's session has ended.
+04:53:14PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Web.Util.WorkItem.OnQueueUserWorkItemCompletion(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+04:53:24PM;0;Information;User: 122 logged in.
+05:15:20PM;0;Information;User Id=0's session has ended.
+05:15:52PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Web.Util.WorkItem.OnQueueUserWorkItemCompletion(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+

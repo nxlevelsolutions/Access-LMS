@@ -1,27 +1,28 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="NXLevel.LMS.Site" %>
+<%@ Import Namespace="NXLevel.LMS" %>
 <!DOCTYPE html>
 <html lang="en">
 <head runat="server">
+    <title><%# Page.Title %></title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta http-equiv="pragma" content="no-cache" />
     <meta http-equiv="expires" content="-1" />
-    <title><%# Page.Title %></title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" />
     <link rel="stylesheet" href="~/css/site.css" type="text/css" />
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <!--[if lt IE 9]>
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <script src='<%= ResolveUrl("~/js/utils.js") %>'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src='<%= ResolveUrl("~/js/utils.js") %>'></script>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server" />    
 </head>
 <body>
@@ -36,7 +37,9 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<%= Page.ResolveUrl("~/default.aspx") %>">Company Name Goes Here</a>
+                    <% if (HttpContext.Current.User.Identity.IsAuthenticated){ %>
+                    <a class="navbar-brand" href="<%= Page.ResolveUrl("~/default.aspx") %>">{logo}</a>
+                    <% } %>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -46,16 +49,28 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="<%= Page.ResolveUrl("~/admin/account.aspx") %>">My Account</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="<%= Page.ResolveUrl("~/admin/users.aspx") %>">Users</a></li>
-                                <li><a href="<%= Page.ResolveUrl("~/admin/courses.aspx") %>">Courses</a></li>
-                                <li><a href="<%= Page.ResolveUrl("~/admin/reports.aspx") %>">Reports</a></li>
+                                <% if (LmsUser.HasRole(Role.Manager)) { %>
+                                    <%--<li role="separator" class="divider"></li>--%>
+                                    <li><a href="<%= Page.ResolveUrl("~/admin/users.aspx") %>">Users</a></li>
+                                    <li><a href="<%= Page.ResolveUrl("~/admin/groups.aspx") %>">Groups</a></li>
+                                    <li><a href="<%= Page.ResolveUrl("~/admin/courses.aspx") %>">Courses</a></li>
+                                    <li><a href="<%= Page.ResolveUrl("~/admin/assignments.aspx") %>">Activities</a></li>
+                                    <li><a href="<%= Page.ResolveUrl("~/admin/emails.aspx") %>">Email Notifications</a></li>
+                                    <li><a href="<%= Page.ResolveUrl("~/reports/default.aspx") %>">Reports</a></li>
+                                <% } %>
                             </ul>
                         </li>
-                        <li><a href="<%= Page.ResolveUrl("~/logoff.aspx") %>">Logoff</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <%= LmsUser.Firstname %> <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="<%= Page.ResolveUrl("~/profile.aspx") %>">My Profile</a></li>
+                                <li><a href="<%= Page.ResolveUrl("~/history.aspx") %>">Past Activities</a></li>
+                                <li><a href="<%= Page.ResolveUrl("~/help.aspx") %>">Help</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="<%= Page.ResolveUrl("~/logoff.aspx") %>">Logoff</a></li>
+                            </ul>
+                        </li>
                         <% } %>
-                        <li><a href="<%= Page.ResolveUrl("~/help.aspx") %>">Help</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>

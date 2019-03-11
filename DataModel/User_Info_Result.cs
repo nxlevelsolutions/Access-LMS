@@ -16,10 +16,9 @@ namespace NXLevel.LMS.DataModel
         public int userId { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
-        public bool active { get; set; }
-        public int accessId { get; set; }
         public string password { get; set; }
         public string activationCode { get; set; }
-        public string clientName { get; set; }
+        public bool enabled { get; set; }
+        public int role { get; set; }
     }
 }

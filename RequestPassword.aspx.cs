@@ -11,7 +11,6 @@ namespace NXLevel.LMS
 {
     public partial class RequestPassword : System.Web.UI.Page
     {
-        private lms_Entities db = new lms_Entities();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,20 +19,36 @@ namespace NXLevel.LMS
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (txtEmail.Text=="")
+
+            //check email
+            if (txtEmail.Text == "")
             {
                 lblError.Visible = true;
                 lblError.Text = "Please enter a valid email address.";
                 return;
             }
 
+            //check company code
+            if (ConfigurationManager.AppSettings.Get(CompanyCode.Text) == null)
+            {
+                lblError.Visible = true;
+                lblError.Text = "Please enter a valid company code.";
+                return;
+            }
+            else
+            {
+                //initialize user's unique connection string (company database)
+                LmsUser.DBConnString = ConfigurationManager.AppSettings.Get(CompanyCode.Text);
+            }
+
             // Check if the user currently has a registered email address.
+            lms_Entities db = new ClientDBEntities();
             User_Info_Result userInfo = db.User_Info(txtEmail.Text).FirstOrDefault<User_Info_Result>();
 
             if (userInfo == null)
             {
                 lblError.Visible = true;
-                lblError.Text = "The system does not have your email address. Please make sure it is spelled correctly.";
+                lblError.Text = "The system does not have that email address associated with that company code. Please ensure both are correct.";
             }
             else
             {

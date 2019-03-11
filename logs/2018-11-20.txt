@@ -1,0 +1,46 @@
+09:01:43AM;0;Information;User Id=0's session has ended.
+09:12:26AM;0;Information;User: 122 logged in.
+09:14:33AM;0;Information;User Id=0's session has ended.
+09:14:33AM;0;Information;LMS application module shut down/restart.
+Shutdown Message=Recompilation limit of 15 reached
+HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.Compilation.DiskBuildResultCache.ShutdownCallBack(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+09:14:38AM;0;Error;Application error:Object reference not set to an instance of an object.Source:LMSStack Trace:   at NXLevel.LMS.LmsUser.get_DBConnString() in C:\Projects\LMS\App_Data\LmsUser.cs:line 147
+   at NXLevel.LMS.DataModel.ClientDBEntities..ctor() in C:\Projects\LMS\DataModel\LMSContextExtension.cs:line 33
+   at NXLevel.LMS.Admin.GroupAssignmentEditor.Page_Load(Object sender, EventArgs e) in C:\Projects\LMS\Admin\GroupAssignmentEditor.aspx.cs:line 19
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+09:14:43AM;0;Information;User: 122 logged in.
+09:50:40AM;0;Information;User Id=0's session has ended.
+09:51:09AM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+04:54:00PM;0;Information;User: 122 logged in.
+05:14:40PM;0;Information;User Id=0's session has ended.
+05:15:32PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+

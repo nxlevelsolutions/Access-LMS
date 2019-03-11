@@ -1,53 +1,86 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Curriculum.aspx.cs" Inherits="NXLevel.LMS.Curriculum" %>
+
 <%@ Import Namespace="NXLevel.LMS" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <script src="js/lms.js"></script>
     <script language="javascript">
-    var modWindow = null;
-    function openCourse(url, params, courseId, title, isAICC, isSCORM){
-	    if (isAICC){
-		    lmsListener = document.location.href.substr(0, document.location.href.lastIndexOf('/')) + "/aicc.aspx";
-		    url += "?aicc_url=" + escape(lmsListener) + "&aicc_sid=<% =LmsUser.UserId %>|" + courseId;
-		    modWindow = window.open(url, "modWindow", params);
-	    }
-	    else if(isSCORM){
-	        modWindow = window.open("course_scorm.aspx?cid=" + courseId + "&url=" + escape(url) + "&title=" + escape(title) + "&uid=<%=LmsUser.UserId%>","modWindow", params);
-	    }
-	    else{ //this is a non-aicc and non-scorm activity
-		    modWindow = window.open("course.aspx?cid=" + courseId + "&url=" + escape(url) + "&title=" + escape(title) + "&uid=<%=LmsUser.UserId%>","modWindow",params);
+        var courseWin = null;
+        function openCourse(url, assigId, courseId, title, isAICC, isSCORM, toolbar, status, width, height) {
+            var params = "dependent,toolbar=" + (toolbar ? "yes" : "no") + ",status=" + (status ? "yes" : "no") + ",menubar=no,scrollbars=no,resizable=no,width=" + width + ",height=" + height;
+
+            if (isAICC) {
+                lmsListener = document.location.href.substr(0, document.location.href.lastIndexOf('/')) + "/aicc.aspx";
+                url += "?aicc_url=" + escape(lmsListener) + "&aicc_sid=<% =LmsUser.UserId %>|" + courseId + "|" + assigId;
+                courseWin = window.open(url, "courseWin", params);
+                watchStatus(assigId, courseId);
+            }
+            else if (isSCORM) {
+                courseWin = window.open("course_scorm.aspx?cid=" + courseId + "&url=" + escape(url) + "&title=" + escape(title) + "&uid=<%=LmsUser.UserId%>&aid=" + assigId, "courseWin", params);
+            }
+            else { //this is a non-aicc and non-scorm activity
+                courseWin = window.open("course.aspx?cid=" + courseId + "&url=" + escape(url) + "&title=" + escape(title) + "&uid=<%=LmsUser.UserId%>&aid=" + assigId, "courseWin", params);
+            }
+
+            //check popup blocker
+            if (!courseWin) {
+                alert("A popup blocker has been detected in your browser. \nIn order to run this course, you need to disable any pop-up blockers running on your machine.");
+            }
+            else {
+                courseWin.focus();
+            }
         }
 
-        //check popup blocker
-	    if (!modWindow) {
-		    alert("A popup blocker has been detected in your browser. \nIn order to run this course, you need to disable any pop-up blockers running on your machine.");
-	    }
-	    else{
-		    modWindow.focus();
-	    }
-    }
-    function viewCertificate(courseId) {
-        certWin = window.open("admin/certificate.aspx?cid=" + courseId, 800, 600);
-    }
+        function watchStatus(assigId, courseId) {
+            if (courseWin && courseWin.closed) {
+                document.location.href = document.location.href; //full page refresh
+            }
+            else {
+                setTimeout(function () {
+                    lms.refreshDisplay(assigId, courseId);
+                    watchStatus(assigId, courseId);
+                }, 5000, assigId, courseId) //refresh tile every 5secs
+            }
+        }
 
-    $(document).ready(function () {
-        lms.initialize(<%=LmsUser.UserId%>, null);
-        lms.refreshDisplay();
-        $('#course-list tr:even').addClass('row-highlight');
-    });
+        function viewCertificate(assigId, courseId) {
+            certWin = window.open("admin/certificate.aspx?cid=" + courseId + "aid=" + assigId, 800, 600);
+        }
+
+        $(document).ready(function () {
+            lms.initialize(<%=LmsUser.UserId%>);
+            lms.refreshDisplay();
+            $('div.disabled div.title a').attr("href", null); //remove click from disabled courses
+        });
 
 
     </script>
     <style type="text/css">
-        .certificate{
-            display:none;
-            width:107px;
+        .certificate {
+            display: none;
+            Xwidth: 107px;
         }
-        #course-list td{
-            padding: 10px;
+        .tile {
+            float: left;
+            padding: 10px 25px;
+            width: 346px;
+            min-height: 120px;
+            background-color: aliceblue;
+            margin: 15px;
+            border: 1px solid lightblue;
+            border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, .5);
+          box-shadow: 2px 2px 8px rgba(0, 0, 0, .5);
         }
-        #course-list th{
-            padding: 10px;
-            background-color:lightgray;
+        .title{
+            font-weight:bolder;
+            text-align:center;
+            letter-spacing:1px;
+        }
+        @media  (max-width: 991px) {
+            .tile {
+                width: 100%;
+                margin: 15px 0px;
+            }
         }
 
     </style>
@@ -55,28 +88,37 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="page-header">
-        <h2>My Curriculum</h2>
-        <table id="course-list" border="0" width="100%" cellspacing="1" cellpadding="2" bgcolor="#000000">
-            <tr>
-                <th>Courses</th>
-                <th>Started</th>
-                <th>Completed</th>
-		        <th align="center">Highest Score</th>
-            </tr>
-            <asp:Repeater id="rptCourses" runat="server" EnableViewState="false">
-            <ItemTemplate>
-                <tr courseId='<%# Eval("courseId") %>'>
-                    <td valign="top"><a href="javascript:openCourse('<%# Eval("url") %>', '<%# Eval("jsWinParams") %>',<%# Eval("courseId") %>,'<%# Eval("title") %>', <%# Eval("aicc") %>, <%# Eval("scorm") %>)"><b><%# Eval("title") %></b></a>
-                        <div id="certificate" class="certificate" onclick="viewCertificate(<%# Eval("courseId") %>)" >
-                             <img border="0" src="images/print_certificate.gif" width="107" height="23" /></a>
-                        </div>
-                    </td>
-                    <td valign="top" id="startDate">&nbsp;</td>
-                    <td valign="top" id="completedDate">&nbsp;</td>
-                    <td valign="top" id="highScore" align="center">&nbsp;</td>
-                </tr>
-            </ItemTemplate>
-            </asp:Repeater>
-        </table>
+        <h3><span class="fa fa-book"></span> My Curriculum</h3>
     </div>
+
+    <asp:Repeater ID="rptCourses" runat="server" EnableViewState="false">
+        <ItemTemplate>
+            <div class="tile <%# (bool)Eval("available") ? "": "disabled" %>">
+                <div courseid='<%# Eval("courseId") %>' assigid='<%# Eval("assignmentId") %>'>
+                    <div class="title">
+                        <a href="javascript:openCourse('<%# Eval("url") %>', <%# Eval("assignmentId") %>, <%# Eval("courseId") %>,'<%# Eval("title") %>', <%# Eval("aicc").ToString().ToLower() %>, <%# Eval("scorm").ToString().ToLower() %>, <%# Eval("browserToolbar").ToString().ToLower() %>, <%# Eval("browserStatus").ToString().ToLower() %>, <%# Eval("browserWidth") %>, <%# Eval("browserHeight") %>)">
+                           <%# Eval("orderId")==null ? "": Eval("orderId")+")" %> <%# Eval("title") %>
+                        </a>
+                        <button type="button" id="certificate" class="btn btn-md btn-primary certificate" onclick='viewCertificate(<%# Eval("assignmentId") %>, <%# Eval("courseId") %>)'>Download Certificate &nbsp;<span class="fa fa-download"></span></button>
+                    </div>
+                    <table width="80%" align="center">
+                        <tr>
+                            <td>Started:</td>
+                            <td><span id="startDate"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Completed:</td>
+                            <td><span id="completedDate"></span></td>
+                        </tr>
+                        <tr>
+                            <td>High score:</td>
+                            <td><span id="highScore"></span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </ItemTemplate>
+    </asp:Repeater>
+
+
 </asp:Content>

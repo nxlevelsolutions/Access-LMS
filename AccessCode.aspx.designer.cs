@@ -58,6 +58,15 @@ namespace NXLevel.LMS {
         protected global::System.Web.UI.WebControls.TextBox txtAccessCode;
         
         /// <summary>
+        /// txtCompanyCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCompanyCode;
+        
+        /// <summary>
         /// btnSubmit control.
         /// </summary>
         /// <remarks>

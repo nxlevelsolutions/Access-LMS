@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -35,10 +36,55 @@ namespace NXLevel.LMS
 
         protected void Application_Error(object sender, EventArgs e)
         {
-            Exception err = Server.GetLastError().GetBaseException();
-            Log.Error("Application error:" + err.Message + 
-                         "Source:" + err.Source +
-                         "Stack Trace:" + err.StackTrace, true);
+            HttpException ErrorException = (HttpException)Server.GetLastError().GetBaseException();
+            //Log.Error("Application error:" + err.Message + 
+            //             "Source:" + err.Source +
+            //             "Stack Trace:" + err.StackTrace, true);
+            if (ErrorException.ErrorCode == 404)
+            {
+                return;
+            }
+
+            string errDescription = ErrorException.ToString().Replace("\r", "<br>");
+            string innerException = "";
+            string userInfo = "";
+            string dbName = "";
+
+            if (ErrorException.InnerException != null)
+            {
+                innerException = ErrorException.InnerException.ToString().Replace("\r", "<br>");
+            }
+
+            //user info
+            try
+            {
+                userInfo = "<p>CompanyName=" + LmsUser.CompanyName + ", First name=" + LmsUser.Firstname + ", Last name=" + LmsUser.Lastname + "</p>";
+            }
+            catch (Exception)
+            {
+                userInfo = "N/A";
+            }
+
+ 
+            //error info
+            string str = "<style type='text/css'>p,td{font-size:10pt; font-family:arial;}</style>" +
+                        "<div style='background-color:#eb9316;color:white;'>LMS Site Un-Trapped Error - " + Server.MachineName + "</div>" +
+                        "<table border=0 cellpadding=5 cellspacing=0>" +
+                            "<tr><td align=right valign=top><b>URL:</b></td><td>" + Request.Url.ToString() + "</td></tr>" +
+                            "<tr><td align=right valign=top><b>Message:</b></td><td>" + errDescription + "</td></tr>" +
+                            "<tr><td align=right valign=top><b>Source:</b></td><td>" + ErrorException.Source + "</td></tr>" +
+                            "<tr><td align=right valign=top><b>Details:</b></td><td>" + ErrorException.Message + "</td></tr>" +
+                            "<tr><td align=right valign=top><b>Inner Exception:</b></td><td>" + innerException + "</td></tr>" +
+                            "<tr><td align=right valign=top nowrap><b>Date:</b></td><td>" + DateTime.Now.ToShortTimeString() + "</td></tr>" +
+                            "<tr><td align=right valign=top nowrap><b>Remote IP:</b></td><td>" + Request.ServerVariables["REMOTE_ADDR"] + "</td></tr>" +
+                            "<tr><td align=right valign=top nowrap><b>All Server Vars:</b></td><td>" + Request.ServerVariables["ALL_HTTP"].Replace("\r", "<br>") + "</td></tr>" +
+                            "<tr><td align=right valign=top><b>Logged user:</b></td><td>" + userInfo + "</td></tr>" +
+                          "</table>";
+
+            if (ConfigurationManager.AppSettings.Get("SendEmailOnApplicationError") == "1")
+            {
+                Utilities.SendEmail(ConfigurationManager.AppSettings.Get("SystemEmail"), "LMS Trapped Error - From " + Server.MachineName + " db=" + dbName, "<html><body>" + str + "</body></html>");
+            }
         }
 
         protected void Session_End(object sender, EventArgs e)

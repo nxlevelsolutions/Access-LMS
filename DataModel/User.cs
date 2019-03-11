@@ -15,18 +15,15 @@ namespace NXLevel.LMS.DataModel
     public partial class User
     {
         public int userId { get; set; }
-        public bool active { get; set; }
-        public int accessId { get; set; }
         public string activationCode { get; set; }
         public string email { get; set; }
         public string password { get; set; }
         public string firstName { get; set; }
-        public string middleName { get; set; }
         public string lastName { get; set; }
         public string title { get; set; }
-        public string state { get; set; }
-        public string country { get; set; }
-        public string telephone { get; set; }
         public System.DateTime timestamp { get; set; }
+        public bool enabled { get; set; }
+        public int role { get; set; }
+        public string mgrEmail { get; set; }
     }
 }

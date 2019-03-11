@@ -13,15 +13,6 @@ namespace NXLevel.LMS.Controls {
     public partial class Pager {
         
         /// <summary>
-        /// PreviousPage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton PreviousPage;
-        
-        /// <summary>
         /// RptPages control.
         /// </summary>
         /// <remarks>
@@ -29,24 +20,6 @@ namespace NXLevel.LMS.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater RptPages;
-        
-        /// <summary>
-        /// NextPage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton NextPage;
-        
-        /// <summary>
-        /// PagerClickedIndex control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField PagerClickedIndex;
         
         /// <summary>
         /// ddlPageSize control.

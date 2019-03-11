@@ -1,0 +1,49 @@
+﻿<head>
+	<title></title>
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" type="text/css" href="css/page.css" />
+	<link rel="stylesheet" type="text/css" href="css/globals.css" />
+	<link rel="stylesheet" type="text/css" href="css/tooltips.css" />
+	<script src="js/jquery-1.7.min.js"></script>
+	<script src="js/utils.js" ></script>
+	<script src="js/resize.js"></script>
+	<script src="js/effects.js"></script>
+	<script src="js/page.js"></script>
+	<script src="js/video.js"></script>
+	<script src="js/graphicButton.js"></script>    
+	<script src="js/tooltips.js"></script>
+	<script src="js/subcourseCheck.js"></script>
+	<script type="text/javascript">
+		// used if chapter title is displayed above this template; SectionTitle may be used instead
+/*
+		parent.setChapterTitle("Layered Graphics"); 
+*/		
+		if(Utilities.isiPad){
+			$(top.window).on("orientationchange", resizeDisplayArea);
+		} else {
+			$(window).on("load resize", function() {
+				Utilities.debounce(function() {
+					resizeDisplayArea();
+				},250)
+			});
+		}	
+	</script>
+</head>
+<!-- video_right_text_left.htm template -->
+<body onload="onPageLoaded()">
+	<div id="pageTitle">
+    	<span>Layered Graphics:</span>&nbsp;Subscreen Example (template: hotSpots_60)
+	</div>
+	<div id="displayArea">
+		<div class="txtArea txtBlock50">
+			<p>sample text</p>
+		</div> 
+		<div class="imgArea imgBlock50">
+			<script type="text/javascript">renderMovie('video/Simponi_MOA.mp4', true)</script>
+		    <div id='playButton' style="position:absolute;top:0px;width:100%;height:100%;" onclick='playPause()' onmouseover='showButton(true)' onmouseout='showButton(false)'>
+		        <img id='playButtonIcon' src='interface/video_play.png' width="222" height="156" style="top:50%;left:50%;margin-top:-78px;margin-left:-111px;position:absolute;" />
+			</div>
+		</div>
+	</div>
+</body>
+</html>

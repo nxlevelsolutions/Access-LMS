@@ -5,31 +5,140 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="lms_masterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Assignments">
+          <Key>
+            <PropertyRef Name="assignmentId" />
+          </Key>
+          <Property Name="assignmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="int" Nullable="false" />
+          <Property Name="enabled" Type="bit" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="availCoursesInOrder" Type="bit" Nullable="false" />
+          <Property Name="allowSelfRegister" Type="bit" Nullable="false" />
+          <Property Name="registerCode" Type="varchar" MaxLength="250" />
+          <Property Name="dueDate" Type="date" />
+          <Property Name="dueEmailSent" Type="datetime" />
+          <Property Name="sendEmailOnAssigned" Type="bit" Nullable="false" />
+          <Property Name="sendEmailPeriodic" Type="bit" Nullable="false" />
+          <Property Name="periodicDays" Type="int" />
+          <Property Name="periodicEmailSent" Type="datetime" />
+          <Property Name="sendEmailNearDueDate" Type="bit" Nullable="false" />
+          <Property Name="nearDueDateDays" Type="int" />
+          <Property Name="nearDueDateEmailSent" Type="datetime" />
+          <Property Name="sendEmailOnDueDate" Type="bit" Nullable="false" />
+          <Property Name="sendEmailOverdue" Type="bit" Nullable="false" />
+          <Property Name="sendOverdueEmailSent" Type="datetime" />
+          <Property Name="timestamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="categoryId" />
+          </Key>
+          <Property Name="categoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="250" />
+          <Property Name="timestamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="courseId" />
+          </Key>
+          <Property Name="courseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="enabled" Type="bit" Nullable="false" />
+          <Property Name="userCode" Type="varchar" MaxLength="50" />
+          <Property Name="title" Type="varchar" MaxLength="70" />
+          <Property Name="description" Type="varchar" MaxLength="1024" />
+          <Property Name="url" Type="varchar" MaxLength="255" />
+          <Property Name="language" Type="varchar" MaxLength="50" />
+          <Property Name="aicc" Type="bit" Nullable="false" />
+          <Property Name="scorm" Type="bit" Nullable="false" />
+          <Property Name="browserToolbar" Type="bit" Nullable="false" />
+          <Property Name="browserStatus" Type="bit" Nullable="false" />
+          <Property Name="browserWidth" Type="int" />
+          <Property Name="browserHeight" Type="int" />
+          <Property Name="timestamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Emails">
+          <Key>
+            <PropertyRef Name="emailId" />
+          </Key>
+          <Property Name="emailId" Type="int" Nullable="false" />
+          <Property Name="subject" Type="varchar" MaxLength="255" />
+          <Property Name="body" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="groupId" />
+          </Key>
+          <Property Name="groupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="enabled" Type="bit" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="timestamp" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="userId" />
           </Key>
           <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="active" Type="bit" Nullable="false" />
-          <Property Name="accessId" Type="int" Nullable="false" />
-          <Property Name="activationCode" Type="varchar" MaxLength="10" />
-          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="password" Type="varchar" MaxLength="255" />
+          <Property Name="enabled" Type="bit" Nullable="false" />
           <Property Name="firstName" Type="varchar" MaxLength="50" />
-          <Property Name="middleName" Type="varchar" MaxLength="50" />
           <Property Name="lastName" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="mgrEmail" Type="varchar" MaxLength="50" />
           <Property Name="title" Type="varchar" MaxLength="50" />
-          <Property Name="state" Type="varchar" MaxLength="50" />
-          <Property Name="country" Type="varchar" MaxLength="2" />
-          <Property Name="telephone" Type="varchar" MaxLength="50" />
+          <Property Name="role" Type="int" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="255" />
+          <Property Name="activationCode" Type="varchar" MaxLength="10" />
           <Property Name="timestamp" Type="datetime" Nullable="false" />
         </EntityType>
+        <Function Name="Assignment_CoursesGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="assignmentId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Assignment_CoursesSet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="assignmentId" Type="int" Mode="In" />
+          <Parameter Name="courselist" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Assignment_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="assignmentId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Assignment_GroupsGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="assignmentId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Assignment_GroupsSet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="assignmentId" Type="int" Mode="In" />
+          <Parameter Name="grouplist" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Assignment_UsersGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="assignmentId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Assignment_UsersSet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="assignmentId" Type="int" Mode="In" />
+          <Parameter Name="userlist" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="AssignmentsStats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AssignemntType" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Categories_GroupsDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryId" Type="int" Mode="In" />
+          <Parameter Name="groupId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Categories_GroupsGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Categories_GroupsSet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryId" Type="int" Mode="In" />
+          <Parameter Name="groupId" Type="int" Mode="In" />
+          <Parameter Name="title" Type="varchar" Mode="In" />
+          <Parameter Name="enabled" Type="bit" Mode="In" />
+        </Function>
         <Function Name="Course_BasicInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="assignmentId" Type="int" Mode="In" />
           <Parameter Name="courseId" Type="int" Mode="In" />
           <Parameter Name="userId" Type="int" Mode="In" />
         </Function>
         <Function Name="Course_ScormValueSet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="assignmentId" Type="int" Mode="In" />
           <Parameter Name="courseId" Type="int" Mode="In" />
           <Parameter Name="key" Type="varchar(max)" Mode="In" />
           <Parameter Name="val" Type="varchar(max)" Mode="In" />
@@ -40,20 +149,71 @@
         </Function>
         <Function Name="Course_StartupDefaults" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="assignmentId" Type="int" Mode="In" />
           <Parameter Name="courseId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Group_UsersGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="groupId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Group_UsersSet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="groupId" Type="int" Mode="In" />
+          <Parameter Name="userlist" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Report_AssignmentGroups" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="assignmentId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Report_CategoryGroups" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Report_CourseUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="courseId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Report_UserCourses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Report_UserCourseUsage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="courseId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Report_Users_All" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="SortField" Type="varchar" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="User_CategoryGroupSet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="CategoryTitle" Type="varchar" Mode="In" />
+          <Parameter Name="GroupTitle" Type="varchar" Mode="In" />
         </Function>
         <Function Name="User_Curriculum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userId" Type="int" Mode="In" />
         </Function>
+        <Function Name="User_GroupsGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="User_GroupsSet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="grouplist" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <Function Name="User_Info" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="email" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="User_UsageHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
         </Function>
         <Function Name="Users_All" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PageIndex" Type="int" Mode="In" />
           <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="SortField" Type="varchar" Mode="In" />
           <Parameter Name="RecordCount" Type="int" Mode="InOut" />
         </Function>
         <EntityContainer Name="lms_masterModelStoreContainer">
+          <EntitySet Name="Assignments" EntityType="Self.Assignments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Emails" EntityType="Self.Emails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -71,16 +231,19 @@
           </FunctionImport>
           <FunctionImport Name="Course_ScormValueSet" ReturnType="Collection(Int32)">
             <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="assignmentId" Mode="In" Type="Int32" />
             <Parameter Name="courseId" Mode="In" Type="Int32" />
             <Parameter Name="key" Mode="In" Type="String" />
             <Parameter Name="val" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Course_BasicInfo" ReturnType="Collection(lms_masterModel.Course_BasicInfo_Result)">
+            <Parameter Name="assignmentId" Mode="In" Type="Int32" />
             <Parameter Name="courseId" Mode="In" Type="Int32" />
             <Parameter Name="userId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Course_StartupDefaults" ReturnType="Collection(lms_masterModel.Course_StartupDefaults_Result)">
             <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="assignmentId" Mode="In" Type="Int32" />
             <Parameter Name="courseId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="User_Info" ReturnType="Collection(lms_masterModel.User_Info_Result)">
@@ -89,7 +252,107 @@
           <FunctionImport Name="Users_All" ReturnType="Collection(lms_masterModel.Users_All_Result)">
             <Parameter Name="PageIndex" Mode="In" Type="Int32" />
             <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="SortField" Mode="In" Type="String" />
             <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Courses" EntityType="lms_masterModel.Course" />
+          <EntitySet Name="Groups" EntityType="lms_masterModel.Group" />
+          <EntitySet Name="Emails" EntityType="lms_masterModel.Email" />
+          <FunctionImport Name="User_OrgGroupSet">
+            <Parameter Name="OrgGroupTitle" Mode="In" Type="String" />
+            <Parameter Name="OrgGroupValue" Mode="In" Type="String" />
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Group_UsersSet">
+            <Parameter Name="groupId" Mode="In" Type="Int32" />
+            <Parameter Name="userlist" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AssignmentsStats" ReturnType="Collection(lms_masterModel.AssignmentsStats_Result)" >
+          <Parameter Name="AssignemntType" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Assignment_CoursesSet">
+            <Parameter Name="assignmentId" Mode="In" Type="Int32" />
+            <Parameter Name="courselist" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Assignment_CoursesGet" ReturnType="Collection(lms_masterModel.Assignment_CoursesGet_Result)">
+          <Parameter Name="assignmentId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Group_UsersGet" ReturnType="Collection(lms_masterModel.Group_UsersGet_Result)">
+          <Parameter Name="groupId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Assignment_GroupsGet" ReturnType="Collection(lms_masterModel.Assignment_GroupsGet_Result)">
+          <Parameter Name="assignmentId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Assignment_GroupsSet">
+            <Parameter Name="assignmentId" Mode="In" Type="Int32" />
+            <Parameter Name="grouplist" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Categories" EntityType="lms_masterModel.Category" />
+          <FunctionImport Name="Categories_GroupsGet" ReturnType="Collection(lms_masterModel.Categories_GroupsGet_Result)">
+          <Parameter Name="categoryId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Categories_GroupsSet">
+            <Parameter Name="categoryId" Mode="In" Type="Int32" />
+            <Parameter Name="groupId" Mode="In" Type="Int32" />
+            <Parameter Name="title" Mode="In" Type="String" />
+            <Parameter Name="enabled" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Categories_GroupsDelete">
+            <Parameter Name="categoryId" Mode="In" Type="Int32" />
+            <Parameter Name="groupId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Assignment_UsersGet" ReturnType="Collection(lms_masterModel.Assignment_UsersGet_Result)">
+          <Parameter Name="assignmentId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Assignment_UsersSet">
+            <Parameter Name="assignmentId" Mode="In" Type="Int32" />
+            <Parameter Name="userlist" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="User_GroupsGet" ReturnType="Collection(lms_masterModel.User_GroupsGet_Result)">
+          <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="User_GroupsSet">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="grouplist" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="User_CategoryGroupSet">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="CategoryTitle" Mode="In" Type="String" />
+            <Parameter Name="GroupTitle" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Assignments" EntityType="lms_masterModel.Assignment" />
+          <FunctionImport Name="Assignment_Delete">
+          <Parameter Name="assignmentId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Report_Users_All" ReturnType="Collection(lms_masterModel.Report_Users_All_Result)">
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="SortField" Mode="In" Type="String" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Report_UserCourses" ReturnType="Collection(lms_masterModel.Report_UserCourses_Result)">
+          <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Report_UserCourseUsage" ReturnType="Collection(lms_masterModel.Report_UserCourseUsage_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="courseId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Report_CourseUsers" ReturnType="Collection(lms_masterModel.Report_CourseUsers_Result)">
+          <Parameter Name="courseId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Report_AssignmentGroups" ReturnType="Collection(lms_masterModel.Report_AssignmentGroups_Result)">
+          <Parameter Name="assignmentId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Report_CategoryGroups" ReturnType="Collection(lms_masterModel.Report_CategoryGroups_Result)">
+          <Parameter Name="categoryId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="User_Email" ReturnType="Collection(Boolean)">
+            <Parameter Name="assignmentId" Mode="In" Type="Int32" />
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="emailId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="User_UsageHistory" ReturnType="Collection(lms_masterModel.User_UsageHistory_Result)">
+          <Parameter Name="userId" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="User">
@@ -97,28 +360,35 @@
             <PropertyRef Name="userId" />
           </Key>
           <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="active" Type="Boolean" Nullable="false" />
-          <Property Name="accessId" Type="Int32" Nullable="false" />
           <Property Name="activationCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="middleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="country" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="enabled" Type="Boolean" Nullable="false" />
+          <Property Name="role" Type="Int32" Nullable="false" />
+          <Property Name="mgrEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <ComplexType Name="User_Curriculum_Result">
-          <Property Type="Int16" Name="courseId" Nullable="false" />
+          <Property Type="Int32" Name="courseId" Nullable="false" />
           <Property Type="String" Name="title" Nullable="true" MaxLength="70" />
-          <Property Type="String" Name="aicc" Nullable="false" MaxLength="5" />
-          <Property Type="String" Name="scorm" Nullable="false" MaxLength="5" />
-          <Property Type="String" Name="jsWinParams" Nullable="true" MaxLength="255" />
+          <Property Type="Boolean" Name="aicc" Nullable="false" />
+          <Property Type="Boolean" Name="scorm" Nullable="false" />
           <Property Type="String" Name="url" Nullable="true" MaxLength="255" />
           <Property Type="String" Name="language" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="description" Nullable="true" MaxLength="1024" />
+          <Property Type="Boolean" Name="browserToolbar" Nullable="false" />
+          <Property Type="Boolean" Name="browserStatus" Nullable="false" />
+          <Property Type="Int32" Name="browserWidth" Nullable="true" />
+          <Property Type="Int32" Name="browserHeight" Nullable="true" />
+          <Property Type="Int32" Name="userId" Nullable="false" />
+          <Property Type="Boolean" Name="availCoursesInOrder" Nullable="false" />
+          <Property Type="Int32" Name="orderId" Nullable="true" />
+          <Property Type="Boolean" Name="completed" Nullable="true" />
+          <Property Type="Int32" Name="assignmentId" Nullable="false" />
+          <Property Type="Boolean" Name="available" Nullable="true" />
         </ComplexType>
         <ComplexType Name="Course_BasicInfo_Result">
           <Property Type="DateTime" Name="startDate" Nullable="true" Precision="23" />
@@ -138,11 +408,10 @@
           <Property Type="Int32" Name="userId" Nullable="false" />
           <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
-          <Property Type="Boolean" Name="active" Nullable="false" />
-          <Property Type="Int32" Name="accessId" Nullable="false" />
           <Property Type="String" Name="password" Nullable="true" MaxLength="255" />
           <Property Type="String" Name="activationCode" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="clientName" Nullable="true" MaxLength="150" />
+          <Property Type="Boolean" Name="enabled" Nullable="false" />
+          <Property Type="Int32" Name="role" Nullable="false" />
         </ComplexType>
         <ComplexType Name="Users_All_Result">
           <Property Type="Int32" Name="rowNumber" Nullable="true" />
@@ -150,6 +419,171 @@
           <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="courseId" />
+          </Key>
+          <Property Name="courseId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="language" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="aicc" Type="Boolean" Nullable="false" />
+          <Property Name="scorm" Type="Boolean" Nullable="false" />
+          <Property Name="enabled" Type="Boolean" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="browserToolbar" Type="Boolean" Nullable="false" />
+          <Property Name="browserStatus" Type="Boolean" Nullable="false" />
+          <Property Name="browserWidth" Type="Int32" />
+          <Property Name="browserHeight" Type="Int32" />
+          <Property Name="timestamp" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="groupId" />
+          </Key>
+          <Property Name="groupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="enabled" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Email">
+          <Key>
+            <PropertyRef Name="emailId" />
+          </Key>
+          <Property Name="emailId" Type="Int32" Nullable="false" />
+          <Property Name="subject" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="body" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="AssignmentsStats_Result">
+          <Property Type="Boolean" Name="enabled" Nullable="false" />
+          <Property Type="String" Name="title" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="courseCount" Nullable="true" />
+          <Property Type="Int32" Name="assignmentId" Nullable="false" />
+          <Property Type="Int32" Name="groupCount" Nullable="true" />
+          <Property Type="Int32" Name="userCount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Assignment_CoursesGet_Result">
+          <Property Type="Int32" Name="courseId" Nullable="false" />
+          <Property Type="String" Name="title" Nullable="true" MaxLength="70" />
+          <Property Type="Boolean" Name="IsInAssignment" Nullable="true" />
+          <Property Type="Boolean" Name="enabled" Nullable="false" />
+          <Property Type="Int32" Name="orderId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Group_UsersGet_Result">
+          <Property Type="Int32" Name="userId" Nullable="false" />
+          <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="IsInGroup" Nullable="true" />
+          <Property Type="String" Name="NameDisplay" Nullable="true" MaxLength="102" />
+        </ComplexType>
+        <ComplexType Name="Assignment_GroupsGet_Result">
+          <Property Type="Int32" Name="groupId" Nullable="false" />
+          <Property Type="Boolean" Name="IsInAssignment" Nullable="true" />
+          <Property Type="String" Name="title" Nullable="true" MaxLength="353" />
+          </ComplexType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="categoryId" />
+          </Key>
+          <Property Name="categoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="timestamp" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <ComplexType Name="Categories_GroupsGet_Result">
+          <Property Type="Int32" Name="groupId" Nullable="false" />
+          <Property Type="String" Name="title" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="enabled" Nullable="false" />
+          <Property Type="Int32" Name="userCount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Assignment_UsersGet_Result">
+          <Property Type="Int32" Name="userId" Nullable="false" />
+          <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="IsInAssignment" Nullable="true" />
+          <Property Type="String" Name="NameDisplay" Nullable="true" MaxLength="102" />
+          <Property Type="Boolean" Name="IsInGroup" Nullable="true" />
+          <Property Type="Boolean" Name="enabled" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="User_GroupsGet_Result">
+          <Property Type="Int32" Name="groupId" Nullable="false" />
+          <Property Type="String" Name="title" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <EntityType Name="Assignment">
+          <Key>
+            <PropertyRef Name="assignmentId" />
+          </Key>
+          <Property Name="assignmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="enabled" Type="Boolean" Nullable="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="availCoursesInOrder" Type="Boolean" Nullable="false" />
+          <Property Name="allowSelfRegister" Type="Boolean" Nullable="false" />
+          <Property Name="registerCode" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="dueDate" Type="DateTime" Precision="0" />
+          <Property Name="sendEmailOnAssigned" Type="Boolean" Nullable="false" />
+          <Property Name="sendEmailPeriodic" Type="Boolean" Nullable="false" />
+          <Property Name="periodicDays" Type="Int32" />
+          <Property Name="sendEmailNearDueDate" Type="Boolean" Nullable="false" />
+          <Property Name="nearDueDateDays" Type="Int32" />
+          <Property Name="sendEmailOnDueDate" Type="Boolean" Nullable="false" />
+          <Property Name="sendEmailOverdue" Type="Boolean" Nullable="false" />
+          <Property Name="timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dueEmailSent" Type="DateTime" Precision="3" />
+          <Property Name="periodicEmailSent" Type="DateTime" Precision="3" />
+          <Property Name="nearDueDateEmailSent" Type="DateTime" Precision="3" />
+          <Property Name="sendOverdueEmailSent" Type="DateTime" Precision="3" />
+          <Property Name="type" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="Report_Users_All_Result">
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="coursesCount" Nullable="true" />
+          <Property Type="Int32" Name="completedCount" Nullable="true" />
+          <Property Type="Decimal" Name="avgScore" Nullable="true" Precision="38" Scale="6" />
+        </ComplexType>
+        <ComplexType Name="Report_UserCourses_Result">
+          <Property Type="Int32" Name="courseId" Nullable="false" />
+          <Property Type="String" Name="title" Nullable="true" MaxLength="70" />
+          <Property Type="DateTime" Name="startedDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="endDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="avgScore" Nullable="true" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="maxScore" Nullable="true" Precision="10" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="Report_UserCourseUsage_Result">
+          <Property Type="Int64" Name="rowId" Nullable="true" />
+          <Property Type="DateTime" Name="dateStamp" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="score" Nullable="true" Precision="10" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="Report_CourseUsers_Result">
+          <Property Type="Int32" Name="userId" Nullable="false" />
+          <Property Type="String" Name="group" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Report_AssignmentGroups_Result">
+          <Property Type="Int32" Name="groupId" Nullable="false" />
+          <Property Type="String" Name="title" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="avgScore" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Report_CategoryGroups_Result">
+          <Property Type="Int32" Name="groupId" Nullable="false" />
+          <Property Type="String" Name="title" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="enabled" Nullable="false" />
+          <Property Type="Int32" Name="userCount" Nullable="true" />
+          <Property Type="Decimal" Name="avgScore" Nullable="true" Precision="38" Scale="6" />
+        </ComplexType>
+        <ComplexType Name="User_UsageHistory_Result">
+          <Property Type="Int32" Name="courseId" Nullable="false" />
+          <Property Type="String" Name="title" Nullable="true" MaxLength="70" />
+          <Property Type="String" Name="event" Nullable="false" MaxLength="47" />
+          <Property Type="DateTime" Name="dateStamp" Nullable="true" Precision="23" />
+          <Property Type="String" Name="AssignmentTitle" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="assignmentId" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -160,19 +594,16 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="lms_masterModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="mgrEmail" ColumnName="mgrEmail" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="enabled" ColumnName="enabled" />
                 <ScalarProperty Name="timestamp" ColumnName="timestamp" />
-                <ScalarProperty Name="telephone" ColumnName="telephone" />
-                <ScalarProperty Name="country" ColumnName="country" />
-                <ScalarProperty Name="state" ColumnName="state" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="lastName" ColumnName="lastName" />
-                <ScalarProperty Name="middleName" ColumnName="middleName" />
                 <ScalarProperty Name="firstName" ColumnName="firstName" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="activationCode" ColumnName="activationCode" />
-                <ScalarProperty Name="accessId" ColumnName="accessId" />
-                <ScalarProperty Name="active" ColumnName="active" />
                 <ScalarProperty Name="userId" ColumnName="userId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -184,9 +615,19 @@
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="aicc" ColumnName="aicc" />
                 <ScalarProperty Name="scorm" ColumnName="scorm" />
-                <ScalarProperty Name="jsWinParams" ColumnName="jsWinParams" />
                 <ScalarProperty Name="url" ColumnName="url" />
                 <ScalarProperty Name="language" ColumnName="language" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="browserToolbar" ColumnName="browserToolbar" />
+                <ScalarProperty Name="browserStatus" ColumnName="browserStatus" />
+                <ScalarProperty Name="browserWidth" ColumnName="browserWidth" />
+                <ScalarProperty Name="browserHeight" ColumnName="browserHeight" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="availCoursesInOrder" ColumnName="availCoursesInOrder" />
+                <ScalarProperty Name="orderId" ColumnName="orderId" />
+                <ScalarProperty Name="completed" ColumnName="completed" />
+                <ScalarProperty Name="assignmentId" ColumnName="assignmentId" />
+                <ScalarProperty Name="available" ColumnName="available" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -220,11 +661,10 @@
                 <ScalarProperty Name="userId" ColumnName="userId" />
                 <ScalarProperty Name="firstName" ColumnName="firstName" />
                 <ScalarProperty Name="lastName" ColumnName="lastName" />
-                <ScalarProperty Name="active" ColumnName="active" />
-                <ScalarProperty Name="accessId" ColumnName="accessId" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="activationCode" ColumnName="activationCode" />
-                <ScalarProperty Name="clientName" ColumnName="clientName" />
+                <ScalarProperty Name="enabled" ColumnName="enabled" />
+                <ScalarProperty Name="role" ColumnName="role" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -236,6 +676,241 @@
                 <ScalarProperty Name="firstName" ColumnName="firstName" />
                 <ScalarProperty Name="lastName" ColumnName="lastName" />
                 <ScalarProperty Name="email" ColumnName="email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="lms_masterModel.Course">
+              <MappingFragment StoreEntitySet="Courses">
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="browserHeight" ColumnName="browserHeight" />
+                <ScalarProperty Name="browserWidth" ColumnName="browserWidth" />
+                <ScalarProperty Name="browserStatus" ColumnName="browserStatus" />
+                <ScalarProperty Name="browserToolbar" ColumnName="browserToolbar" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="enabled" ColumnName="enabled" />
+                <ScalarProperty Name="scorm" ColumnName="scorm" />
+                <ScalarProperty Name="aicc" ColumnName="aicc" />
+                <ScalarProperty Name="language" ColumnName="language" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="userCode" ColumnName="userCode" />
+                <ScalarProperty Name="courseId" ColumnName="courseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="lms_masterModel.Group">
+              <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="enabled" ColumnName="enabled" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="groupId" ColumnName="groupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Emails">
+            <EntityTypeMapping TypeName="lms_masterModel.Email">
+              <MappingFragment StoreEntitySet="Emails">
+                <ScalarProperty Name="body" ColumnName="body" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="emailId" ColumnName="emailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Group_UsersSet" FunctionName="lms_masterModel.Store.Group_UsersSet" />
+          <FunctionImportMapping FunctionImportName="AssignmentsStats" FunctionName="lms_masterModel.Store.AssignmentsStats">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="lms_masterModel.AssignmentsStats_Result">
+                <ScalarProperty Name="enabled" ColumnName="enabled" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="courseCount" ColumnName="courseCount" />
+                <ScalarProperty Name="assignmentId" ColumnName="assignmentId" />
+                <ScalarProperty Name="groupCount" ColumnName="groupCount" />
+                <ScalarProperty Name="userCount" ColumnName="userCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Assignment_CoursesSet" FunctionName="lms_masterModel.Store.Assignment_CoursesSet" />
+          <FunctionImportMapping FunctionImportName="Assignment_CoursesGet" FunctionName="lms_masterModel.Store.Assignment_CoursesGet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="lms_masterModel.Assignment_CoursesGet_Result">
+                <ScalarProperty Name="courseId" ColumnName="courseId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="IsInAssignment" ColumnName="IsInAssignment" />
+                <ScalarProperty Name="enabled" ColumnName="enabled" />
+                <ScalarProperty Name="orderId" ColumnName="orderId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Group_UsersGet" FunctionName="lms_masterModel.Store.Group_UsersGet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="lms_masterModel.Group_UsersGet_Result">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="IsInGroup" ColumnName="IsInGroup" />
+                <ScalarProperty Name="NameDisplay" ColumnName="NameDisplay" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Assignment_GroupsGet" FunctionName="lms_masterModel.Store.Assignment_GroupsGet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="lms_masterModel.Assignment_GroupsGet_Result">
+                <ScalarProperty Name="groupId" ColumnName="groupId" />
+                <ScalarProperty Name="IsInAssignment" ColumnName="IsInAssignment" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Assignment_GroupsSet" FunctionName="lms_masterModel.Store.Assignment_GroupsSet" />
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="lms_masterModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Categories_GroupsGet" FunctionName="lms_masterModel.Store.Categories_GroupsGet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="lms_masterModel.Categories_GroupsGet_Result">
+                <ScalarProperty Name="groupId" ColumnName="groupId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="enabled" ColumnName="enabled" />
+                <ScalarProperty Name="userCount" ColumnName="userCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Categories_GroupsSet" FunctionName="lms_masterModel.Store.Categories_GroupsSet" />
+          <FunctionImportMapping FunctionImportName="Categories_GroupsDelete" FunctionName="lms_masterModel.Store.Categories_GroupsDelete" />
+          <FunctionImportMapping FunctionImportName="Assignment_UsersGet" FunctionName="lms_masterModel.Store.Assignment_UsersGet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="lms_masterModel.Assignment_UsersGet_Result">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="IsInAssignment" ColumnName="IsInAssignment" />
+                <ScalarProperty Name="NameDisplay" ColumnName="NameDisplay" />
+                <ScalarProperty Name="IsInGroup" ColumnName="IsInGroup" />
+                <ScalarProperty Name="enabled" ColumnName="enabled" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Assignment_UsersSet" FunctionName="lms_masterModel.Store.Assignment_UsersSet" />
+          <FunctionImportMapping FunctionImportName="User_GroupsGet" FunctionName="lms_masterModel.Store.User_GroupsGet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="lms_masterModel.User_GroupsGet_Result">
+                <ScalarProperty Name="groupId" ColumnName="groupId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="User_GroupsSet" FunctionName="lms_masterModel.Store.User_GroupsSet" />
+          <FunctionImportMapping FunctionImportName="User_CategoryGroupSet" FunctionName="lms_masterModel.Store.User_CategoryGroupSet" />
+          <EntitySetMapping Name="Assignments">
+            <EntityTypeMapping TypeName="lms_masterModel.Assignment">
+              <MappingFragment StoreEntitySet="Assignments">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="sendOverdueEmailSent" ColumnName="sendOverdueEmailSent" />
+                <ScalarProperty Name="nearDueDateEmailSent" ColumnName="nearDueDateEmailSent" />
+                <ScalarProperty Name="periodicEmailSent" ColumnName="periodicEmailSent" />
+                <ScalarProperty Name="dueEmailSent" ColumnName="dueEmailSent" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="sendEmailOverdue" ColumnName="sendEmailOverdue" />
+                <ScalarProperty Name="sendEmailOnDueDate" ColumnName="sendEmailOnDueDate" />
+                <ScalarProperty Name="nearDueDateDays" ColumnName="nearDueDateDays" />
+                <ScalarProperty Name="sendEmailNearDueDate" ColumnName="sendEmailNearDueDate" />
+                <ScalarProperty Name="periodicDays" ColumnName="periodicDays" />
+                <ScalarProperty Name="sendEmailPeriodic" ColumnName="sendEmailPeriodic" />
+                <ScalarProperty Name="sendEmailOnAssigned" ColumnName="sendEmailOnAssigned" />
+                <ScalarProperty Name="dueDate" ColumnName="dueDate" />
+                <ScalarProperty Name="registerCode" ColumnName="registerCode" />
+                <ScalarProperty Name="allowSelfRegister" ColumnName="allowSelfRegister" />
+                <ScalarProperty Name="availCoursesInOrder" ColumnName="availCoursesInOrder" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="enabled" ColumnName="enabled" />
+                <ScalarProperty Name="assignmentId" ColumnName="assignmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Assignment_Delete" FunctionName="lms_masterModel.Store.Assignment_Delete" />
+          <FunctionImportMapping FunctionImportName="Report_Users_All" FunctionName="lms_masterModel.Store.Report_Users_All">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="lms_masterModel.Report_Users_All_Result">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="coursesCount" ColumnName="coursesCount" />
+                <ScalarProperty Name="completedCount" ColumnName="completedCount" />
+                <ScalarProperty Name="avgScore" ColumnName="avgScore" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Report_UserCourses" FunctionName="lms_masterModel.Store.Report_UserCourses">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="lms_masterModel.Report_UserCourses_Result">
+                <ScalarProperty Name="courseId" ColumnName="courseId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="startedDate" ColumnName="startedDate" />
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+                <ScalarProperty Name="avgScore" ColumnName="avgScore" />
+                <ScalarProperty Name="maxScore" ColumnName="maxScore" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Report_UserCourseUsage" FunctionName="lms_masterModel.Store.Report_UserCourseUsage">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="lms_masterModel.Report_UserCourseUsage_Result">
+                <ScalarProperty Name="rowId" ColumnName="rowId" />
+                <ScalarProperty Name="dateStamp" ColumnName="dateStamp" />
+                <ScalarProperty Name="score" ColumnName="score" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Report_CourseUsers" FunctionName="lms_masterModel.Store.Report_CourseUsers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="lms_masterModel.Report_CourseUsers_Result">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="group" ColumnName="group" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Report_AssignmentGroups" FunctionName="lms_masterModel.Store.Report_AssignmentGroups">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="lms_masterModel.Report_AssignmentGroups_Result">
+                <ScalarProperty Name="groupId" ColumnName="groupId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="avgScore" ColumnName="avgScore" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Report_CategoryGroups" FunctionName="lms_masterModel.Store.Report_CategoryGroups">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="lms_masterModel.Report_CategoryGroups_Result">
+                <ScalarProperty Name="groupId" ColumnName="groupId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="enabled" ColumnName="enabled" />
+                <ScalarProperty Name="userCount" ColumnName="userCount" />
+                <ScalarProperty Name="avgScore" ColumnName="avgScore" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="User_UsageHistory" FunctionName="lms_masterModel.Store.User_UsageHistory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="lms_masterModel.User_UsageHistory_Result">
+                <ScalarProperty Name="courseId" ColumnName="courseId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="event" ColumnName="event" />
+                <ScalarProperty Name="dateStamp" ColumnName="dateStamp" />
+                <ScalarProperty Name="AssignmentTitle" ColumnName="AssignmentTitle" />
+                <ScalarProperty Name="assignmentId" ColumnName="assignmentId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

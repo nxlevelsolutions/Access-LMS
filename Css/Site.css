@@ -1,8 +1,16 @@
-﻿html, body, form {
+﻿@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
+
+* {
+    font-family: 'Roboto';
+}
+html, body, form {
     margin: 0;
     padding: 0;
     height:100%;
+	color: #525252;
+	line-height: 1.5em;
 }
+
 
 /* wrapper to push footer down */
 #wrap {
@@ -16,6 +24,7 @@
         padding: 50px 15px 0;
     }
 
+
 /* footer */
 #footer {
     height: 60px;
@@ -26,13 +35,86 @@
     }
 
  
-     
-/** miscellaneous **/
-div[onclick], a[onclick]:hover {
+/** global miscellaneous **/
+div[onclick], span[onclick], a:hover, .pointer {
     cursor: pointer;
 }
-
-/* hovering color  */
-.row-highlight {
+.disabled a, .disabled {
+    color: #bbb;
+}
+.asterisk {
+    background: no-repeat center 3px/ 76% url("../images/asterisk.svg");
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+}
+.required-red{
+    color:orangered;
+}
+#mceu_27{
+    display:none;
+}
+.evenrowcolor tr:nth-child(even), .oddrowcolor tr:nth-child(odd) { /* colored table rows */
     background-color: #f9f9f9;
+}
+
+
+/* icons */
+.icon-sort {
+    background: no-repeat center 1px/ 75% url("../images/icon_sort.svg");
+    display: inline-block;
+    width: 16px;
+    height: 15px;
+}
+
+
+/* nav bar overrides */
+.navbar-default {
+	background-image: linear-gradient(to bottom,#3176bc 0,#3176bc 100%);
+}
+.navbar-default .navbar-brand {
+	color: #fff;
+}
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+	color: #cdcdcd;
+}
+.navbar-default .navbar-nav>li>a {
+	color: #fff;
+}
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover{
+	color: #cdcd;
+}
+.panel-default>.panel-heading {
+	    background-image: linear-gradient(to bottom,#3176bc 0,#3176bc 100%);
+}
+.panel {
+	box-shadow: 0 0px 11px rgba(0, 0, 0,.15);
+}
+
+
+/* bootstrap overrides */
+h4 {
+	color: #fff;
+}
+h5 {
+	text-decoration: underline;
+}
+label {
+    margin-left: 5px;
+    font-weight: normal;
+}
+input[type='text'], textarea, select {
+    width: 100%;
+}
+select{
+    height:27px;
+}
+
+
+/* SumoSelect overrides */
+.SumoSelect {
+    width: 100% !important;
+}
+.SumoUnder {
+    height: 32px !important;
 }

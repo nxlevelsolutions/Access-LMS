@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings>
+	<key name="gated">false</key>
+	<!-- Valid gated item values are: audio, content -->
+	<key name="gatedItems">content</key>
+	<key name="showSplash">true</key>
+	<key name="showAudioPlayer">true</key>
+	<key name="showAudioOption">false</key>
+	<key name="glossaryType">group</key> <!-- Valid types are: group, list -->
+	<key name="useLMS">yes</key>
+	<key name="saveInterval">1</key>
+	<key name="debug">no</key>
+	<key name="nextButtonDelay">1</key>  <!--this # is the time to wait before the next button appears in a non-gated course -->
+	<key name="nextButtonCompletedDelay">UNUSED</key>  <!--this # is the time to wait before the next button appears in a completed page-->
+	<key name="nextPromptDelay">10</key>  <!--this # is the time to wait before the prompt popup slides above the next button-->
+	<key name="companyName">Company Name set in settings.xml</key>
+
+	<!-- keyboard mappings
+	     see http://www.w3.org/2002/09/tests/keys.html for additional codes
+		 NOTE: All keycodes actions require the <alt> key to work  -->
+	<key name="pageBackKeyCode">37</key> 		<!-- 37 = right arrow key navigates back one page -->
+	<key name="pageNextKeyCode">39</key> 		<!-- 39 = left arrow key navigates to the next page  -->
+	<key name="loggerKeyCode">76</key>   		<!-- 76 = letter L brings up the logger -->
+	<key name="tocKeyCode">77</key>      		<!-- 76 = letter M brings up the TOC -->
+	<key name="transcriptKeyCode">84</key>      <!-- 84 = letter T brings up the Transcript -->
+	<key name="helpKeyCode">72</key>     		<!-- 72 = letter H brings up Help -->
+	<key name="toolboxKeyCode">66</key>  		<!-- 66 = letter B brings up ToolBox -->
+	<key name="audioPlayPauseKeyCode">80</key>  <!-- 80 = letter P pauses/plays audio -->
+	<key name="exitCourseKeyCode">81</key>  	<!-- 80 = letter Q exits the course -->
+
+	<!-- BASECAMP SETTINGS -->
+	<key name="loggerEnabled">true</key>
+	<key name="bcUserId">nxlbob</key>
+	<key name="bcPwd">racrac0505</key>
+	<key name="bcProjectId"></key><!--2485130-->
+	<key name="bcListId"></key><!--6353777-->
+  
+	<!-- Date formats can be customized:
+		 m d, yyyy  Use with useMonthDate = true
+		 m/d/yyyy
+		 d m yyyy
+	     yyyy-m-d
+	-->
+	<key name="dateFormatString">m d, yyyy</key>
+	<key name="useMonthDate">true</key>
+	
+	<!-- ********************************************************* -->
+	<!-- Attention translators: Keys below here MUST be translated -->
+	<!-- ********************************************************* -->
+	
+	<!-- SPLASH SCREEN -->
+	<key name="splash_txt"><![CDATA[<p>This material is for educational purposes only. It is not to be distributed, used, or discussed in any way without permission.</p><p>Do you accept these terms?</p>]]></key>
+	<key name="labelAccept">Accept</key>
+	<key name="labelNoAccept">Do Not Accept</key>
+
+	<!-- AUDIO PROMPT -->
+  <key name="labelAudioReminder"><![CDATA[<p><b>Audio Autoplay</b></p><p>We've detected the media for this course <br>will not auto-start. Please select the <br>Play button below to begin.</p>]]></key>
+	<key name="labelAudioPrompt"><![CDATA[<p><b>Viewing Mode</b></p>]]></key>
+	<key name="audioBtn">Audio</key>
+	<key name="noAudioBtn">No Audio</key>
+	<key name="audioTxt"><![CDATA[This version requires<br />a sound card and<br />Wi-Fi or corporate LAN]]></key>
+	<key name="noAudioTxt"><![CDATA[No audio;<br />no sound card required;<br />all connection speeds]]></key>
+
+	<!-- RESUME PROMPT -->
+	<key name="labelResWelcome"><![CDATA[<p><b>Welcome back!</b></p><p>Do you want to continue this module from where you left off?</p>]]></key>
+	<key name="labelResYes">Yes, please.</key>
+	<key name="labelResContinue"><![CDATA[Continues from your previous location.]]></key>
+	<key name="labelResNo">No, thank you.</key>
+	<key name="labelResClose"><![CDATA[Returns to the beginning of the module. Your history is maintained.]]></key>
+	
+	<!-- MENU LABELS -->
+	<key name="labelTOC">Contents</key>
+	<key name="labelGlossary">Glossary</key>
+	<key name="labelHelp">Help</key>
+	<key name="labelReferences">References</key>
+	<key name="labelResources">Resources</key>
+	<key name="labelTranscript">Transcript</key>
+	<key name="labelExpand">Expand</key>
+	<key Name="labelCollapse">Collapse</key>
+	<key name="labelExit">Exit</key>
+	
+	<!-- NAVIGATION -->
+	<key name="labelNext">Next</key>
+	<key name="labelBack">Back</key>
+	<key name="labelScreen">Screen</key>
+	<key name="labelOf">of</key>
+
+	<!-- AUDIO -->
+	<key name="labelPlay">Play</key>
+	<key name="labelPause">Pause</key>
+
+	<!-- COPYRIGHT -->
+	<key name="copyright"><![CDATA[ ]]></key>
+	
+	<!-- TABLE OF CONTENTS -->
+	<key name="toc_title">Table of Contents</key>
+	<key name="toc_level_1">Section</key>
+	<key name="toc_level_2">Topic</key>
+	<key name="toc_level_3">Topic</key>
+	
+	<!-- GLOSSSRY -->
+	<key name="glossary_title">Glossary</key>
+	<key name="glossary_selectLtr">Select a letter</key>
+	<key name="glossary_search">Search</key>
+	<key name="glossary_searchFor">Searching for:</key>
+	<key name="glossary_enter">Please enter a keyword to search.</key>
+	<key name="glossary_default">Search term...</key>
+	<key name="glossary_results">No results found.</key>
+	
+	<!-- REFERENCES -->
+	<key name="references_title">References</key>
+
+	<!-- RESOURCES -->
+	<key name="resources_title">Resources</key>
+
+	<!-- KNOWLEDGE CHECK OR ASSESSMENT -->
+	<key name="labelSubmit">Submit</key>
+	<key name="labelQuestion">Question</key>
+	<key name="labelSeparator">:</key> <!-- Qudstion: Section: Topic: etc -->
+	<key name="labelSection">Section</key>
+	<key name="labelTopic">Topic</key>
+	<key name="labelFeedback">Feedback</key>
+	<key name="labelReveal">Reveal</key>
+	<key name="labelSelectAnswer">Select your answer</key>
+	<key name="labelYourScore">Your score</key>
+	<key name="labelCorrect">Correct</key>
+	
+	<!-- ASSESSMENT OR ACKNOWLEDGE -->
+	<key name="labelNextQuestion">Next Question</key>
+	<key name="labelShowFinal">Show Final Score</key>
+	<key name="labelReviewList">Review List</key>
+	<key name="labelTryAgain">Try Again</key>
+	<key name="labelPrintCert">Print Certificate</key>
+	<key name="labelPrint">Print</key>
+	<key name="labelClose">Close</key>
+	<key name="labelAgree">I Agree</key>
+	<key name="labelDisagree">I Disagree</key>
+	<key name="agreeMsg"><![CDATA[<p>Your course completion has been recorded.<br><br><i>Click the <b>X</b> in the upper right and then click <b>Print Certificate</b> to print your certificate of completion.</i></p>]]></key>
+	<key name="disagreeMsg"><![CDATA[<p>The course has not been completed. You are required to contact your management, Human Resources, Compliance, <br>or training administrator to discuss your questions or concerns.<br><br><i>Click the <b>X</b> in the upper right to continue.</i></p>]]></key>
+	
+	<!-- CERTIFICATE -->
+  	<key name="labelCertificateTitle">Certificate of Completion</key>
+	<key name="labelCertifies">This document certifies that {name} has successfully completed the online training program:</key>
+	<key name="labelPrinted">Printed</key>
+	<key name="labelMonths">January,February,March,April,May,June,July,August,September,October,November,December</key>
+	
+	
+	
+	<!-- utils.js -->
+	<key name="labelExitMsg"><![CDATA[You have selected to exit this course. Are you sure you wish to exit?]]></key>
+		<!-- Currently uses an HTML dialog box: OK / Cancel -->
+		<!--<key name="labelNo">No</key>-->
+		<!--<key name="labelYes">Yes</key>-->
+	
+	<!-- NON-LMS VERSION -->
+	<key name="labelExit">Exit</key>
+	<key name="labelConfirm1">You have entered</key>
+	<key name="labelConfirm2">Is this correct?</key>
+	
+</settings>

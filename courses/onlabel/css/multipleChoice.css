@@ -1,0 +1,59 @@
+
+#answerTemplate{
+	display:none;
+}
+
+/* default small device */
+#questionText {
+	width:100%;
+	float:left;
+}	
+#answerSection{
+	float:left;
+	width:100%;
+	padding-top:0px;
+}
+@media (min-width: 576px) { /* default larger device */
+	#questionText {
+		width:45%;
+	}
+	#answerSection{
+		float:right;
+		width:45%;
+	}
+}
+
+
+#answerSection p {
+	margin: 0 0 1em 0;
+}
+input[type="radio"]{
+	width:1.4em;
+	height:1.4em;	
+}
+.answerText{ /* label for radio button */
+	padding:2px 0px 20px 10px;
+	display:block;
+	cursor:pointer;
+}
+#feedback{
+	position:relative!important;
+    width:100%;
+	display:none;
+	overflow:auto;
+}
+#feedback h4 {
+	color:#f26822;
+	margin-bottom: 0;
+}
+#feedbackText{
+	margin-top: 0;
+}
+.green-arrow {
+	background:transparent url('../interface/arrow.png') no-repeat -7px 3px;
+}
+.correct {
+    background-position:27px 3px;
+    transition: background-position 0.5s ease-out;
+    -webkit-transition: background-position 0.5s ease-out;
+}

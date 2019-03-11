@@ -6,3 +6,4 @@
 12:02:01PM;122;Information;User '' logged off.
 12:02:02PM;0;Information;User Id=122's session has ended.
 02:28:16PM;122;Information;User: 122 logged in.
+03:29:16PM;122;Information;User: 122 logged in.

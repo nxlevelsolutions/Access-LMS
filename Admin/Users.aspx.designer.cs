@@ -13,13 +13,13 @@ namespace NXLevel.LMS.Admin {
     public partial class Users {
         
         /// <summary>
-        /// UsersList control.
+        /// rptUsers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater UsersList;
+        protected global::System.Web.UI.WebControls.Repeater rptUsers;
         
         /// <summary>
         /// UsersPager control.

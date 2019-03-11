@@ -1,0 +1,33 @@
+#instructions {
+	overflow:auto;
+}
+
+#actions {
+	display:none;
+	margin-bottom:10px;
+}
+
+#feedback {
+	display:none;
+}
+
+#feedbackTitle, #feedbackText {
+	margin:5px 0px;
+}
+#feedback h4 {
+	color:#f26822;
+}
+#revealBtn {
+	display:none;
+}
+
+.answer {
+	zoom:1;
+}
+	
+.incorrect {
+	background-color:rgb(227,99,82);
+}
+.correct {
+	background-color:#33FF66;
+}

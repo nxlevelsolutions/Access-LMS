@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" type="text/css" href="css/page.css" />
+	<link rel="stylesheet" type="text/css" href="css/multipleChoice.css" />
+	<link rel="stylesheet" type="text/css" href="css/globals.css" />
+	<script src="https://code.jquery.com/jquery-3.0.0.min.js" crossorigin="anonymous"></script>
+	<script src="js/utils.js"></script>
+	<script src="js/quiz.js"></script>
+	<script src="js/multipleChoice.js"></script>
+	<script src="js/tooltips.js"></script>
+	<script src="js/subcourseCheck.js"></script>
+	<script type="text/javascript">
+		// used if chapter title is displayed above this template; SectionTitle may be used instead
+		parent.setChapterTitle("Knowledge Checks"); 
+	 
+		parent.setPageTitle("<span>Knowledge Checks:</span>&nbsp;Multiple Choice (template: EditorMultipleChoice)");		
+
+		$(document).ready(function () {
+			document.body.style["font-size"] = $(parent.document.body).css("font-size");
+		});	
+/*
+		(function ($) {
+			$.each(['show'], function (i, ev) {
+				var el = $.fn[ev];
+				$.fn[ev] = function () {
+					this.trigger(ev);
+					return el.apply(this, arguments);
+				};
+			});
+		})(jQuery);
+		
+		 
+		
+		if(Utilities.isiPad){
+			$(top.window).on("orientationchange", resizeDisplayArea);
+		} else {
+			$(window).on("load resize", function() {
+				Utilities.debounce(function() {
+					resizeDisplayArea();
+				},250)
+			});
+		}	
+*/
+	</script>
+</head>
+<!-- EditorMultipleChoice_exporter.htm template -->
+<body onload="onPageLoaded();">
+	<div id="answerTemplate">
+		<table width="99%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="60" valign="top" align="right" class="green-arrow">
+					<input name="answerBtn" type="radio" value="" onclick="javascript:onAnswerChosen(this)" />
+				</td>
+				<td valign="top"><label class="answerText"></label></td>
+			</tr>
+		</table>
+	</div>
+
+	<div id="questionText"></div>
+	<div id="answerSection">
+		<p id="instr"></p>
+		<div id="answers"></div>
+		<input id="submitBtn" type="button" class="button orange" onclick="checkAnswer();" />
+	</div>	
+	<div id="feedback">
+		<h4 id="feedbackTitle"></h4>
+		<p id="feedbackText"></p>
+	</div>	
+
+</body>
+</html>

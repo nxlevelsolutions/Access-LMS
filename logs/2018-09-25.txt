@@ -1,0 +1,534 @@
+09:50:08AM;0;Information;A session has ended.
+09:50:08AM;0;Information;A session has ended.
+09:50:10AM;0;Information;User: 122 logged in.
+09:50:10AM;0;Information;A session has ended.
+09:50:14AM;0;Information;User 122 launched course:4
+09:50:47AM;0;Information;User Id=0's session has ended.
+09:50:47AM;0;Information;LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Web.Util.WorkItem.OnQueueUserWorkItemCompletion(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+09:50:54AM;0;Information;User 122 launched course:4
+09:51:25AM;0;Information;User 122 launched course:4
+09:53:02AM;0;Information;A session has ended.
+09:53:02AM;0;Information;LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Web.Util.WorkItem.OnQueueUserWorkItemCompletion(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+09:53:09AM;0;Information;User 122 launched course:4
+09:54:02AM;0;Information;User 122 launched course:4
+09:55:03AM;0;Information;A session has ended.
+09:55:03AM;0;Information;LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Web.Util.WorkItem.OnQueueUserWorkItemCompletion(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+09:55:09AM;0;Information;User 122 launched course:4
+09:55:29AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+09:55:29AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+09:55:29AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+09:55:30AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+09:55:40AM;0;Information;User 122 launched course:4
+09:55:42AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+09:55:42AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+09:55:42AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+09:55:42AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+09:57:05AM;0;Information;User 122 launched course:4
+09:57:05AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+09:57:05AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+09:57:05AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+09:57:05AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+09:57:29AM;0;Information;User 122 launched course:4
+09:57:35AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+09:57:35AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+09:57:35AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+09:57:35AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+09:59:49AM;0;Information;User 122 launched course:4
+09:59:49AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+09:59:49AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+09:59:49AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+09:59:49AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:00:02AM;0;Information;User 122 launched course:4
+10:00:02AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:00:02AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:00:02AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:00:02AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:00:23AM;0;Information;User 122 launched course:4
+10:00:38AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:00:38AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:00:38AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:00:38AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:02:24AM;0;Information;User 122 launched course:4
+10:02:28AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:02:28AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:02:28AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:02:28AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:05:59AM;0;Information;User 122 launched course:4
+10:06:24AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:06:24AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:06:24AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:06:24AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:07:04AM;0;Information;User 122 launched course:4
+10:07:04AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:07:04AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:07:04AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:07:04AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:07:19AM;0;Information;User 122 launched course:4
+10:07:19AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:07:19AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:07:19AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:07:19AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:16:27AM;0;Information;User 122 launched course:4
+10:16:27AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:16:27AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:16:27AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:16:28AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:16:40AM;0;Information;User 122 launched course:4
+10:16:40AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:16:40AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:16:40AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:16:40AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:17:17AM;0;Information;User 122 launched course:4
+10:17:17AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:17:17AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:17:17AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:17:18AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:18:34AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:18:34AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:18:34AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:18:34AM;0;Information;User 122 launched course:4
+10:18:34AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:18:34AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:18:34AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:18:35AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:18:35AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:19:07AM;0;Information;User 122 launched course:4
+10:19:07AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:19:07AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:19:07AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:19:07AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:22:33AM;0;Information;User 122 launched course:4
+10:22:33AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:22:33AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:22:33AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:22:33AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:27:28AM;0;Information;User 122 launched course:4
+10:27:28AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:27:28AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:27:28AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:27:28AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:31:26AM;0;Information;User 122 launched course:4
+10:31:26AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:31:26AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:31:26AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:31:26AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:31:38AM;0;Information;User 122 launched course:4
+10:31:38AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:31:38AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:31:38AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:31:39AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:34:49AM;0;Information;A session has ended.
+10:34:49AM;0;Information;LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Web.Util.WorkItem.OnQueueUserWorkItemCompletion(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+10:38:30AM;0;Information;User 122 launched course:4
+10:38:31AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:38:31AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:38:31AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:38:31AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:38:31AM;0;Information;User 122 launched course:4
+10:38:31AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:38:31AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:38:31AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:38:31AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:40:40AM;0;Information;A session has ended.
+10:40:40AM;0;Information;LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Web.Util.WorkItem.OnQueueUserWorkItemCompletion(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+10:40:53AM;0;Information;User 122 launched course:4
+10:40:54AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:40:54AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:40:54AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:40:54AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:40:54AM;0;Information;User 122 launched course:4
+10:40:54AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:40:54AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:40:54AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:40:55AM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+10:54:30AM;0;Information;A session has ended.
+10:54:30AM;0;Information;LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Web.Util.WorkItem.OnQueueUserWorkItemCompletion(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+10:54:50AM;0;Information;User: 122 logged in.
+10:54:53AM;0;Information;User 122 launched course:4
+10:55:46AM;0;Information;User 122 launched course:4
+11:16:36AM;0;Information;User Id=0's session has ended.
+11:16:36AM;0;Information;LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Web.Util.WorkItem.OnQueueUserWorkItemCompletion(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+11:41:00AM;0;Information;A session has ended.
+11:41:02AM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+11:55:08AM;0;Information;User: 122 logged in.
+11:55:11AM;0;Information;User 122 launched course:4
+11:58:19AM;0;Information;User 122 launched course:4
+12:18:37PM;0;Information;User Id=0's session has ended.
+12:18:37PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+12:42:06PM;0;Information;User 122 launched course:4
+12:42:07PM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+12:42:07PM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+12:42:07PM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+12:42:07PM;0;Error;User:UNKNOWN SESSION called GET_COURSE_STATS function
+01:01:30PM;0;Information;A session has ended.
+01:01:30PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Web.Util.WorkItem.OnQueueUserWorkItemCompletion(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+01:46:48PM;0;Information;User: 122 logged in.
+01:46:53PM;0;Information;User 122 launched course:4
+01:48:12PM;0;Information;score:0 course id:4 userId:122
+01:51:57PM;0;Information;score:0 course id:4 userId:122
+01:51:58PM;0;Error;Application error:The 'maxScore' property on 'Course_InfoGet_Result' could not be set to a 'System.Decimal' value. You must set this property to a non-null value of type 'System.Int32'. Source:EntityFrameworkStack Trace:   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   at lambda_method(Closure , Shaper )
+   at System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at NXLevel.LMS.Admin.lms_message.Page_Load(Object sender, EventArgs e) in C:\Projects\LMS\Admin\lms_message.aspx.cs:line 50
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+01:51:58PM;0;Error;Application error:The 'maxScore' property on 'Course_InfoGet_Result' could not be set to a 'System.Decimal' value. You must set this property to a non-null value of type 'System.Int32'. Source:EntityFrameworkStack Trace:   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   at lambda_method(Closure , Shaper )
+   at System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at NXLevel.LMS.Admin.lms_message.Page_Load(Object sender, EventArgs e) in C:\Projects\LMS\Admin\lms_message.aspx.cs:line 50
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+01:55:37PM;0;Error;Application error:The 'maxScore' property on 'Course_InfoGet_Result' could not be set to a 'System.Decimal' value. You must set this property to a non-null value of type 'System.Int32'. Source:EntityFrameworkStack Trace:   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   at lambda_method(Closure , Shaper )
+   at System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at NXLevel.LMS.Admin.lms_message.Page_Load(Object sender, EventArgs e) in C:\Projects\LMS\Admin\lms_message.aspx.cs:line 50
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+01:55:47PM;0;Error;Application error:The 'maxScore' property on 'Course_InfoGet_Result' could not be set to a 'System.Decimal' value. You must set this property to a non-null value of type 'System.Int32'. Source:EntityFrameworkStack Trace:   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   at lambda_method(Closure , Shaper )
+   at System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at NXLevel.LMS.Admin.lms_message.Page_Load(Object sender, EventArgs e) in C:\Projects\LMS\Admin\lms_message.aspx.cs:line 50
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+01:55:50PM;0;Error;Application error:The 'maxScore' property on 'Course_InfoGet_Result' could not be set to a 'System.Decimal' value. You must set this property to a non-null value of type 'System.Int32'. Source:EntityFrameworkStack Trace:   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   at lambda_method(Closure , Shaper )
+   at System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at NXLevel.LMS.Admin.lms_message.Page_Load(Object sender, EventArgs e) in C:\Projects\LMS\Admin\lms_message.aspx.cs:line 50
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+01:55:51PM;0;Error;Application error:The 'maxScore' property on 'Course_InfoGet_Result' could not be set to a 'System.Decimal' value. You must set this property to a non-null value of type 'System.Int32'. Source:EntityFrameworkStack Trace:   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   at lambda_method(Closure , Shaper )
+   at System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at NXLevel.LMS.Admin.lms_message.Page_Load(Object sender, EventArgs e) in C:\Projects\LMS\Admin\lms_message.aspx.cs:line 50
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+01:55:57PM;0;Error;Application error:The 'maxScore' property on 'Course_InfoGet_Result' could not be set to a 'System.Decimal' value. You must set this property to a non-null value of type 'System.Int32'. Source:EntityFrameworkStack Trace:   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   at lambda_method(Closure , Shaper )
+   at System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at NXLevel.LMS.Admin.lms_message.Page_Load(Object sender, EventArgs e) in C:\Projects\LMS\Admin\lms_message.aspx.cs:line 50
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+01:56:05PM;0;Error;Application error:The 'maxScore' property on 'Course_InfoGet_Result' could not be set to a 'System.Decimal' value. You must set this property to a non-null value of type 'System.Int32'. Source:EntityFrameworkStack Trace:   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   at lambda_method(Closure , Shaper )
+   at System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at NXLevel.LMS.Admin.lms_message.Page_Load(Object sender, EventArgs e) in C:\Projects\LMS\Admin\lms_message.aspx.cs:line 50
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+01:58:40PM;0;Information;User Id=0's session has ended.
+01:58:40PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Web.Util.WorkItem.OnQueueUserWorkItemCompletion(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+01:58:53PM;0;Information;User: 122 logged in.
+01:59:13PM;0;Information;User 122 launched course:4
+01:59:25PM;0;Information;score:100 course id:4 userId:122
+02:05:53PM;0;Information;User 122 launched course:4
+02:14:28PM;0;Information;User 122 launched course:4
+02:15:04PM;0;Information;User 122 launched course:4
+02:15:22PM;0;Information;score:100 course id:4 userId:122
+02:19:16PM;0;Information;User 122 launched course:1
+02:19:23PM;0;Information;User 122 launched course:1
+02:19:57PM;0;Information;User 122 launched course:2
+02:20:02PM;0;Information;User 122 launched course:3
+02:20:05PM;0;Information;User 122 launched course:1
+02:25:32PM;0;Error;Application error:The file '/lms/aicc.aspx' does not exist.Source:System.WebStack Trace:   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+02:44:40PM;0;Information;User Id=0's session has ended.
+02:46:22PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+05:21:00PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Web.Util.WorkItem.OnQueueUserWorkItemCompletion(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+

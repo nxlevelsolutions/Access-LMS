@@ -1,0 +1,280 @@
+10:05:31AM;0;Information;User: 122 logged in.
+10:05:36AM;0;pager page load
+10:05:41AM;0;pager page load
+10:05:41AM;0;ddl index
+10:07:42AM;0;Information;User: 122 logged in.
+10:07:46AM;0;user page load 10
+10:07:46AM;0;pager page load
+10:08:17AM;0;user page load 10
+10:08:17AM;0;pager page load
+10:08:17AM;0;ddl index
+10:26:37AM;0;Information;User: 122 logged in.
+10:26:40AM;0;user page load 10
+10:26:40AM;0;pager page load
+10:50:46AM;0;Information;User: 122 logged in.
+10:50:49AM;0;user page load 10
+10:50:50AM;0;pager page load
+10:51:39AM;0;user page load 10
+10:51:39AM;0;pager page load
+10:51:41AM;0;user page load 10
+10:51:41AM;0;pager page load
+10:52:29AM;0;Information;User: 122 logged in.
+10:52:33AM;0;user page load 10
+10:52:33AM;0;pager page load
+10:53:35AM;0;Information;User: 122 logged in.
+10:53:38AM;0;user page load 10
+10:53:38AM;0;pager page load
+10:53:44AM;0;user page load 10
+10:53:44AM;0;pager page load
+12:50:22PM;0;Information;User: 122 logged in.
+12:50:29PM;0;user page load 10
+12:50:29PM;0;pager page load
+12:50:37PM;0;user page load 10
+12:50:37PM;0;pager page load
+12:50:37PM;0;ddl index
+12:51:07PM;0;user page load 50
+12:51:07PM;0;pager page load
+12:51:07PM;0;ddl index
+01:04:37PM;0;user page load 10
+01:04:37PM;0;pager page load
+01:04:37PM;0;ddl index
+01:19:01PM;0;Information;User: 122 logged in.
+01:19:05PM;0;pager INIT
+01:19:05PM;0;user page load 10
+01:19:05PM;0;pager page load
+01:19:17PM;0;pager INIT
+01:19:17PM;0;user page load 10
+01:19:17PM;0;pager page load
+01:19:17PM;0;ddl index
+01:20:27PM;0;Information;User: 122 logged in.
+01:20:32PM;0;pager INIT
+01:20:32PM;0;user page load 10
+01:20:32PM;0;pager page load
+01:20:46PM;0;pager INIT
+01:20:46PM;0;user page load 10
+01:20:46PM;0;pager page load
+01:20:46PM;0;ddl index
+01:21:30PM;0;Information;User: 122 logged in.
+01:21:36PM;0;pager INIT
+01:21:36PM;0;user page load 10
+01:21:36PM;0;pager page load
+01:22:25PM;0;pager INIT
+01:22:25PM;0;user page load 10
+01:22:25PM;0;pager page load
+01:22:25PM;0;ddl index
+01:24:48PM;0;Information;User: 122 logged in.
+01:26:09PM;0;pager INIT
+01:26:09PM;0;user page load 10
+01:26:09PM;0;pager page load
+01:26:25PM;0;pager INIT
+01:26:25PM;0;user page load 10
+01:26:25PM;0;pager page load
+01:26:25PM;0;ddl index
+01:29:37PM;0;Information;User: 122 logged in.
+01:29:45PM;0;pager INIT 10
+01:29:45PM;0;user page load 10
+01:29:45PM;0;pager page load
+01:31:02PM;0;pager INIT 50
+01:31:02PM;0;user page load 10
+01:31:02PM;0;pager page load
+01:31:02PM;0;ddl index
+01:33:01PM;0;Information;User: 122 logged in.
+01:33:09PM;0;pager INIT 10
+01:33:09PM;0;user page load 10
+01:33:09PM;0;pager page load
+01:33:24PM;0;pager INIT 50
+01:33:24PM;0;user page load 10
+01:33:24PM;0;pager page load
+01:33:24PM;0;ddl index
+01:34:40PM;0;Information;User: 122 logged in.
+01:34:56PM;0;pager INIT 1
+01:34:56PM;0;user page load 10
+01:34:56PM;0;pager page load
+01:36:56PM;0;pager INIT 50
+01:36:56PM;0;user page load 50
+01:36:56PM;0;pager page load
+01:36:56PM;0;ddl index
+01:40:07PM;0;Information;User: 122 logged in.
+01:40:11PM;0;pager INIT 10
+01:40:11PM;0;user page load 10
+01:40:11PM;0;pager page load
+01:40:13PM;0;pager INIT 10
+01:40:13PM;0;user page load 10
+01:40:13PM;0;pager page load
+01:40:18PM;0;pager INIT 10
+01:40:18PM;0;user page load 10
+01:40:18PM;0;pager page load
+01:40:22PM;0;pager INIT 10
+01:40:22PM;0;user page load 10
+01:40:22PM;0;pager page load
+01:40:24PM;0;pager INIT 10
+01:40:24PM;0;user page load 10
+01:40:24PM;0;pager page load
+01:40:26PM;0;pager INIT 10
+01:40:26PM;0;user page load 10
+01:40:26PM;0;pager page load
+01:40:47PM;0;Information;User: 122 logged in.
+01:40:51PM;0;pager INIT 10
+01:40:51PM;0;user page load 10
+01:40:51PM;0;pager page load
+01:40:53PM;0;pager INIT 10
+01:40:53PM;0;user page load 10
+01:40:53PM;0;pager page load
+01:40:55PM;0;pager INIT 10
+01:40:55PM;0;user page load 10
+01:40:55PM;0;pager page load
+01:41:00PM;0;pager INIT 50
+01:41:00PM;0;user page load 50
+01:41:00PM;0;pager page load
+01:41:00PM;0;ddl index
+01:41:04PM;0;pager INIT 50
+01:41:04PM;0;user page load 50
+01:41:04PM;0;pager page load
+01:41:05PM;0;pager INIT 50
+01:41:05PM;0;user page load 50
+01:41:05PM;0;pager page load
+01:43:07PM;0;Information;User: 122 logged in.
+01:43:10PM;0;pager INIT 10
+01:43:10PM;0;user page load 10
+01:43:10PM;0;pager page load
+01:43:13PM;0;pager INIT 10
+01:43:13PM;0;user page load 10
+01:43:13PM;0;pager page load
+01:43:17PM;0;pager INIT 50
+01:43:17PM;0;user page load 50
+01:43:17PM;0;pager page load
+01:43:17PM;0;ddl index
+01:44:29PM;0;Information;User: 122 logged in.
+01:44:33PM;0;pager INIT 10
+01:44:33PM;0;user page load size=10 index=0
+01:44:33PM;0;pager page load
+01:46:58PM;0;Information;User: 122 logged in.
+01:47:01PM;0;pager INIT 10
+01:47:43PM;0;user page load size=10 index=1
+01:47:48PM;0;pager page load
+01:47:56PM;0;pager INIT 10
+01:47:56PM;0;user page load size=10 index=1
+01:47:56PM;0;pager page load
+01:47:59PM;0;pager INIT 10
+01:47:59PM;0;user page load size=10 index=2
+01:47:59PM;0;pager page load
+01:48:00PM;0;pager INIT 10
+01:48:00PM;0;user page load size=10 index=3
+01:48:00PM;0;pager page load
+01:48:04PM;0;pager INIT 10
+01:48:04PM;0;user page load size=10 index=2
+01:48:05PM;0;pager page load
+01:48:06PM;0;pager INIT 10
+01:48:06PM;0;user page load size=10 index=3
+01:48:07PM;0;pager page load
+01:48:08PM;0;pager INIT 10
+01:48:08PM;0;user page load size=10 index=1
+01:48:08PM;0;pager page load
+01:48:11PM;0;pager INIT 10
+01:48:11PM;0;user page load size=10 index=2
+01:48:11PM;0;pager page load
+01:48:13PM;0;pager INIT 10
+01:48:13PM;0;user page load size=10 index=1
+01:48:13PM;0;pager page load
+01:48:14PM;0;pager INIT 10
+01:48:14PM;0;user page load size=10 index=4
+01:48:14PM;0;pager page load
+01:48:16PM;0;pager INIT 10
+01:48:16PM;0;user page load size=10 index=5
+01:48:16PM;0;pager page load
+01:48:21PM;0;pager INIT 50
+01:48:21PM;0;user page load size=50 index=6
+01:48:21PM;0;pager page load
+01:48:21PM;0;ddl index
+01:48:26PM;0;pager INIT 50
+01:48:26PM;0;user page load size=50 index=1
+01:48:26PM;0;pager page load
+01:48:46PM;0;pager INIT 25
+01:48:46PM;0;user page load size=25 index=1
+01:48:46PM;0;pager page load
+01:48:46PM;0;ddl index
+01:49:06PM;0;pager INIT 25
+01:49:06PM;0;user page load size=25 index=1
+01:49:06PM;0;pager page load
+01:49:10PM;0;pager INIT 25
+01:49:10PM;0;user page load size=25 index=2
+01:49:10PM;0;pager page load
+01:50:10PM;0;pager INIT 25
+01:50:10PM;0;user page load size=25 index=1
+01:50:10PM;0;pager page load
+01:50:51PM;0;pager INIT 25
+01:50:51PM;0;user page load size=25 index=2
+01:50:51PM;0;pager page load
+01:51:26PM;0;pager INIT 25
+01:51:26PM;0;user page load size=25 index=1
+01:51:26PM;0;pager page load
+01:51:26PM;0;link click on 2
+01:52:58PM;0;pager INIT 25
+01:52:58PM;0;user page load size=25 index=2
+01:52:58PM;0;pager page load
+01:52:58PM;0;link click on 1
+01:54:09PM;0;pager INIT 25
+01:54:09PM;0;user page load size=25 index=1
+01:54:09PM;0;pager page load
+01:54:09PM;0;link click on 2
+01:54:25PM;0;pager INIT 25
+01:54:25PM;0;user page load size=25 index=2
+01:54:25PM;0;pager page load
+01:54:25PM;0;link click on 1
+02:14:38PM;0;Information;User Id=0's session has ended.
+02:59:02PM;0;pager INIT 25
+04:05:45PM;0;Information;User: 122 logged in.
+04:05:50PM;0;pager INIT 10
+04:05:50PM;0;user page load size=10 index=1
+04:05:50PM;0;hplPageUrl INIT 1
+04:05:50PM;0;hplPageUrl INIT 1
+04:05:50PM;0;hplPageUrl INIT 1
+04:05:50PM;0;hplPageUrl INIT 1
+04:05:50PM;0;hplPageUrl INIT 1
+04:05:50PM;0;hplPageUrl INIT 1
+04:05:50PM;0;pager page load
+04:06:09PM;0;pager INIT 10
+04:06:09PM;0;hplPageUrl INIT 1
+04:06:09PM;0;hplPageUrl INIT 1
+04:06:09PM;0;hplPageUrl INIT 1
+04:06:09PM;0;hplPageUrl INIT 1
+04:06:09PM;0;hplPageUrl INIT 1
+04:06:09PM;0;hplPageUrl INIT 1
+04:06:09PM;0;user page load size=10 index=1
+04:06:09PM;0;hplPageUrl INIT 1
+04:06:09PM;0;hplPageUrl INIT 1
+04:06:09PM;0;hplPageUrl INIT 1
+04:06:09PM;0;hplPageUrl INIT 1
+04:06:09PM;0;hplPageUrl INIT 1
+04:06:09PM;0;hplPageUrl INIT 1
+04:06:09PM;0;pager page load
+04:06:46PM;0;link click on 2
+04:06:46PM;0;hplPageUrl INIT 2
+04:06:46PM;0;hplPageUrl INIT 2
+04:06:46PM;0;hplPageUrl INIT 2
+04:06:46PM;0;hplPageUrl INIT 2
+04:06:46PM;0;hplPageUrl INIT 2
+04:06:46PM;0;hplPageUrl INIT 2
+04:06:56PM;0;pager INIT 10
+04:06:56PM;0;hplPageUrl INIT 2
+04:06:56PM;0;hplPageUrl INIT 2
+04:06:56PM;0;hplPageUrl INIT 2
+04:06:56PM;0;hplPageUrl INIT 2
+04:06:56PM;0;hplPageUrl INIT 2
+04:06:56PM;0;hplPageUrl INIT 2
+04:06:56PM;0;user page load size=10 index=2
+04:06:56PM;0;hplPageUrl INIT 2
+04:06:56PM;0;hplPageUrl INIT 2
+04:06:56PM;0;hplPageUrl INIT 2
+04:06:56PM;0;hplPageUrl INIT 2
+04:06:56PM;0;hplPageUrl INIT 2
+04:06:56PM;0;hplPageUrl INIT 2
+04:06:56PM;0;pager page load
+04:07:02PM;0;link click on 1
+04:07:02PM;0;hplPageUrl INIT 1
+04:07:02PM;0;hplPageUrl INIT 1
+04:07:02PM;0;hplPageUrl INIT 1
+04:07:02PM;0;hplPageUrl INIT 1
+04:07:02PM;0;hplPageUrl INIT 1
+04:07:02PM;0;hplPageUrl INIT 1
+04:27:06PM;0;Information;User Id=0's session has ended.

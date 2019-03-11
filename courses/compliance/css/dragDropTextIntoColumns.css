@@ -1,0 +1,107 @@
+
+#instructions {
+    margin-bottom:10px;
+    overflow: auto;
+}
+#content {
+	Xheight:50%;
+}
+#exercise-content {
+	height:100%;
+    Xoverflow:hidden;
+    position:relative;
+    width:100%;
+	padding-bottom: 2px;
+}
+
+#actions {
+    display:none;
+    clear:both;
+	margin:10px 0;	
+}
+
+#feedback {
+    display:none;
+}
+#feedback h4 {
+	color:#f26822;
+}
+#revealBtn {
+	display:none;
+	/*position:absolute;
+	left:35px;
+	top:0;*/
+	z-index:1;
+}
+
+.column {
+	border-top:1px solid #eeeeee;
+    border-right:1px solid #eeeeee;
+    border-bottom:1px solid #eeeeee;
+	border-radius:10px;
+    float:left;
+    height:100%;
+}
+
+.first {
+    border:1px solid #eeeeee;
+}
+
+#exercise-content div.header {
+    border-bottom:1px solid #eeeeee;
+    min-height:30px;
+    text-align:center;
+	border-top-right-radius:10px;
+	border-top-left-radius:10px;
+    color:#464545;
+    font-weight:bolder;
+    padding-top: 5px;
+}
+
+.item {
+    padding:5px;
+}
+
+.item p {
+    margin:0;
+    padding:3px 0 0 25px;
+}
+
+.icon {
+    float:left;
+    width:20px;
+    height:100%;
+}
+
+.icon span {
+    display:block;
+    background:transparent url(../interface/grip.png) no-repeat 0 0;
+    width:20px;
+    height:20px;
+}
+
+.correct span {
+    background:transparent url(../interface/knowledge_check_sprite.png) no-repeat left -20px;
+}
+
+.incorrect span {
+    background:transparent url(../interface/knowledge_check_sprite.png) no-repeat left 5px;
+}
+
+.drag {
+    cursor:pointer;
+    position:absolute;
+}
+
+.target {
+    /*min-height:275px;*/
+	height:90%;
+}
+
+.dragging-background {
+    background:rgba(255,255,255,0.5);
+}
+
+.dropped-background {
+    background:none;
+}

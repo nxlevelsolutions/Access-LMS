@@ -25,7 +25,13 @@
                 <asp:Label ID="lblRequestPassword" runat="server" Text="Please enter your Email Address. We will email you your password." />
             </p>
                      
-            <asp:TextBox name="Email" size="19" ID="txtEmail" runat="server" placeholder="Email address" CssClass="form-control"></asp:TextBox><br />
+            <asp:TextBox name="Email" size="19" ID="txtEmail" runat="server" placeholder="Email address" CssClass="form-control" ClientIDMode="Static"></asp:TextBox><br />
+
+            <!--company code-->
+            <label for="CompanyCode">Please enter your company code.</label>
+            <asp:TextBox name="CompanyCode" size="19" ID="CompanyCode" runat="server" CssClass="form-control" placeholder="Company code" Text="nxlevel" required ClientIDMode="Static"></asp:TextBox>
+
+            <br />
             <asp:Button ID="btnRequestPasswordSubmit" runat="server" CssClass="btn btn-primary form-control" Text="Submit" OnClick="btnSubmit_Click" />
 
             <p>&nbsp;</p>

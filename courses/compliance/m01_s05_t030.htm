@@ -1,0 +1,78 @@
+﻿<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" type="text/css" href="css/page.css" />
+    <link rel="stylesheet" type="text/css" href="css/globals.css" /> 
+    <link rel="stylesheet" type="text/css" href="css/tooltips.css" /> 
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js" crossorigin="anonymous"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/jquery.resizableImageMap.js"></script>
+    <script src="js/hotSpots.js"></script>
+    <script src="js/effects.js"></script>
+    <script src="js/tooltips.js"></script>
+    <script src="js/subcourseCheck.js"></script>
+	<script type="text/javascript">
+		// used if chapter title is displayed above this template; SectionTitle may be used instead
+		parent.setChapterTitle("Layered Graphics"); 
+	 
+		parent.setPageTitle("<span>Layered Graphics:</span>&nbsp;TEST (template: hotspots_60)");		
+
+		$(document).ready(function () {
+			document.body.style["font-size"] = $(parent.document.body).css("font-size");
+		});	
+
+var pageLoaded = false,
+	hSpots;
+
+parent.HotSpotsFrame = this;
+
+function onAllowToNavigate(nav){ 
+	//required as per framework
+}
+
+function onUpdateUI(nav){ //required as per framework
+	document.location.href = parent.nav.getPage().url;
+}
+
+function setPageViewed(){ 
+	parent.HotSpotsFrame = undefined; //reset after we leave
+}
+function onPageLoaded() {
+    
+    pageLoaded = true;
+    if (parent.nav==undefined) return;
+	 
+    hSpots = new hotSpots("graphic", parent.nav.getPage().data);
+}
+
+// this funcion is called by the shell/parent in response to an unknown item being closed
+function showCheck() {
+    hSpots.showCheckmark();
+}		
+	</script>
+</head>
+<!-- hotSpots_60.htm template -->
+<body onload="onPageLoaded();" onunload="setPageViewed();">
+	<div class="txtArea txtBlock40">
+		<style>
+div.checkmark {
+    margin: -11px 0 0 -83px;
+}
+</style>
+
+<P>Thus far we've seen popups and subscreens launched from green text links. There are, however, two other methods of launching popups and subscreens: hotspots and buttons. We'll examine buttons on the next page.</p>
+
+<p>A hotspot is a clearly marked area of a graphic which is selectable by the learner. Typically, the learner is instructed to select the label or labels:</p>
+
+<p><i>Select the labels shown in the graphic to open a popup, a subscreen, and a PDF.</i></p>
+
+<p>As mentioned previously, checkmarks are optional, as is the requirement that hotspot links be clicked before allowing the learner to move to the next screen. More on this later.</p>
+<p><i>105 words; 616 characters</i></p>
+	</div>
+	<div class="imgArea imgBlock60">
+		<img id="graphic" src="images/m01_s05_t03.jpg"/>
+	</div>
+</body>
+</html>

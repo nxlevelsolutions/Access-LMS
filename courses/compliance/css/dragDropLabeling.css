@@ -1,0 +1,137 @@
+ 
+#targets {
+    background-size: contain;
+}
+
+#left-column h4 {
+    position: absolute;
+    top:-25px;
+    font-size:125%;
+    color:#f26822;
+    margin:0 0 8px 0;
+    padding:0;
+}
+#left-column {
+    float:left;
+    position:relative;
+    /*max-width:250px;*/
+    width:20%;
+    margin-top: 25px;
+}
+#right-column {
+    float:left;
+    position:relative;
+    width:80%;
+    margin-top: 25px;
+}
+#labels-container {
+    padding-top:5%;
+}
+#instructions {
+    overflow: auto;
+}
+#feedback {
+	display:none;
+	position:relative;
+	margin-top:30px;
+}
+#feedbackText {
+    z-index:3;
+	padding-right:10px;
+}
+#feedback h4 {
+	color:F26822;
+}
+#feedbackText p:first-child { 
+    margin-top: 0; 
+}
+#actions {
+    position:absolute;
+    z-index:1;
+    bottom:40px;
+    /*right:0;*/
+}
+#revealBtn {
+    display:none;
+}
+#tryAgainBtn {
+    display:none;
+}
+div.draggable {
+	cursor:pointer;
+	font-weight:bold;
+	/*font-size:14px;*/
+	line-height:100%;
+	padding-bottom: 8%;
+	padding-right:5px;
+	/*** Images may need to float left ***/
+	/*float:left;*/
+	z-index:2;
+}
+div.dragging {
+    z-index:3;
+}
+div.dropped {
+	text-align: center;
+    z-index:2;
+}
+div.icon {
+    display:inline-block;
+    height:20px;
+    visibility:hidden;
+    width:20px;
+}
+div.target {
+    position:absolute;
+    background-color:transparent;
+    background-repeat:no-repeat;
+    /*border: solid 1px gray;*/
+}
+div.target.correct, span.correct {
+    background-image: url(../interface/knowledge_check_correct.png); 
+    background-position: 0px 0px;
+    background-repeat:no-repeat;
+}
+div.target.incorrect, span.incorrect {
+    background-image: url(../interface/knowledge_check_incorrect.png); 
+    background-position: 0px 0px;
+    background-repeat:no-repeat;
+}
+input.band-btn {
+    border: 1px solid #CCC;
+    color:#ffffff;
+    cursor:pointer;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: normal;
+	text-shadow:none;
+
+    outline:none;
+    padding: 5px 18px 6px;
+
+    -webkit-box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.2);
+	box-shadow: rgb(150,150,150) 0 0 4px;
+    
+    background: #cb7113;
+    background-image: 
+       -webkit-repeating-linear-gradient(90deg, 
+          rgba(203,113,19,1.0) 0px, 
+          rgba(203,113,19,1.0) 13px, 
+          rgba(225,125,21,1.0) 14px, 
+          rgba(225,125,21,1.0) 26px);
+
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb7113', endColorstr='#e17d15',GradientType=0 );
+    zoom: 1;
+}
+input[disabled] {
+    color:#dddddd;
+}
+
+/* default position of checkmark / X */
+.checkmark{
+    position: absolute;
+    width:30px;
+    height:30px;
+    left: -26px;
+    top: -15px;
+}

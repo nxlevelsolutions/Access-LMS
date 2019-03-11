@@ -1,0 +1,164 @@
+<HTML>
+<HEAD>
+<title>Course in Progress...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+.st {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+-->
+</style>
+<script language="javascript" src="js/jquery-1.7.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#prevLoc").keyup(function(event){
+		if(event.which == 13) openCourse();
+	});
+});
+</script>
+</HEAD>
+<BODY bgcolor="#F4F4F4">
+<script language="javascript">
+//window.moveTo (1024,0);
+var alive = true;    
+
+var winWidth = 1024; //width of course window
+var winHeight = 668; //height of course window
+function openCourse(){
+    var modWin = window.open("course_root.htm", "mod", "dependent,toolbar=no,status=no,menubar=no,scrollbars=no,resizable=yes,width=" + winWidth + ",height=" + winHeight);
+}
+
+function setStatus(str){
+	var box = document.getElementById("statusBox");
+	box.innerHTML += ("+ " + str + "<br>");
+}
+function ScormAPI(){ }
+ScormAPI.prototype.LMSInitialize = function (){
+	setStatus("LMSInitialize called");
+	return "true";
+}
+ScormAPI.prototype.LMSSetValue = function(key, value){
+	switch (key){
+	case "cmi.core.lesson_status":
+		document.getElementById("cStatus").value = value;
+		break;
+	case "cmi.core.lesson_location":
+		document.getElementById("prevLoc").value = value;	
+		break;
+	case "cmi.suspend_data":
+		document.getElementById("bookmark").value = value;	
+		break;
+	case "cmi.core.score.raw":
+		document.getElementById("lastScore").value = value;
+		break;
+	}
+	setStatus("key=" + key + " set to:\"" + value + "\"");
+	return "true";
+}
+ScormAPI.prototype.LMSGetValue = function(key){
+	setStatus("get value of key=" + key);
+	switch (key){
+	case "cmi.core.lesson_status":
+		ret = document.getElementById("cStatus").value;
+		break;
+	case "cmi.core.lesson_location":
+		ret = document.getElementById("prevLoc").value;	
+		break;
+	case "cmi.suspend_data":
+		ret = document.getElementById("bookmark").value;	
+		break;
+	case "cmi.core.student_name":
+		ret = document.getElementById("studentName").value;	
+		break;
+	case "cmi.core.lesson_mode":
+		ret = document.getElementById("lesson_mode").value;	
+		break;	
+	case "cmi.core.score.raw":
+		ret = document.getElementById("lastScore").value;	
+		break;	
+	default:
+		alert("Key \"" + key +"\" not implemented in start_scorm.");
+		ret = null;
+	}
+	
+	if (ret==null) ret = "";
+	setStatus("returned value=\"" + ret + "\"");
+	return ret;
+}
+ScormAPI.prototype.LMSCommit = function(){
+	setStatus("LMSCommit called");
+	return "true";
+}
+ScormAPI.prototype.LMSFinish = function(){
+	setStatus("LMSFinish called");
+	return "";
+}
+ScormAPI.prototype.LMSGetLastError = function(){
+	return "";
+}
+ScormAPI.prototype.LMSGetErrorString = function(code){
+	return "";
+}
+ScormAPI.prototype.LMSGetDiagnostic = function(){
+	return "";
+}
+var API = new ScormAPI();
+</script>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="400" border="0" align="center" cellpadding="8" cellspacing="1" bgcolor="#999999">
+  <tr>
+    <td align="center" bgcolor="#FFFFFF" class="st"> 
+	  <p><b><font color="#0000cd" face="Arial, Helvetica, sans-serif">SCORM communication test page </font></b></p>
+	  <p><b><font color="#FF0000">Use boxes below to set initial conditions </font></b></p>
+	  <form name="form1" method="post" action="">
+	  <table width="80%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="st">Student Name: </td>
+          <td><input name="studentName" type="text" class="st" id="studentName" style="width:180px;" value="John Doe"></td>
+        </tr>
+        <tr>
+          <td class="st">Previous Location: <br>
+            (cmi.core.lesson_location)</td>
+          <td>
+            <input name="prevLoc" type="text" class="st" id="prevLoc" style="width:180px;">          </td>
+        </tr>
+        <tr>
+          <td class="st">Previous Bookmark: <br>
+            (cmi.suspend_data)</td>
+          <td><textarea name="bookmark" rows="8" class="st" id="bookmark" style="width:180px;"></textarea></td>
+        </tr>
+        <tr>
+          <td class="st">Previous Status: <br>
+            (cmi.core.lesson_status)</td>
+          <td><input name="cStatus" type="text" class="st" id="cStatus" style="width:180px;" value="incomplete"></td>
+        </tr>
+        <tr>
+          <td class="st">Previous Score:<br>
+            (cmi.core.score.raw)</td>
+          <td><input name="lastScore" type="text" class="st" id="lastScore" style="width:180px;"></td>
+        </tr>
+        <tr>
+          <td class="st">Lesson Mode:<br>
+            (cmi.core.lesson_mode)</td>
+          <td><select class="st" name="lesson_mode" id="lesson_mode" style="width:180px;" >
+            <option value="browse">browse</option>
+            <option value="normal">normal</option>
+            <option value="review">review</option>
+          </select>          </td>
+        </tr>
+      </table>
+	  </form>
+	  <p><a href="#" onClick="javascript:openCourse()" ><font color="000000" size="2" face="Arial, Helvetica, sans-serif"><u>Click here to open course</u></font></a></p>
+	  <table width="360" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td><font size="2" face="Arial, Helvetica, sans-serif"><a name="statusBox" id="statusBox"></a></font></td>
+        </tr>
+    </table>	  </td>
+  </tr>
+</table>
+</BODY>
+</HTML>
+

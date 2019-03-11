@@ -1,0 +1,229 @@
+09:55:37AM;0;Information;User Id=0's session has ended.
+10:18:26AM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+11:31:20AM;0;Information;LMS application module shut down/restart.
+Shutdown Message=CONFIG change
+HostingEnvironment initiated shutdown
+CONFIG change
+CONFIG change
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.Configuration.HttpConfigurationSystem.OnConfigurationChanged(Object sender, InternalConfigEventArgs e)
+   at System.Configuration.Internal.InternalConfigRoot.OnConfigChanged(InternalConfigEventArgs e)
+   at System.Configuration.BaseConfigurationRecord.OnStreamChanged(String streamname)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Web.Util.WorkItem.OnQueueUserWorkItemCompletion(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+11:37:04AM;0;Information;A session has ended.
+11:37:04AM;0;Information;LMS application module shut down/restart.
+Shutdown Message=IIS configuration change
+HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+12:03:58PM;0;Information;User: 122 logged in.
+12:03:59PM;0;Pager Init Event: PageSize=10, PageIndex =1
+12:03:59PM;0;user page load size=10 index=1
+12:03:59PM;0;user page loading from db
+12:04:01PM;0;Pager Init Event: PageSize=10, PageIndex =1
+12:04:01PM;0;user page load size=10 index=1
+12:04:01PM;0;user page loading from db
+12:04:29PM;0;Pager Init Event: PageSize=10, PageIndex =1
+12:04:29PM;0;user page load size=10 index=1
+12:04:29PM;0;user page loading from db
+12:06:23PM;0;Pager Init Event: PageSize=10, PageIndex =1
+12:06:23PM;0;user page load size=10 index=1
+12:06:23PM;0;user page loading from db
+12:07:03PM;0;ok=xyz
+12:08:00PM;0;Information;User Id=0's session has ended.
+12:08:00PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=CONFIG change
+HostingEnvironment initiated shutdown
+CONFIG change
+CONFIG change
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.Configuration.HttpConfigurationSystem.OnConfigurationChanged(Object sender, InternalConfigEventArgs e)
+   at System.Configuration.Internal.InternalConfigRoot.OnConfigChanged(InternalConfigEventArgs e)
+   at System.Configuration.BaseConfigurationRecord.OnStreamChanged(String streamname)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Web.Util.WorkItem.OnQueueUserWorkItemCompletion(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+12:08:04PM;0;Pager Init Event: PageSize=10, PageIndex =1
+12:08:07PM;0;Information;User: 122 logged in.
+12:08:12PM;0;Pager Init Event: PageSize=10, PageIndex =1
+12:08:12PM;0;user page load size=10 index=1
+12:08:12PM;0;user page loading from db
+12:08:19PM;0;ok=xyz
+12:08:39PM;0;Information;User Id=0's session has ended.
+12:08:39PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=CONFIG change
+HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.Configuration.HttpConfigurationSystem.OnConfigurationChanged(Object sender, InternalConfigEventArgs e)
+   at System.Configuration.Internal.InternalConfigRoot.OnConfigChanged(InternalConfigEventArgs e)
+   at System.Configuration.BaseConfigurationRecord.OnStreamChanged(String streamname)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Web.Util.WorkItem.OnQueueUserWorkItemCompletion(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+02:29:41PM;0;Information;User: 122 logged in.
+02:29:41PM;0;Pager Init Event: PageSize=10, PageIndex =1
+02:29:41PM;0;user page load size=10 index=1
+02:29:41PM;0;user page loading from db
+02:31:33PM;0;Pager Init Event: PageSize=10, PageIndex =1
+02:31:33PM;0;user page load size=10 index=1
+02:31:33PM;0;user page loading from db
+02:31:33PM;0;ok=xyz
+02:36:21PM;0;Pager Init Event: PageSize=10, PageIndex =1
+02:36:21PM;0;user page load size=10 index=1
+02:36:21PM;0;user page loading from db
+02:36:21PM;0;ok=xyz
+02:39:48PM;0;ok=1,2,3,4
+02:41:40PM;0;ok=1,2,3,4
+02:41:48PM;0;Pager Init Event: PageSize=10, PageIndex =1
+02:41:48PM;0;user page load size=10 index=1
+02:41:48PM;0;user page loading from db
+02:41:51PM;0;ok=1,2,3,4
+02:42:42PM;0;Pager Init Event: PageSize=10, PageIndex =1
+02:42:42PM;0;user page load size=10 index=1
+02:42:42PM;0;user page loading from db
+02:42:44PM;0;ok=1,2,3,4
+02:42:59PM;0;Pager Init Event: PageSize=10, PageIndex =1
+02:42:59PM;0;user page load size=10 index=1
+02:42:59PM;0;user page loading from db
+02:43:03PM;0;ok=1,2,3,4
+02:43:36PM;0;Pager Init Event: PageSize=10, PageIndex =1
+02:43:36PM;0;user page load size=10 index=1
+02:43:36PM;0;user page loading from db
+02:43:40PM;0;ok=1,2,3,4
+02:44:09PM;0;Pager Init Event: PageSize=10, PageIndex =1
+02:44:09PM;0;user page load size=10 index=1
+02:44:09PM;0;user page loading from db
+02:44:11PM;0;ok=1,2,3,4
+02:44:34PM;0;Pager Init Event: PageSize=10, PageIndex =1
+02:44:34PM;0;user page load size=10 index=1
+02:44:34PM;0;user page loading from db
+02:44:36PM;0;ok=1,2,3,4
+02:44:43PM;0;ok=1,2,3,4
+02:46:03PM;0;Pager Init Event: PageSize=10, PageIndex =1
+02:46:03PM;0;user page load size=10 index=1
+02:46:03PM;0;user page loading from db
+02:46:07PM;0;ok=1,2,3,4
+02:46:13PM;0;ok=1,2,3,4
+02:52:41PM;0;Information;User Id=0's session has ended.
+02:52:41PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Web.Util.WorkItem.OnQueueUserWorkItemCompletion(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+05:08:31PM;0;Information;User: 122 logged in.
+05:08:32PM;0;Pager Init Event: PageSize=10, PageIndex =1
+05:08:32PM;0;user page load size=10 index=1
+05:08:32PM;0;user page loading from db
+05:09:06PM;0;Error;Application error:Value cannot be null.
+Parameter name: StringSource:mscorlibStack Trace:   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at NXLevel.LMS.Admin.UserCourses.Page_Load(Object sender, EventArgs e) in C:\Projects\LMS\Admin\UserCourses.aspx.cs:line 20
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+05:09:22PM;0;Pager Init Event: PageSize=10, PageIndex =1
+05:09:22PM;0;user page load size=10 index=1
+05:09:22PM;0;user page loading from db
+05:17:17PM;0;Information;User Id=0's session has ended.
+05:17:17PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment caused shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Web.Util.WorkItem.OnQueueUserWorkItemCompletion(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+

@@ -21,7 +21,9 @@ var Utils = {
         $.ajax({
             type: "POST",
             url: url,
-            data: formdata,
+            data: JSON.stringify(formdata),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
             async: useAsync,
             success: function (res) {
                 if (useAsync) {
@@ -82,17 +84,55 @@ var Utils = {
         }
     },
 
-    getQueryVariable: function(key) {
-        var query = window.location.search.substring(1),
-            vars = query.split('&');
-        for (var i = 0; i < vars.length; i++) {
+    getQueryVariable: function (key, url) {
+        var query,
+            i;
+        if (url) {
+            i = url.indexOf('?');
+            if (i > -1) {
+                query = url.substr(i + 1);
+            }
+            else {
+                query = url;
+            }
+        }
+        else {
+            query = window.location.search.substring(1);
+        }
+        var vars = query.split('&');
+        for (i = 0; i < vars.length; i++) {
             var pair = vars[i].split('=');
             if (decodeURIComponent(pair[0]).toLowerCase() == key.toLowerCase()) {
                 return decodeURIComponent(pair[1]);
             }
         }
-        Utils.log('Querystring key=' + key + ' not found');
         return undefined;
+    },
+
+    setQueryVariable: function (pairsObj) {
+        var query = window.location.search.substring(1),
+            vars = (query == "" ? []: query.split('&') ),
+            url = document.location.pathname + "?",
+            found,
+            value,
+            key;
+        for (key in pairsObj) {
+            value = pairsObj[key];
+            found = false;
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if (decodeURIComponent(pair[0]).toLowerCase() == key.toLowerCase()) {
+                    vars[i] = key + "=" + encodeURI(value);
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                vars.push(key + "=" + encodeURI(value));
+            }
+        }
+        url += vars.join("&");
+        return url;
     },
 
     GetValueByKey: function (obj, longkey) {
@@ -104,7 +144,82 @@ var Utils = {
             if (subObj === undefined) return undefined;
         }
         return subObj;
+    },
+
+    UploadFile: function (file, uploadUrl, optionsObj) {
+        var formData = new FormData();
+        formData.append('file', file);
+        //check allowed extensions
+        if (optionsObj.allowedExtensions) {
+            var exts = optionsObj.allowedExtensions.split(','),
+                found = false;
+            for (var i = 0; i < exts.length; i++) {
+                if ($.trim(exts[i].toLowerCase()) == file.name.substring(file.name.length - $.trim(exts[i]).length).toLowerCase()) {
+                    found = true;
+                }
+            }
+            if (!found) {
+                if (optionsObj.onError) {
+                    optionsObj.onError.call(this, "The selected file type is not allowed.", file);
+                }
+                return;
+            }
+        }
+
+        //add extra form data if needed
+        if (optionsObj.addFormData) {
+            for (var key in optionsObj.addFormData) {
+                formData.append(key, optionsObj.addFormData[key]);
+            }
+        }
+
+        //post file
+        $.ajax({
+            type: "POST",
+            url: uploadUrl,
+            data: formData,   
+            contentType: false,  
+            processData: false,
+            dataType: "json",
+            cache: false,
+
+            success: function (data) {
+                if (data.error) {
+                    if (optionsObj.onError) {
+                        optionsObj.onError.call(this, data.error, file, data);
+                    }
+                }
+                else {
+                    if (optionsObj.onSuccess) {
+                        optionsObj.onSuccess.call(this, "", file, data);
+                    }
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                if (optionsObj.onError) {
+                    optionsObj.onError.call(this, thrownError, file);
+                }
+            },
+            xhr: function () {
+                var myXhr = $.ajaxSettings.xhr();
+                if (myXhr.upload) {
+                    myXhr.upload.addEventListener("progress", function (e) {
+                        if (optionsObj.onProgress) {
+                            optionsObj.onProgress.call(this, e.loaded / e.total);
+                        }
+                    }, false);
+                }
+                return myXhr;
+            },
+            complete: function () {
+                //alert("complete");
+            }
+            
+        });
+
     }
+
+
 };
  
  

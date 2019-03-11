@@ -1,0 +1,522 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>
+        Flexible Framework Module Sample
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/globals.css" />
+    <link rel="stylesheet" href="css/tooltips.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <style>
+/*default extra small devices (portrait phones, less than 576px)*/
+body {
+        font-size: 70%;
+    }
+@media (min-width: 576px) { /* Small devices (landscape phones, 576px and up)*/
+    body {
+        font-size: 80%;
+    }
+}
+@media (min-width: 768px) { /* Medium devices (tablets, 768px and up)*/
+    body {
+        font-size: 90%;
+    }
+}
+@media (min-width: 992px) { /* Large devices (desktops, 992px and up)*/
+    body {
+        font-size: 100%;
+    }
+}
+@media (min-width: 1200px) { /* Extra large devices (large desktops, 1200px and up)*/
+    body {
+        font-size: 110%;
+    }
+}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js" integrity="sha384-lZmvU/TzxoIQIOD9yQDEpvxp6wEU32Fy0ckUgOH4EIlMOCdR823rg4+3gWRwnX1M" crossorigin="anonymous"></script>
+
+    <!--<script language="javascript" src="js/jquery-1.7.min.js"></script>
+    <script language="javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
+    -->
+    <script language="javascript" src="js/jquery.transit.min.js"></script>
+    <script language="javascript" src="js/utils.js"></script>
+    <script language="javascript" src="js/int_aicc.js"></script>
+    <script language="javascript" src="js/courseNavigator.js"></script>
+    <script language="javascript" src="js/tooltips.js"></script>
+    <script language="javascript">
+        var lastPageId,
+            lastScore,
+            studentName,
+            nav,
+            userSelectedAudio,
+            bookmark;
+
+        function setChapterTitle(title) {
+            $("#chapter-title").html(title);
+        }
+
+        function setPageTitle(title) {
+            $("#page-title").html(title);
+        }
+
+        function initialize() {
+
+            nav = new CourseNavigator("menu.xml", "settings.xml", function () {
+                // Register listeners
+                nav.register(frames["audio"]);
+                nav.register(frames["main"]);
+                nav.register(frames["pageIndicator"]);
+                nav.register(frames["backNext"]);
+                nav.register(frames["transcript"]);
+                nav.register(frames["transcriptButton"]);
+                nav.register(frames["subCourseRight"]);
+                //nav.register(frames["gallery"]);
+                nav.register(frames["logger"]);
+                //nav.register(frames["sideBar"]);
+                if (typeof (isAICC) != "undefined" && isAICC) {
+                    lms.ondataready = function (lastPageId, lastScore, studentName, bookmark, lessonStatus, studentID) {
+                        this.lastPageId = lastPageId;
+                        this.lastScore = lastScore;
+                        this.studentName = studentName;
+                        this.bookmark = bookmark;
+                        if (lastPageId == "" && Utilities.isiPad) {
+                            $("#pop-background").show();
+                            $("#ipadBegin").attr("src", "ipad_begin.htm").on("load", function () {
+                                $('#frameIPadBegin').fadeIn("slow");
+                            });
+                        }
+                        else {
+                            this.startCourse();
+                        }
+                    }
+                    lms.loadData();
+                } else {
+                    //use standard "scorm", "cookies" or "none" interfaces
+                    lastPageId = mm_getLocation();
+                    lastScore = mm_getLastScore();
+                    studentName = mm_getStudentName();
+                    bookmark = mm_getSuspendData();
+                    if (lastPageId == "" && Utilities.isiPad) {
+                        $("#pop-background").show();
+                        $("#ipadBegin").attr("src", "ipad_begin.htm").on("load", function () {
+                            $('#frameIPadBegin').fadeIn("slow");
+                        });
+                    } else {
+                        startCourse();
+                    }
+                }
+            });
+        }
+
+        function startCourse() {
+            // Load non-components and show splash/audio prompt
+            $("#footerText").html(nav.settings.copyright);
+            document.getElementById("glossary").src = "glossary.htm";
+            document.getElementById("references").src = "references.htm";
+            document.getElementById("resources").src = "resources.htm";
+            var labelExit = nav.settings.labelExit;
+            $("#exitBtn").attr("title", labelExit);
+            $("#exitBtn").html(labelExit);
+            if (lastPageId == "" && nav.settings.showSplash == true) {
+                $("#splash").attr("src", "splash.htm").on("load", function () {
+                    $('#frameSplash').fadeIn("slow");
+                    var win = window.frames['splash'].contentWindow || window.frames['splash'].window;
+                    win.focus(); //enable ESC key;
+                });
+            } else {
+                // Load bookmarks
+                nav.loadBookmarks(bookmark);
+                audioPrompt();
+            }
+        }
+
+        function closeResume() {
+            $('#pop-background').hide();
+            $('#frame-resume').fadeOut("fast");
+        }
+        function closeAudioPrompt() {
+            $('#frameAudioPrompt').fadeOut("fast");
+            if (lastPageId == "") {
+                $('#pop-background').hide();
+                gotoFirstpage();
+            } else {
+                //showResume();
+                checkResume();
+            }
+        }
+        function gotoFirstpage(useLastPageId) { // Called from resume window  
+            closeResume();
+            setTimeout(function () {
+                nav.gotoPage(useLastPageId ? lastPageId: null);
+            }, 500); //need to wait a bit for unlockIpadAudio to sink in  
+        }
+        function checkResume() {
+            if (lastPageId == "") {
+                $("#pop-background").hide();
+                gotoFirstpage();
+            } else {
+                $("#pop-background").show();
+                showResume();
+            }
+        }
+        function showResume() {
+            $("#resume").attr("src", "resume.htm").on("load", function () {
+                $('#frame-resume').fadeIn("slow");
+
+                var win = window.frames['resume'].contentWindow || window.frames['resume'].window;
+                win.focus(); //enable ESC key;
+            });
+        }
+        function audioPrompt() {
+            if (nav.settings.showAudioPlayer == true) {
+                if (nav.settings.showAudioOption == true) {
+                    // Show audio prompt
+                    $("#pop-background").show();
+                    $("#audioPrompt").attr("src", "audio_prompt.htm").on("load", function () {
+                        $('#frameAudioPrompt').fadeIn("slow");
+                    });
+                } else {
+                    /*$("#frameAudio").fadeIn("slow");
+                    $("#frameTranscriptButton").fadeIn("slow");*/
+                    useCourseAudio();
+                    checkResume();
+                }
+            } else {
+                /*$("#frameAudio").hide();
+                $("#frameTranscriptButton").hide();*/
+                // Use something as navigation delay timer
+                noCourseAudio();
+                checkResume();
+            }
+        }
+        function useCourseAudio() {
+            userSelectedAudio = true;
+            /*$("#frameAudio").fadeIn("slow");
+            $("#frameTranscriptButton").fadeIn("slow");*/
+            $("#frameTranscriptButton").show();
+            if (nav.settings.showAudioOption == true) {
+                closeAudioPrompt();
+                checkResume();
+            }
+        }
+        function noCourseAudio() {
+            userSelectedAudio = false;
+            $("#frameAudio").hide();
+            $("#frameTranscriptButton").hide();
+            if (nav.settings.showAudioOption == true) {
+                closeAudioPrompt();
+                checkResume();
+            }
+        }
+        function openSubCourse(url, onCompleteCallback) {
+            var sc = $('#frameSubCourse');
+            if (sc.is(':animated')) return;
+            frames["subCourse"].frames["subcontents"].document.location.href = "loading.htm";
+            //pause video
+            if (typeof (frames["main"].pauseVideo) == "function") {
+                frames["main"].pauseVideo(true);
+            }
+            nav.writeToLog("OpenSubCourse: loading " + url);
+            audioPause(); // Pause local audio
+            hidePop();
+            //slide in and load the subcourse
+            var origTop = parseInt(sc.css("top")),
+                winHeight = $(window).height();
+            if (Utilities.transitionsAvailable()) {
+                sc.transition({
+                    y: winHeight - origTop,
+                    duration: 0,
+                    complete: function () {
+                        sc.show();
+                        sc.transition({
+                            y: 0,
+                            easing: 'ease',
+                            duration: 700,
+                            complete: function () {
+                                frames["subCourse"].loadSubCourse(url, onCompleteCallback); // This must be done AFTER frame is visible because of a weird bug in flash
+                            }
+                        });
+                    }
+                });
+            } else {
+                var origHeight = sc.height();
+                sc.show();
+                sc.css("top", sc.offset().top + origHeight);
+                sc.animate({ top: sc.offset().top - origHeight }, 700, function () {
+                    frames["subCourse"].loadSubCourse(url, onCompleteCallback); // This must be done AFTER frame is visible because of a weird bug in flash
+                });
+            }
+        }
+        function hideSubCourse() {
+            var sc = $('#frameSubCourse');
+            if (!sc.is(':visible')) return;
+            //resume video
+            if (typeof (frames["main"].pauseVideo) == "function") {
+                frames["main"].pauseVideo(false);
+            }
+            updateHotSpots();
+            hidePop();
+            //slide out subcourse
+            var origTop = parseInt(sc.css("top")),
+                winHeight = $(window).height();
+            if (Utilities.transitionsAvailable()) {
+                sc.transition({
+                    y: winHeight - origTop,
+                    easing: 'ease',
+                    duration: 700,
+                    complete: function () {
+                        sc.hide();
+                        sc.transition({
+                            y: origTop,
+                            duration: 0
+                        });
+                        audioPlay();
+                    }
+                });
+            } else {
+                sc.stop().animate({ top: origTop + sc.height() }, 700, function () {
+                    sc.css("top", origTop);
+                    sc.hide();
+                    audioPlay();
+                });
+            }
+        }
+        function openSubCourseRight(url) {
+            updateHotSpots();
+            nav.writeToLog("OpenSubCourseRight: loading " + url);
+            //audioPause(); // Pause local audio
+            if (Utilities.isiPad) {// Must be done this way on ipad or audio will not start programmatically
+                frames["subCourseRight"].loadSubCourse(url);
+                $('#frameSubCourseRight').fadeIn("fast");
+            } else {
+                $('#frameSubCourseRight').fadeIn("fast", function () {
+                    frames["subCourseRight"].loadSubCourse(url); // This must be done AFTER frame is visible because of a weird bug in flash
+                });
+            }
+        }
+        function hideSubCourseRight() {
+            if ($('#frameSubCourseRight').is(":visible")) {
+                $("#toolTipDiv").hide();
+                $('#frameSubCourseRight').fadeOut("fast", function () {
+                    frames["subCourseRight"].frames["subcontents"].document.location.href = "loading.htm";
+                    audioPlay();
+                });
+            }
+        }
+        function toggleTranscript() {
+            frames["transcript"].toggleTranscript();
+        }
+        function unlockIpadAudio() {
+            //called by ipad_begin.htm
+            if (Utilities.isiPad) {
+                var audio = window.frames["audio"].document.getElementById("audioHtml5");
+                audio.load();
+                audio = window.frames["subCourse"].frames["subaudio"].document.getElementById("audioHtml5");
+                audio.load();
+            }
+        }
+        function accept() {// Called by splash button
+            $('#frameSplash').fadeOut("fast");
+            audioPrompt();
+        }
+        //**********************************************
+        //audio-related methods
+        //**********************************************
+        function addMediaEventListener(o) {
+            window.frames["audio"].addAudioEventListener(o);
+        }
+        function setMp3Controller(file) {
+            window.frames["audio"].playMP3File(file);
+        }
+        function audioPause() {
+            window.frames["audio"].audioPause();
+        }
+        function audioPlay() {
+            window.frames["audio"].audioPlay();
+        }
+        function pauseMedia() { // Finish functionality
+            if (typeof frames.main.pauseVideo === "function") frames.main.pauseVideo(true);
+        }
+        //**********************************************
+        // Call updateHotSpots to show check on HotSpots
+        //**********************************************
+        var HotSpotsFrame;
+        function updateHotSpots() {
+            if (HotSpotsFrame != undefined) {
+                HotSpotsFrame.showCheck();
+            }
+        }
+        var animated;
+        function slideContent(dir) {
+            if (animated === true) return;
+            hidePop();
+            animated = true;
+            if (Utilities.transitionsAvailable()) {
+                var dis = -dir * $(document).width();
+                $("#main-container").transition({
+                    x: dis,
+                    complete: function () {
+                        animated = false;
+                        if (window.frames["main"].document.body == null) return;
+                        window.frames["main"].document.body.innerHTML = "";
+                        this.css("transform", "");
+                        nav.gotoPage(this.data("dir"));
+                    }
+                }, 900, 'ease').data("dir", dir);
+            } else {
+                nav.gotoPage(dir);
+                animated = false;
+            }
+        }
+
+        /*
+        function slideContent(dir) {
+            hidePop();
+            var dis = -dir * $(document).width();
+            $("#frameContents").animate(
+                { left: dis, right: "+=" + dis },
+                900, "linear",
+                function () {
+                    if (window.frames["main"].document.body == null) return;
+                    window.frames["main"].document.body.innerHTML = "";
+                    nav.gotoPage($(this).data("dir"));
+                }
+            ).data("dir", dir);
+        }*/
+
+
+        // Navigation blocking
+        var _navigationEnabled = true;
+        function navigationEnabled(flag) {
+            if (flag == undefined) {
+                return _navigationEnabled;
+            }
+            if (flag) {
+                $(frames['backNext'].backButton).show();
+                $(frames['backNext'].backLabel).show();
+            } else {
+                $(frames['backNext'].backButton).hide();
+                $(frames['backNext'].backLabel).hide();
+            }
+            _navigationEnabled = flag;
+        }
+        function hideAllNnavigation() {
+            $(frames['backNext'].backButton).hide();
+            $(frames['backNext'].backLabel).hide();
+            $(frames['backNext'].nextButton).hide();
+            $(frames['backNext'].nextLabel).hide();
+            $(frames['pageIndicator'].pageIndicator).hide();
+        }
+        function showAllNnavigation() {
+            $(frames['backNext'].backButton).show();
+            $(frames['backNext'].backLabel).show();
+            $(frames['backNext'].nextButton).show();
+            $(frames['backNext'].nextLabel).show();
+            $(frames['pageIndicator'].pageIndicator).show();
+        }
+
+        //-- audio reminder --
+        function showAudioReminder() {
+            $("#popBackground").show();
+            $("#audioReminder").attr("src", "audioReminder.htm").load(function () {
+                $('#frame-audioreminder').fadeIn("slow");
+                window.frames['audioReminder'].contentWindow.focus(); //enable ESC key;
+            });
+        }
+        function closeAudioReminder() {
+            $('#popBackground').hide();
+            $('#frame-audioreminder').fadeOut("fast");
+        }//-------------------
+
+        //*************************************
+        //******* iPad Landscape Only *********
+        //*************************************
+        // Add to <body> - onorientationchange="javascript:checkOrientation();"
+        // Add to startCourse() - checkOrientation();
+        function checkOrientation() {
+            var popBkgdVis = $("#pop-background").css("display", "none") ? false : true;
+            if (window.orientation == 0 || window.orientation == 180) {
+                if (!popBkgdVis) $("#pop-background").show();
+                $("#frameIPadPortrait").show();
+            } else {
+                $("#frameIPadPortrait").hide();
+                if (!popBkgdVis) $("#pop-background").hide();
+            };
+        }
+
+        $(window).on("load", function () {
+            $('#navbarCollapse div').load('course_menu.htm'); //load course menu
+        });
+        $(window).on("load resize", function () {
+            $('#main').height($('#menu').offset().top - $('#main').offset().top); //ugh
+            var gSize = $(document.body).css('font-size');
+            frames['main'].window.document.body.style["font-size"] = gSize;
+            if (frames['resume'].window)
+                frames['resume'].window.document.body.style["font-size"] = gSize;
+        });
+
+    </script>
+</head>
+<body style="overflow:hidden; background-image:url(interface/waitanimation.gif); background-repeat:no-repeat; background-position:center;" onunload="javascript:mm_LMSFinish()" onload="javascript:initialize()">
+
+    <div id="header">
+        <img id="logo" src="interface/topLogo.png">
+        <div id="course-title">Flexible Framework Module Sample</div>
+        <div id="chapter-title"></div>
+        <div id="page-title"></div>
+    </div>
+    <div id="main-container" class="content-margin">
+        <iframe src="loading.htm" frameborder="0" id="main" name="main" width="100%" height="100%" allowtransparency="true"></iframe>
+    </div>
+
+    <!-- fixed navbar -->
+    <nav id="menu" class="navbar navbar-expand-md navbar-dark fixed-bottom bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <!-- course menu gets dynamically added here -->
+            </div>
+        </div>
+
+        <div id="frame-transcript-button"><iframe id="transcriptButton" name="transcriptButton" allowtransparency="true" src="transcript_button.htm" frameborder="0" width="100%" height="100%" scrolling="no"></iframe></div>
+        <div id="frame-audio"><iframe id="audio" name="audio" src="audio.htm" frameborder="0" width="100%" height="100%" scrolling="no" allowtransparency="true"></iframe></div>
+        <div id="frame-page-indicator"><iframe id="pageIndicator" name="pageIndicator" src="page_indicator.htm" frameborder="0" scrolling="no" width="100%" height="100%" allowtransparency="true"></iframe></div>
+        <div id="frame-back-next"><iframe id="backNext" name="backNext" src="back_next.htm" frameborder="0" width="100%" height="100%" scrolling="no" allowtransparency="true"></iframe></div>
+
+        <!--<span class="far fa-comment-alt" style="margin-right:5px;"></span>
+        <span class="far fa-play-circle"></span>
+        <span class="fas fa-chevron-left"></span>
+        <span class="fas fa-chevron-right"></span>-->
+
+    </nav>
+
+    <div id="frameToc" class="drop-shadow"><iframe id="toc" name="toc" src="toc.htm" frameborder="0" scrolling="no" width="100%" height="100%"></iframe></div>
+    <div id="frameGlossary" class="drop-shadow"><iframe id="glossary" src="about:blank" frameborder="0" scrolling="no" width="100%" height="100%"></iframe></div>
+    <div id="frameResources" class="drop-shadow"><iframe id="resources" src="about:blank" frameborder="0" width="100%" height="100%" scrolling="no" allowtransparency="true"></iframe></div>
+    <div id="frameHelp"><iframe id="help" src="help.htm" frameborder="0" scrolling="no" width="100%" height="100%" allowtransparency="true"></iframe></div>
+    <div id="frameReferences" class="drop-shadow"><iframe id="references" src="about:blank" frameborder="0" scrolling="no" width="100%" height="100%"></iframe></div>
+
+    <div id="frame-transcript"><iframe id="transcript" name="transcript" allowtransparency="true" src="transcript.htm" frameborder="0" width="100%" height="100%" scrolling="no"></iframe></div>
+    <div id="frameSubCourseRight"><iframe id="subCourseRight" name="subCourseRight" src="sub_course_right.htm" frameborder="0" scrolling="no" width="100%" height="100%"></iframe></div>
+    <div id="frameSubCourse" class="drop-shadow"><iframe id="subCourse" name="subCourse" src="sub_course.htm" frameborder="0" scrolling="no" width="100%" height="100%"></iframe></div>
+    <div id="pop-background"><img src="interface/pixel.gif" width="100%" height="100%" /></div>
+    <div id="frame-audioreminder"><iframe id="audioReminder" src="about:blank" frameborder="0" scrolling="no" width="100%" height="100%"></iframe></div>
+    <div id="frameAudioPrompt" class="drop-shadow"><iframe id="audioPrompt" src="about:blank" frameborder="0" scrolling="no" width="100%" height="100%"></iframe></div>
+    <div id="frame-resume" class="drop-shadow"><iframe id="resume" name="resume" src="about:blank" frameborder="0" scrolling="no" width="100%" height="100%"></iframe></div>
+    <div id="frameIPadBegin" class="drop-shadow"><iframe id="ipadBegin" src="about:blank" frameborder="0" scrolling="no" width="100%" height="100%"></iframe></div>
+    <div id="frameSplash"><iframe id="splash" src="about:blank" frameborder="0" scrolling="no" width="100%" height="100%"></iframe></div>
+    <div id="frameLogger"><iframe id="logger" src="logger_basecamp.htm" allowtransparency="true" frameborder="0" scrolling="no" width="100%" height="100%"></iframe></div>
+</body>
+</html>

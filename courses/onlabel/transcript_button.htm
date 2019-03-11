@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/globals.css" />
+    <style>
+        body {
+            background-color: transparent;
+            margin: 0px;
+            padding: 0px;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        #transBtn {
+            background: url('interface/transcript_btn.png') no-repeat top center;
+            height: 26px;
+            /*			z-index:20;*/
+        }
+
+            #transBtn:hover {
+                background-position: center -30px;
+                cursor: pointer;
+            }
+
+        #transLabel {
+            font-size: 11px;
+            line-height: 13px;
+            color: #999999;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+    <!--<script language="javascript" src="js/jquery-1.7.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js" crossorigin="anonymous"></script>
+    <script language="javascript">
+        var labelsSet = false,
+            pageLoaded = false;
+        function onAllowToNavigate(nav) { //function invoked by framework when we gate course
+        }
+        function onUpdateUI(nav) { //function invoked by framework when we gate course
+            // Handle labels
+            if (!labelsSet) {
+                var labelTrans = nav.settings.labelTranscript;
+                if (parent.name == "subCourse") {
+                    labelTrans = parent.parent.nav.settings.labelTranscript;
+                }
+                $('#transBtn').attr('title', labelTrans);
+                $("#transLabel").attr("title", labelTrans);
+                $("#transLabel").html(labelTrans);
+                labelsSet = true;
+            }
+        }
+        function toggleTranscript() {
+            window.parent.toggleTranscript();
+        }
+    </script>
+</head>
+<body onLoad="pageLoaded = true;">
+<!--
+		<div id="transBtn"><a href="javascript:toggleTranscript()" alt=""></a>
+        	<div id="transLabel"></div>
+		</div>
+-->        
+	<div id="transBtn"   onclick="javascript:toggleTranscript()" class="transButton" ontouchstart="removeTouch()"></div>
+	<div id="transLabel" onclick="javascript:toggleTranscript()" class="transButton"></div>
+</body>
+</html>

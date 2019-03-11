@@ -16,39 +16,36 @@ namespace NXLevel.LMS.Controls
         public int PageTotal;
         public int RecordCount;
 
+        public const string KEY_PAGE_INDEX = "pi";
+        public const string KEY_PAGE_SIZE = "ps";
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                PagerClickedIndex.Value = "1";
-            }
-
-            // disable back next
-            PreviousPage.Enabled = PageIndex == 1 ? false : true;
-            NextPage.Enabled = PageIndex == PageTotal ? false : true;
+            // set drop down list
+            ddlPageSize.SelectedValue = PageSize.ToString();
             RenderPager();
         }
 
         protected void Page_Init(object sender, System.EventArgs e)
         {
             // process PageSize dropdown list
-            if (Request.Form[ddlPageSize.UniqueID] == null)
+            if (Request.QueryString[KEY_PAGE_SIZE] == null)
             {
                 PageSize = int.Parse(ddlPageSize.SelectedValue);
             }
             else
             {
-                PageSize = int.Parse(Request.Form[ddlPageSize.UniqueID]);
+                PageSize = int.Parse(Request.QueryString[KEY_PAGE_SIZE]);
             }
 
             // process user click on a random page, back or next
-            if (Request.Form[PagerClickedIndex.UniqueID] == null)
+            if (Request.QueryString[KEY_PAGE_INDEX] == null)
             {
                 PageIndex = 1;
             }
             else
             {
-                PageIndex = int.Parse(Request.Form[PagerClickedIndex.UniqueID]);
+                PageIndex = int.Parse(Request.QueryString[KEY_PAGE_INDEX]);
             }
 
             Debug.WriteLine("Pager Init Event: PageSize=" + PageSize + ", PageIndex =" + PageIndex);

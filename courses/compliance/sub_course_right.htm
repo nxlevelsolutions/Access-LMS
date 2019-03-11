@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/globals.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/sub_components.css" />
+    <style type="text/css">
+        html, body {
+            height: 100%;
+        }
+    </style>
+    <!--<script src="js/jquery-1.7.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script src="js/int_none.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/courseNavigator.js"></script>
+    <script type="text/javascript">
+        //var settings;
+        var nav,
+            subcourse_orientation;
+
+        var pageLoaded = false;
+        function onPageLoad() {
+            pageLoaded = true;
+        }
+
+        function loadSubCourse(filename) {
+            var d = filename.split("."),
+                menuFile = d[0] + ".xml";
+            nav = new CourseNavigator(menuFile, "sub_settings.xml");
+            //initialize
+            $('#courseTitle').append(document.title);
+            parent.$("#toolTipDiv").hide();
+
+            //register listeners
+            nav.register(frames["subcontents"]);
+            //nav.register(frames["backNext"]);
+            nav.writeToLog("SubCourseRight: files loaded.");
+            nav.gotoPage(null);
+
+        }
+        function closeWin() {
+            //audioPause();
+            parent.hideSubCourseRight();
+            parent.audioPlay();
+            //_root.updateGrid();
+            //close transcript
+            //if (frames["transcript"].isOpen){
+            //	frames["transcript"].toggleTranscript();
+            //}
+        }
+
+        function onAllowToNavigate(nav) {
+            // Nothing here people, move along.
+            //function invoked by framework when we gate course
+        }
+        function onUpdateUI(nav) {
+            parent.hideSubCourseRight();
+        }
+
+
+        //**********************************************
+        //audio-related methods
+        //**********************************************
+        function addMediaEventListener(o) {
+            window.frames["subaudio"].addAudioEventListener(o);
+        }
+        function setMp3Controller(file) {
+            window.frames["subaudio"].playMP3File(file);
+        }
+        function audioPause() {
+            window.frames["subaudio"].audioPause();
+        }
+        function audioPlay() {
+            window.frames["subaudio"].audioPlay();
+        }
+
+        function updateHotSpots() {
+            //required, but unused
+        }
+
+        var delayedDir;
+        function slideContent(dir) {
+            var cnt = document.getElementById("frameContents");
+            delayedDir = dir;
+            if (cnt.addEventListener && cnt.style.webkitTransition != undefined) {
+                var dis = -dir * 990;
+                cnt.addEventListener("webkitTransitionEnd", resetLocation);
+                cnt.style.webkitTransition = "all .5s ease-out";
+                cnt.style.webkitTransform = "translateX(" + dis + "px)";
+            }
+            else {
+                resetTransition();
+            }
+
+        }
+        function resetLocation() {
+            //window.frames["main"].document.location.href = "loading.htm";
+            var cnt = document.getElementById("frameContents");
+            cnt.removeEventListener("webkitTransitionEnd", resetLocation);
+            window.frames["subcontents"].document.body.innerHTML = "";
+            resetTransition();
+        }
+        function resetTransition() {
+            var cnt = document.getElementById("frameContents");
+            if (cnt.addEventListener && cnt.style.webkitTransition != undefined) {
+                if (cnt.style.webkitTransition != "") {
+                    cnt.style.webkitTransition = "";
+                    cnt.style.webkitTransform = "translateX(0px)";
+                    nav.gotoPage(this.delayedDir);
+                }
+            }
+            else {
+                nav.gotoPage(this.delayedDir);
+            }
+        }
+    </script>
+</head>
+    
+    <body onload="onPageLoad()">
+		<div id="ssr-frameContents"><iframe src="loading.htm" scrolling="no" frameborder="0" id="subcontents" name="subcontents" width="100%" height="100%"></iframe></div>
+        <a href="javascript:closeWin()"><img src="interface/close_button.png" width="32" height="32" border="0" style="position:absolute;right:0;top:0px;" /></a>
+    </body>
+</html>

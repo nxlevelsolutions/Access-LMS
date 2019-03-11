@@ -1,0 +1,47 @@
+﻿<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" type="text/css" href="css/page.css" />
+	<link rel="stylesheet" type="text/css" href="css/globals.css" />
+	<link rel="stylesheet" type="text/css" href="css/tooltips.css" />
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script src="js/utils.js" ></script>
+    <script src="js/effects.js"></script>
+    <script src="js/page.js"></script>
+	<script src="js/graphicButton.js"></script>    
+    <script src="js/tooltips.js"></script>
+    <script src="js/subcourseCheck.js"></script>
+	<script type="text/javascript">
+		// used if chapter title is displayed above this template; SectionTitle may be used instead
+ 
+		parent.setChapterTitle("Layered Graphics"); 
+ 	
+		parent.setPageTitle("<span>Layered Graphics:</span>&nbsp;Buttons (template: graphic_right_25)");	
+
+		 
+		 $(document).ready(function () {
+			document.body.style["font-size"] = $(parent.document.body).css("font-size");
+		});
+	 	
+	</script>
+</head>
+<!-- graphic_right_25.htm template -->
+<body>
+	<div class="txtArea txtBlock75">
+		<P>Buttons can also be used to launch subscreens, popups, and links:</p>
+
+<p><input onclick="openSubCourse('m01_s05_t04_ssa.htm')" class="button orange" style="width: 60%;" type=button value="Subscreen"></P>
+
+<P><input onclick="showPop('Popup Example','<P>This is a standard popup with a header which matches the course.</P>')" class="button orange" style="width: 60%;" type=button value="Popup"></P>
+
+<P><INPUT onclick="Utilities.launchSizableCustomPopUp('pdf/OffShelf_vs_Custom_infographic_v2.pdf','600','825')
+" class="button orange" style="WIDTH: 60%;" type=button value="PDF"> </P>
+<p><i>11 words; 65 characters</p>
+	</div>
+	<div class="imgArea imgBlock25">
+		<img id="graphic" class="fadeIn" src="images/m01_s01_t01.jpg"/>
+	</div>
+</body>
+</html>

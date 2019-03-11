@@ -1,0 +1,308 @@
+ 
+#instructions {
+    margin:0px 20px 30px 0px;
+    overflow:auto;
+}
+#content {
+    height: 70%; 
+	margin:0 3%;
+}
+
+.category-container,
+#cards-container,
+.arrow-container {
+    width: 26%;
+    height: 100%;
+    float: left;
+	
+	position: relative;
+}
+
+#cards-container {
+    width: 34%;
+	display: table;
+}
+
+.arrow-container {
+    width: 6%;
+}
+
+.category-container .header {
+    padding: 10px 10px 5px 10px;
+    text-align: center;
+    color: white;
+    background-color: #f26822;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.category-container .header .icon {
+    font-size: 24px;
+    margin-top: -5px;
+}
+
+.category-container .target {
+	width:98%;
+	height:70%;
+    /*height: auto;*/
+    border: 2px dashed #b9b7b8;
+}
+
+.category-container .target,
+.category-container .target-inner {
+    border-radius: 8px;
+}
+
+.category-container .target-inner {
+    display: table;
+    width: 96%;
+    height: 96%;
+    margin: 2% auto;
+    /*background-color: rgba(185, 185, 185, 0.8);*/
+	background-color:#c7c7c7;
+}
+
+.category-container .target-inner .target-instruction {
+    display: table-cell;
+    vertical-align: middle;
+    text-align:center;
+    font-size: 200%;
+    /*line-height: 80px;*/
+    color: #e3e3e3;
+}
+
+.arrow-container {
+    text-align: center;
+    color: #a19d9c;
+    font-size: 24px;
+	display: table;
+}
+
+.arrow-container .icon {
+    /*padding-top: 220px;*/
+	display: table-cell;
+    vertical-align: middle;
+}
+
+.arrow-container.left .icon {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    -ms-filter: fliph; /*IE*/
+    filter: fliph;
+}
+
+#cards-container .cards {
+    position: relative;
+	height: 100%;
+}
+
+#cards-container .cards .card {
+    cursor: pointer;
+    position: absolute;
+    overflow:hidden;
+    width: 100%;
+    /*height: 375px;*/
+	height: 100%;
+    font-size: 110%;  
+    line-height: 24px;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+	
+	background: #f89934;
+	background: -moz-linear-gradient(top,  #f89934 0%, #fac185 100%);
+	background: -webkit-linear-gradient(top,  #f89934 0%,#fac185 100%);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#f89934), to(#fac185));
+	background: -o-linear-gradient(#f89934 0%, #fac185 100%);
+	background: linear-gradient(to bottom,  #f89934 0%,#fac185 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f89934', endColorstr='#fac185',GradientType=0 ),
+			progid:DXImageTransform.Microsoft.Shadow(Color=#fac185, Strength=3, Direction=0),
+			progid:DXImageTransform.Microsoft.Shadow(Color=#fac185, Strength=3 Direction=90),
+			progid:DXImageTransform.Microsoft.Shadow(Color=#fac185, Strength=3, Direction=180),
+			progid:DXImageTransform.Microsoft.Shadow(Color=#fac185, Strength=3, Direction=270);
+	zoom:1;
+
+    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+
+}
+
+#cards-container .card .icon {
+    display:none;
+    position: absolute;
+    font-size: 22px;
+    top: 1px;
+    left: 2px;
+}
+
+#cards-container .card p {
+    margin: 5px auto;
+    padding: 0 25px;
+}
+
+#cards-container .card .image-bg {
+    display: block;
+    height: 60%;
+    margin: 3% auto 0 auto;
+	background-size: contain;
+    background-position: center center;
+    background-color: transparent;
+	background-repeat:no-repeat;
+}
+
+#cards-container .card.small {
+    font-size: 14px;
+    line-height: 16px;
+}
+
+#cards-container .card.incorrect {
+	border:1px solid #762814!important;
+	
+	background: #8d2e18!important;
+	background: -moz-linear-gradient(-45deg,  #c83d19 0%, #a03114 100%)!important;
+	background: -webkit-linear-gradient(-45deg,  #c83d19 0%,#a03114 100%)!important;
+	background: linear-gradient(135deg,  #c83d19 0%,#a03114 100%)!important;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c83d19', endColorstr='#a03114',GradientType=1 )!important;
+	zoom:1;
+}
+
+#cards-container .card.incorrect  .icon {
+    display:block;
+}
+
+#cards-container .card.completed {
+    pointer-events:none;
+}
+
+#actions-container {
+    display:none;
+    text-align: center;
+	vertical-align: middle;
+}
+
+#actions-container p {
+    padding: 10px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+ 
+#submitBtn {
+	margin: 40% auto;
+}
+ 
+.modal-container {
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+    display: none;
+	top:12px;
+}
+
+.modal {
+    position: relative;
+    width: 44%;
+    height: 100%;
+    color: black;
+    background-color: #d7d7d7;
+    margin: -5px auto;
+    padding: 5px 0;
+    text-align: center;
+    border-radius: 8px;
+    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+    -webkit-transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    transition: opacity .25s ease-in-out;
+    opacity: 0;
+}
+
+.modal-container.on {
+    display: block;
+	position:absolute;
+	left:0;
+}
+
+.modal h1 {
+    font-size: 180%;
+    font-weight: normal;
+    margin: 8px auto;
+}
+
+.modal .feedback {
+    margin: 0 10px;
+}
+
+.modal .feedback p {
+    font-size: 90%; 
+    margin: 5px;
+}
+
+.modal .feedback p.total {
+    font-size: 130%;
+    margin-top: 14px;
+}
+
+.modal .score {
+    width: 40%;
+    margin: 15px auto 20px auto;
+    padding: 10px;
+    font-size: 130%;
+    border-radius: 8px;
+    border: 3px solid #003679;
+    background-color: #b7bfca;
+}
+
+.modal .score p {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.modal .score p.percent {
+    font-size: 200%;
+    font-weight: bold;
+    color: #003679;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#revealBtn {
+    /* background-color: #ba3e24;
+   box-shadow: 0px 3px 0px 0px rgba(118, 40, 20, 1);*/
+}
+
+#revealBtn:hover {
+    /*background-color: #c83d19;*/
+}
+	 
+.icon {
+  display: inline-block;
+}
+
+.icon-down-dir {
+	background-image: url(../interface/card_sort_down_arrow.png);
+	background-repeat:no-repeat;
+	height:12px;
+	width:24px;
+	margin-top: 5px!important;
+}
+.icon-forward { 
+	background-image: url(../interface/card_sort_right_arrow.png);
+	background-repeat:no-repeat;
+    background-position: center;
+	height:24px;
+	width:24px;
+}
+.icon-cancel {
+	background-image: url(../interface/card_sort_x.png);
+	background-repeat:no-repeat;
+    background-position: bottom;
+	height:24px;
+	width:24px;
+}
+

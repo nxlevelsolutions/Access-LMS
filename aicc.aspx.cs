@@ -14,13 +14,13 @@ namespace NXLevel.LMS
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            //Dim aicc_data As AICCDataReader
-            lms_Entities db = new lms_Entities();
+            lms_Entities db = new ClientDBEntities();
             string command = Request.Form["command"];
             string version = Request.Form["version"];
             string[] session = Request.Form["session_id"].ToString().Split('|');
             int userId = int.Parse(session[0]);
             int courseId = int.Parse(session[1]);
+            int assignmentId = int.Parse(session[2]);
             const string CRLF = "\r\n";
             string str = "";
 
@@ -28,7 +28,8 @@ namespace NXLevel.LMS
             {
                 case "getparam":
 
-                    Course_StartupDefaults_Result initInfo = db.Course_StartupDefaults(userId, courseId).FirstOrDefault();
+                    db.Course_ScormValueSet(userId, assignmentId, courseId, "SET-STARTDATE", null); //this forces a set of "startDate" if necessary
+                    Course_StartupDefaults_Result initInfo = db.Course_StartupDefaults(userId, assignmentId, courseId).FirstOrDefault();
                     str = "error=0" + CRLF
                         + "error_text=successful" + CRLF
                         + "version=2.0" + CRLF
@@ -52,10 +53,10 @@ namespace NXLevel.LMS
                     string lesson_status = aiccData.GetKeyValue("lesson_status");
                     string score = aiccData.GetKeyValue("score");
 
-                    db.Course_ScormValueSet(userId, courseId, "CMI.CORE.LESSON_STATUS", lesson_status);
-                    db.Course_ScormValueSet(userId, courseId, "CMI.CORE.LESSON_LOCATION", lesson_location);
-                    if (score.Length>0) db.Course_ScormValueSet(userId, courseId, "CMI.CORE.SCORE.RAW", score);
-                    db.Course_ScormValueSet(userId, courseId, "CMI.CORE.SESSION_TIME", sessionTime);
+                    db.Course_ScormValueSet(userId, assignmentId, courseId, "CMI.CORE.LESSON_STATUS", lesson_status);
+                    db.Course_ScormValueSet(userId, assignmentId, courseId, "CMI.CORE.LESSON_LOCATION", lesson_location);
+                    if (score.Length>0) db.Course_ScormValueSet(userId, assignmentId, courseId, "CMI.CORE.SCORE.RAW", score);
+                    db.Course_ScormValueSet(userId, assignmentId, courseId, "CMI.CORE.SESSION_TIME", sessionTime);
                       
                     //'build response
                     str = "error=0" + CRLF
@@ -77,7 +78,9 @@ namespace NXLevel.LMS
 
             }
 
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
             Response.Write(str);
+            Response.End();
             Log.Info("LMS returned:" + str);
         }
     }

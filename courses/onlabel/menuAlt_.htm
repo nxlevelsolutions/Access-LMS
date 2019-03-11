@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		body {
+			margin: 0px;
+			padding: 0px;
+			font-family: Arial, Helvetica, sans-serif;
+			/*font-family:Verdana, Geneva, sans-serif;*/
+			font-size: 11px;
+			background-color: transparent;
+		}
+		a {
+			color: #828282;
+			text-decoration: none;
+		}
+		#btn0 {
+			background: url('interface/menu_toc2.png') no-repeat top center;
+		}
+		#btn1 {
+			background: url('interface/menu_glossary.png') no-repeat top center;
+		}
+		#btn2 {
+			background: url('interface/menu_resources_folder.png') no-repeat top center;
+		}
+		#btn3 {
+			background: url('interface/menu_help.png') no-repeat top center;
+		}
+		#btn4 {
+			background: url('interface/menu_references_paper.png') no-repeat top center;
+		}
+		#btn0,
+		#btn1,
+		#btn2,
+		#btn3,
+		#btn4 {
+			height:17px;
+			display: inline-block;
+		}
+		.btn {
+			display: block;
+			cursor: pointer;
+			text-align: center;	
+			width:35px;
+		}
+		.btnLabel {
+			font-size:11px;
+			color:#cccccc;
+			vertical-align:top;
+		}
+		.btnLabel:hover {
+			color:#aaaaaa;
+			cursor:pointer;
+		}
+		#btn0:hover,
+		#btn1:hover,
+		#btn2:hover,
+		#btn3:hover,
+		#btn4:hover {
+			background-position-y: -20px;
+		}
+		.menuItem {
+			border-bottom:1px solid gray;
+		}
+		#hamburger {
+			background: url('interface/hamburger_open.png') no-repeat;
+			background-position: left 0;
+		    position: absolute;
+    		bottom: 11px;
+			left:16px;
+    		width: 20px;
+	    	height: 20px;
+	    	z-index: 101;
+			cursor: pointer;
+		}
+		#hamburgerLabel {
+    		color: #cccccc;
+	    	font-size: 11px;
+			position:absolute;
+			bottom:2px;
+			left:2px;
+			width: 50px;
+    		text-align: center;
+			display:inline-block;
+		}
+		#hamburger:hover {
+			background-position: left -20px;
+		}
+		.nav {
+			position: absolute;
+			padding:3px 10px 0px;
+			/* Fallback for web browsers that doesn't support RGBa */
+			background: rgb(104, 104, 104) transparent;
+			/* RGBa with 0.95 opacity */
+			background-color: rgba(104, 104, 104, .95);
+			/* For IE 5.5 - 7*/
+			filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#f2686868, endColorstr=#f2686868);
+			/* For IE 8
+			-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#f2686868, endColorstr=#f2686868)";*/
+	    	border-top-left-radius: 5px;
+		    border-top-right-radius: 5px;
+			display:none;
+		}
+		.nav ul {
+			margin: 0;
+			padding: 0;
+			background:none;
+		}
+		.nav li {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			display: block;
+			text-align:left;
+			padding:10px 10px 10px 0;
+		}
+		.nav a {
+			text-decoration: none;
+			color: #999;
+		}
+	</style>
+	<script language="javascript" type="text/javascript" src="js/jquery-1.7.min.js"></script>
+	<script language="javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
+	<script language="javascript">
+		var pageLoaded = false,
+			menuFile = "topmenu.xml";
+	
+		function openTOC(){
+			toggleHamburger();
+			closeAllMenuItems();
+			parent.course.openTOC();
+		}
+		function openHelp(){
+			toggleHamburger();
+			closeAllMenuItems();
+			parent.course.openHelp();
+		}
+		function openGlossary(){
+			toggleHamburger();
+			closeAllMenuItems();
+			parent.course.openGlossary();
+		}
+		function openResources(){
+			toggleHamburger();
+			closeAllMenuItems();
+			parent.course.openResources();
+		}
+		function openReferences(){
+			toggleHamburger();
+			closeAllMenuItems();
+			parent.course.openReferences();
+		}
+		function exit() {
+			parent.course.exitModule();
+		}
+		function closeAllMenuItems() {
+			parent.course.hideTOC();
+			parent.course.hideHelp();
+			parent.course.hideGlossary();
+			parent.course.hideReferences();
+			parent.course.hideResources();
+		}
+		function onPageLoaded() {
+			$.ajax({
+				url: menuFile,
+				dataType: 'xml',
+				async: true,
+				success: function (xmlDoc) {
+					var menuHtml = '<div class=\"nav\"><ul>',
+					spacer = "";
+					$(xmlDoc).find("item").each(function (idx, item) {
+						item = $(item);
+						var url = item.attr("action"),
+							label = item.attr("label");
+						menuHtml += "<li class='menuItem'>";
+						menuHtml += "<a href='" + url + "' title='" + label + "'><span id='btn" + idx + "' class='btn'></span>";
+//						menuHtml += "<span class='btnLabel' onclick='" + url + "' title='" + label + "'>" + label + "</span></a>";
+						menuHtml += "<span class='btnLabel' title='" + label + "'>" + label + "</span></a>";
+						menuHtml += "</li>";
+					});
+					menuHtml += "</ul></div><div id='hamburger' onClick='toggleHamburger()'></div><div id='hamburgerLabel'>Expand</div>";
+					$(document.body).append(menuHtml.substr(0, menuHtml.length - spacer.length));
+					pageLoaded = true;
+				}
+			});
+		}
+		function toggleHamburger() {
+			
+			if ( $('.nav').css('display') ==='none' ) {
+				$('#popBackground', window.parent.document).show();
+				$('#frameMenuAlt', window.parent.document).css('height','242px'); // adjust according to number of items
+				$('.nav').show("slide", { direction: "down" }); // elm: no idea why this isn't "up"
+				$('#hamburgerLabel').html('Collapse');
+				$('#hamburger').css('background-image','url("interface/hamburger_close.png")');
+			} else {
+				closeAllMenuItems();
+				$('#popBackground', window.parent.document).hide();
+				$('.nav').hide("slide", { direction: "down" });
+				$('#hamburgerLabel').html('Expand');
+				$('#hamburger').css('background-image','url("interface/hamburger_open.png")');
+				setTimeout("$('#frameMenuAlt', window.parent.document).css('height','38px');", 1000);
+			}
+		}
+	</script>
+</head>
+<body onLoad="onPageLoaded()">
+</body>
+</html>

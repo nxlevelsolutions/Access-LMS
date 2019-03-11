@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/globals.css" />
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+
+        body {
+            margin: 0px;
+            height: 100%;
+            font-size: 14px;
+            font-size: 1.885vw;
+        }
+
+        #popHeader {
+            position: absolute;
+            box-sizing: border-box;
+            /*height: 45px;*/
+            top: 0px;
+            right: 0px;
+            left: 0px;
+            /*border-bottom:3px solid white;
+            padding-left:30px;
+            border-top-right-radius: 8px;
+            -webkit-border-top-right-radius: 8px;
+            border-top-left-radius: 8px;
+            -webkit-border-top-left-radius: 8px;*/
+        }
+
+        #popTitle {
+            /*color: white;
+            font-weight: bold;
+            font-size: 18px;*/
+            padding: 13px 0px 0px 0px;
+            line-height: 18px;
+        }
+
+        #popContents {
+            position: absolute;
+            /*top:45px;*/
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+            box-sizing: border-box;
+            /*background-color: #E5E5E5;
+            border-bottom-right-radius: 8px;
+            -webkit-border-bottom-right-radius: 8px;
+            border-bottom-left-radius: 8px;
+            -webkit-border-bottom-left-radius: 8px;*/
+        }
+
+        #close_button {
+            position: absolute;
+            /*right:8px;
+            top:6px;
+            width:30px;
+            height:30px;*/
+            border: none;
+            cursor: pointer;
+        }
+
+        #coll {
+            /*position: absolute;
+            box-sizing:border-box;
+            width: 230px;
+            top: 0px;
+            bottom: 0px;
+            left:0px;*/
+            float: left;
+            padding: 20px 20px 20px 30px;
+            border-bottom-left-radius: 8px;
+            -webkit-border-bottom-left-radius: 8px;
+        }
+
+        #ltrSelector {
+            border-width: 2px;
+            border-style: solid;
+            background-color: #efefef;
+            text-align: center;
+            padding: 10px 20px 10px 20px;
+        }
+
+        #colr {
+            /*position: absolute;*/
+            box-sizing: border-box;
+            /*top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 230px;*/
+            padding: 20px 20px 20px 20px;
+            border-bottom-right-radius: 8px;
+            -webkit-border-bottom-right-radius: 8px;
+            overflow: auto;
+            height: 100%;
+        }
+
+        #groupList {
+            height: 100%;
+            overflow: auto;
+            padding-right: 22px;
+        }
+
+        .letter {
+            background-color: #f7f7f7;
+            text-align: center;
+            padding: 5px;
+        }
+
+        .enabled {
+            color: #008000;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+            .enabled:hover {
+                text-decoration: underline;
+            }
+
+        .disabled {
+            color: gray;
+            text-decoration: none;
+            cursor: default;
+        }
+
+        .term {
+            font-weight: bold;
+        }
+
+        .audio_icon {
+            cursor: pointer;
+        }
+
+        .definition {
+            margin-bottom: 15px;
+        }
+
+        input[type=text]#searchTXT {
+            width: 80%;
+            margin-top: 10px;
+        }
+
+        #sicon {
+            display: inline-block;
+            width: 20px;
+            height: 21px;
+            margin-top: 10px;
+            vertical-align: top;
+            background-image: url('interface/search-w.png');
+            background-repeat: no-repeat;
+            cursor: pointer;
+        }
+    </style>
+    <!--<script type="text/javascript" src="js/jquery-1.7.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript" src="js/glossary.js"></script>
+
+</head>
+<body> <!-- All text is set in settings.xml -->
+
+<div id="popHeader" class="primaryColor2">
+    <div id="popTitle"></div>
+    <a href="javascript:closeWin()"><img id="close_button" src="interface/popupClose3.png"></a>
+</div>
+                    
+<div id="popContents">
+	<div id="coll">
+        <div id="ltrSelector" style="" class="primaryColor2">
+            <div style="margin-bottom:5px;" id="glossary_selectLtr"></div>
+            <table border="0" align="center" cellspacing="1" cellpadding="0" bgcolor="#00659c">
+                <tr>
+                    <td class="letter"><div id="A" onclick="javascript:loadLetter(this)">A</div></td>
+                    <td class="letter"><div id="B" onclick="javascript:loadLetter(this)">B</div></td>
+                    <td class="letter"><div id="C" onclick="javascript:loadLetter(this)">C</div></td>
+                    <td class="letter"><div id="D" onclick="javascript:loadLetter(this)">D</div></td>
+                    <td class="letter"><div id="E" onclick="javascript:loadLetter(this)">E</div></td>
+                    <td class="letter"><div id="F" onclick="javascript:loadLetter(this)">F</div></td>
+                </tr>
+                <tr>
+                    <td class="letter"><div id="G" onclick="javascript:loadLetter(this)">G</div></td>
+                    <td class="letter"><div id="H" onclick="javascript:loadLetter(this)">H</div></td>
+                    <td class="letter"><div id="I" onclick="javascript:loadLetter(this)">I</div></td>
+                    <td class="letter"><div id="J" onclick="javascript:loadLetter(this)">J</div></td>
+                    <td class="letter"><div id="K" onclick="javascript:loadLetter(this)">K</div></td>
+                    <td class="letter"><div id="L" onclick="javascript:loadLetter(this)">L</div></td>
+                </tr>
+                <tr>
+                    <td class="letter"><div id="M" onclick="javascript:loadLetter(this)">M</div></td>
+                    <td class="letter"><div id="N" onclick="javascript:loadLetter(this)">N</div></td>
+                    <td class="letter"><div id="O" onclick="javascript:loadLetter(this)">O</div></td>
+                    <td class="letter"><div id="P" onclick="javascript:loadLetter(this)">P</div></td>
+                    <td class="letter"><div id="Q" onclick="javascript:loadLetter(this)">Q</div></td>
+                    <td class="letter"><div id="R" onclick="javascript:loadLetter(this)">R</div></td>
+                </tr>
+                <tr>
+                    <td class="letter"><div id="S" onclick="javascript:loadLetter(this)">S</div></td>
+                    <td class="letter"><div id="T" onclick="javascript:loadLetter(this)">T</div></td>
+                    <td class="letter"><div id="U" onclick="javascript:loadLetter(this)">U</div></td>
+                    <td class="letter"><div id="V" onclick="javascript:loadLetter(this)">V</div></td>
+                    <td class="letter"><div id="W" onclick="javascript:loadLetter(this)">W</div></td>
+                    <td class="letter"><div id="X" onclick="javascript:loadLetter(this)">X</div></td>
+                </tr>
+                <tr>
+                    <td class="letter"><div id="Y" onclick="javascript:loadLetter(this)">Y</div></td>
+                    <td class="letter"><div id="Z" onclick="javascript:loadLetter(this)">Z</div></td>
+                    <td class="letter"><div id="#" onclick="javascript:loadLetter(this)">#</div></td>
+                    <td class="letter"></td>
+                    <td class="letter"></td>
+                    <td class="letter"></td>
+                </tr>
+            </table>
+            
+            
+            
+            <div>
+                <input type="text" id="searchTXT" name="searchTXT"/><div id="sicon" class="primaryColor1" title="Search" onclick="doSearch()"></div>
+            </div>
+        </div>
+	</div>
+	<div id="colr">
+		<div id="groupList"></div>
+	</div>
+</div>
+	<audio id="audioHtml5" name="audio" src="" type="audio/mpeg"></audio>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			render();
+		});
+	</script>
+</body>
+</html>

@@ -13,13 +13,12 @@ namespace NXLevel.LMS.Admin
 {
     public partial class lms_message : System.Web.UI.Page
     {
- 
-        int courseId = 0;
-        int userId;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            lms_Entities db = new lms_Entities();
+            lms_Entities db = new ClientDBEntities();
+            int courseId = 0;
+            int userId;
 
             //set UserID coming from course primarily
             if (Request.QueryString["uid"] == null) {

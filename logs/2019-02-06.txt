@@ -1,0 +1,254 @@
+10:21:28AM;0;Information;User: 122 logged in.
+11:16:20AM;0;Information;User Id=0's session has ended.
+11:16:20AM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+11:44:07AM;0;Information;User: 122 logged in.
+11:46:23AM;0;Pager Init Event: PageSize=10, PageIndex =1
+11:46:23AM;0;user page load size=10 index=1
+11:50:01AM;0;Pager Init Event: PageSize=10, PageIndex =1
+11:50:01AM;0;user page load size=10 index=1
+11:50:06AM;0;Pager Init Event: PageSize=10, PageIndex =1
+11:50:06AM;0;user page load size=10 index=1
+11:50:15AM;0;Pager Init Event: PageSize=10, PageIndex =1
+11:50:15AM;0;user page load size=10 index=1
+11:51:05AM;0;Pager Init Event: PageSize=10, PageIndex =1
+11:51:05AM;0;user page load size=10 index=1
+11:51:17AM;0;Pager Init Event: PageSize=10, PageIndex =1
+11:51:17AM;0;user page load size=10 index=1
+11:51:43AM;0;Pager Init Event: PageSize=10, PageIndex =1
+11:51:43AM;0;user page load size=10 index=1
+11:52:15AM;0;Pager Init Event: PageSize=10, PageIndex =1
+11:52:15AM;0;user page load size=10 index=1
+12:16:00PM;0;Pager Init Event: PageSize=10, PageIndex =1
+12:16:00PM;0;user page load size=10 index=1
+12:16:10PM;0;Pager Init Event: PageSize=10, PageIndex =1
+12:16:10PM;0;user page load size=10 index=1
+12:16:11PM;0;Pager Init Event: PageSize=10, PageIndex =1
+12:16:11PM;0;user page load size=10 index=1
+12:16:36PM;0;Error;Application error:The file '/lms/reports/UserCourses.aspx' does not exist.Source:System.WebStack Trace:   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+12:16:38PM;0;Pager Init Event: PageSize=10, PageIndex =1
+12:16:38PM;0;user page load size=10 index=1
+12:36:40PM;0;Information;User Id=0's session has ended.
+12:37:04PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+01:18:03PM;0;Information;A session has ended.
+01:18:06PM;0;Information;User: 122 logged in.
+01:23:09PM;0;Pager Init Event: PageSize=10, PageIndex =1
+01:23:09PM;0;user page load size=10 index=1
+01:50:00PM;0;Information;User Id=0's session has ended.
+01:50:03PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+02:12:40PM;0;Information;User: 122 logged in.
+02:17:55PM;0;Pager Init Event: PageSize=10, PageIndex =1
+02:17:55PM;0;user page load size=10 index=1
+02:18:57PM;0;Pager Init Event: PageSize=10, PageIndex =1
+02:18:57PM;0;user page load size=10 index=1
+02:19:00PM;0;Pager Init Event: PageSize=10, PageIndex =1
+02:19:00PM;0;user page load size=10 index=1
+02:23:50PM;0;Pager Init Event: PageSize=10, PageIndex =1
+02:23:50PM;0;user page load size=10 index=1
+02:24:47PM;0;Pager Init Event: PageSize=10, PageIndex =1
+02:24:47PM;0;user page load size=10 index=1
+02:27:16PM;0;Information;User Id=0's session has ended.
+02:27:16PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Web.Util.WorkItem.OnQueueUserWorkItemCompletion(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+02:59:51PM;0;Information;User: 122 logged in.
+02:59:52PM;0;Pager Init Event: PageSize=10, PageIndex =1
+02:59:52PM;0;user page load size=10 index=1
+02:59:54PM;0;Pager Init Event: PageSize=10, PageIndex =1
+03:03:29PM;0;Information;User Id=0's session has ended.
+03:03:29PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Web.Util.WorkItem.OnQueueUserWorkItemCompletion(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+03:03:39PM;0;Pager Init Event: PageSize=10, PageIndex =1
+03:03:41PM;0;Information;User: 122 logged in.
+03:03:48PM;0;Pager Init Event: PageSize=10, PageIndex =1
+03:03:48PM;0;user page load size=10 index=1
+03:03:50PM;0;Pager Init Event: PageSize=10, PageIndex =1
+03:18:12PM;0;Information;User: 122 logged in.
+03:18:13PM;0;Pager Init Event: PageSize=10, PageIndex =1
+03:18:13PM;0;user page load size=10 index=1
+03:18:18PM;0;Pager Init Event: PageSize=50, PageIndex =1
+03:18:18PM;0;user page load size=50 index=1
+03:18:44PM;0;Pager Init Event: PageSize=10, PageIndex =1
+03:18:44PM;0;user page load size=10 index=1
+03:34:48PM;0;Pager Init Event: PageSize=10, PageIndex =1
+03:34:48PM;0;user page load size=10 index=1
+03:35:03PM;0;Pager Init Event: PageSize=10, PageIndex =1
+03:35:03PM;0;user page load size=10 index=1
+03:35:05PM;0;Pager Init Event: PageSize=10, PageIndex =1
+03:55:20PM;0;Information;User Id=0's session has ended.
+03:55:46PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+04:16:02PM;0;Pager Init Event: PageSize=10, PageIndex =1
+04:16:04PM;0;Information;User: 122 logged in.
+04:16:08PM;0;Pager Init Event: PageSize=10, PageIndex =1
+04:16:08PM;0;user page load size=10 index=1
+04:17:38PM;0;Pager Init Event: PageSize=10, PageIndex =1
+04:17:38PM;0;user page load size=10 index=1
+04:17:48PM;0;Pager Init Event: PageSize=10, PageIndex =1
+04:17:48PM;0;user page load size=10 index=1
+04:18:08PM;0;Pager Init Event: PageSize=10, PageIndex =5
+04:18:08PM;0;user page load size=10 index=5
+04:18:10PM;0;Pager Init Event: PageSize=10, PageIndex =4
+04:18:10PM;0;user page load size=10 index=4
+04:18:10PM;0;Pager Init Event: PageSize=10, PageIndex =3
+04:18:10PM;0;user page load size=10 index=3
+04:18:11PM;0;Pager Init Event: PageSize=10, PageIndex =2
+04:18:11PM;0;user page load size=10 index=2
+04:18:12PM;0;Pager Init Event: PageSize=10, PageIndex =1
+04:18:12PM;0;user page load size=10 index=1
+04:19:52PM;0;Pager Init Event: PageSize=10, PageIndex =3
+04:19:52PM;0;user page load size=10 index=3
+04:19:54PM;0;Pager Init Event: PageSize=10, PageIndex =1
+04:19:54PM;0;user page load size=10 index=1
+04:20:33PM;0;Pager Init Event: PageSize=10, PageIndex =1
+04:20:33PM;0;user page load size=10 index=1
+04:20:36PM;0;Pager Init Event: PageSize=10, PageIndex =6
+04:20:36PM;0;user page load size=10 index=6
+04:20:37PM;0;Pager Init Event: PageSize=10, PageIndex =4
+04:20:37PM;0;user page load size=10 index=4
+04:20:37PM;0;Pager Init Event: PageSize=10, PageIndex =2
+04:20:37PM;0;user page load size=10 index=2
+04:20:39PM;0;Pager Init Event: PageSize=10, PageIndex =1
+04:20:39PM;0;user page load size=10 index=1
+04:21:08PM;0;Pager Init Event: PageSize=10, PageIndex =1
+04:21:08PM;0;user page load size=10 index=1
+04:22:59PM;0;Pager Init Event: PageSize=10, PageIndex =1
+04:22:59PM;0;user page load size=10 index=1
+04:24:20PM;0;Pager Init Event: PageSize=25, PageIndex =1
+04:24:20PM;0;user page load size=25 index=1
+04:24:23PM;0;Pager Init Event: PageSize=10, PageIndex =1
+04:24:23PM;0;user page load size=10 index=1
+04:26:33PM;0;Pager Init Event: PageSize=10, PageIndex =1
+04:26:33PM;0;user page load size=10 index=1
+04:33:50PM;0;Pager Init Event: PageSize=10, PageIndex =1
+04:33:50PM;0;user page load size=10 index=1
+04:33:57PM;0;Pager Init Event: PageSize=10, PageIndex =1
+04:33:57PM;0;user page load size=10 index=1
+04:55:47PM;0;Error;Application error:The file '/lms/reports/AssignmentGroups.aspx' does not exist.Source:System.WebStack Trace:   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+05:15:59PM;0;Information;User Id=0's session has ended.
+05:15:59PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+05:16:29PM;0;Information;User: 122 logged in.
+05:17:18PM;0;Pager Init Event: PageSize=10, PageIndex =1
+05:17:18PM;0;user page load size=10 index=1
+05:19:06PM;0;Pager Init Event: PageSize=10, PageIndex =4
+05:19:06PM;0;user page load size=10 index=4
+05:19:06PM;0;Pager Init Event: PageSize=10, PageIndex =5
+05:19:06PM;0;user page load size=10 index=5
+05:19:08PM;0;Pager Init Event: PageSize=10, PageIndex =2
+05:19:08PM;0;user page load size=10 index=2
+05:19:09PM;0;Pager Init Event: PageSize=10, PageIndex =1
+05:19:09PM;0;user page load size=10 index=1
+05:22:51PM;0;Pager Init Event: PageSize=10, PageIndex =1
+05:22:51PM;0;user page load size=10 index=1
+05:24:20PM;0;Pager Init Event: PageSize=10, PageIndex =1
+05:24:20PM;0;user page load size=10 index=1
+05:24:33PM;0;Pager Init Event: PageSize=10, PageIndex =1
+05:24:33PM;0;user page load size=10 index=1
+05:25:04PM;0;Error;Application error:The file '/lms/reports/UserCourses.aspx' does not exist.Source:System.WebStack Trace:   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)

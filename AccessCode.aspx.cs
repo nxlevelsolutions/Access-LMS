@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web.Security;
@@ -45,10 +46,27 @@ namespace NXLevel.LMS
                 lblErrMsg.Text = "Please enter a valid Access Code.";
                 return;
             }
-        
+
+            if (txtCompanyCode.Text == "")
+            {
+                lblErrMsg.Visible = true;
+                lblErrMsg.Text = "Please enter a Company Code.";
+                return;
+            }
+
+            ClientSetting cs = ClientSettings.Get(txtCompanyCode.Text);
+            if (cs == null)  
+            {
+                lblErrMsg.Visible = true;
+                lblErrMsg.Text = "Please enter a valid Company Code.";
+                return;
+            }
+
+            //initialize connection string
+            LmsUser.DBConnString = cs.EntityConnStr;
 
             // check 
-            lms_Entities db = new lms_Entities();
+            lms_Entities db = new ClientDBEntities();
             User_Info_Result userInfo = db.User_Info(txtEmail.Text.Trim()).FirstOrDefault();
             if (userInfo == null)
             {
@@ -61,12 +79,12 @@ namespace NXLevel.LMS
                 if (userInfo.activationCode == txtAccessCode.Text.Trim())
                 {
                     // Activate the user's account.
-                    userInfo.active = true;
+                    userInfo.enabled = true;
                     userInfo.password = txtPwd1.Text.Trim();
                     db.SaveChanges();
 
                     // Set session items.
-                    LmsUser.SetInfo(userInfo.userId, userInfo.accessId, userInfo.firstName, userInfo.lastName, userInfo.clientName, "", 123); //LMSUsr.connStr, LMSUsr.dbId
+                    LmsUser.SetInfo(userInfo.userId, userInfo.firstName, userInfo.lastName, userInfo.role, cs.Name, cs.AssetsFolder);
 
                     // Write the session data to the log.
                     Log.Info("User: " + LmsUser.UserId + " account verified. Logging in for the 1st time.");

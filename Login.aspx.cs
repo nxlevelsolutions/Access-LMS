@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Linq;
 using System.Web.Security;
+using System.Diagnostics;
 using NXLevel.LMS.DataModel;
 
 namespace NXLevel.LMS
@@ -23,7 +24,30 @@ namespace NXLevel.LMS
                 return;
             }
 
-            lms_Entities db = new lms_Entities();
+            if (CompanyCode.Text.Trim()=="")
+            {
+                ErrorMsg.Visible = true;
+                ErrorMsg.Text = "Please enter a company code.";
+                return;
+            }
+
+            //check company code
+            ClientSetting cs = ClientSettings.Get(CompanyCode.Text);
+            if (cs == null)
+            {
+                ErrorMsg.Visible = true;
+                ErrorMsg.Text = "Please enter a valid company code.";
+                return;
+            }
+            else
+            {
+                //initialize user's unique connection string (company database)
+                //this should be done 1st before any db-specific call
+                LmsUser.DBConnString = cs.EntityConnStr;
+            }
+
+
+            lms_Entities db = new ClientDBEntities();
             User_Info_Result userInfo = db.User_Info(Email.Text).FirstOrDefault();
 
             if (userInfo == null)
@@ -35,13 +59,13 @@ namespace NXLevel.LMS
             else
             {
                 //there is a user record..check status
-                if (userInfo.active)
+                if (userInfo.enabled)
                 {
                     //user is active.. check password
                     if (userInfo.password == Pwd.Text)
                     {
                         //password is good.. log user in
-                        LmsUser.SetInfo(userInfo.userId, userInfo.accessId, userInfo.firstName, userInfo.lastName, userInfo.clientName, "", 123); //LMSUsr.connStr, LMSUsr.dbId
+                        LmsUser.SetInfo(userInfo.userId, userInfo.firstName, userInfo.lastName, userInfo.role, cs.Name, cs.AssetsFolder);
 
                         // Write the session data to the log.
                         Log.Info("User: " + userInfo.userId + " logged in.");

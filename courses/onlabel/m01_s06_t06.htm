@@ -1,0 +1,74 @@
+﻿<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" type="text/css" href="css/page.css" />
+	<link rel="stylesheet" type="text/css" href="css/globals.css" />  
+	<link rel="stylesheet" type="text/css" href="css/dragDropText.css"/>
+	<script src="https://code.jquery.com/jquery-3.0.0.min.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>	
+	<script src="js/jquery.ui.touch-punch.min.js"></script>
+	<script src="js/utils.js"></script>
+	<script src="js/tooltips.js"></script>
+	<script src="js/dragDropText.js"></script>
+	<script src="js/subcourseCheck.js"></script>
+	<script type="text/javascript">
+		// used if chapter title is displayed above this template; SectionTitle may be used instead
+		parent.setChapterTitle("Knowledge Checks"); 
+	 
+		parent.setPageTitle("<span>Knowledge Checks:</span>&nbsp;Drag and Drop Text (template: EditorDragDropText)");		
+
+		$(document).ready(function () {
+			document.body.style["font-size"] = $(parent.document.body).css("font-size");
+		});	
+
+		var pageLoaded = false;
+		function onAllowToNavigate(nav){ //required as per framework
+		}
+		function onUpdateUI(nav){ //required as per framework
+			document.location.href = parent.nav.getPage().url;
+		}
+		function onPageLoaded(){
+			pageLoaded = true;
+			$("#submitBtn").attr("value", parent.nav.settings.labelSubmit); //set label
+			$("#revealBtn").attr("value", parent.nav.settings.labelReveal); //set label
+			$("#feedbackTitle").html(parent.nav.settings.labelFeedback); //set label
+
+			var dataURL = parent.nav.getPage().data;
+			if(dataURL) {
+				parent.nav.writeToLog("DragDropText : loading data file: " + dataURL);
+				dragDropText.init(dataURL);
+			} 
+			else {
+				var pageId = parent.nav.getPage().id;
+				parent.nav.writeToLog('DragDropText error: getPage().data for page ' + pageId  + 'returned undefined.')
+			}
+
+			//set current page
+			if (!parent.nav.settings.gated){
+				parent.nav.getPage().completed = true;
+				parent.nav.saveBookmark();
+			}
+		}
+ 
+	</script>
+</head>
+<!-- EditorDragDropText_exporter.htm template -->
+<body onload="onPageLoaded();">
+	<div id="instructions"></div>
+	<table id="content" role="presentation">
+		<!-- table header and body rows/colums created dynamically - see dragDropText.build method for structure -->
+		<thead></thead>
+		<tbody></tbody>
+	</table>
+	<div id="actions">
+		<input id="submitBtn" type="button" class="button orange">			
+		<input id="revealBtn" type="button" class="button orange">
+	</div>		
+	<div id="feedback">
+		<h4 id="feedbackTitle"></h4>
+		<p id="feedbackText"></p>
+	</div>	
+</body>
+</html>

@@ -1,0 +1,36 @@
+01:25:26PM;0;Information;User: 122 logged in.
+01:25:31PM;0;Pager Init Event: PageSize=10, PageIndex =1
+01:25:31PM;0;user page load size=10 index=1
+01:55:05PM;0;Information;User Id=0's session has ended.
+02:04:36PM;0;Information;User: 122 logged in.
+02:04:42PM;0;Pager Init Event: PageSize=10, PageIndex =1
+02:04:42PM;0;user page load size=10 index=1
+02:05:02PM;0;Error;An error occurred while executing the command definition. See the inner exception for details.
+   at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.Execute(EntityCommand entityCommand, CommandBehavior behavior)
+   at System.Data.Entity.Core.EntityClient.EntityCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Core.EntityClient.EntityCommand.ExecuteNonQuery()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteFunctionCommand(EntityCommand entityCommand)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass4b.<ExecuteFunction>b__4a()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass4b.<ExecuteFunction>b__49()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteFunction(String functionName, ObjectParameter[] parameters)
+   at NXLevel.LMS.DataModel.lms_Entities.User_CategoryGroupSet(Nullable`1 userId, String categoryTitle, String groupTitle) in C:\Projects\LMS\DataModel\DataModel.Context.cs:line 323
+   at NXLevel.LMS.Admin.ImportUserData.ProcessRequest(HttpContext context) in C:\Projects\LMS\Admin\ImportUserData.ashx.cs:line 247
+02:08:22PM;0;Error;An error occurred while executing the command definition. See the inner exception for details.
+   at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.Execute(EntityCommand entityCommand, CommandBehavior behavior)
+   at System.Data.Entity.Core.EntityClient.EntityCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Core.EntityClient.EntityCommand.ExecuteNonQuery()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteFunctionCommand(EntityCommand entityCommand)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass4b.<ExecuteFunction>b__4a()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass4b.<ExecuteFunction>b__49()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteFunction(String functionName, ObjectParameter[] parameters)
+   at NXLevel.LMS.DataModel.lms_Entities.User_CategoryGroupSet(Nullable`1 userId, String categoryTitle, String groupTitle) in C:\Projects\LMS\DataModel\DataModel.Context.cs:line 323
+   at NXLevel.LMS.Admin.ImportUserData.ProcessRequest(HttpContext context) in C:\Projects\LMS\Admin\ImportUserData.ashx.cs:line 247
+02:25:23PM;0;Information;User: 122 logged in.
+02:25:25PM;0;Pager Init Event: PageSize=10, PageIndex =1
+02:25:25PM;0;user page load size=10 index=1

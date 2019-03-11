@@ -1,0 +1,28 @@
+﻿<?xml version="1.0"?>
+<exercise xmlns:msxml="urn:schemas-microsoft-com:xslt" xmlns:util="urn:nxlevel-com:util" deckCardTopOffset="5" targetCardTopOffset="25">
+	<instructions><![CDATA[<i>Drag each card to the correct category. You can change your answers during play but, once you are satisfied with your answers, select <b>Submit</b> to see how you scored.</i>]]></instructions>
+	<targetInstr><![CDATA[Drag<br/>your<br/>selection<br/>here]]></targetInstr>
+    <correct><![CDATA[<h1>Correct!</h1><p>All cards have been sorted correctly.</p>]]></correct>
+	<tryAgain><![CDATA[<h1>Good try.</h1><p>The incorrect answers are identified with an <b>X</b> on the red cards.</p><p>Select <i>Reveal</i> to see the correct answers.</p>]]></tryAgain>
+	<revealed><![CDATA[The cards are now sorted correctly. Please review the answers before moving on. You may want to go back and review this material before exiting this module.]]></revealed>
+	<score><![CDATA[Your score]]></score>
+    <categories>
+        <category id="0">
+            <header><![CDATA[Category A]]></header>
+            <items>
+                <item img="images/m01_s06_t10_p5.png"><![CDATA[Sed ut perspiciatis (A)]]></item>
+                <item img="images/m01_s06_t10_p4.png"><![CDATA[Unde omnis iste (A)]]></item>
+                <item img="images/m01_s06_t10_p6.png"><![CDATA[Natus error sit (A)]]></item>
+                <item img="images/m01_s06_t10_p7.png"><![CDATA[Voluptatem accusantium (A)]]></item>
+            </items>
+        </category>
+        <category id="1">
+            <header><![CDATA[Category B]]></header>
+            <items>
+                <item img="images/m01_s06_t10_p3.png"><![CDATA[Doloremque laudantium (B)]]></item>
+                <item img="images/m01_s06_t10_p2.png"><![CDATA[Totam rem aperiam (B)]]></item>
+                <item img="images/m01_s06_t10_p1.png"><![CDATA[Eaque ipsa quae (B)]]></item>
+            </items>
+        </category>
+    </categories>
+</exercise>

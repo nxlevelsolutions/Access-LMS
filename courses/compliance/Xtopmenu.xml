@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<menu>
+	<item label="Contents" action="javascript:openTOC()" />
+	<item label="Glossary" action="javascript:openGlossary()" />
+	<item label="Resources" action="javascript:openResources()" />
+	<item label="Help" action="javascript:openHelp()" />
+	<item label="References" action="javascript:openReferences()" />
+</menu>

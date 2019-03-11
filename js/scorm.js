@@ -3,8 +3,9 @@
 var API = function () {
 
     var _path = document.location.pathname.substring(0, document.location.pathname.lastIndexOf("/")),
-        _lmsUrl = _path + "/admin/lms_message.aspx",
+        _lmsUrl = _path + "/admin/LmsMessage.ashx",
         _courseId,
+        _assigId,
         _userId,
         _APIObj;
 
@@ -19,21 +20,32 @@ var API = function () {
     //}
 
     function setMessage(key, value) {
-        var ret = Utils.Post(
-            _lmsUrl + "?m=" + key + "&uid=" + _userId + "&cid=" + _courseId + "&dir=set&r=" + Math.random(),
-            { data: value },
-            null,
-            false
-        );
+        var ret;
+
+        $.ajax({
+            type: "POST",
+            url: _lmsUrl + "?m=" + key + "&uid=" + _userId + "&aid=" + _assigId + "&cid=" + _courseId + "&dir=set&r=" + Math.random(),
+            data: { data: value },
+            async: false,
+            success: function (res) {
+                ret = res;
+            },
+            error: function (xhr, ajaxOptions, err) {
+                Utils.log("Scorm setMessage ERROR: '" + ajaxOptions + "':" + err.message);
+            }
+        });
+
         return ret.result;
     }
 
     return {
-        loadInitData: function (userId, courseId, callback) {
+        //called by course_scorm.aspx
+        loadInitData: function (userId, assigId, courseId, callback) {
             _userId = userId;
             _courseId = courseId;
+            _assigId = assigId;
             Utils.Get(_lmsUrl,
-                { m: 'SCORM_COURSE_INITIAL_DEFAULTS', uid: _userId, cid: _courseId },
+                { m: 'SCORM_COURSE_INITIAL_DEFAULTS', uid: _userId, cid: _courseId, aid: _assigId },
                 function (data) {
                     _APIObj = data;
                     callback.call(this, data);
@@ -54,13 +66,13 @@ var API = function () {
             //update display - status
             if (key == "cmi.core.lesson_status") {
                 if (typeof (window.opener.closed) != "unknown" && window.opener.closed == false && window.opener.modWindow == window) {
-                    window.opener.lms.refreshDisplay(_courseId);
+                    window.opener.lms.refreshDisplay(_assigId, _courseId);
                 }
             }
             //update display - score
             if (key == "cmi.core.score.raw") {
                 if (typeof (window.opener.closed) != "unknown" && window.opener.closed == false && window.opener.modWindow == window) {
-                    window.opener.lms.refreshDisplay(_courseId);
+                    window.opener.lms.refreshDisplay(_assigId, _courseId);
                 }
             }
 

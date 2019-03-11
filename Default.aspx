@@ -3,12 +3,30 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>{Company} Compliance Learning Management System</h2>
-
-    <p>Welcome! This site will provide you with interactive training on compliance for the pharmaceutical industry. </p>
-    <p>
-        To view a list of your assigned training modules click <a href="mycurriculum.aspx"><u>here</u></a> or select &quot;My Curriculum&quot; from the top menu. We are confident you will find these training modules easy to follow. Each module is designed to take less than an hour to complete and includes an assessment, which requires a score of 80% to mark the module as complete. The Compliance team will keep you informed as new modules are added to this curriculum.
-    </p>
-    <p>If you have questions about the compliance training available through this system, please contact Todd Anthony at <a href="mailto:tanthony@cumberlandpharma.com">tanthony@cumberlandpharma.com</a> or 615-255-0068. If you have technical concerns or questions, please contact our support team at 1-866-695-7877 or via email at <a href="mailto:support@pharmacertify.com">support@pharmacertify.com</a>. </p>
-    <p>&nbsp;</p>
+    <div style="width: 100%; overflow: hidden;">
+		<div style="width: 100%;margin-bottom: 30px;">
+			<h2>Welcome to the NXLevel Solutions Access Learning System!</h2>
+		</div>
+		<div style="padding-top: 0px; width: 50%; display: inline-block;vertical-align: top;">
+			<p>We appreciate your commitment to completing your required training assignments. To view a list of your assigned courses, please select “My Curriculum” at the top of this page. Your assignments and learning plans will be displayed by order of priority according to completion date.</p>
+			<p>Select “Hello Administrator” to change your password, view your completed assignments, get help on how to use this system, or log off.</p>
+			<p>Thank you for completing your assignments promptly.</p>
+		</div>
+		<div style="width: 7%; display: inline-block;"></div>
+		<div style="display: inline-block;">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>Karina Thompson</h4></div>
+				<div class="panel-body">
+					<p><h5>Current Activities:</h5></p>
+					<p>Good Promotional Practices &nbsp;&mdash;&nbsp; Started: 3/4/2019</p>
+					<p>On-Label Promotion &nbsp;&mdash;&nbsp; Not Started</p>
+					<p>Good Promotional Practices &nbsp;&mdash;&nbsp; Started: 3/4/2019</p>
+					<p>&nbsp;</p>
+					<p><h5>Recent Activities:</h5></p>
+					<p>Compliance Overview &nbsp;&mdash;&nbsp; Completed: 3/4/2019 &nbsp;&nbsp;&nbsp;&nbsp; Score: 100</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </asp:Content>

@@ -1,0 +1,65 @@
+#content {
+    width:100%;
+    margin-bottom:20px;
+}
+		
+tr {
+	height:20px;
+}
+		
+th {
+    color: #f26822;
+}
+
+td, th {
+    padding-bottom: 10px;
+	vertical-align:top;
+}
+
+a.checkbox {
+    background: url(../interface/checkbox_deselected.png) center top no-repeat;
+    cursor:pointer;
+    display:block;
+    height:29px;
+    margin-left: auto;
+    margin-right: auto;
+    outline:none;
+    width:29px;
+}
+
+a.checked {
+    background: url(../interface/checkbox_selected.png) center top no-repeat;
+}
+ 
+#instructions {
+    margin-bottom:10px;
+    display: inline-block;
+}
+ 
+#feedback {
+    display:none;
+}
+#feedbackTitle, #feedbackText {
+	margin:5px 0px;
+}
+#feedback h4 {
+	color:#f26822;
+}
+.answer {
+    text-align:center;
+    /*width: 100px;*/
+}
+
+.statement-header {
+    text-align:left;
+}
+
+.green-arrow {
+	background:transparent url(../interface/arrow.png) no-repeat -7px 4px;
+}
+
+.correct {
+    background-position:25px 4px;
+    transition: background-position 0.5s ease-out;
+    -webkit-transition: background-position 0.5s ease-out;
+}

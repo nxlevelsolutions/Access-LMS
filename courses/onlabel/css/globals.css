@@ -1,0 +1,375 @@
+﻿@charset "UTF-8";
+/* --- WEB SAFE FONTS ---
+font-family:Verdana, Geneva, sans-serif;
+font-family:Arial, Helvetica, sans-serif;
+Open Sans works well in IE8
+-- REMOVE FONT FAMILIES THAT ARE NOT USED IN THIS COURSE --
+*/
+@font-face {
+  font-family: 'Open Sans Light';
+	font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/open-sans-light.eot'); 
+  src: local('Open Sans Light'), local('OpenSans-Light'),
+       url('../fonts/open-sans-light.eot?#iefix') format('embedded-opentype'), 
+       url('../fonts/open-sans-light.woff2') format('woff2'), 
+       url('../fonts/open-sans-light.woff') format('woff'), 
+       url('../fonts/open-sans-light.ttf') format('truetype'), 
+       url('../fonts/open-sans-light.svg#OpenSans') format('svg'); 
+}
+@font-face {
+  font-family: 'Open Sans Light Italic';
+  font-style: italic;
+  font-weight: 300;
+  file-formats: eot woff woff2 ttf svg;
+  src: url('../fonts/open-sans-light-italic.eot'); 
+  src: local('Open Sans Italic'), local('OpenSans-Italic'),
+       url('../fonts/open-sans-light-italic.eot?#iefix') format('embedded-opentype'), 
+       url('../fonts/open-sans-light-italic.woff2') format('woff2'), 
+       url('../fonts/open-sans-light-italic.woff') format('woff'), 
+       url('../fonts/open-sans-light-italic.ttf') format('truetype'), 
+       url('../fonts/open-sans-light-italic.svg#OpenSans') format('svg');
+}
+
+
+@font-face {
+  font-family: 'Open Sans';
+	font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/open-sans-regular.eot'); 
+  src: local('Open Sans'), local('OpenSans'),
+       url('../fonts/open-sans-regular.eot?#iefix') format('embedded-opentype'), 
+       url('../fonts/open-sans-regular.woff2') format('woff2'), 
+       url('../fonts/open-sans-regular.woff') format('woff'), 
+       url('../fonts/open-sans-regular.ttf') format('truetype'), 
+       url('../fonts/open-sans-regular.svg#OpenSans') format('svg'); 
+}
+
+@font-face {
+  font-family: 'Open Sans Italic';
+  font-style: italic;
+  font-weight: 400;
+  src: url('../fonts/open-sans-italic.eot'); 
+  src: local('Open Sans Italic'), local('OpenSans-Italic'),
+       url('../fonts/open-sans-italic.eot?#iefix') format('embedded-opentype'), 
+       url('../fonts/open-sans-italic.woff2') format('woff2'), 
+       url('../fonts/open-sans-italic.woff') format('woff'), 
+       url('../fonts/open-sans-italic.ttf') format('truetype'), 
+       url('../fonts/open-sans-italic.svg#OpenSans') format('svg');
+}
+
+@font-face {
+  font-family: 'Open Sans Bold';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/open-sans-700.eot'); 
+  src: local('Open Sans Bold'), local('OpenSans-Bold'),
+       url('../fonts/open-sans-700.eot?#iefix') format('embedded-opentype'), 
+       url('../fonts/open-sans-700.woff2') format('woff2'), 
+       url('../fonts/open-sans-700.woff') format('woff'),
+       url('../fonts/open-sans-700.ttf') format('truetype'), 
+       url('../fonts/open-sans-700.svg#OpenSans') format('svg'); 
+}
+
+@font-face {
+  font-family: 'Open Sans Bold Italic';
+  font-style: italic;
+  font-weight: 700;
+  src: url('../fonts/open-sans-700-italic.eot'); 
+  src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'),
+       url('../fonts/open-sans-700-italic.eot?#iefix') format('embedded-opentype'), 
+       url('../fonts/open-sans-700-italic.woff2') format('woff2'), 
+       url('../fonts/open-sans-700-italic.woff') format('woff'), 
+       url('../fonts/open-sans-700-italic.ttf') format('truetype'), 
+       url('../fonts/open-sans-700-italic.svg#OpenSans') format('svg'); 
+}
+
+.primaryColor1{background-color:#106baf;border-color:#106baf;} /* glossary terms and definitions, help screen titles */
+.primaryColor2{background-color:#106baf;border-color:#106baf;} /* headers: prompt, resume, glossary, references, resources */
+.secondaryColor1{background-color:#666666;border-color:#666666;}
+.secondaryColor2{background-color:#666666;border-color:#666666;}
+
+html{
+	height:100%;
+}
+p { /* reset */
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+	margin:1em 0;
+}
+ul, menu, dir { /* reset */
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0;
+	margin:1em 0;
+	padding:0 0 0 40px;
+}
+img {
+	display:block; /* Required for strict mode */
+}
+
+body {
+	background:#fff;
+	margin:0px;
+	padding:0px;
+	width:100%;
+	font-family:'Open Sans', Arial, Helvetica, sans-serif;
+	color:#333;
+    height: 100%;
+}
+ 
+select { 
+	font-size: inherit; 
+}
+ 
+table { /* reset */
+	font-size: inherit;
+}
+ 
+SUB, body SUP {
+	line-height: 0;
+}
+a:hover {text-decoration:underline;}
+ul ul {
+/*	list-style-type: none;*/
+	list-style-type: square;
+	padding: 0px;
+	margin-left: 25px;
+}
+ul ul li {
+/*	background-image: url('../interface/bullet_hyphen.gif');*/
+/*	background-repeat: no-repeat;*/
+	padding-left: 8px;
+}
+li {
+    position:relative;
+}
+.seqEd_ul {margin-top: -.5em;} /* Sequence editor bullet spacing */
+.subPageTitle {
+    color: #ffffff;
+    background-color: #f89934;
+    font-size: 20px;
+	font-size: 2.1vw;	 /* Not supported in IE8. See comments in resize.js */
+    line-height: normal;
+    padding: 9px 20px 11px 20px;
+}
+.clearfloat {
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+
+/* Knowledge Check Styles */
+.btn {
+	padding: 5px 18px 6px;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: normal;
+	outline:none;
+	
+	border: 1px solid #CCC;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	
+	-webkit-box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, .1);
+	box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, .1);	
+	
+    color: #ffffff;
+    background-color: #db6f02;
+    background-repeat: repeat-x;
+    background-image: -ms-linear-gradient(top, #fd9a3a, #db6f02);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fd9a3a), color-stop(100%, #db6f02));
+    background-image: -webkit-linear-gradient(top, #fd9a3a, #db6f02);
+    background-image: linear-gradient(top, #fd9a3a, #db6f02);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fd9a3a', endColorstr='#db6f02', GradientType=0);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    border-color: #1a4167 #1a4167 #1a4167;
+	filter:progid:DXImageTransform.Microsoft.Shadow(Enabled=false);
+}
+
+.btn:hover {
+  color: #333;
+  background-image: -ms-linear-gradient(top, #f5c290, #db6f02);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #db6f02));
+  background-image: -webkit-linear-gradient(top, #ffffff, #db6f02);
+  background-image: linear-gradient(top, #f5c290, #db6f02);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5c290', endColorstr='#db6f02', GradientType=0);  
+  text-decoration: none;
+  cursor:pointer;
+}
+
+.btn:disabled,
+.button:disabled {
+	opacity:.25;
+}
+
+/* Big red and green buttons used in splash and resume screens */
+.button {    
+	color: #fff;
+    text-decoration: none;
+	cursor: pointer;
+	font-size:14px;
+    display: inline-block;
+    padding: 4px 10px;
+    -webkit-border-radius: 4px;
+	border-radius: 4px;
+	min-width:150px;
+}
+.green {    
+	background-image: -webkit-gradient(linear, left top, left bottom,
+        from(#029a02),
+        color-stop(0.5, #0f490c),
+        color-stop(0.5, #0f490c),
+        to(#0a3408));
+    border: 1px solid rgba(79, 79, 79, 0.75);
+	background-image: -ms-linear-gradient(top, #029a02, #0f490c);
+	background-color: #0f490c;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#029a02', endColorstr='#0f490c', GradientType=0);
+	/*float: left;*/
+}
+.red {
+    background-image: -webkit-gradient(linear, left top, left bottom,
+        from(#c10202),
+        color-stop(0.5, #960202),
+        color-stop(0.5, #830101),
+        to(#710202));
+    border: 1px solid rgba(79, 79, 79, 0.75);
+	background-image: -ms-linear-gradient(top, #960202, #830101);
+	background-color: #830101;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#960202', endColorstr='#830101', GradientType=0);
+}
+.orange {
+	width:66px;
+	height:28px !important;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#F26822), to(#f89934));
+    background-image: linear-gradient(to bottom, #F26822 0%, #f89934 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F26822', endColorstr='#f89934', GradientType=0);
+    border: 1px solid rgba(79, 79, 79, 0.75);
+	-webkit-box-shadow: 3px 3px 7px 0px rgba(0,0,0,.1);
+	-moz-box-shadow: 3px 3px 7px 0px rgba(0,0,0,.1);
+	box-shadow: 3px 3px 7px 0px rgba(0,0,0,.1);
+}
+.orange:hover {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#f89934), to(#F26822));
+    background-image: linear-gradient(to bottom, #f89934 0%, #F26822 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f89934', endColorstr='#F26822', GradientType=0);
+}
+.blue {
+	width:66px;
+	height:28px !important;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#004991+0,0073e0+100 */
+	background: #004991; /* Old browsers */
+background: -webkit-linear-gradient(#004991 0%, #0073e0 100%);
+background: -o-linear-gradient(#004991 0%, #0073e0 100%);
+background: linear-gradient(#004991 0%, #0073e0 100%); /* FF3.6-15 */ /* Chrome10-25,Safari5.1-6 */ /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#004991', endColorstr='#0073e0',GradientType=0 ); /* IE6-9 */
+	-webkit-box-shadow: 3px 3px 7px 0px rgba(0,0,0,.1);
+	-moz-box-shadow: 3px 3px 7px 0px rgba(0,0,0,.1);
+	box-shadow: 3px 3px 7px 0px rgba(0,0,0,.1);
+}
+.blue:hover {
+	background: #0073e0; /* Old browsers */
+background: -webkit-linear-gradient(#0073e0 0%, #004991 100%);
+background: -o-linear-gradient(#0073e0 0%, #004991 100%);
+background: linear-gradient(#0073e0 0%, #004991 100%); /* FF3.6-15 */ /* Chrome10-25,Safari5.1-6 */ /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0073e0', endColorstr='#004991',GradientType=0 ); /* IE6-9 */
+}
+
+.drop-shadow { /* drop shadow for all major popups: toc, subcourse, glossary, etc. */
+    -webkit-box-shadow: 0 0 20px #777;
+    -moz-box-shadow: 0 0 20px #777;
+    box-shadow: 0 0 20px #777;
+    filter: progid:DXImageTransform.Microsoft.Shadow(Color=#777777, Strength=5, Direction=0), progid:DXImageTransform.Microsoft.Shadow(Color=#777777, Strength=5, Direction=90), progid:DXImageTransform.Microsoft.Shadow(Color=#777777, Strength=5, Direction=180), progid:DXImageTransform.Microsoft.Shadow(Color=#777777, Strength=5, Direction=270);
+}
+
+
+
+/***** POPUP WINDOWS - TOC, Glossary, Refs, Resources *****/
+#popHeader {
+	height: 45px;
+	border-bottom:3px solid white;
+	padding-left:30px;
+	border-top-right-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+	-webkit-border-top-left-radius: 8px;
+}
+#popTitle {
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+}
+#popContents {
+	top:45px;
+	background-color: #E5E5E5;
+	border-bottom-right-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+	-webkit-border-bottom-left-radius: 8px;
+}
+#close_button {
+	right:8px;
+	top:6px;
+	width:30px;
+	height:30px;
+}
+/********* END POPUP WINDOWS *********/
+
+
+
+/*-------------------------------------------
+  ----------- HOTSPOTS SECTION --------------*/
+/* Color of hotspot background when hovering */
+div.hotspot {
+    opacity:0.1;
+    filter:alpha(opacity=0); /*for ie8*/
+    background-color:#ffcc00;
+}
+/* Checkmark used in all hotspots and required links, buttons, etc. */
+div.checkmark{
+	position:absolute;
+	background:transparent url(../interface/checkmark.png) no-repeat right 0px;
+	/*xbackground:transparent url(../interface/checkmark_small.png) no-repeat; */
+	width:20px;
+	height:20px;
+}
+/* This controls the placement of the checkmark relative to regular hotspots 
+div.checkmark[id^="cm"]{
+	margin: 21px 0px 0px 32px;
+}
+/* This controls the placement of the checkmark relative to regular buttons */
+input+div.checkmark {
+    margin:5px 0px 0px -8px;
+}
+/* This controls the placement of the checkmark relative to regular hyperlinks */
+span+div.checkmark, a+div.checkmark {
+    margin:0px 0px 0px -30px;
+}
+[id^='mapster_wrap'] {
+	margin:0 auto;
+}
+
+
+.usesIcon ul {
+	list-style: none;
+	margin:0 0 35px 0; 
+	padding:0;
+	display: table;
+}
+.usesIcon ul li {
+	margin:0;
+	padding:0;
+	background: url('') no-repeat center left;
+	padding-left: 100px;  /* according to image width */
+	min-height: 66px; /* according to image height */
+	height: 66px;
+	display: table-cell;
+	vertical-align: middle;
+}

@@ -1,0 +1,99 @@
+﻿<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" type="text/css" href="css/page.css" />  
+    <link rel="stylesheet" type="text/css" href="css/globals.css" />
+    <link rel="stylesheet" type="text/css" href="css/tooltips.css" />
+    
+    <style>
+		#graphic, .graphic {
+		    min-width: auto;
+		    min-height: auto;
+		    max-width: auto;
+		}
+	</style>
+    
+    <script src="js/jquery-1.7.min.js"></script>
+    <script src="js/utils.js" ></script>
+    <script src="js/effects.js"></script>
+    <script src="js/page.js"></script>
+    <script src="js/tooltips.js"></script>
+    <script src="js/subcourseCheck.js"></script>
+	<script type="text/javascript">
+	
+
+	$( document ).ready(function() {
+		resizeDisplayArea();
+	});
+
+		function resizeDisplayArea() {
+		// Make the smaller dimension set the size of the graphic (ie, image extends off screen in one dimension)
+			// get width and height of imgArea
+			var w = $('.imgArea').width();
+			var h = $('.imgArea').height();
+console.log( "imgArea width:  " + w );
+console.log( "imgArea height: " + h );	
+			// get natural width (nw) and height (nh) of img#graphic
+			var nw = document.querySelector('img').naturalWidth;
+			var nh = document.querySelector('img').naturalHeight;
+console.log( "img#graphic naturel width:  " + nw );
+console.log( "img#graphic natural height: " + nh );
+			var gw = $('img#graphic').width();
+			var gh = $('img#graphic').height();
+console.log( "img#graphic width:  " + gw );
+console.log( "img#graphic height: " + gh );	
+
+			// set the image width to 100%. if the image height is less than the imagearea, switch it and make the image width 100%
+//					$('#graphic').css('width','100%');
+//					$('#graphic').css('height','auto');
+//console.log( "imgArea width:  " + w );
+//console.log( "imgArea height: " + h );	
+					
+
+			// calculate the ratio of nw:width (rw) and nh:height (rh)
+			var rw = w/nw;
+			var rh = h/nh;
+console.log("w/nw: " + rw);
+console.log("h/nh: " + rh);			
+			if (rw > rh) {
+			//		set img#graphic width = 100% and height auto
+console.log("height 100%");
+					$('#graphic').css('width','100%');
+					$('#graphic').css('height','auto');
+			} else {
+			//		set img#graphic height = 100% and width auto
+console.log("width 100%");			
+					$('#graphic').css('height','100%');
+					$('#graphic').css('width','auto');
+			}
+
+//			var displayHeight = $(window).height() - $('.pageTitle').outerHeight();			
+//			$('#displayArea').css('width', displayWidth);
+//			$('#displayArea').css('height', displayHeight);
+			
+//			var imgWidth;
+//			imgWidth  = $('.imgArea').width();
+//			$(".imgArea").css("height", displayHeight);
+//			$(".txtArea").css("height", displayHeight);
+		}
+	
+		parent.setChapterTitle("");	 
+	</script>   
+</head>
+<!-- graphic_right_50_custom.htm template -->
+<body onResize="resizeDisplayArea()">
+	<div id="chapterTitle">Templates Detailed:&nbsp;<span class="pageTitle">Graphic with overlay</span></div>
+	<div class="imgArea imgBlock100">
+    	<img id="graphic" class="fadeIn" src="images/m04_s02_t03.jpg"/>
+<div class="textOverlay" style="margin-left:75px">
+		<P>This graphic screen features a text box encompassing 60% of the content area and a full screen graphic used as the background. The text box appears over the graphic. This similiar screen format can be used with sequencers and hotspots that have fixed (locked) and unspecified popup window sizes.</P>
+	</div>
+    	</div>
+	<div class="txtArea txtBlock50_custom">
+		<div style="position:relative; width:100%; height:100%; overflow:auto;">
+		</div>
+	</div>
+</body>
+</html>

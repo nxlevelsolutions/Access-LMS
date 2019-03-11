@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> </title>
+
+<style>
+body {
+	font-family:Verdana, Arial;
+	/*height:100%;
+	margin-top: 220px;*/
+}
+ 
+#courseTitle {
+	padding-bottom:200px;
+	font-size:24px;
+	font-style:italic;
+	font-weight:bolder;
+}
+#datePrinted{
+	display:inline;
+}
+#txt{
+	margin:40px;
+}
+#header{
+	padding-top:80px;
+	font-size:38px;
+	font-weight:bolder;
+}
+.box_rotate {
+     -moz-transform: rotate(90deg);  /* FF3.5+ */
+       -o-transform: rotate(90deg);  /* Opera 10.5 */
+  -webkit-transform: rotate(90deg);  /* Saf3.1+, Chrome */
+             filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);  /* IE6,IE7 */
+         -ms-filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1); /* IE8 */
+}
+</style>
+<script language="javascript" src="js/jquery-1.7.min.js"></script>
+<script language="javascript">
+function setAndPrint(){
+	var userData = window.opener.quiz.certificateData;
+	$("#courseTitle").html(userData.courseTitle);
+	$("#companyName").html(userData.companyName);
+	$("#header").html(window.opener.parent.nav.settings.labelCertificateTitle);
+	$("#txt").html(window.opener.parent.nav.settings.labelCertifies);
+	$("#labelPrinted").html(window.opener.parent.nav.settings.labelPrinted);
+	
+	var str = $("#txt").html();
+	str = str.replace("{name}", userData.name);
+	$("#txt").html(str);
+	
+	var labelMonths = window.opener.parent.nav.settings.labelMonths;
+	var months = labelMonths.split(",");
+	var dateFormat = window.opener.parent.nav.settings.dateFormatString;
+	var today = new Date();
+	dateFormat = dateFormat.replace("d", today.getDate());
+	if(window.opener.parent.nav.settings.useMonthDate == true){
+		dateFormat = dateFormat.replace("m", months[today.getMonth()]);
+	}
+	else {
+		dateFormat = dateFormat.replace("m", today.getMonth()+1);
+	}
+	dateFormat = dateFormat.replace("yyyy", today.getFullYear());
+	<!--var todaysDate = "" + months[today.getMonth()] + " " + today.getDate() + ", " + today.getFullYear();-->
+	<!--$("#datePrinted").html(todaysDate);-->
+	$("#datePrinted").html(dateFormat);
+	window.print();
+	//window.close();
+	setTimeout('window.close()', 100);
+}
+</script>
+</head>
+<body onload="setAndPrint()">
+<div style="border:1px solid #000; padding:20px; background-color:#F90; display:table-cell;">
+  <div style="border:1px solid #FFF; padding:20px; background-color:#F90; height:100%; display:table-cell;">
+    <div style="border:1px solid #000; padding:20px; background-color:#FFF; text-align:center; height:100%; display:table-cell;"> 
+
+      <div id="header"></div>
+      <div id="txt"></div>
+      <div id="courseTitle"></div>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td align="left" valign="top"><div id="companyName"></div></td>
+          <td align="right" valign="top"><span id="labelPrinted"></span>&nbsp;<span id="datePrinted"></span></td>
+        </tr>
+      </table>
+      
+    </div>
+  </div>
+</div>
+</body>
+</html>

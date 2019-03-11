@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style type="text/css">
+	body {
+		margin: 0px;
+		padding: 0px;
+		font-family: Arial, Helvetica, sans-serif;
+		/*font-family:Verdana, Geneva, sans-serif;*/
+		font-size: 12px;
+		background-color: transparent;
+	}
+	a {
+		color: #828282;
+		text-decoration: none;
+	}
+	#btn0 {
+		background: url('interface/menu_toc2.png') no-repeat top center;
+		width:17px;
+	}
+	#btn1 {
+		background: url('interface/menu_glossary.png') no-repeat top center;
+		width:22px;
+	}
+	#btn2 {
+		background: url('interface/menu_resources_folder.png') no-repeat top center;
+		width:18px;
+	}
+	#btn3 {
+		background: url('interface/menu_help.png') no-repeat top center;
+		width:9px;
+	}
+	#btn4 {
+		background: url('interface/menu_references_paper.png') no-repeat top center;
+		width:11px;
+	}
+	#btn0,
+	#btn1,
+	#btn2,
+	#btn3,
+	#btn4 {
+		width:67px;
+		height:17px;
+		margin:0;
+	}
+	.btn {
+		display: block;
+		cursor: pointer;
+		text-align: center;	
+		float: left;
+	}
+	.btnLabel {
+		font-size:9px;
+		color:#cccccc;
+		text-align:center;
+	}
+	#btn0:hover,
+	#btn1:hover,
+	#btn2:hover,
+	#btn3:hover,
+	#btn4:hover {
+		background-position: center -20px;
+	}
+</style>
+<script language="javascript" type="text/javascript" src="js/jquery-1.7.min.js"></script>
+<script language="javascript">
+	var pageLoaded = false,
+		menuFile = "topmenu.xml";
+	
+	function openTOC(){
+		closeAllMenuItems();
+		parent.course.openTOC();
+	}
+	function openHelp(){
+		closeAllMenuItems();
+		parent.course.openHelp();
+	}
+	function openGlossary(){
+		closeAllMenuItems();
+		parent.course.openGlossary();
+	}
+	function openResources(){
+		closeAllMenuItems();
+		parent.course.openResources();
+	}
+	function openReferences(){
+		closeAllMenuItems();
+		parent.course.openReferences();
+	}
+	function exit() {
+		parent.course.exitModule();
+	}
+	function closeAllMenuItems() {
+		parent.course.hideTOC();
+		parent.course.hideHelp();
+		parent.course.hideGlossary();
+		parent.course.hideReferences();
+		parent.course.hideResources();
+	}
+	function onPageLoaded() {
+		$.ajax({
+			url: menuFile,
+			dataType: 'xml',
+			async: true,
+			success: function (xmlDoc) {
+				var menuHtml = "<table id=\"controls\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr>",
+					spacer = "";
+				$(xmlDoc).find("item").each(function (idx, item) {
+					item = $(item);
+					var url = item.attr("action"),
+						label = item.attr("label");
+						menuHtml += "<td valign=\"top\" >";
+						menuHtml += "<div id='btn" + idx + "' class='btn' onclick='" + url + "' title='" + label + "'></div>" + spacer;
+						menuHtml += "<div class='btnLabel' onclick='" + url + "' title='" + label + "'>" + label + "</div>" + spacer;
+						menuHtml += "</td>";
+				});
+				menuHtml += "</tr></table>";
+				$(document.body).append(menuHtml.substr(0, menuHtml.length - spacer.length));
+				pageLoaded = true;
+			}
+		});
+	}
+</script>
+</head>
+<body onLoad="javascript:onPageLoaded();">
+</body>
+</html>

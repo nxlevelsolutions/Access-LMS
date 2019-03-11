@@ -1,0 +1,33 @@
+09:06:07AM;0;Information;User: 122 logged in.
+09:06:11AM;0;Pager Init Event: PageSize=10, PageIndex =1
+09:06:11AM;0;user page load size=10 index=1
+09:06:11AM;0;user page loading from db
+09:40:51AM;0;Information;User: 122 logged in.
+09:40:55AM;0;Pager Init Event: PageSize=10, PageIndex =1
+09:40:55AM;0;user page load size=10 index=1
+09:40:55AM;0;user page loading from db
+09:40:59AM;0;Information;User 122 launched course:4
+09:51:05AM;0;Information;User 122 launched course:4
+09:51:15AM;0;Information;User 122 launched course:4
+01:09:54PM;0;Information;User Id=0's session has ended.
+01:09:54PM;0;Information;LMS application module shut down/restart.
+Shutdown Message=Change in C:\Users\jvillegas.NXLSOL\AppData\Local\Temp\Temporary ASP.NET Files\vs\dc8b21a7\e1bc43db\hash\hash.web
+HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+File Change Notification Error in C:\Users\jvillegas.NXLSOL\AppData\Local\Temp\Temporary ASP.NET Files\vs\dc8b21a7\e1bc43db\hash
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.Compilation.BuildManager.OnWebHashFileChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Web.Util.WorkItem.OnQueueUserWorkItemCompletion(Object state)
+   at System.Threading.QueueUserWorkItemCallback.WaitCallback_Context(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+   at System.Threading._ThreadPoolWaitCallback.PerformWaitCallback()
+

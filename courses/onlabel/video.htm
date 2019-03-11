@@ -1,0 +1,280 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="pragma" content="no-cache"/>
+<meta http-equiv="expires" content="-1"/>
+<title></title>
+ <link rel="stylesheet" type="text/css" href="css/globals.css" /> 
+<style>
+	body {
+		margin: 0px;
+		background-color: transparent;
+	}
+	
+	#video_position_slider {
+		width: 120px;
+		height: 6px;
+		background-color: #686868;
+		border-radius: 3px;
+		position: absolute;
+		top: 14px;
+		margin-left: 10px;
+		/*left: 10px;*/
+	}
+
+	@media screen and (max-width: 230px){
+		#video_position_slider, #timeLeft{
+			display: none!important;
+		}
+	}
+	@media screen and (min-width: 241px){
+		#video_position_slider, #timeLeft{
+			display: block!important;
+		}
+	}
+
+	#video_position_handle {
+		/*position: absolute;*/
+		width: 16px;
+		height: 16px;
+		margin-top: -5px;
+		margin-left: -8px;
+		cursor: pointer;
+	}
+	#timeLeft {
+		position: absolute;
+		top: 11px;
+		left: 145px;
+		font-size: 11px;
+		text-align: center;
+		color: #999999;
+	}
+	
+	#playPauseBtn {
+		width:38px;
+		float:right;
+		cursor:pointer;
+	}
+	#icon_playpause {
+		padding-bottom:1px;
+		margin:0 auto;
+		background:url("interface/pixel.gif") top center;
+		background-repeat:no-repeat;
+		width:26px;
+		height:27px;
+	}
+	#icon_playpause:hover {
+		background-position: center -30px!important;
+	}
+	#playPauseLabel {
+		font-size:10px;
+		line-height:13px;
+		color:#999999;
+		text-align:center;
+		cursor:pointer;
+		position:absolute;
+		width:38px;
+	}
+</style>
+<script language="javascript" src="js/jquery-1.7.min.js"></script>
+<script language="javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
+<script language="javascript" src="js/utils.js"></script>
+<script language="javascript">
+	"use strict";
+	// http://developer.apple.com/library/safari/#documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/ControllingMediaWithJavaScript/ControllingMediaWithJavaScript.html
+	var pageLoaded = false,
+		paused = false,
+		main,
+		isDragging = false,
+		initialized = false,
+		loading = false,
+		videoPlayer;
+
+	function onPageLoad(){
+		pageLoaded = true;
+	}  
+	function audioEnded(){
+		displayPauseIcon(false);
+		if (parent.nav!=undefined) parent.nav.eventCompleted("audio");
+	}
+	function onAllowToNavigate(nav){
+		// enable next when gated
+	}
+	function onUpdateUI(nav) {
+		main = parent.frames['main'];
+		
+		if (initialized) {
+			//ready to go.. just play
+			if (nav.settings.gated && !nav.getPage().completed) {
+				$('#video_position_handle').draggable('disable');
+			} else {
+				$('#video_position_handle').draggable('enable'); //set draggable scrubber
+			}
+//			playMP3File(audioFile);
+
+			// Hide video controls
+			if (typeof (parent.showVideoControls) == "function") {
+				parent.showVideoControls(false);
+			}
+
+			$('#icon_playpause').attr('title', 'PAUSE');
+			$('#buttonLabel').html('PAUSE');
+		}
+	}
+	
+	
+	//**********************************************
+	// event-related methods 
+	// TO DO: it can only handle 1 listener
+	//**********************************************
+	//var evtListeners = new Array();
+
+	var evtListener;
+	function addAudioEventListener(doc){
+		//called from parent
+		evtListener = doc;
+	}
+	function fireAudioEvent(name, value){
+		if (evtListener==undefined) return;
+		var functionName;
+		switch (name){
+			case "currentTime":
+				functionName = "onAudioCurrentTime";
+				break;
+			case "audioEnded":
+				functionName = "onAudioEnded";
+				break;
+			default:
+				return;	
+		}
+		//call method
+		if (typeof(evtListener[functionName])=="function")	{
+			//call must be asynchronous
+				setTimeout(function () {
+				if (typeof(evtListener[functionName])!="undefined") evtListener[functionName](value);
+			}, 100);
+		}
+		else{
+			//parent.nav.writeToLog("Audio warning: function " + functionName + " not found in listener.");
+		}
+	}
+	
+	var positionSliderLeft,
+		positionSliderWidth,
+		positionHandleOffset;
+	
+	function init(){
+		// this initialization must be done after the iframe has become visible
+		// if (initialized) return;
+
+		positionSliderLeft = $("#video_position_slider").offset().left;
+		positionSliderWidth = $("#video_position_slider").width();
+		positionHandleOffset = $("#video_position_handle").width() / 2;
+		
+		parent.nav.writeToLog("positionSliderLeft: " + positionSliderLeft + ", positionSliderWidth: " + positionSliderWidth + ", positionHandleOffset: " + positionHandleOffset);
+		
+		var s = document.getElementById("video_position_handle");
+		s.style.left = (positionSliderLeft - positionHandleOffset) + "px";
+		
+		parent.nav.writeToLog("init pos: " + s.style.left);
+
+		// http://www.chipwreck.de/blog/2010/03/01/html-5-video-dom-attributes-and-events/
+		//videoPlayer = document.getElementById("audioHtml5");
+		videoPlayer = parent.frames['main'].document.getElementById('video0');
+//		videoPlayer.preload = "metadata";
+//		videoPlayer.addEventListener("ended", audioEnded, false); //required even though it's already set in tag.. buggy behaviour
+
+		// handle scrubber
+		$("#video_position_handle").draggable({
+			axis: 'x',
+			containment: "parent",
+			drag: onSetVideoPosition,
+			start: function () {
+				isDragging = true;
+			},
+			stop: function () {
+				isDragging = false;
+			}
+		});
+		if (parent.nav && parent.nav.settings.gated && !parent.nav.getPage().completed) {
+			$("#video_position_handle").draggable('disable');
+		}
+		else {
+			$("#video_position_handle").draggable('enable'); //set draggable scrubber
+		}
+		initialized = true;
+	}
+	
+
+	function onSetVideoPosition(event, ui){
+		var ratio = (ui.position.left - positionSliderLeft)/positionSliderWidth;
+//		audioPlayer.currentTime = ratio * audioPlayer.duration;
+//		audioPlayer.play();// ?
+		videoPlayer.currentTime = ratio * videoPlayer.duration;
+		videoPlayer.play();// ?
+	}
+	function updateTimeLeft() {
+		var secsLeft,
+			str = "";
+		secsLeft = videoPlayer.duration - videoPlayer.currentTime;
+		if (!isNaN(secsLeft)) {
+			secsLeft = Math.abs(secsLeft);
+			var minutes = parseInt(secsLeft / 60) % 60,
+				seconds = Math.round(secsLeft % 60);
+			str = (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+		}
+		$("#timeLeft").html(str);
+	}	
+	function updatePositionSlider(){
+		if (loading) {
+			loading = false;
+			$('#icon_playpause').css('background','url(interface/audio_pause.png)');
+			$('#icon_playpause').attr('title',labelPauseBtn);
+		}
+		var videoRatio,
+			currentTime;
+		updateTimeLeft();
+		videoRatio = videoPlayer.currentTime / videoPlayer.duration;
+		currentTime = videoPlayer.currentTime;
+//		fireAudioEvent("currentTime", currentTime);
+		if (isNaN(videoRatio) || isDragging) {
+			return;
+		}
+		var s = document.getElementById("video_position_handle");
+		s.style.left = (positionSliderLeft + Math.round((positionSliderWidth * videoRatio) - positionHandleOffset)) + "px";
+		
+		parent.nav.writeToLog("video_position_handle is now: " + (positionSliderLeft + Math.round((positionSliderWidth * videoRatio) - positionHandleOffset)) + "px  positionSliderLeft: " + positionSliderLeft );
+	}
+	
+	function togglePlayPause(){
+		// called by user when play/pause button is pressed
+		main.playPause();
+		displayPauseIcon(!paused);
+	}
+	function displayLoadingIcon(){
+		document.getElementById("icon_playpause").style.background = "url(interface/audio_loading.gif";
+		$('#playPauseLabel').html('');
+	}
+	function displayPauseIcon(flag){
+		paused = flag;
+		document.getElementById("icon_playpause").style.background = "url('interface/audio_" + (flag?'pause':'play') + ".png')";
+		$('#playPauseLabel').html(flag?"PAUSE":"PLAY");
+	}
+	
+</script>
+</head>
+<body onload="javascript:onPageLoad();">
+	<div id="playPauseBtn" onclick="javascript:togglePlayPause();">
+		<div id="icon_playpause"></div>
+		<span id="playPauseLabel"></span>
+	</div>
+	<div id="video_position_slider">
+		<img src="interface/audio_handle.png" alt="" name="video_position_handle" id="video_position_handle" />
+	</div>
+	<img id="waiting" style="position:absolute; left: 208px; top: 8px; display:none;" src="interface/waitanimation.gif" width="30" height="30" />
+	
+	<div id="timeLeft"></div>
+</body>
+</html>

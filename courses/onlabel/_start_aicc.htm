@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<title>Course in Progress...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<script language="javascript" src="js/jquery-1.7.min.js"></script>
+<script language="javascript">
+//window.moveTo (1024,0);
+var alive = true;    
+var keepRefreshing= false;
+var winWidth = 1020;
+var winHeight = 672;
+function openCourse(){
+    refreshPage();
+    var href = document.location.href;
+    href = href.substr(0, href.lastIndexOf('/') + 1);
+    href = href.replace("&", "%26");
+    var modWin = window.open("course_root_aicc.htm?AICC_sid=123&AICC_URL=" + href + "aicc.asp", "mod", "dependent,toolbar=no,status=no,menubar=no,scrollbars=no,resizable=yes,width=" + winWidth + ",height=" + winHeight);
+	modWin.moveTo(0, 0);
+}
+
+function setStatus(str){
+	var box = document.getElementById("statusBox");
+	box.innerHTML += ("+ " + str + "<br>");
+}
+function toggleRefresh(){
+	if(document.all.refreshCont.checked){
+		keepRefreshing = true;
+		refreshPage()
+	}
+	else{
+		keepRefreshing = false;
+	}
+}
+function refreshPage(){
+	getSessionData();
+	if (keepRefreshing) setTimeout("refreshPage()", 500);
+}
+
+function getSessionData() {
+    $.ajax({
+        url: "aicc.asp",
+        type: 'post',
+        async: false,
+        data: { command: 'getparam', w: 1 },
+        success: function (ret) {
+            document.getElementById("session").value = ret;
+        }
+    });
+}
+function clearPage() {
+    $.ajax({
+        url: "aicc.asp",
+        type: 'post',
+        async: false,
+        data: { command: 'killsession'},
+        success: function (ret) {
+            document.getElementById("session").value = ret;
+        }
+    });
+}
+</script>
+<style>
+td{ font-family:Arial, Helvetica, sans-serif }
+.btn{width:140px}
+</style>
+</head>
+<BODY bgcolor="#F4F4F4">
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="400" border="0" align="center" cellpadding="8" cellspacing="1" bgcolor="#999999">
+  <tr>
+    <td align="center" bgcolor="#FFFFFF"> 
+	  <p>&nbsp;</p>
+	  <p><b><font color="#0000cd">AICCx Course Testing Page</font></b></p>
+	  <p><a href="#" onClick="javascript:openCourse()" >Click here to launch course</a>.</p>
+	  <table width="360" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td><font size="2" face="Arial, Helvetica, sans-serif"><a name="statusBox" id="statusBox"></a></font></td>
+        </tr>
+    </table>	  
+    <textarea name="session" cols="60" rows="15" id="session" style="font-family:courier new; font-size:11px"></textarea>
+    <br>
+    <input type="button" name="button" id="button" value="Refresh Now" onClick="refreshPage()" class="btn">
+    &nbsp;<input type="button" name="button2" id="button2" value="Clear Saved Values" onClick="clearPage()" class="btn">
+    <br>
+    <input name="refreshCont" type="checkbox" id="refreshCont" onClick="toggleRefresh()" value="1">
+    Refresh continously</td>
+  </tr>
+</table>
+</BODY>
+</HTML>
+

@@ -14,12 +14,13 @@ namespace NXLevel.LMS.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
             int courseId = int.Parse(Request.QueryString["cid"]);
+            int assignmentId = int.Parse(Request.QueryString["aid"]);
 
             //'--------------------------------------------------------
             //'Get Database info to display in PDF
             //'--------------------------------------------------------
-            lms_Entities db = new lms_Entities();
-            Course_BasicInfo_Result basInfo = db.Course_BasicInfo(courseId, LmsUser.UserId).FirstOrDefault();
+            lms_Entities db = new ClientDBEntities();
+            Course_BasicInfo_Result basInfo = db.Course_BasicInfo(assignmentId, courseId, LmsUser.UserId).FirstOrDefault();
 
             //'--------------------------------------------------------
             //'Fill out PDF and send to client browser
