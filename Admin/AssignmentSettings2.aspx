@@ -10,9 +10,9 @@
     <script>
         function onSave() {
 
-            //check registration code
-            if ($('#cbSelfRegister').prop('checked') && $('#tbRegisterCode').val()=="") {
-                $("#errMessage").html("Please enter a Registration Code or deselect the 'Allow self-registration' option.");
+            //check title
+            if ($('#txtTitle').val() == '') {
+                $("#errMessage").html("The 'Name' field is required.");
                 return;
             }
 
@@ -22,49 +22,38 @@
                 return;
             }
 
+            //check overdue reminders
+            if ($('#cbEmailOverdue').prop('checked') && $('#txtOverdueDays').val() == "") {
+                $("#errMessage").html("The 'Send overdue reminder' option was checked, but no days were specified.");
+                return;
+            }
 
             if ($('#cbEmailNearDueDate').prop('checked') && $('#txtNearDueDateDays').val() == "") {
                 $("#errMessage").html("The 'Send near due date' option was checked, but no days were specified.");
                 return;
             }
 
-            //check due date options
-            if ($('#txtDuedate').val() == "") { //no due date specified
-                if ($('#cbEmailNearDueDate').prop('checked')) {
-                    $("#errMessage").html("The 'Send near due date' option was checked, but no 'Due Date' was specified.");
-                    return;
-                }
-
-                if ($('#cbEmailDueDate').prop('checked')) {
-                    $("#errMessage").html("The 'Send on due date' option was checked, but no 'Due Date' was specified.");
-                    return;
-                }
-
-                if ($('#cbEmailOverdue').prop('checked')) {
-                    $("#errMessage").html("The 'Send overdue email' option was checked, but no 'Due Date' was specified.");
-                    return;
-                }
-
-            }
-
             parent.window.disableOK();
-            Utils.Post("AssignmentSettings.aspx/Save",
+            Utils.Post("AssignmentSettings2.aspx/Save",
                 {
+                    title: $('#txtTitle').val(),
+                    description: $('#txtDescription').val(),
                     enabled: $('#cbEnabled').prop('checked'),
-                    allowSelfRegister: $('#cbSelfRegister').prop('checked'),
                     registerCode: $('#tbRegisterCode').val(),
-                    dueDate: $('#txtDuedate').val() == "" ? null : $('#txtDuedate').val(),
+                    dueDate: $('#txtDueDate').val().trim() === "" ? null : $('#txtDueDate').val(),
+                    dueDays: $('#txtDueDays').val().trim() === "" ? null : $('#txtDueDays').val(),
                     emailOnAssigned: $('#cbEmailOnAssigned').prop('checked'),
                     emailPeriodic: $('#cbEmailPeriodic').prop('checked'),
-                    periodicDays: $('#txtPeriodicDays').val() == "" ? null : $('#txtPeriodicDays').val(),
+                    periodicDays: $('#txtPeriodicDays').val().trim() == "" ? null : $('#txtPeriodicDays').val(),
                     emailNearDueDate: $('#cbEmailNearDueDate').prop('checked'),
                     nearDueDateDays: $('#txtNearDueDateDays').val() == "" ? null : $('#txtNearDueDateDays').val(),
                     emailOnDueDate: $('#cbEmailDueDate').prop('checked'),
-                    emailOverdue: $('#cbEmailOverdue').prop('checked')
+                    emailOverdue: $('#cbEmailOverdue').prop('checked'),
+                    overdueDays: $('#txtOverdueDays').val().trim() == "" ? null : $('#txtOverdueDays').val()
                 },
                 function (response) {
                     if (response.error == "") {
-                        parent.window.closeWin(true);
+                        parent.window.closeWin(true, '#tab2');
                     }
                     else {
                         parent.window.disableOK(false);
@@ -75,17 +64,17 @@
             
         }
 
-        function enableRegCode(ctrl) {
-            $('#tbRegisterCode').prop('disabled', !ctrl.checked);
-            if (ctrl.checked) {
-                $('#tbRegisterCode').prop('placeholder', "Enter registration code");
-                $('#tbRegisterCode').focus();
-            }
-            else {
-                $('#tbRegisterCode').val("");
-                $('#tbRegisterCode').prop('placeholder', "");
-            }
-        }
+        //function enableRegCode(ctrl) {
+        //    $('#tbRegisterCode').prop('disabled', !ctrl.checked);
+        //    if (ctrl.checked) {
+        //        $('#tbRegisterCode').prop('placeholder', "Enter registration code");
+        //        $('#tbRegisterCode').focus();
+        //    }
+        //    else {
+        //        $('#tbRegisterCode').val("");
+        //        $('#tbRegisterCode').prop('placeholder', "");
+        //    }
+        //}
 
         function enablePeriodicDays(ctrl) {
             $('#txtPeriodicDays').prop('disabled', !ctrl.checked);
@@ -94,6 +83,16 @@
             }
             else {
                 $('#txtPeriodicDays').val("");
+            }
+        }
+
+        function enableOverdueDays(ctrl) {
+            $('#txtOverdueDays').prop('disabled', !ctrl.checked);
+            if (ctrl.checked) {
+                $('#txtOverdueDays').focus();
+            }
+            else {
+                $('#txtOverdueDays').val("");
             }
         }
 
@@ -107,27 +106,33 @@
             }
         }
 
-        function checkDate(ctrl) {
-            if (Date.parse(ctrl.value)) {
-                $('#cbEmailNearDueDate').prop('disabled', false); 
-                $('#cbEmailDueDate').prop('disabled', false); 
-                $('#cbEmailOverdue').prop('disabled', false);
-            }
-            else {
+        function checkDueSettings(flag) {
+            var dueDate = document.getElementById('txtDueDate'),
+                dueDays = document.getElementById('txtDueDays');
+            if (flag === true) dueDays.value = "";
+            if (flag === false) dueDate.value = "";
+
+            if (isNaN(Date.parse(dueDate.value)) && dueDays.value.trim() === '') {
                 $('#cbEmailNearDueDate').prop('disabled', true); $('#cbEmailNearDueDate').prop('checked', false);
                 $('#cbEmailDueDate').prop('disabled', true); $('#cbEmailDueDate').prop('checked', false);
                 $('#cbEmailOverdue').prop('disabled', true); $('#cbEmailOverdue').prop('checked', false);
                 $('#txtNearDueDateDays').prop('disabled', true); $('#txtNearDueDateDays').val("");
+                $('#txtOverdueDays').prop('disabled', true); $('#txtOverdueDays').val("");
+            }
+            else {
+                $('#cbEmailNearDueDate').prop('disabled', false);
+                $('#cbEmailDueDate').prop('disabled', false);
+                $('#cbEmailOverdue').prop('disabled', false);
             }
         }
 
         $(document).ready(function () {
-            $('#tbRegisterCode').prop('disabled', !$('#cbSelfRegister').prop("checked"));
-            $("#txtDuedate").datepicker();
+            $("#txtDueDate").datepicker();
             $('#txtPeriodicDays').prop('disabled', !$('#cbEmailPeriodic').prop("checked"));
             $('#txtNearDueDateDays').prop('disabled', !$('#cbEmailNearDueDate').prop("checked"));
+            $('#txtOverdueDays').prop('disabled', !$('#cbEmailOverdue').prop("checked"));
             $('[data-toggle="tooltip"]').tooltip();
-            checkDate(document.getElementById('txtDuedate'));
+            checkDueSettings();
         });
 
     </script>
@@ -135,78 +140,74 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div id="errMessage" class="required-red"></div>
-    
-    <ul class="nav nav-tabs" >
-        <li class="active"><a href="#tab1" data-toggle="tab">Settings</a></li>
-        <li><a href="#tab2" data-toggle="tab">Email Notifications</a></li>
-    </ul>
+   
+    <table width="100%">
+        <tr>
+            <td width="100" height="33" valign="top">Name: <div class="asterisk required-red"></div></td>
+            <td><asp:TextBox ID="txtTitle" runat="server" ClientIDMode="Static"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td valign="top">Description:</td>
+            <td><asp:TextBox ID="txtDescription" runat="server" TextMode="MultiLine" ClientIDMode="Static"></asp:TextBox></td>
+        </tr>
+    </table>
 
-    <div class="tab-content">
-        <div class="tab-pane fade in active" id="tab1">
-            <p>&nbsp;</p>
-            <table class="table">
-                <tr>
-                    <td>
-                        <asp:CheckBox runat="server" ID="cbEnabled" Text="Enable this Learning Plan" ClientIDMode="Static" 
-                            data-toggle="tooltip" 
-                            data-placement="right" 
-                            title="Checking this box will make this Learning Plan's course(s) available to the assigned users immediately." /> 
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:CheckBox runat="server" ID="cbSelfRegister" Text="Allow self-registration" ClientIDMode="Static" onclick="enableRegCode(this)" 
-                            data-toggle="tooltip" 
-                            data-placement="right" 
-                            title="Self-registration allows new users to be assigned this Learning Plan automatically."/>
-                        <p class="small">Registration code to use in self-registration page:</p>
-                        <asp:TextBox runat="server" ID="tbRegisterCode"  ClientIDMode="Static"
-                            data-toggle="tooltip" 
-                            data-placement="bottom" 
-                            title="When this registration code is entered by new users, this Learning Plan's course(s) get automatically assigned to them."></asp:TextBox> 
-                    </td>
-                </tr>
-            </table>
-        </div>
 
-        <div class="tab-pane fade" id="tab2">
-            <p>&nbsp;</p>
-            <table class="table">
-                <tr>
-                    <td>
-                        Due date:
-                        <asp:TextBox runat="server" ID="txtDuedate" placeholder="mm/dd/yyyy" CssClass="text-center" ClientIDMode="Static" Width="82" onchange="checkDate(this)"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:CheckBox runat="server" ID="cbEmailOnAssigned" Text='Send "Assigned activity" reminder email' ClientIDMode="Static"  />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:CheckBox runat="server" ID="cbEmailPeriodic" Text="Send periodic reminders emails" ClientIDMode="Static" onclick="enablePeriodicDays(this)" />
-                        every <asp:TextBox runat="server" ID="txtPeriodicDays" ClientIDMode="Static" Width="25" CssClass="text-center"></asp:TextBox> day(s).
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:CheckBox runat="server" ID="cbEmailNearDueDate" Text='Send "near" due date reminder email' ClientIDMode="Static" onclick="enableNearDueDays(this)" />
-                        <asp:TextBox runat="server" ID="txtNearDueDateDays" ClientIDMode="Static" Width="25" CssClass="text-center"></asp:TextBox> day(s) before the due date.
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:CheckBox runat="server" ID="cbEmailDueDate" Text='Send "on due date" reminder email' ClientIDMode="Static"  />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:CheckBox runat="server" ID="cbEmailOverdue" Text='Send "Overdue" reminder email' ClientIDMode="Static"  />
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
+    <table class="table">
+        <tr>
+            <td>
+                <asp:CheckBox runat="server" ID="cbEnabled" Text="Enable this Learning Plan" ClientIDMode="Static" 
+                    data-toggle="tooltip" 
+                    data-placement="right" 
+                    title="Checking this box will make this Learning Plan's course(s) available to the assigned users immediately." /> 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Registration code to use in self-registration page:</p>
+                <asp:TextBox runat="server" ID="tbRegisterCode"  ClientIDMode="Static"
+                    data-toggle="tooltip" 
+                    data-placement="bottom" 
+                    title="When this registration code is entered by registering users, this Learning Plan's course(s) will be automatically assigned to them."></asp:TextBox> 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:CheckBox runat="server" ID="cbEmailOnAssigned" Text='Send "Assigned activity" reminder email' ClientIDMode="Static"  />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:CheckBox runat="server" ID="cbEmailPeriodic" Text="Send periodic reminders emails" ClientIDMode="Static" onclick="enablePeriodicDays(this)" />
+                every <asp:TextBox runat="server" ID="txtPeriodicDays" ClientIDMode="Static" Width="25" CssClass="text-center"></asp:TextBox> day(s).
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Due date:&nbsp; On <asp:TextBox runat="server" ID="txtDueDate" placeholder="mm/dd/yyyy" CssClass="text-center" ClientIDMode="Static" Width="86" onkeyup="checkDueSettings(true)" onchange="checkDueSettings(true)"></asp:TextBox>
+                &nbsp;or&nbsp;
+                <asp:TextBox runat="server" ID="txtDueDays" placeholder="dd" CssClass="text-center" ClientIDMode="Static" Width="34" onkeyup="checkDueSettings(false)" onchange="checkDueSettings(false)"></asp:TextBox>
+                days after assignment.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:CheckBox runat="server" ID="cbEmailNearDueDate" Text='Send "near" due date reminder email' ClientIDMode="Static" onclick="enableNearDueDays(this)" />
+                <asp:TextBox runat="server" ID="txtNearDueDateDays" ClientIDMode="Static" Width="25" CssClass="text-center"></asp:TextBox> day(s) before the due date.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:CheckBox runat="server" ID="cbEmailDueDate" Text='Send "on due date" reminder email' ClientIDMode="Static"  />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:CheckBox runat="server" ID="cbEmailOverdue" Text='Send "Overdue" reminder email' ClientIDMode="Static" onclick="enableOverdueDays(this)" />
+                <asp:TextBox runat="server" ID="txtOverdueDays" ClientIDMode="Static" Width="25" CssClass="text-center"></asp:TextBox> day(s) after due date.
+            </td>
+        </tr>
+    </table>
+         
 
 </asp:Content>

@@ -49,33 +49,6 @@ namespace NXLevel.LMS.Admin {
         protected global::System.Web.UI.WebControls.TextBox tbUrl;
         
         /// <summary>
-        /// rblType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblType;
-        
-        /// <summary>
-        /// cbToolbar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbToolbar;
-        
-        /// <summary>
-        /// cbStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbStatus;
-        
-        /// <summary>
         /// tbWidth control.
         /// </summary>
         /// <remarks>

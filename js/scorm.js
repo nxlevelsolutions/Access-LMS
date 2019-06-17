@@ -2,12 +2,12 @@
 
 var API = function () {
 
-    var _path = document.location.pathname.substring(0, document.location.pathname.lastIndexOf("/")),
-        _lmsUrl = _path + "/admin/LmsMessage.ashx",
+    var _lmsUrl,
         _courseId,
         _assigId,
         _userId,
-        _APIObj;
+        _APIObj,
+        _lastError = 0;
 
     //function getMessage(url) {
     //    var ret = Utils.Get(
@@ -40,7 +40,8 @@ var API = function () {
 
     return {
         //called by course_scorm.aspx
-        loadInitData: function (userId, assigId, courseId, callback) {
+        loadInitData: function (userId, assigId, courseId, pathPrefix, callback) {
+            _lmsUrl = pathPrefix + "admin/LmsMessage.ashx"
             _userId = userId;
             _courseId = courseId;
             _assigId = assigId;
@@ -54,27 +55,24 @@ var API = function () {
         },
  
         LMSInitialize: function () {
-            return "true";
+            return true;
         },
 
         LMSSetValue: function (key, value) {
 
             //skip unsupported
             if (key == "cmi.core.score.min" || key == "cmi.core.score.max") return;
+
             var ret = setMessage(key, value);
              
-            //update display - status
-            if (key == "cmi.core.lesson_status") {
-                if (typeof (window.opener.closed) != "unknown" && window.opener.closed == false && window.opener.modWindow == window) {
+            //update display if status/score changed
+            if (key == "cmi.core.lesson_status" ||
+                key == "cmi.core.score.raw") {
+                if (window.opener && typeof (window.opener.closed) != "unknown" && window.opener.closed == false && window.opener.lms) {
                     window.opener.lms.refreshDisplay(_assigId, _courseId);
                 }
             }
-            //update display - score
-            if (key == "cmi.core.score.raw") {
-                if (typeof (window.opener.closed) != "unknown" && window.opener.closed == false && window.opener.modWindow == window) {
-                    window.opener.lms.refreshDisplay(_assigId, _courseId);
-                }
-            }
+             
 
             return ret;
         },
@@ -93,7 +91,7 @@ var API = function () {
         },
 
         LMSGetLastError: function () {
-            return "";
+            return _lastError;
         },
 
         LMSGetErrorString: function (code) {

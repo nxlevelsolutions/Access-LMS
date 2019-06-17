@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Configuration;
 using System.Xml;
+using NXLevel.LMS.DataModel;
+using System.Configuration;
 
 namespace NXLevel.LMS.Admin
 {
@@ -18,9 +20,11 @@ namespace NXLevel.LMS.Admin
 
         public void ProcessRequest(HttpContext context)
         {
-            JavaScriptSerializer jsSerializer = new JavaScriptSerializer();
-            var manifestObj = new object();
+            CourseInfo? courseInfo = null;
             string errMsg = "";
+            string filename = "";
+            int? courseId = null;
+            CourseType courseType = (CourseType)short.Parse(context.Request.Form["type"]);
 
             // check if a file needs to be uploaded
             if (context.Request.Files.Count == 1)
@@ -28,66 +32,107 @@ namespace NXLevel.LMS.Admin
                 HttpPostedFile uploadedFile = context.Request.Files[0];
                 if (uploadedFile?.ContentLength > 0)
                 {
-                    string filename = uploadedFile.FileName;
-                    int? courseId = Utilities.TryToParseAsInt(context.Request.Form["courseId"]);
-                    string courseType = context.Request.Form["type"].ToUpper();
-                    string assetAbsPath = Path.Combine(new string[] { HttpContext.Current.Server.MapPath("~/courses"), LmsUser.assetsFolder, courseId.ToString()});
-
-                    if (courseId > 0)
+                    filename = uploadedFile.FileName;
+                    courseId = Utilities.TryToParseAsInt(context.Request.Form["courseId"]);
+                    if (courseId == null)
                     {
-                        if (courseType == "AICC" || courseType == "SCORM")
+                        errMsg = "No course ID was specified";
+                    }
+                    else
+                    {
+                        string courseAbsPath = Path.Combine(new string[] {
+                            HttpContext.Current.Server.MapPath("~/" + Global.WEBSITE_COURSES_FOLDER),
+                            LmsUser.companyFolder,
+                            courseId.ToString()
+                        });
+                    
+                        if (courseType == CourseType.AICC || courseType == CourseType.SCORM)
                         {
                             if (filename.EndsWith(".zip"))
                             {
                                 try
                                 {
                                     // make sure the folder exists
-                                    if (Directory.Exists(assetAbsPath))
+                                    if (Directory.Exists(courseAbsPath))
                                     {
-                                        EmptyDirectory(assetAbsPath);
+                                        EmptyDirectory(courseAbsPath);
                                     }
                                     else
                                     {
-                                        Directory.CreateDirectory(assetAbsPath);
+                                        Directory.CreateDirectory(courseAbsPath);
                                     }
 
                                     //unzip it
-                                    Log.Info("Unzipping " + filename + " to " + assetAbsPath);
+                                    Log.Info("Unzipping " + filename + " to " + courseAbsPath);
                                     ZipArchive zipArch = new ZipArchive(uploadedFile.InputStream);
-                                    zipArch.ExtractToDirectory(assetAbsPath);
+                                    zipArch.ExtractToDirectory(courseAbsPath);
 
                                     //get the manifests' data
-                                    if (courseType == "AICC")
+                                    if (courseType == CourseType.AICC)
                                     {
                                         string auManifest;
                                         string crsManifest;
                                         string[] files;
-                                        files = Directory.GetFiles(assetAbsPath, "*.au");
-                                        if (files.Length == 1)
+                                        files = Directory.GetFiles(courseAbsPath, "*.au");
+                                        if (files.Length == 0)
                                         {
-                                            auManifest = files[0];
-                                            files = Directory.GetFiles(assetAbsPath, "*.crs");
-                                            if (files.Length == 1)
-                                            {
-                                                crsManifest = files[0];
-                                                manifestObj = GetAICCManifestData(assetAbsPath, auManifest, crsManifest, out errMsg);
-                                            }
-                                            else
-                                            {
-                                                errMsg = "The \".CRS\" file is required";
-                                            }
+                                            errMsg = "The \".AU\" file (manifest) was not found.";
                                         }
                                         else
                                         {
-                                            errMsg = "The \".AU\" file is required";
+                                            auManifest = files[0];
+                                            files = Directory.GetFiles(courseAbsPath, "*.crs");
+                                            if (files.Length == 0)
+                                            {
+                                                errMsg = "The \".CRS\" file (manifest) was not found";
+                                            }
+                                            else
+                                            {
+                                                crsManifest = files[0];
+                                                courseInfo = GetAICCManifestData(courseAbsPath, auManifest, crsManifest, out errMsg);
+
+                                                if (courseInfo == null)
+                                                {
+                                                    // errMsg already set by function if courseInfo == null;
+                                                }
+                                                else
+                                                {
+                                                    //check data in manifest
+                                                    if (courseInfo?.title.Trim().Length == 0)
+                                                    {
+                                                        errMsg = "The title is empty in the manifest";
+                                                    }
+                                                    if (courseInfo?.startPage.Trim().Length == 0)
+                                                    {
+                                                        errMsg = "The start page is empty in the manifest";
+                                                    }
+                                                }
+                                            }
                                         }
 
                                     }
-                                    if (courseType == "SCORM")
+                                    if (courseType == CourseType.SCORM)
                                     {
-                                        if (File.Exists(assetAbsPath + "\\imsmanifest.xml"))
+                                        if (File.Exists(courseAbsPath + "\\imsmanifest.xml"))
                                         {
-                                            manifestObj = GetSCORMManifestData(assetAbsPath, out errMsg); 
+                                            courseInfo = GetSCORMManifestData(courseAbsPath, out errMsg);
+
+                                            if (courseInfo == null)
+                                            {
+                                                // errMsg already set by function if courseInfo == null;
+                                            }
+                                            else
+                                            {
+                                                //check data in manifest
+                                                if (courseInfo?.title.Trim().Length == 0)
+                                                {
+                                                    errMsg = "The title is empty in the manifest";
+                                                }
+                                                if (courseInfo?.startPage.Trim().Length == 0)
+                                                {
+                                                    errMsg = "The start page is empty in the manifest";
+                                                }
+                                            }
                                         }
                                         else
                                         {
@@ -111,12 +156,26 @@ namespace NXLevel.LMS.Admin
                         }
                         else
                         {
-                            errMsg = "No course type specified";
+                            if (courseType == CourseType.READ_AND_SIGN)
+                            {
+                                // make sure the folder exists
+                                if (Directory.Exists(courseAbsPath))
+                                {
+                                    EmptyDirectory(courseAbsPath);
+                                }
+                                else
+                                {
+                                    Directory.CreateDirectory(courseAbsPath);
+                                }
+
+                                //save file
+                                uploadedFile.SaveAs(courseAbsPath + "\\" + filename);
+                            }
+                            else
+                            {
+                                errMsg = "No course type was specified";
+                            }
                         }
-                    }
-                    else
-                    {
-                        errMsg = "No course ID was specified";
                     }
                 }
                 else
@@ -132,12 +191,51 @@ namespace NXLevel.LMS.Admin
             }
 
 
+
+            if (errMsg.Length == 0)
+            {
+                //============================================
+                // At this point the upload process went ok so
+                // update the db course info with updated info
+                //============================================
+                try
+                {
+                    lms_Entities db = new ClientDBEntities();
+                    Course csr = db.Courses.Where(u => u.courseId == courseId).FirstOrDefault();
+                    if (courseType == CourseType.READ_AND_SIGN)
+                    {
+                        csr.type = (short)courseType;
+                        csr.url = Global.WEBSITE_COURSES_FOLDER + "/" + LmsUser.companyFolder + "/" + courseId + "/" + filename;
+                        Log.Info("CourseId " + courseId + " updated file:" + filename);
+                    }
+                    else
+                    {
+                        csr.title = courseInfo?.title;
+                        csr.description = courseInfo?.description;
+                        csr.type = (short)courseType;
+                        csr.url = Global.WEBSITE_COURSES_FOLDER + "/" + LmsUser.companyFolder + "/" + courseId + "/" + courseInfo?.startPage;
+                        Log.Info("CourseId " + courseId + " updated from manifest.");
+                    }
+                    db.SaveChanges();
+                    
+                }
+                catch (Exception e)
+                {
+                    errMsg = e.Message;
+                    Log.Error(e);
+                }
+
+            }
+            else
+            {
+                Log.Error(errMsg);
+            }
+
             context.Response.ContentType = "application/json";
-            var resObj = new { error = errMsg, data = manifestObj };
-            context.Response.Write(jsSerializer.Serialize(resObj));
+            context.Response.Write(JsonResponse.Data(errMsg, courseInfo));
         }
 
-        private object GetAICCManifestData(string folderPath, string auManifest, string crsManifest, out string errMsg)
+        private CourseInfo? GetAICCManifestData(string folderPath, string auManifest, string crsManifest, out string errMsg)
         {
             errMsg = "";
             string title = "";
@@ -145,49 +243,60 @@ namespace NXLevel.LMS.Admin
             string startPage = "";
             int i;
 
-            //get course title & description
-            string[] crc = File.ReadAllLines(crsManifest);
-            for (i = 0; i < crc.Length; i++)
+            try
             {
-                string line = crc[i].Trim();
-                if (line.StartsWith("course_title", StringComparison.CurrentCultureIgnoreCase))
+                //get course title & description
+                string[] crc = File.ReadAllLines(crsManifest);
+                for (i = 0; i < crc.Length; i++)
                 {
-                    title = line.Substring(line.IndexOf("=") + 1);
+                    string line = crc[i].Trim();
+                    if (line.StartsWith("course_title", StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        title = line.Substring(line.IndexOf("=") + 1);
+                    }
+                    if (line.StartsWith("[course_description]", StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        i++;
+                        break;
+                    }
                 }
-                if (line.StartsWith("[course_description]", StringComparison.CurrentCultureIgnoreCase))
+                if (i < crc.Length)
                 {
-                    i++;
-                    break;
+                    for (;  i < crc.Length; i++)
+                    {
+                        description += crc[i].Trim();
+                    }
                 }
+
+                //get start page
+                string[] au = File.ReadAllLines(auManifest);
+                string[] parms;
+                if (au.Length > 1)
+                {
+                    parms = au[1].Split(',');
+                    startPage = parms[2]; //3rd item is "file_name" (start page)
+                    startPage = startPage.Replace("\"", "");
+                }
+
+                //return generic object
+                return new CourseInfo
+                {
+                    title = title,
+                    description = description,
+                    startPage = startPage
+                };
             }
-            if (i < crc.Length)
+            catch (Exception e)
             {
-                for (;  i < crc.Length; i++)
-                {
-                    description += crc[i].Trim();
-                }
+                errMsg = e.Message;
+                Log.Error(e);
             }
 
-            //get start page
-            string[] au = File.ReadAllLines(auManifest);
-            string[] parms;
-            if (au.Length > 1)
-            {
-                parms = au[1].Split(',');
-                startPage = parms[2]; //3rd item is "file_name" (start page)
-                startPage = startPage.Replace("\"", "");
-            }
+            return null;
 
-
-            return new
-            {
-                title = title,
-                description = description,
-                startPage = startPage
-            };
         }
 
-        private object GetSCORMManifestData(string folderPath, out string errMsg)
+        private CourseInfo? GetSCORMManifestData(string folderPath, out string errMsg)
         {
             errMsg = "";
             string title = "";
@@ -205,9 +314,24 @@ namespace NXLevel.LMS.Admin
 
                     //parse data out
                     XmlNode general = doc.DocumentElement.SelectSingleNode("/manifest/metadata/lom/general");
-                    title = general.SelectSingleNode("title/langstring")?.InnerText;
-                    description = general.SelectSingleNode("description/langstring")?.InnerText;
+                    if (general == null)
+                    {
+                        //try just the title in different location
+                        title = doc.DocumentElement.SelectSingleNode("/manifest/organizations/organization/title")?.InnerText;
+                    }
+                    else
+                    {
+                        title = general.SelectSingleNode("title/langstring")?.InnerText;
+                        description = general.SelectSingleNode("description/langstring")?.InnerText;
+                    }
                     startPage = doc.SelectSingleNode("manifest/resources/resource")?.Attributes["href"].Value;
+
+                    return new CourseInfo
+                    {
+                        title = title,
+                        description = description,
+                        startPage = startPage
+                    };
                 }
             }
             catch (Exception e)
@@ -216,11 +340,14 @@ namespace NXLevel.LMS.Admin
                 Log.Error(e);
             }
 
-            return new {
-                title = title,
-                description = description,
-                startPage = startPage
-            };
+            return null;
+
+        }
+
+        private struct CourseInfo{
+            public string title;
+            public string description;
+            public string startPage;
         }
 
         private void EmptyDirectory(string targetFolder, bool deleteFolder = false)

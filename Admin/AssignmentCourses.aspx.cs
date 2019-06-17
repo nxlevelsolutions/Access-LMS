@@ -46,7 +46,7 @@ namespace NXLevel.LMS.Admin
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public static string SaveCourses(string courseIds, bool availInOrder)
         {
-            string aid = Utilities.getQueryString("aid");
+            string aid = Utilities.GetQueryString("aid");
             int? assignmentId = Utilities.TryToParseAsInt(aid);
 
             lms_Entities db = new ClientDBEntities();

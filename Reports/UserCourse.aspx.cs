@@ -16,7 +16,11 @@ namespace NXLevel.LMS.Reports
         protected void Page_Load(object sender, EventArgs e)
         {
             lms_Entities db = new ClientDBEntities();
-            rptAttempts.DataSource = db.Report_UserCourseUsage(Utilities.TryToParseAsInt(Request.QueryString["uid"]), Utilities.TryToParseAsInt(Request.QueryString["cid"])).ToList();
+            rptAttempts.DataSource = db.Report_UserCourseUsage(
+                Utilities.TryToParseAsInt(Request.QueryString["aid"]),
+                Utilities.TryToParseAsInt(Request.QueryString["uid"]),
+                Utilities.TryToParseAsInt(Request.QueryString["cid"])
+                ).ToList();
             rptAttempts.DataBind();
         }
 

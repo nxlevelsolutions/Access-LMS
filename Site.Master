@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head runat="server">
-    <title><%# Page.Title %></title>
+	<title><%# Page.Title %></title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -23,6 +23,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src='<%= ResolveUrl("~/js/utils.js") %>'></script>
+    <script src='<%= ResolveUrl("~/js/cookies.js") %>'></script>
+    <script src='<%= ResolveUrl("~/js/language.js") %>'></script>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server" />    
 </head>
 <body>
@@ -37,40 +39,65 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <% if (HttpContext.Current.User.Identity.IsAuthenticated){ %>
+					<img src="<%= Page.ResolveUrl("~/images/astellas_logo.png") %>" height="30px" style="margin-top: 10px;">
+                    <%--<% if (HttpContext.Current.User.Identity.IsAuthenticated){ %>
                     <a class="navbar-brand" href="<%= Page.ResolveUrl("~/default.aspx") %>">{logo}</a>
-                    <% } %>
+                    <% } %>--%>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <% if (HttpContext.Current.User.Identity.IsAuthenticated){ %>
-                        <li class=""><a href="<%= Page.ResolveUrl("~/default.aspx") %>">Home</a></li>
-                        <li><a href="<%= Page.ResolveUrl("~/curriculum.aspx") %>">My Curriculum</a></li>
+                        <li class=""><a href="<%= Page.ResolveUrl("~/default.aspx") %>"><%= Resources.Global.MenuHome %></a></li>
+                        <li><a href="<%= Page.ResolveUrl("~/curriculum.aspx") %>"><%= Resources.Global.MenuCurriculum %></a></li>
+						<li><a href="<%= Page.ResolveUrl("~/history.aspx") %>"><%= Resources.Global.MenuHistory %></a></li>
+                        <% if (LmsUser.HasRole(Role.Manager)) { %>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <% if (LmsUser.HasRole(Role.Manager)) { %>
-                                    <%--<li role="separator" class="divider"></li>--%>
-                                    <li><a href="<%= Page.ResolveUrl("~/admin/users.aspx") %>">Users</a></li>
-                                    <li><a href="<%= Page.ResolveUrl("~/admin/groups.aspx") %>">Groups</a></li>
-                                    <li><a href="<%= Page.ResolveUrl("~/admin/courses.aspx") %>">Courses</a></li>
-                                    <li><a href="<%= Page.ResolveUrl("~/admin/assignments.aspx") %>">Activities</a></li>
-                                    <li><a href="<%= Page.ResolveUrl("~/admin/emails.aspx") %>">Email Notifications</a></li>
-                                    <li><a href="<%= Page.ResolveUrl("~/reports/default.aspx") %>">Reports</a></li>
-                                <% } %>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <%= LmsUser.Firstname %> <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="<%= Page.ResolveUrl("~/profile.aspx") %>">My Profile</a></li>
-                                <li><a href="<%= Page.ResolveUrl("~/history.aspx") %>">Past Activities</a></li>
-                                <li><a href="<%= Page.ResolveUrl("~/help.aspx") %>">Help</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="<%= Page.ResolveUrl("~/logoff.aspx") %>">Logoff</a></li>
+                                <%--<li role="separator" class="divider"></li>--%>
+                                <li><a href="<%= Page.ResolveUrl("~/admin/users.aspx") %>">Users</a></li>
+                                <li><a href="<%= Page.ResolveUrl("~/admin/groups.aspx") %>">Groups</a></li>
+                                <li><a href="<%= Page.ResolveUrl("~/admin/courses.aspx") %>">Courses</a></li>
+                                <li><a href="<%= Page.ResolveUrl("~/admin/assignments.aspx") %>">Activities</a></li>
+                                <li><a href="<%= Page.ResolveUrl("~/admin/emails.aspx") %>">Email Notifications</a></li>
+                                <li><a href="<%= Page.ResolveUrl("~/reports/default.aspx") %>">Reports</a></li>
                             </ul>
                         </li>
                         <% } %>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= Resources.Global.MenuGreeting %> <%= LmsUser.Firstname %> <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="<%= Page.ResolveUrl("~/profile.aspx") %>"><%= Resources.Global.MenuProfile %></a></li>
+                                <li><a href="<%= Page.ResolveUrl("~/help.aspx") %>"><% =Resources.Global.MenuHelp %></a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="<%= Page.ResolveUrl("~/logoff.aspx") %>"><% = Resources.Global.MenuLogoff %></a></li>
+                            </ul>
+                        </li>
+                        <% } %>
+
+                        <%--<select id="MenuLangSelector" onchange="javascript:language.set(this.value)" style="margin-top: 14px; border:0px;">
+                            <option value="en-US">English</option>
+                            <option value="zh-CN">Chinese</option>
+                            <option value="nl-BE">Dutch</option>
+                            <option value="fr-FR">French</option>
+                            <option value="de-DE">German</option>
+                            <option value="it-IT">Italian</option>
+                            <option value="ja-JP">Japanese</option>
+                            <option value="ko-KR">Korean</option>
+                            <option value="pt-BR">Portuguese</option>
+                            <option value="ru-RU">Russian</option>
+                            <option value="es-ES">Spanish</option>
+                        </select>--%>
+
+                        <%--<li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Language <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a onclick="language.set('en-US')" href="javascript:void(0)">English</a></li>
+                                <li><a onclick="language.set('fr-FR')" href="javascript:void(0)">French</a></li>
+                                <li><a onclick="language.set('es-ES')" href="javascript:void(0)">Spanish</a></li>
+                                <li><a onclick="language.set('de-DE')" href="javascript:void(0)">German</a></li>
+                            </ul>
+                        </li>--%>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -102,6 +129,13 @@ $(document).ready(function () {
         }
     }); 
 });
+
+
+(function (window) { // Prevent Cross-Frame Scripting attacks
+    if (window.location !== window.top.location)
+        window.top.location = window.location;
+})(this);
+
 </script>
 </body>
 </html>

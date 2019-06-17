@@ -17,11 +17,14 @@ tinymce.PluginManager.add('lmskeywords', function (editor, url) {
                         name: 'keyWord',
                         label: 'Select a key word for:',
                         Xtext: "Click to select",
-                        values: [{ text: "Learner first name", value: "{FirstName}" },
-                                 { text: "Learner last name",  value: "{LastName}" },
-                                 { text: "Due date",           value: "{DueDate}" },
-                                 { text: "LMS URL",           value: "{LMSUrl}" },
-                                 { text: "Courses Assigned",   value: "{CoursesAssigned}"}],
+                        values: [
+                                { text: "Learner first name", value: "{FirstName}" },
+                                { text: "Learner last name",  value: "{LastName}" },
+                                { text: "Due date",           value: "{DueDate}" },
+                                { text: "LMS URL",            value: "{LMSUrl}" },
+                                { text: "Courses Assigned",   value: "{CoursesAssigned}" },
+                                { text: "Frequency of Periodic Reminders", value: "{FrequencyOfPeriodicReminders}" }
+                        ],
                         onselect: function (e) {
                             //alert(e.control.settings.value);
                         }

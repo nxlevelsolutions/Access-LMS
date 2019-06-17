@@ -1,5 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Groups.aspx.cs" Inherits="NXLevel.LMS.Admin.Groups" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <style>
+
+       
+    </style>
     <script language="javascript">
 
         var popName;
@@ -91,7 +95,7 @@
                                 <button type="button" class="btn btn-md btn-primary" onclick='openGroupEditor(<%# Eval("categoryId") %>, null)'><span class="fa fa-plus"></span> New group</button>
                             </td>
                             <td align="center" width="60%">
-                                 <h4>Category: <a onclick='openCategoryEditor(<%# Eval("categoryId") %>)'><%# Eval("title") %></a></h4>
+                                 <h4 class="white-text">Category: <a class="white-text" onclick='openCategoryEditor(<%# Eval("categoryId") %>)'><%# Eval("title") %></a></h4>
                             </td>
                             <td align="right" width="20%">
                                 <button type="button" class="btn btn-md btn-primary btn-warning" onclick="confirmDelete(<%# Eval("categoryId") %>, null)"><span class="fa fa-trash"></span></button>

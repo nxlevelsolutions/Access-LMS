@@ -9,7 +9,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="page-header">
-        <h2>Forgot password</h2>
+        <h3><span class="fa fa-envelope"></span> <%= GetLocalResourceObject("PageTitle")%></h3>
     </div>
 
     <div class="row" style="background-color: #f1f7fd; border-radius: 10px; margin: 0px">
@@ -22,20 +22,20 @@
             <asp:Label ID="lblError" runat="server" CssClass="alert alert-danger btn-block" Visible="false" Text="" />
             <br />
             <p>
-                <asp:Label ID="lblRequestPassword" runat="server" Text="Please enter your Email Address. We will email you your password." />
+                <asp:Label ID="lblRequestPassword" runat="server" Text="<%$ Resources:Text1 %>" />
             </p>
                      
-            <asp:TextBox name="Email" size="19" ID="txtEmail" runat="server" placeholder="Email address" CssClass="form-control" ClientIDMode="Static"></asp:TextBox><br />
+            <asp:TextBox name="Email" size="19" ID="txtEmail" runat="server"  CssClass="form-control" ClientIDMode="Static"></asp:TextBox><br />
 
             <!--company code-->
-            <label for="CompanyCode">Please enter your company code.</label>
-            <asp:TextBox name="CompanyCode" size="19" ID="CompanyCode" runat="server" CssClass="form-control" placeholder="Company code" Text="nxlevel" required ClientIDMode="Static"></asp:TextBox>
+            <%--<label for="CompanyCode"><%= HttpContext.GetLocalResourceObject("~/Login.aspx", "EnterCode")%></label>
+            <asp:TextBox name="CompanyCode" size="19" ID="CompanyCode" runat="server" CssClass="form-control"  Text="nxlevel" required ClientIDMode="Static"></asp:TextBox>--%>
 
             <br />
-            <asp:Button ID="btnRequestPasswordSubmit" runat="server" CssClass="btn btn-primary form-control" Text="Submit" OnClick="btnSubmit_Click" />
+            <asp:Button ID="btnRequestPasswordSubmit" runat="server" CssClass="btn btn-primary form-control" Text="<%$ Resources:Global, BtnSubmit %>" OnClick="btnSubmit_Click" />
 
             <p>&nbsp;</p>
-            <p><a href="Login.aspx">Return to Login</a></p>
+            <p><a href="Login.aspx"><%= Resources.Global.ReturnToLogin %></a></p>
         </div>
         <div class="col-md-1 hidden-xs">
             &nbsp;

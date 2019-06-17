@@ -35,7 +35,7 @@
                 <tr>
                     <td></td>
                     <td align="right"> 
-                        <asp:LinkButton runat="server" ID="lnkDownload" Text="" OnClick="lnkDownload_Click"><span class="fa fa-download"></span> Download Excel report</asp:LinkButton>
+                        <asp:LinkButton runat="server" ID="lnkDownload" Text="" OnClick="lnkDownload_Click" CssClass="white-text"><span class="fa fa-download"></span> Download Excel report</asp:LinkButton>
                     </td>
                 </tr>
             </table>
@@ -49,7 +49,7 @@
                         <th>Email</th>
                         <th class="text-center"># Assignments</th>
                         <th class="text-center"># Completed</th>
-                        <th class="text-center">% Average score</th>
+                        <%--<th class="text-center">% Average score</th>--%>
                     </tr>
             </HeaderTemplate>
             <ItemTemplate>
@@ -59,7 +59,7 @@
                     <td><a href='UserCourses.aspx?uid=<%# Eval("userId") %>&fn=<%# Eval("firstName") %>&ln=<%# Eval("lastName") %>'><%# Eval("email") %></a></td>
                     <td align="center"><%# Eval("coursesCount") %></td>
                     <td align="center"><%# Eval("completedCount") %></td>
-                    <td align="center"><%# Eval("avgScore", "{0:F2}%") %></td>
+                    <%--<td align="center"><%# Eval("avgScore", "{0:F2}%") %></td>--%>
                 </tr>
             </ItemTemplate>
             <FooterTemplate>

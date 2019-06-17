@@ -17,7 +17,7 @@ namespace NXLevel.LMS.Admin
         {
             int? assignmentId = Utilities.TryToParseAsInt(Request.QueryString["aid"]);
             lms_Entities db = new ClientDBEntities();
-            List<Assignment_UsersGet_Result> users = db.Assignment_UsersGet(assignmentId).ToList();
+            List<Assignment_UsersGet_Result> users = db.Assignment_UsersGet(assignmentId, true).ToList();
             List<int> inAssignmentUsers = users.Where(u => u.IsInAssignment == true).Select(u => u.userId).ToList();
             List<int> inGroupUsers = users.Where(u => u.IsInGroup == true).Select(u => u.userId).ToList();
             cbUsers.DataSource = users;
@@ -41,11 +41,11 @@ namespace NXLevel.LMS.Admin
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public static string SaveUsers(string userIds)
         {
-            string aid = Utilities.getQueryString("aid");
+            string aid = Utilities.GetQueryString("aid");
             int? assignmentId = Utilities.TryToParseAsInt(aid);
 
             lms_Entities db = new ClientDBEntities();
-            db.Assignment_UsersSet(assignmentId, userIds);
+            db.Assignment_UsersSet(assignmentId, userIds, false);
             return JsonResponse.NoError;
         }
     }

@@ -26,7 +26,7 @@ namespace NXLevel.LMS.Admin
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public static string SaveEmail(string subject, string contents)
         {
-            string id = Utilities.getQueryString("emailId");
+            string id = Utilities.GetQueryString("emailId");
             int? emailId = Utilities.TryToParseAsInt(id);
             
             if (emailId != null)

@@ -18,7 +18,6 @@ namespace NXLevel.LMS.DataModel
         public bool enabled { get; set; }
         public string title { get; set; }
         public bool availCoursesInOrder { get; set; }
-        public bool allowSelfRegister { get; set; }
         public string registerCode { get; set; }
         public Nullable<System.DateTime> dueDate { get; set; }
         public bool sendEmailOnAssigned { get; set; }
@@ -35,5 +34,7 @@ namespace NXLevel.LMS.DataModel
         public Nullable<System.DateTime> sendOverdueEmailSent { get; set; }
         public int type { get; set; }
         public string description { get; set; }
+        public Nullable<int> overdueDays { get; set; }
+        public Nullable<int> dueDaysAfterAssigned { get; set; }
     }
 }

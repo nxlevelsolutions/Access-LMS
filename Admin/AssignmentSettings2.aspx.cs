@@ -22,44 +22,48 @@ namespace NXLevel.LMS.Admin
                 lms_Entities db = new ClientDBEntities();
                 Assignment asg = db.Assignments.Where(a => a.assignmentId == assignmentId).FirstOrDefault();
                 cbEnabled.Checked = asg.enabled;
-                cbSelfRegister.Checked = asg.allowSelfRegister;
+                txtTitle.Text = asg.title;
+                txtDescription.Text = asg.description;
                 tbRegisterCode.Text = asg.registerCode;
-                txtDuedate.Text = asg.dueDate?.ToShortDateString();
+                txtDueDate.Text = asg.dueDate?.ToShortDateString();
+                txtDueDays.Text = asg.dueDaysAfterAssigned.ToString();
                 cbEmailOnAssigned.Checked = asg.sendEmailOnAssigned;
                 cbEmailPeriodic.Checked = asg.sendEmailPeriodic;
-                txtPeriodicDays.Text = asg.periodicDays?.ToString();
+                txtPeriodicDays.Text = asg.periodicDays.ToString();
                 cbEmailNearDueDate.Checked = asg.sendEmailNearDueDate;
-                txtNearDueDateDays.Text = asg.nearDueDateDays?.ToString();
+                txtNearDueDateDays.Text = asg.nearDueDateDays.ToString();
                 cbEmailDueDate.Checked = asg.sendEmailOnDueDate;
                 cbEmailOverdue.Checked = asg.sendEmailOverdue;
+                txtOverdueDays.Text = asg.overdueDays.ToString();
             }
         }
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public static string Save(
+            string title,
+            string description,
             bool enabled, 
-            bool allowSelfRegister, 
             string registerCode,
-            DateTime? dueDate, 
+            DateTime? dueDate,
+            int? dueDays,
             bool emailOnAssigned, 
             bool emailPeriodic, 
-            string periodicDays, 
+            int? periodicDays, 
             bool emailNearDueDate, 
-            string nearDueDateDays, 
+            int? nearDueDateDays, 
             bool emailOnDueDate, 
-            bool emailOverdue)
+            bool emailOverdue,
+            int? overdueDays)
         {
-            string aid = Utilities.getQueryString("aId");
-            int? assignmentId = Utilities.TryToParseAsInt(aid);
-            if (assignmentId == null)
-            {
-                return JsonResponse.Error("Configuration error.");
-            }
-            else //this is an update of existing assignment
+
+            try
             {
                 lms_Entities db = new ClientDBEntities();
                 Assignment asg;
+
+                string aid = Utilities.GetQueryString("aId");
+                int? assignmentId = Utilities.TryToParseAsInt(aid);
 
                 //check if Registration Code is already used in another assignment
                 if (registerCode?.Trim().Length > 0)
@@ -71,31 +75,71 @@ namespace NXLevel.LMS.Admin
                     }
                 }
 
-                //check if due date is in the future
-                //if (dueDate != null)
-                //{
-                //    if (((DateTime)dueDate).Subtract(DateTime.Today).Days < 1)
-                //    {
-                //        return JsonResponse.Error("The due date must be a future date. Please select another.");
-                //    }
-                //}
+                if (assignmentId == null)
+                {
+                    //this is a new assignment
+                    asg = new Assignment();
+                    asg.type = (int)AssignmentType.LEARNING_PLAN;
+                    asg.enabled = enabled;
+                    asg.title = title;
+                    asg.description = description;
+                    asg.registerCode = registerCode.Trim();
+                    asg.dueDate = dueDate;
+                    asg.dueDaysAfterAssigned = dueDays;
+                    if (dueDate != null && dueDays != null) asg.dueDaysAfterAssigned = null; //default to dueDate if both provided
+                    asg.sendEmailOnAssigned = emailOnAssigned;
+                    asg.sendEmailPeriodic = emailPeriodic;
+                    asg.periodicDays = periodicDays;
+                    asg.sendEmailNearDueDate = emailNearDueDate;
+                    asg.nearDueDateDays = nearDueDateDays;
+                    asg.sendEmailOnDueDate = emailOnDueDate;
+                    asg.sendEmailOverdue = emailOverdue;
+                    asg.overdueDays = overdueDays;
+                    asg.timestamp = DateTime.Now;
+                    db.Assignments.Add(asg);
+                    db.SaveChanges();
+                }
+                else //this is an update of existing assignment
+                {
+                    //check if due date is in the future
+                    //if (dueDate != null)
+                    //{
+                    //    if (((DateTime)dueDate).Subtract(DateTime.Today).Days < 1)
+                    //    {
+                    //        return JsonResponse.Error("The due date must be a future date. Please select another.");
+                    //    }
+                    //}
 
-                //update 
-                asg = db.Assignments.Where(a => a.assignmentId == assignmentId).FirstOrDefault();
-                asg.enabled = enabled;
-                asg.allowSelfRegister = allowSelfRegister;
-                asg.registerCode = registerCode;
-                asg.dueDate = dueDate;
-                asg.sendEmailOnAssigned = emailOnAssigned;
-                asg.sendEmailPeriodic = emailPeriodic;
-                asg.periodicDays = Utilities.TryToParseAsInt(periodicDays);
-                asg.sendEmailNearDueDate = emailNearDueDate;
-                asg.nearDueDateDays = Utilities.TryToParseAsInt(nearDueDateDays);
-                asg.sendEmailOnDueDate = emailOnDueDate;
-                asg.sendEmailOverdue = emailOverdue;
-                db.SaveChanges();
+                    //update 
+                    asg = db.Assignments.Where(a => a.assignmentId == assignmentId).FirstOrDefault();
+                    asg.enabled = enabled;
+                    asg.title = title;
+                    asg.description = description;
+                    //asg.allowSelfRegister = allowSelfRegister;
+                    asg.registerCode = registerCode.Trim();
+                    asg.dueDate = dueDate;
+                    asg.dueDaysAfterAssigned = dueDays;
+                    if (dueDate != null && dueDays != null) asg.dueDaysAfterAssigned = null; //default to dueDate if both provided
+                    asg.sendEmailOnAssigned = emailOnAssigned;
+                    asg.sendEmailPeriodic = emailPeriodic;
+                    asg.periodicDays = periodicDays;
+                    asg.sendEmailNearDueDate = emailNearDueDate;
+                    asg.nearDueDateDays = nearDueDateDays;
+                    asg.sendEmailOnDueDate = emailOnDueDate;
+                    asg.sendEmailOverdue = emailOverdue;
+                    asg.overdueDays = overdueDays;
+                    db.SaveChanges();
+
+                }
+
+
                 return JsonResponse.NoError;
             }
+            catch (Exception e)
+            {
+                return JsonResponse.Error(e);
+            }
+
             
         }
 

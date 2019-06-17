@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Linq;
+using System.Web;
 using System.Web.Security;
 using System.Diagnostics;
 using NXLevel.LMS.DataModel;
@@ -16,18 +17,19 @@ namespace NXLevel.LMS
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (!Utilities.IsEmailValid(txtEmail.Text))
+
+            if (!Utilities.IsEmailValid(txtNewEmail.Text))
             {
-                ErrorMsg.Text = "Please enter a valid email address.";
+                ErrorMsg.Text = HttpContext.GetLocalResourceObject("~/Login.aspx", "ErrorInvalidEmail").ToString();
                 return;
             }
 
 
             //check company code
-            ClientSetting cs = ClientSettings.Get(txtCompanyCode.Text);
+            ClientSetting cs = ClientSettings.Get("astellas");
             if (cs == null)
             {
-                ErrorMsg.Text = "Please enter a valid company code.";
+                ErrorMsg.Text = HttpContext.GetLocalResourceObject("~/Login.aspx", "ErrorInvalidCompany").ToString();
                 return;
             }
             else
@@ -40,11 +42,11 @@ namespace NXLevel.LMS
 
             //check if email is already in system
             lms_Entities db = new ClientDBEntities();
-            User_Info_Result userInfo = db.User_Info(txtEmail.Text).FirstOrDefault();
+            User_Info_Result userInfo = db.User_Info(txtNewEmail.Text).FirstOrDefault();
             if (userInfo != null)
             {
                 //email record found
-                ErrorMsg.Text = "The email entered is already registered in the system.";
+                ErrorMsg.Text = GetLocalResourceObject("ErrorEmailExists").ToString();
                 return;
             }
 
@@ -54,14 +56,10 @@ namespace NXLevel.LMS
             if (asg == null)
             {
                 //unknown registration code
-                ErrorMsg.Text = "The Registration Code entered is unknown.";
+                ErrorMsg.Text = GetLocalResourceObject("ErrorRegCodeNotFound").ToString();
                 return;
             }
-            if (asg.allowSelfRegister == false)
-            {
-                ErrorMsg.Text = "The Registration Code entered is no longer active.";
-                return;
-            }
+
             int assignmentId = asg.assignmentId;
 
 
@@ -69,13 +67,14 @@ namespace NXLevel.LMS
             User usr = new User
             {
                 enabled = true,
-                firstName = txtFName.Text,
-                lastName = txtLName.Text,
-                email = txtEmail.Text,
-                mgrEmail = txtMgrEmail.Text,
-                title = txtTitle.Text,
-                password = txtPwd1.Text,
+                firstName = txtFName.Text.Trim(),
+                lastName = txtLName.Text.Trim(),
+                email = txtNewEmail.Text.Trim(),
+                //mgrEmail = txtMgrEmail.Text,
+                title = txtTitle.Text.Trim(),
+                //password = txtPwd1.Text,
                 role = (int)Role.Learner,
+                organization = ddOrganization.SelectedValue,
                 timestamp = DateTime.Now
             };
             db.Users.Add(usr);
@@ -84,12 +83,12 @@ namespace NXLevel.LMS
 
 
             //assign user to this assignment 
-            db.Assignment_UsersSet(assignmentId, userId.ToString());
+            db.Assignment_UsersSet(assignmentId, userId.ToString(), true);
 
 
-            //all done 
-            ErrorMsg.Text = "Success! Please return to the login page and login using your submitted credentials.";
-            btnSubmit.Enabled = false;
+            //all done.. redirect to access page
+            Response.Redirect("AccessCode.aspx?e=" + usr.email + "&c=1");
+             
         }
     }
 }

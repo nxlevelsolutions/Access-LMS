@@ -28,7 +28,6 @@ namespace NXLevel.LMS.Admin
                 LName.Text = usr.lastName;
                 tbTitle.Text = usr.title;
                 Email.Text = usr.email;
-                MgrEmail.Text = usr.mgrEmail;
                 Password.Text = usr.password;
                 cbEnabled.Checked = usr.enabled;
                 lstAccessLevels.SelectedValue = usr.role.ToString();
@@ -48,9 +47,9 @@ namespace NXLevel.LMS.Admin
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static string SaveUser(string fname, string lname, string title, string email, string mgrEmail, string password, bool enabled, int role, string groupIds)
+        public static string SaveUser(string fname, string lname, string title, string email, string password, bool enabled, int role, string groupIds)
         {
-            string uid = Utilities.getQueryString("uid");
+            string uid = Utilities.GetQueryString("uid");
             int ? userId = Utilities.TryToParseAsInt(uid);
 
             lms_Entities db = new ClientDBEntities();
@@ -64,7 +63,6 @@ namespace NXLevel.LMS.Admin
                     title = title,
                     enabled = enabled,
                     email = email,
-                    mgrEmail = mgrEmail,
                     role = role,
                     password = password,
                     timestamp = DateTime.Now
@@ -81,7 +79,6 @@ namespace NXLevel.LMS.Admin
                 usr.lastName = lname;
                 usr.title = title;
                 usr.email = email;
-                usr.mgrEmail = mgrEmail;
                 usr.enabled = enabled;
                 usr.role = role;
                 usr.password = password;

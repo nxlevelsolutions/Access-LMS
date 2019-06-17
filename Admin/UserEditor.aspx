@@ -3,6 +3,13 @@
     <link rel="stylesheet" href="../css/sumoselect.min.css" />
     <script src='../js/jquery.sumoselect.min.js'></script>
     <style type="text/css">
+        .password-toggle {
+            float: right;
+            margin-right: 6px;
+            margin-top: -22px;
+            position: relative;
+            z-index: 2;
+        }
     </style>
     <script>
         function onSave() {
@@ -14,7 +21,6 @@
                         lname: $('#LName').val(),
                         title: $('#tbTitle').val(),
                         email: $('#Email').val(),
-                        mgrEmail: $('#MgrEmail').val(),
                         password: $('#Password').val(),
                         enabled: $('#cbEnabled').prop('checked'),
                         role: $('#lstAccessLevels').val(),
@@ -29,6 +35,15 @@
 
         //https://hemantnegi.github.io/jquery.sumoselect/
         $(document).ready(function () {
+            $('#Password').attr('type', 'password');
+            $('#passwordToggle').click(function () { //setup eye
+                if ($('#Password').attr('type') == 'password') {
+                    $('#Password').attr('type', 'text');
+                } else {
+                    $('#Password').attr('type', 'password');
+                }
+            });
+
             $('#lstGroups').SumoSelect({
                 placeholder: 'Click to select groups',
                 okCancelInMulti: true,
@@ -83,7 +98,9 @@ ControlToValidate="Password"
 ValidationExpression="^[a-zA-Z0-9'@&#.\s]{7,10}$"
 Display="Dynamic" CssClass="required-red" />
             </td>
-            <td><asp:TextBox ID="Password" runat="server" ClientIDMode="Static"></asp:TextBox></td>
+            <td><asp:TextBox ID="Password" runat="server" ClientIDMode="Static" CssClass="form-control" TextMode="SingleLine"></asp:TextBox>
+                <span id="passwordToggle" class="fa fa-eye password-toggle" aria-hidden="true"></span>
+            </td>
         </tr>
         <tr>
             <td>Access level: <div class="asterisk"></div>
@@ -105,14 +122,6 @@ Display="Dynamic" CssClass="required-red" />
             <td>
                 <asp:ListBox ID="lstGroups" runat="server" DataTextField="title" DataValueField="groupId" SelectionMode="Multiple" CssClass="form-control" ClientIDMode="Static" Width="100%">
                 </asp:ListBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Manager's Email:
-            </td>
-            <td>
-                <asp:TextBox ID="MgrEmail" runat="server" ClientIDMode="Static"></asp:TextBox>
             </td>
         </tr>
         <tr>

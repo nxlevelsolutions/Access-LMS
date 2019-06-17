@@ -38,8 +38,8 @@ namespace NXLevel.LMS
             CheckRollover();
             StringBuilder sb = new StringBuilder();
             sb.Append(DateTime.Now.ToString("hh:mm:sstt"));
-            sb.Append(Log.DELIMITER);
-            sb.Append(HttpContext.Current?.Session?["userId"]==null ? 0: HttpContext.Current.Session["userId"]);
+            sb.Append(Log.DELIMITER); 
+            sb.Append(LmsUser.UserId);
             sb.Append(Log.DELIMITER);
             sb.Append(message);
             _traceWriter.WriteLine(sb.ToString());
@@ -51,7 +51,7 @@ namespace NXLevel.LMS
             StringBuilder sb = new StringBuilder();
             sb.Append(DateTime.Now.ToString("HH:mm:ss tt"));
             sb.Append(Log.DELIMITER);
-            sb.Append(HttpContext.Current?.Session["userId"] == null ? 0 : HttpContext.Current.Session["userId"]);
+            sb.Append(LmsUser.UserId);
             sb.Append(Log.DELIMITER);
             sb.Append(message);
             sb.Append(Log.DELIMITER);

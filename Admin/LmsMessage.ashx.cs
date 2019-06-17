@@ -54,9 +54,9 @@ namespace NXLevel.LMS.Admin
                         context.Response.ContentType = "application/json; charset=utf-8";
                         context.Response.Write(
                             "{" +
-                                @"""startDate"":" + (res.startDate == null ? "null" : @"""" + res.startDate.ToString() + @"""") +
-                                @",""completedDate"":" + (res.completedDate == null ? "null" : "\"" + res.completedDate.ToString() + @"""") +
-                                @",""maxScore"":" + (res.maxScore == null ? "null" : res.maxScore.ToString()) +
+                                @"""startDate"":" + (res.startDate == null ? "null" : @"""" + String.Format("{0:d}", res.startDate) + @"""") + "," +
+                                @"""completedDate"":" + (res.completedDate == null ? "null" : "\"" + String.Format("{0:d}", res.completedDate) + @"""") + "," +
+                                @"""maxScore"":" + (res.maxScore == null ? "null" : res.maxScore.ToString()) +
                             "}"
                         );
                     }
@@ -64,37 +64,30 @@ namespace NXLevel.LMS.Admin
 
                 case "SCORM_COURSE_INITIAL_DEFAULTS":
                     //load all initial scorm values and send to scorm.js manager
-                    Log.Info("User " + userId + " launched course:" + courseId);
+                    Log.Info("User " + userId + " launched course:" + courseId + ", assignmentId:" + assignmentId);
                     db.Course_ScormValueSet(userId, assignmentId, courseId, "SET-STARTDATE", null); //this forces a set of "startDate" if necessary
                     Course_StartupDefaults_Result initInfo = db.Course_StartupDefaults(userId, assignmentId, courseId).FirstOrDefault();
 
-                    // DEFAULT SCORM OBJECT LOADED ON START":
-                    //{cmi:{
-                    //      core:{
-                    //           lesson_mode:'normal',
-                    //           lesson_status:'',
-                    //           lesson_location:'',
-                    //           student_name: '',
-                    //           score:{
-                    //                  raw:0,
-                    //                 }
-                    //           },
-                    //      suspend_data:''
-                    //     }
-                    //}
+                    string suspend_data = initInfo.suspend_data?.Replace("\"", "\\\""); //encode double quotes
+                    string total_time = initInfo.totalTimeUsage == null ? "0000:00:00.00" : String.Format("00{0:%hh}:{0:%mm}:{0:%s}", initInfo.totalTimeUsage);
+
                     context.Response.ContentType = "application/json; charset=utf-8";
                     context.Response.Write(
                         @"{""cmi"":{" +
+                            @"""launch_data"":""""," +
+                            @"""interactions"": {""_count"": 0}," +
+                            @"""student_data"": {""mastery_score"": """"}," +
                             @"""core"":{" +
+                                @"""total_time"":"""+ total_time + @"""," +
+                                @"""student_id"":" + userId + "," +
                                 @"""lesson_mode"":""normal""," +
                                 @"""lesson_status"":""" + initInfo.lesson_status + @"""," +
                                 @"""lesson_location"":""" + initInfo.lesson_location + @"""," +
                                 @"""student_name"":""" + initInfo.student_name + @"""," +
-                                @"""score"":{" +
-                                    @"""raw"":" + (initInfo.maxScore == null ? "null" : initInfo.maxScore.ToString()) +
-                                    @"}" +
+                                @"""score"": {" +
+                                    @"""raw"":" + (initInfo.maxScore == null ? @"""""" : initInfo.maxScore.ToString()) + "}" +
                                 @"}," +
-                            @"""suspend_data"":""" + initInfo.suspend_data + @"""" +
+                            @"""suspend_data"":""" + suspend_data + @"""" +
                             "}" +
                         "}"
                     );
@@ -105,7 +98,7 @@ namespace NXLevel.LMS.Admin
                     context.Response.Write("<html>");
                     context.Response.Write("<head>");
                     context.Response.Write("<meta http-equiv=\"refresh\" content=\"" + context.Request.QueryString["secs"] + "\">"); //every 5 minutes (300 seconds)
-                    context.Response.Write("<meta http-equiv=\"pragma\" content=\"no-cache\">");
+                    context.Response.Write("<meta http-equiv=\"pragma\"  content=\"no-cache\">");
                     context.Response.Write("<meta http-equiv=\"expires\" content=\"0\">");
                     context.Response.Write("</head>");
                     context.Response.Write("<body></body>");
@@ -114,10 +107,13 @@ namespace NXLevel.LMS.Admin
 
                 case "CMI.INTERACTIONS.0.STUDENT_RESPONSE":
                     //THIS MESSAGE IGNORED IN THIS PARTICULAR LMS INSTANCE
+                    context.Response.ContentType = "application/json; charset=utf-8";
+                    context.Response.Write("{\"result\":true}");
                     break;
 
                 case "CMI.CORE.LESSON_STATUS":
                     context.Response.ContentType = "application/json; charset=utf-8";
+                    Log.Info("User " + userId + " status set to:\"" + context.Request.Form["data"] + "\", course:" + courseId + ", assignmentId:" + assignmentId);
                     if (context.Request.QueryString["dir"] == "set")
                     {
                         //allowed values:passed, completed, failed, incomplete, browsed, not attempted
@@ -160,7 +156,23 @@ namespace NXLevel.LMS.Admin
                     context.Response.ContentType = "application/json; charset=utf-8";
                     if (context.Request.QueryString["dir"] == "set")
                     {
-                        int? affected = db.Course_ScormValueSet(userId, assignmentId, courseId, "CMI.CORE.SESSION_TIME", context.Request.Form["data"]).FirstOrDefault();
+                        string session_time = context.Request.Form["data"];
+                        //NOTE: session time comes in a format like "0000:00:02.75"... 4 digits for hour
+                        if (session_time.Length == 0)
+                        {
+                            session_time = null;
+                        }
+                        else
+                        {
+                            //take only the first 99 hours
+                            string[] tmp = session_time.Split(':');
+                            if (tmp[0].Length == 4)
+                            {
+                                tmp[0] = tmp[0].Substring(2);
+                                session_time = string.Join(":", tmp);
+                            }
+                         }
+                        int? affected = db.Course_ScormValueSet(userId, assignmentId, courseId, "CMI.CORE.SESSION_TIME", session_time).FirstOrDefault();
                         context.Response.Write(@"{""result"":" + (affected == 1 ? "true" : "false") + "}");
                     }
                     else
@@ -171,16 +183,31 @@ namespace NXLevel.LMS.Admin
 
                 case "CMI.CORE.SCORE.RAW":
                     context.Response.ContentType = "application/json; charset=utf-8";
+                    Log.Info("Score received:\"" + context.Request.Form["data"] + "\" for course id:" + courseId + ", userId:" + userId + ", assignmentId:" + assignmentId);
                     if (context.Request.QueryString["dir"] == "set")
                     {
-                        Log.Info("score:" + context.Request.Form["data"] + " course id:" + courseId + " userId:" + userId);
-                        int? affected = db.Course_ScormValueSet(userId, assignmentId, courseId, "CMI.CORE.SCORE.RAW", context.Request.Form["data"]).FirstOrDefault();
-                        context.Response.Write(@"{""result"":" + (affected == 1 ? "true" : "false") + "}");
+                        double? score = Utilities.TryToParseAsDouble(context.Request.Form["data"]);
+                        if (score == null)
+                        {
+                            Log.Info("Score ignored.");
+                            context.Response.Write("{\"result\":true}"); //just to keep the course happy
+                        }
+                        else
+                        {
+                            int? affected = db.Course_ScormValueSet(userId, assignmentId, courseId, "CMI.CORE.SCORE.RAW", context.Request.Form["data"]).FirstOrDefault();
+                            Log.Info("Score saved:\"" + context.Request.Form["data"] + "\" for course id:" + courseId + ", userId:" + userId + ", assignmentId:" + assignmentId + ", records changed=" + affected);
+                            context.Response.Write(@"{""result"":" + (affected == 1 ? "true" : "false") + "}");
+                        }
                     }
                     else
                     {
                         context.Response.Write("{\"result\":false}");
                     }
+                    break;
+
+                case "CMI.CORE.EXIT":
+                    context.Response.ContentType = "application/json; charset=utf-8";
+                    context.Response.Write("{\"result\": true}");
                     break;
 
                 case "COURSE_LAUNCH_PARAMS":
@@ -190,20 +217,16 @@ namespace NXLevel.LMS.Admin
                         "{" +
                             "\"title\":\"" + crs.title + "\"," +
                             "\"url\":\"" + crs.url + "\"," +
-                            "\"isScorm\":" + (crs.scorm ? "true" : "false") + "," +
-                            "\"isAICC\":" + (crs.aicc ? "true" : "false") + "," +
-                            "\"toolbar\":" + (crs.browserToolbar ? "true" : "false") + "," +
-                            "\"status\":" + (crs.browserStatus ? "true" : "false") + "," +
-                            "\"width\":" + crs.browserWidth + "," +
-                            "\"height\":" + crs.browserHeight + 
+                            "\"type\":" + crs.type + "," +
+                            "\"width\":" + (crs.browserWidth==null? "null": crs.browserWidth.ToString()) + "," +
+                            "\"height\":" + (crs.browserHeight == null ? "null" : crs.browserHeight.ToString()) + 
                         "}"
                     );
                     break;
 
                 default:
                     context.Response.ContentType = "application/json; charset=utf-8";
-                    //context.Response.Write("Message not implemented:" + context.Request.QueryString["m"))
-                    Log.Info("User:" + userId + " unknown message \"" + context.Request.QueryString["m"] + "\".");
+                    Log.Info("User:" + userId + " unknown message \"" + context.Request.QueryString["m"] + "\", course:" + courseId + ", assignmentId:" + assignmentId);
                     context.Response.Write("{\"result\":false}");
                     break;
 

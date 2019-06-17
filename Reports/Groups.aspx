@@ -9,14 +9,14 @@
     </ol>
 
     <p align="right">
-        <asp:LinkButton runat="server" ID="lnkDownload" Text="" OnClick="lnkDownload_Click"><span class="fa fa-download"></span> Download Excel report</asp:LinkButton>
+        <asp:LinkButton runat="server" ID="lnkDownload" Text="" OnClick="lnkDownload_Click" ><span class="fa fa-download"></span> Download Excel report</asp:LinkButton>
     </p>
 
     <asp:Repeater ID="rptCategories" runat="server">
         <ItemTemplate>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4>Category: <%# Eval("title") %></h4>
+                    <h4 class="white-text">Category: <%# Eval("title") %></h4>
                 </div>
                 <asp:Repeater ID="rptGroups" runat="server" DataSource='<%# GetGroups((int)Eval("categoryId")) %>'>
                     <HeaderTemplate>

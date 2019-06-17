@@ -73,6 +73,14 @@ namespace NXLevel.LMS
             //set { this["name"] = value; }
         }
 
+        [ConfigurationProperty("enabled", IsRequired = true)]
+        public bool Enabled
+        {
+            get {
+                return ((bool)this["enabled"]);
+            }
+        }
+
         [ConfigurationProperty("entityConnStr", IsRequired = true)]
         public string EntityConnStr
         {

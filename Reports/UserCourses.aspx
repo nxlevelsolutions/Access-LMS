@@ -25,20 +25,23 @@
             <HeaderTemplate>
                 <table class="table evenrowcolor">
                     <tr>
+                        <th>Activity</th>
                         <th>Course</th>
                         <th class="text-center">Started date</th>
                         <th class="text-center">Completed date</th>
-                        <th class="text-center">Average score</th>
-                        <th class="text-center">Highest score</th>
+                        <%--<th class="text-center">Average score</th>
+                        <th class="text-center">Highest score</th>--%>
                     </tr>
             </HeaderTemplate>
             <ItemTemplate>
                 <tr>
-                    <td><a href='usercourse.aspx?uid=<% =Request.QueryString["uid"] %>&cid=<%# Eval("courseId") %>&title=<%# Server.UrlEncode((string)Eval("title")) %>&fn=<% =Request.QueryString["fn"] %>&ln=<% =Request.QueryString["ln"] %>'><%# Eval("title") %></a></td>
+                    <td><%# Eval("assignmentTitle") %></td>
+                    <%--<td><a href='usercourse.aspx?uid=<% =Request.QueryString["uid"] %>&aid=<%# Eval("assignmentId") %>&cid=<%# Eval("courseId") %>&title=<%# Server.UrlEncode((string)Eval("courseTitle")) %>&fn=<% =Request.QueryString["fn"] %>&ln=<% =Request.QueryString["ln"] %>'><%# Eval("courseTitle") %></a></td>--%>
+                    <td><%# Eval("courseTitle") %></td>
                     <td align="center"><%# Eval("startedDate", "{0:MM/dd/yyyy hh:mm tt}") %></td>
                     <td align="center"><%# Eval("endDate", "{0:MM/dd/yyyy hh:mm tt}") %></td>
-                    <td align="center"><%# Eval("avgScore", "{0:F2}%") %></td>
-                    <td align="center"><%# Eval("maxScore", "{0:F2}%") %></td>
+                    <%--<td align="center"><%# Eval("avgScore", "{0:F2}%") %></td>
+                    <td align="center"><%# Eval("maxScore", "{0:F2}%") %></td>--%>
                 </tr>
             </ItemTemplate>
             <FooterTemplate>

@@ -64,7 +64,7 @@
             <table width="100%">
                 <tr>
                     <td><button type="button" class="btn btn-md btn-primary" onclick='openUserEditor(null)'><span class="fa fa-plus"></span> NEW USER</button></td>
-                    <td align="right"><a href="UsersImport.aspx"><span class="fa fa-upload"></span> Roster file import</a></td>
+                    <td align="right"><a class="white-text" href="UsersImport.aspx"><span class="fa fa-upload"></span> Roster file import</a></td>
                 </tr>
             </table>
         </div>

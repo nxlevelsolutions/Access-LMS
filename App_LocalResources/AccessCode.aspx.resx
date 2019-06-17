@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EmailBody" xml:space="preserve">
+    <value>&lt;p&gt;&lt;font size="2" face="Arial"&gt;&lt;strong&gt;Please read the following instructions carefully as they will assist you in activating your account. If you are receiving an Account Inactive error message please be sure that you have activated your account using these   instructions.&lt;/strong&gt;&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;
+    &lt;font size="2" face="Arial"&gt;
+        Step   1:&lt;br&gt;
+        Your Access Code is: &lt;b&gt;{0}&lt;/b&gt;&lt;br&gt;
+        Please copy this code or print this email as you will need this code to   continue.
+    &lt;/font&gt;
+&lt;/p&gt;
+&lt;p&gt;
+    &lt;font size="2" face="Arial"&gt;
+        Step   2:&lt;br&gt;
+        If your browser is not already on the account activation page please click on the following link: &lt;a href="{1}"&gt;{1}&lt;/a&gt;
+    &lt;/font&gt;
+&lt;/p&gt;
+&lt;p&gt;
+    &lt;font size="2" face="Arial"&gt;
+        Step   3:&lt;br&gt;
+        On the account activation page enter your email address, a unique password (NOT the supplied global password), and your Access Code on this page and click the Submit button. Your account is now activated. After your account is activated your browser will be redirected to the home page for the training site.
+    &lt;/font&gt;
+&lt;/p&gt;
+&lt;p&gt;
+    &lt;font size="2" face="Arial"&gt;
+        Step   4:&lt;br&gt;
+        For future logins you will not need your Access Code, only your email address and the unique password that you set during the account activation process. You can login to your activated account at &lt;a href="{2}"&gt;{2}&lt;/a&gt;.
+    &lt;/font&gt;
+&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;</value>
+    <comment>body of email (for Access Code sent to learners). DO NOT MODIFY ANY NUMBER IN BRACKETS, LIKE {0}, {1}, etc.</comment>
+  </data>
+  <data name="EmailSubject" xml:space="preserve">
+    <value>Access LMS Account Activation Instructions</value>
+    <comment>subject line of email (for Access Code)</comment>
+  </data>
+  <data name="EnterAccessCode" xml:space="preserve">
+    <value>Access Code:</value>
+    <comment>form label</comment>
+  </data>
+  <data name="EnterCompanyCode" xml:space="preserve">
+    <value>Company Code:</value>
+    <comment>form label</comment>
+  </data>
+  <data name="EnterEmail" xml:space="preserve">
+    <value>Please enter your email:</value>
+    <comment>form label</comment>
+  </data>
+  <data name="EnterPwd1" xml:space="preserve">
+    <value>Choose Password:</value>
+    <comment>form label</comment>
+  </data>
+  <data name="EnterPwd2" xml:space="preserve">
+    <value>Retype Password:</value>
+    <comment>form label</comment>
+  </data>
+  <data name="ErrorInvalidAccessCode" xml:space="preserve">
+    <value>Please enter a valid Access Code.</value>
+    <comment>error message</comment>
+  </data>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Access Code Activation</value>
+    <comment>page main title</comment>
+  </data>
+  <data name="Text1" xml:space="preserve">
+    <value>&lt;p&gt;Since this is your first time logging in, we sent you an email containing your Personal Access Code for verification purposes.  (Please check your INBOX and JUNK mail folders.) Once you’ve received it, please enter the Code in the corresponding box below to verify and activate your account.  You can only do this once.  In addition, please select a new, unique password of at least 6 characters.  Write this password down. You will use it to log in from now on.&lt;/p&gt;</value>
+    <comment>main text</comment>
+  </data>
+</root>

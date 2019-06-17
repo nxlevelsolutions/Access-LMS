@@ -15,33 +15,8 @@ using System.Text;
 
 namespace NXLevel.LMS
 {
-    //note: the codes below MUST match the emailId
-    //of each email template in table "Emails"
-    public enum EmailTemplate
-    {
-        ASSIGNED_ACTIVITY = 1,
-        PERIODIC_REMINDER = 2,
-        NEAR_DUE_DATE_REMINDER = 3,
-        ON_DUE_DATE_REMINDER = 4,
-        OVERDUE_REMINDER = 5
-    }
-
-    public enum ModuleStatus
-    {
-        INACTIVE = 0,
-        ACTIVE = 1,
-        RETIRED = 2
-    }
-
-    public enum AssignmentType
-    {
-        SINGLE_COURSE = 1,
-        LEARNING_PLAN = 2
-    }
-
     public class Utilities
     {
-
         public static string RandomAccessCode()
         {
             const int numLength = 6;
@@ -160,7 +135,7 @@ namespace NXLevel.LMS
 
             try
             {
-                if (!HttpContext.Current.Request.IsLocal)
+                if (HttpContext.Current.Request.Url.Port == 80 || HttpContext.Current.Request.Url.Port == 443)
                 {
                     SmtpClient client = new SmtpClient();
                     client.Send(mail);
@@ -297,12 +272,33 @@ namespace NXLevel.LMS
             return sb.ToString();
         }
 
-        public static string getQueryString(string key)
+        public static string GetQueryString(string key)
         {
-            //note: this function can be used whent the Request object is not available (webmethod calls)
+            //note: this function can be used when the Request object is not available (webmethod calls)
             //note: this is case-insensitive
             NameValueCollection qs = HttpUtility.ParseQueryString(HttpContext.Current.Request.UrlReferrer.Query);
             return qs[key];
+        }
+
+        public static string AddQueryString(string key, string value)
+        {
+            string ret = "";
+            NameValueCollection qs = HttpUtility.ParseQueryString(HttpContext.Current.Request.UrlReferrer.Query);
+            if (qs[key] == null)
+            {
+                qs.Add(key, value);
+            }
+            else
+            {
+                qs[key] = value;
+            }
+            
+            foreach (string qkey in qs.AllKeys)
+            {
+                ret += qkey + "=" + qs[qkey] + "&";
+            }
+
+            return ret.Substring(0, ret.Length-1);
         }
 
         #region data type conversions

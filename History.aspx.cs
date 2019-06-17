@@ -13,7 +13,26 @@ namespace NXLevel.LMS
         protected void Page_Load(object sender, EventArgs e)
         {
             lms_Entities db = new ClientDBEntities();
-            rptEvents.DataSource = db.User_UsageHistory(LmsUser.UserId).ToList();
+            List<User_UsageHistory_Result> history = db.User_UsageHistory(LmsUser.UserId).ToList();
+
+            //translate labels
+            foreach (User_UsageHistory_Result item in history)
+            {
+                switch (item.eventType)
+                {
+                    case 1: //SCORE
+                        item.eventData = Resources.Global.LabelScore + "=" + item.eventData;
+                        break;
+                    case 2: //STARTED
+                        item.eventData = Resources.Global.LabelStarted;
+                        break;
+                    case 3: //COMPLETED
+                        item.eventData = Resources.Global.LabelCompleted;
+                        break;
+                }
+            }
+
+            rptEvents.DataSource = history;
             rptEvents.DataBind();
         }
 

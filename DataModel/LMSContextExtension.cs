@@ -33,5 +33,10 @@ namespace NXLevel.LMS.DataModel
             base(LmsUser.DBConnString)
         {
         }
+
+        public ClientDBEntities(string DBConnString) :
+            base(DBConnString)
+        {
+        }
     }
 }

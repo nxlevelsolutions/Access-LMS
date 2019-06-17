@@ -49,7 +49,7 @@ Includes link to activity/curriculum--%>
 
     <table class="table-responsive" style="width: 75%; margin-left: 25px;">
         <tr>
-            <td width="30" align="center"><span class="glyphicon glyphicon-envelope"></span></td>
+            <td width="30" align="center"><span class="fa fa-envelope"></span></td>
             <td><b><a onclick="openEditor(1)">ASSIGNED ACTIVITY REMINDER</a></b></td>
         </tr>
         <tr>
@@ -61,7 +61,7 @@ Includes link to activity/curriculum--%>
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td align="center"><span class="glyphicon glyphicon-envelope"></span></td>
+            <td align="center"><span class="fa fa-envelope"></span></td>
             <td><b><a onclick="openEditor(2)">PERIODIC REMINDER</a></b></td>
         </tr>
         <tr>
@@ -73,7 +73,7 @@ Includes link to activity/curriculum--%>
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td width="30" align="center"><span class="glyphicon glyphicon-envelope"></span></td>
+            <td width="30" align="center"><span class="fa fa-envelope"></span></td>
             <td><b><a onclick="openEditor(3)">NEAR DUE DATE REMINDER</a></b></td>
         </tr>
         <tr>
@@ -85,7 +85,7 @@ Includes link to activity/curriculum--%>
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td align="center"><span class="glyphicon glyphicon-envelope"></span></td>
+            <td align="center"><span class="fa fa-envelope"></span></td>
             <td><b><a onclick="openEditor(4)">ON DUE DATE REMINDER</a></b></td>
         </tr>
         <tr>
@@ -97,7 +97,7 @@ Includes link to activity/curriculum--%>
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td align="center"><span class="glyphicon glyphicon-envelope"></span></td>
+            <td align="center"><span class="fa fa-envelope"></span></td>
             <td><b><a onclick="openEditor(5)">OVERDUE REMINDER</a></b></td>
         </tr>
         <tr>

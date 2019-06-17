@@ -13,6 +13,24 @@ namespace NXLevel.LMS.Admin {
     public partial class AssignmentSettings2 {
         
         /// <summary>
+        /// txtTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTitle;
+        
+        /// <summary>
+        /// txtDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDescription;
+        
+        /// <summary>
         /// cbEnabled control.
         /// </summary>
         /// <remarks>
@@ -22,15 +40,6 @@ namespace NXLevel.LMS.Admin {
         protected global::System.Web.UI.WebControls.CheckBox cbEnabled;
         
         /// <summary>
-        /// cbSelfRegister control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbSelfRegister;
-        
-        /// <summary>
         /// tbRegisterCode control.
         /// </summary>
         /// <remarks>
@@ -38,15 +47,6 @@ namespace NXLevel.LMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbRegisterCode;
-        
-        /// <summary>
-        /// txtDuedate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDuedate;
         
         /// <summary>
         /// cbEmailOnAssigned control.
@@ -74,6 +74,24 @@ namespace NXLevel.LMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPeriodicDays;
+        
+        /// <summary>
+        /// txtDueDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDueDate;
+        
+        /// <summary>
+        /// txtDueDays control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDueDays;
         
         /// <summary>
         /// cbEmailNearDueDate control.
@@ -110,5 +128,14 @@ namespace NXLevel.LMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox cbEmailOverdue;
+        
+        /// <summary>
+        /// txtOverdueDays control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOverdueDays;
     }
 }

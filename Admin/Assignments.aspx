@@ -27,9 +27,12 @@
             $(popName + ' iframe')[0].contentWindow.onSave();
         }
 
-        function closeWin(refresh) {
+        function closeWin(refresh, anchor) {
             $(popName).on("hidden.bs.modal", function () {
-                if (refresh) document.location.href = document.location.href;
+                if (refresh) {
+                    if (anchor) document.location.hash = anchor;
+                    window.location.reload();
+                }
             });
             $(popName).modal("hide");
         }
@@ -45,7 +48,7 @@
                     assignmentId: $('#deleteConfirmation').data("aId")
                 },
                 function (response) {
-                    document.location.href = document.location.href;
+                    window.location.reload();
                 }
             );
         }
@@ -58,6 +61,9 @@
             $("#lpSettings").draggable({ handle: ".modal-header" });
             $("#asgSettings").draggable({ handle: ".modal-header" });
             $("#deleteConfirmation").draggable({ handle: ".modal-header" });
+            if (document.location.hash) {
+                $('.nav-tabs a[href="' + document.location.hash + '"]').tab('show');
+            }
         });
 
     </script>
@@ -73,14 +79,13 @@
         <li><a href="#tab2" data-toggle="tab">Learning Plans</a></li>
     </ul>
 
-
     <div class="tab-content">
         <div class="tab-pane fade in active" id="tab1">
             <p>&nbsp;</p>
             <!-- tab one begin -->
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <button type="button" class="btn btn-md btn-primary" onclick="openDialog('assignEditor', 'AssignmentEditor2.aspx')"><span class="fa fa-plus"></span> NEW ASSIGNMENT</button>
+                    <button type="button" class="btn btn-md btn-primary" onclick="openDialog('assignEditor', 'AssignmentSettings1.aspx')"><span class="fa fa-plus"></span> NEW ASSIGNMENT</button>
                 </div>
                 <asp:Repeater ID="rptAssignments1" runat="server">
                     <HeaderTemplate>
@@ -96,7 +101,7 @@
                     </HeaderTemplate>
                     <ItemTemplate>
                         <tr class="<%# (bool)Eval("enabled")==true ? "": "disabled" %>">
-                            <td><a onclick="openDialog('assignEditor', 'AssignmentEditor.aspx?aid=<%# Eval("assignmentId") %>')" ><%# Eval("title") %></a></td>
+                            <td><%# Eval("title") %></td>
                             <td align="center"><%# ((bool?)Eval("enabled")==true?"Yes": "No") %></td>
                             <td align="center"><button type="button" class="btn btn-md btn-primary" onclick="openDialog('assignUsers', 'AssignmentUsers.aspx?aid=<%# Eval("assignmentId") %>')">Total: <%# Eval("userCount") %> &nbsp; <span class="fa fa-edit"></span></button></td>
                             <td align="center"><button type="button" class="btn btn-md btn-primary" onclick="openDialog('assignGroups', 'AssignmentGroups.aspx?aid=<%# Eval("assignmentId") %>')">Total: <%# Eval("groupCount") %> &nbsp;<span class="fa fa-edit"></span></button></td>
@@ -111,12 +116,14 @@
             </div>
             <!-- tab one end -->
         </div>
+
+
         <div class="tab-pane fade" id="tab2">
             <p>&nbsp;</p>
             <!-- tab two begin -->
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <button type="button" class="btn btn-md btn-primary" onclick="openDialog('assignEditor', 'AssignmentEditor1.aspx')"><span class="fa fa-plus"></span> NEW LEARNING PLAN</button>
+                    <button type="button" class="btn btn-md btn-primary" onclick="openDialog('assignEditor', 'AssignmentSettings2.aspx')"><span class="fa fa-plus"></span> NEW LEARNING PLAN</button>
                 </div>
                 <asp:Repeater ID="rptAssignments2" runat="server">
                     <HeaderTemplate>
@@ -133,7 +140,7 @@
                     </HeaderTemplate>
                     <ItemTemplate>
                         <tr class="<%# (bool)Eval("enabled")==true ? "": "disabled" %>">
-                            <td><a onclick="openDialog('assignEditor', 'AssignmentEditor.aspx?aid=<%# Eval("assignmentId") %>')" ><%# Eval("title") %></a></td>
+                            <td><%# Eval("title") %></td>
                             <td align="center"><%# ((bool?)Eval("enabled")==true?"Yes": "No") %></td>
                             <td align="center"><button type="button" class="btn btn-md btn-primary" onclick="openDialog('assignUsers', 'AssignmentUsers.aspx?aid=<%# Eval("assignmentId") %>')">Total: <%# Eval("userCount") %> &nbsp; <span class="fa fa-edit"></span></button></td>
                             <td align="center"><button type="button" class="btn btn-md btn-primary" onclick="openDialog('assignGroups', 'AssignmentGroups.aspx?aid=<%# Eval("assignmentId") %>')">Total: <%# Eval("groupCount") %> &nbsp;<span class="fa fa-edit"></span></button></td>

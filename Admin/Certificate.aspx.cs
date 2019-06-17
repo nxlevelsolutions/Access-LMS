@@ -36,6 +36,7 @@ namespace NXLevel.LMS.Admin
                 af.SetField("CourseName", basInfo.title);
                 af.SetField("StudentName", LmsUser.Firstname + " " + LmsUser.Lastname);
                 af.SetField("CertificateDate", ((DateTime)basInfo.completedDate).ToLongDateString());
+                af.SetField("companyName", LmsUser.CompanyName);
             }
             ps.Close();
         }

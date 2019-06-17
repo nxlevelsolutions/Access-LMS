@@ -25,16 +25,6 @@ namespace NXLevel.LMS.Admin
                 tbDescription.Text = crs.description;
                 cbEnabled.Checked = crs.enabled;
                 tbUrl.Text = crs.url;
-                if (crs.scorm)
-                {
-                    rblType.Items[0].Selected = true;
-                }
-                else
-                {
-                    if (crs.aicc) rblType.Items[1].Selected = true;
-                }
-                cbToolbar.Checked = crs.browserToolbar;
-                cbStatus.Checked = crs.browserStatus;
                 tbWidth.Text = crs.browserWidth.ToString();
                 tbHeight.Text = crs.browserHeight.ToString();
             }
@@ -47,51 +37,15 @@ namespace NXLevel.LMS.Admin
             string description, 
             bool enabled, 
             string url, 
-            int type, 
-            bool toolbar,
-            bool status,
             int? width,
             int? height
             )
         {
-            string cid = Utilities.getQueryString("cid");
+            string cid = Utilities.GetQueryString("cid");
             int? courseId = Utilities.TryToParseAsInt(cid);
 
-            lms_Entities db = new ClientDBEntities();
-            if (courseId == null)
-            {
-                //this is a new course
-                db.Courses.Add(new Course
-                {
-                    title = title,
-                    description = description,
-                    enabled = enabled,
-                    scorm = (type == 0),
-                    aicc = (type == 1),
-                    url = url,
-                    browserToolbar = toolbar,
-                    browserStatus = status,
-                    browserWidth = width,
-                    browserHeight = height,
-                    timestamp = DateTime.Now
-                });
-            }
-            else
-            {
-                //this is an update
-                Course csr = db.Courses.Where(u => u.courseId == courseId).FirstOrDefault();
-                csr.title = title;
-                csr.description = description;
-                csr.enabled = enabled;
-                csr.scorm = (type == 0);
-                csr.aicc = (type == 1);
-                csr.url = url;
-                csr.browserToolbar = toolbar;
-                csr.browserStatus = status;
-                csr.browserWidth = width;
-                csr.browserHeight = height;
-            }
-            db.SaveChanges();
+            
+ 
             return JsonResponse.NoError;
         }
 

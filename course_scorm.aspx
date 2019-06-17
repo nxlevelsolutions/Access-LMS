@@ -20,9 +20,9 @@
             userId = Utils.getQueryVariable("uid");
         if (title) { document.title = title }
 
-        API.loadInitData(userId, assigId, courseId, function (ret) {
+        API.loadInitData(userId, assigId, courseId, "", function (ret) {
             window.frames[0].location.href = Utils.getQueryVariable("url"); //load course
-            if (window.opener.modWindow == window) {//update curriculum page
+            if (window.opener.lms) {//update curriculum page
                 window.opener.lms.refreshDisplay(assigId, courseId);
             }
         });

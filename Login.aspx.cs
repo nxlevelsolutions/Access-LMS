@@ -17,94 +17,98 @@ namespace NXLevel.LMS
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (!Utilities.IsEmailValid(Email.Text)) 
+            string email = Email.Text.Trim();
+
+            if (!Utilities.IsEmailValid(email)) 
             {
                 ErrorMsg.Visible = true;
-                ErrorMsg.Text = "Please enter a valid email address.";
+                ErrorMsg.Text = GetLocalResourceObject("ErrorInvalidEmail").ToString();
                 return;
             }
 
-            if (CompanyCode.Text.Trim()=="")
-            {
-                ErrorMsg.Visible = true;
-                ErrorMsg.Text = "Please enter a company code.";
-                return;
-            }
+            //if (CompanyCode.Text.Trim()=="")
+            //{
+            //    ErrorMsg.Visible = true;
+            //    ErrorMsg.Text = GetLocalResourceObject("ErrorNoCompany").ToString(); 
+            //    return;
+            //}
 
-            //check company code
-            ClientSetting cs = ClientSettings.Get(CompanyCode.Text);
+            //-------------------------------------------------
+            //check company code - must have a valid company ID
+            //-------------------------------------------------
+            ClientSetting cs = ClientSettings.Get("astellas");
             if (cs == null)
             {
-                ErrorMsg.Visible = true;
-                ErrorMsg.Text = "Please enter a valid company code.";
+                ErrorMsg.Visible = true; 
+                ErrorMsg.Text = GetLocalResourceObject("ErrorInvalidCompany").ToString();
                 return;
             }
             else
             {
-                //initialize user's unique connection string (company database)
-                //this should be done 1st before any db-specific call
-                LmsUser.DBConnString = cs.EntityConnStr;
+                if (cs.Enabled)
+                {
+                    //initialize user's unique connection string (company database)
+                    //this should be done 1st before any db-specific call
+                    LmsUser.DBConnString = cs.EntityConnStr;
+                }
+                else
+                {
+                    ErrorMsg.Visible = true; 
+                    ErrorMsg.Text = GetLocalResourceObject("ErrorDisabledCompany").ToString();
+                    return;
+                }
             }
 
 
             lms_Entities db = new ClientDBEntities();
-            User_Info_Result userInfo = db.User_Info(Email.Text).FirstOrDefault();
+            User_Info_Result userInfo = db.User_Info(email).FirstOrDefault();
 
             if (userInfo == null)
             {
                 //no email record found
-                ErrorMsg.Visible = true;
-                ErrorMsg.Text = "Error: Invalid email address. Please enter a valid email address."; 
+                ErrorMsg.Visible = true; 
+                ErrorMsg.Text = GetLocalResourceObject("ErrorUnknownEmail").ToString();
+                Log.Info("Login:\"" + email + "\" invalid email address.");
             }
             else
             {
-                //there is a user record..check status
-                if (userInfo.enabled)
+                //-------------------------------------------------
+                // ALL USERS must have an activation code, ie. they
+                // have to setup their new personal password
+                //-------------------------------------------------
+                if (string.IsNullOrEmpty(userInfo.activationCode))
                 {
-                    //user is active.. check password
-                    if (userInfo.password == Pwd.Text)
-                    {
-                        //password is good.. log user in
-                        LmsUser.SetInfo(userInfo.userId, userInfo.firstName, userInfo.lastName, userInfo.role, cs.Name, cs.AssetsFolder);
-
-                        // Write the session data to the log.
-                        Log.Info("User: " + userInfo.userId + " logged in.");
-                        FormsAuthentication.RedirectFromLoginPage(Email.Text, false);
-                    }
-                    else
-                    {
-                        ErrorMsg.Visible = true;
-                        ErrorMsg.Text = "Error: You have entered an incorrect password.";
-                    }
+                    // Redirect the user to the access code page.
+                    Response.Redirect("AccessCode.aspx?e=" + email + "&c=1");
                 }
                 else
                 {
-                    //user is NOT active.. check activation code
-                    if (string.IsNullOrEmpty(userInfo.activationCode))
+                    // user has an activation code, check if enabled
+                    if (userInfo.enabled)
                     {
-                        // This is the first time logging in, so generate an access code.
-                        string activationCode = Utilities.RandomAccessCode();
+                        //user is enabled... check password
+                        if (userInfo.password == Pwd.Text)
+                        {
+                            //password is good.. log user in
+                            LmsUser.SetInfo(userInfo.userId, userInfo.firstName, userInfo.lastName, userInfo.role, cs.Name, cs.AssetsFolder);
 
-                        // Email the user the activation code.
-                        string emailBody = Utilities.GetFileContents("Templates/AccessCode.html");
-                        emailBody = string.Format(emailBody,
-                                                activationCode,
-                                                "http://" + Request.ServerVariables["HTTP_HOST"] + Request.ApplicationPath + "/AccessCode.aspx",
-                                                "http://" + Request.ServerVariables["HTTP_HOST"]);
-                        Utilities.SendEmail(ConfigurationManager.AppSettings.Get("SystemEmail"), Email.Text, "PharmaCertify Account Activation Instructions", emailBody);
-                        Log.Info("Access code: " + activationCode + " was sent.");
-
-                        // Update the user's account with the Activation Code.
-                        userInfo.activationCode = activationCode;
-                        db.SaveChanges();
-
-                        // Redirect the user to the explanation page.
-                        Response.Redirect("AccessCode.aspx");
+                            // Write the session data to the log.
+                            Log.Info("Login: \"" + email + "\" (" + userInfo.userId + ") logged in.");
+                            FormsAuthentication.RedirectFromLoginPage(email, false);
+                        }
+                        else
+                        {
+                            ErrorMsg.Visible = true;
+                            ErrorMsg.Text = GetLocalResourceObject("ErrorInvalidPwd").ToString();
+                            Log.Info("Login:\"" + email + "\" entered an incorrect password.");
+                        }
                     }
                     else
                     {
+                        //user account is disabled, so no access given
                         ErrorMsg.Visible = true;
-                        ErrorMsg.Text = "Error: Your account is disabled.";
+                        ErrorMsg.Text = GetLocalResourceObject("ErrorDisabledAcct").ToString();
+                        Log.Info("Login:\"" + email + "\" account is disabled.");
                     }
                 }
             }

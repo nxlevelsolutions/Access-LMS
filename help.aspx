@@ -4,12 +4,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="page-header">
-        <h3><span class="fa fa-question-circle"></span> Help</h3>
+        <h3><span class="fa fa-question-circle"></span> <%= GetLocalResourceObject("PageTitle")%></h3>
     </div>
 
-    <ul>
-        <li>Item 1</li>
-        <li>Item 2</li>
-    </ul>
+    <%= GetLocalResourceObject("Text1")%>
+    
 
 </asp:Content>

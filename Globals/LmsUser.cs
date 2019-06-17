@@ -18,10 +18,10 @@ namespace NXLevel.LMS
             public string lname;
             public string companyName;
             public string dBConnString;
-            public string assetsFolder;
+            public string companyFolder;
         }
 
-        public static void SetInfo(int userId, string fname, string lname, int roles, string companyName, string assetsFolder)
+        public static void SetInfo(int userId, string fname, string lname, int roles, string companyName, string companyFolder)
         {
             UserInfo usr;
             object uObj = HttpContext.Current.Session[Global.USERINFO_SESSION_KEY];
@@ -38,7 +38,7 @@ namespace NXLevel.LMS
             usr.fname = fname;
             usr.lname = lname;
             usr.companyName = companyName;
-            usr.assetsFolder = assetsFolder;
+            usr.companyFolder = companyFolder;
             usr.roles = roles;
             HttpContext.Current.Session[Global.USERINFO_SESSION_KEY] = usr;
         }
@@ -48,7 +48,7 @@ namespace NXLevel.LMS
         {
             get
             {
-                object uiObj = HttpContext.Current?.Session[Global.USERINFO_SESSION_KEY];
+                object uiObj = HttpContext.Current?.Session?[Global.USERINFO_SESSION_KEY];
                 if (uiObj == null)
                 {
                     return 0;
@@ -59,44 +59,16 @@ namespace NXLevel.LMS
                     return usr.userId;
                 }
             }
-            //set
-            //{
-            //    UserInfo usr = (UserInfo)HttpContext.Current.Session[Global.USERINFO_SESSION_KEY];
-            //    usr.userId = value;
-            //    HttpContext.Current.Session[Global.USERINFO_SESSION_KEY] = usr;
-            //}
         }
-
-        //public static int dbId
-        //{
-        //    get
-        //    {
-        //        object uiObj = HttpContext.Current?.Session[Global.USERINFO_SESSION_KEY];
-        //        if (uiObj == null)
-        //        {
-        //            return 0;
-        //        }
-        //        else
-        //        {
-        //            UserInfo usr = (UserInfo)uiObj;
-        //            return usr.dbId;
-        //        }
-        //    }
-        //}
 
         public static string CompanyName
         {
             get
             {
+                // The companyName comes originally from the ClientSettings.config file
                 UserInfo usr = (UserInfo)HttpContext.Current.Session[Global.USERINFO_SESSION_KEY];
                 return usr.companyName;
             }
-            //set
-            //{
-            //    UserInfo usr = (UserInfo)HttpContext.Current.Session[Global.USERINFO_SESSION_KEY];
-            //    usr.companyName = value;
-            //    HttpContext.Current.Session[Global.USERINFO_SESSION_KEY] = usr;
-            //}
         }
 
         public static string Firstname
@@ -106,12 +78,6 @@ namespace NXLevel.LMS
                 UserInfo usr = (UserInfo)HttpContext.Current.Session[Global.USERINFO_SESSION_KEY];
                 return usr.fname;
             }
-            //set
-            //{
-            //    UserInfo usr = (UserInfo)HttpContext.Current.Session[Global.USERINFO_SESSION_KEY];
-            //    usr.fname = value;
-            //    HttpContext.Current.Session[Global.USERINFO_SESSION_KEY] = usr;
-            //}
         }
 
         public static string Lastname
@@ -121,12 +87,6 @@ namespace NXLevel.LMS
                 UserInfo usr = (UserInfo)HttpContext.Current.Session[Global.USERINFO_SESSION_KEY];
                 return usr.lname;
             }
-            //set
-            //{
-            //    UserInfo usr = (UserInfo)HttpContext.Current.Session[Global.USERINFO_SESSION_KEY];
-            //    usr.lname = value;
-            //    HttpContext.Current.Session[Global.USERINFO_SESSION_KEY] = usr;
-            //}
         }
 
         public static bool HasRole(Role role)
@@ -188,12 +148,12 @@ namespace NXLevel.LMS
             }
         }
 
-        public static string assetsFolder
+        public static string companyFolder
         {
             get
             {
                 UserInfo usr = (UserInfo)HttpContext.Current.Session[Global.USERINFO_SESSION_KEY];
-                return usr.assetsFolder;
+                return usr.companyFolder;
             }
         }
          

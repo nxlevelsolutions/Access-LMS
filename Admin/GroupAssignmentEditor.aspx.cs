@@ -36,7 +36,7 @@ namespace NXLevel.LMS.Admin
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public static string SaveUsers(string userIds)
         {
-            string gid = Utilities.getQueryString("gid");
+            string gid = Utilities.GetQueryString("gid");
             int ? groupId = Utilities.TryToParseAsInt(gid);
 
             lms_Entities db = new ClientDBEntities();

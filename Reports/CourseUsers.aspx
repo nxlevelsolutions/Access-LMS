@@ -29,8 +29,8 @@
                         <th>Last name</span></th>
                         <th>First name</span></th>
                         <th>Email</th>
-                        <th>X</th>
-                        <th>Y</th>
+                        <th>Start Date</th>
+                        <th>Completed</th>
                     </thead>
             </HeaderTemplate>
             <ItemTemplate>
@@ -39,8 +39,8 @@
                     <td><%# Eval("lastname") %></td>
                     <td><%# Eval("firstName") %></td>
                     <td><%# Eval("email") %></td>
-                    <td>X</td>
-                    <td>Y</td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </ItemTemplate>
             <FooterTemplate>

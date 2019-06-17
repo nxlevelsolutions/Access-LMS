@@ -76,13 +76,13 @@ namespace NXLevel.LMS {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
         
         /// <summary>
-        /// txtEmail control.
+        /// txtNewEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.WebControls.TextBox txtNewEmail;
         
         /// <summary>
         /// txtTitle control.
@@ -92,33 +92,6 @@ namespace NXLevel.LMS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTitle;
-        
-        /// <summary>
-        /// RequiredFieldValidator4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
-        
-        /// <summary>
-        /// RegExp1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegExp1;
-        
-        /// <summary>
-        /// txtPwd1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPwd1;
         
         /// <summary>
         /// rfvRegistrationCode control.
@@ -139,31 +112,22 @@ namespace NXLevel.LMS {
         protected global::System.Web.UI.WebControls.TextBox txtRegisterCode;
         
         /// <summary>
-        /// rfvCompanyCode control.
+        /// rfvOrganization control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCompanyCode;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvOrganization;
         
         /// <summary>
-        /// txtCompanyCode control.
+        /// ddOrganization control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCompanyCode;
-        
-        /// <summary>
-        /// txtMgrEmail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMgrEmail;
+        protected global::System.Web.UI.WebControls.DropDownList ddOrganization;
         
         /// <summary>
         /// btnSubmit control.

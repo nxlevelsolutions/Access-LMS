@@ -25,5 +25,6 @@ namespace NXLevel.LMS.DataModel
         public bool enabled { get; set; }
         public int role { get; set; }
         public string mgrEmail { get; set; }
+        public string organization { get; set; }
     }
 }

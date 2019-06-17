@@ -24,42 +24,50 @@ namespace NXLevel.LMS
             if (txtEmail.Text == "")
             {
                 lblError.Visible = true;
-                lblError.Text = "Please enter a valid email address.";
+                lblError.Text = GetLocalResourceObject("ErrorInvalidEmail").ToString();
                 return;
             }
 
             //check company code
-            if (ConfigurationManager.AppSettings.Get(CompanyCode.Text) == null)
+            ClientSetting cs = ClientSettings.Get("astellas"); //CompanyCode.Text
+            if (cs == null)
             {
                 lblError.Visible = true;
-                lblError.Text = "Please enter a valid company code.";
+                lblError.Text = HttpContext.GetLocalResourceObject("~/Login.aspx", "ErrorInvalidCompany").ToString();
                 return;
             }
             else
             {
                 //initialize user's unique connection string (company database)
-                LmsUser.DBConnString = ConfigurationManager.AppSettings.Get(CompanyCode.Text);
+                LmsUser.DBConnString = cs.EntityConnStr;
             }
 
             // Check if the user currently has a registered email address.
             lms_Entities db = new ClientDBEntities();
-            User_Info_Result userInfo = db.User_Info(txtEmail.Text).FirstOrDefault<User_Info_Result>();
+            User_Info_Result userInfo = db.User_Info(txtEmail.Text).FirstOrDefault();
 
             if (userInfo == null)
             {
                 lblError.Visible = true;
-                lblError.Text = "The system does not have that email address associated with that company code. Please ensure both are correct.";
+                lblError.Text = GetLocalResourceObject("ErrorUnknownEmail").ToString();
             }
             else
             {
-                string emailMsg = Utilities.GetFileContents("Templates/ForgotPassword.html");
-                emailMsg = string.Format(emailMsg, userInfo.password);
+                string emailMsg = GetLocalResourceObject("EmailBody").ToString();
+                string emailSubject = GetLocalResourceObject("EmailSubject").ToString();
+                string emailSent = GetLocalResourceObject("EmailSent").ToString();
 
-                Utilities.SendEmail(ConfigurationManager.AppSettings.Get("SystemEmail"), txtEmail.Text, "Pharmacertify access", emailMsg);
+                Utilities.SendEmail(
+                    ConfigurationManager.AppSettings.Get("SystemEmail"), 
+                    txtEmail.Text, 
+                    emailSubject,
+                    string.Format(emailMsg, userInfo.password)
+                );
                 lblError.Visible = false;
 
                 lblRequestPassword.ForeColor = System.Drawing.Color.Green;
-                lblRequestPassword.Text = "Your password was emailed to '" + txtEmail.Text + "'. If this is not your email address, please contact your administrator to have this corrected.";
+                lblRequestPassword.Text = string.Format(emailSent, txtEmail.Text);
+                Log.Info("Password emailed to: \"" + txtEmail.Text + "\"");
             }
         }
     }

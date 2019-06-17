@@ -15,13 +15,9 @@ namespace NXLevel.LMS.DataModel
     {
         public int courseId { get; set; }
         public string title { get; set; }
-        public bool aicc { get; set; }
-        public bool scorm { get; set; }
         public string url { get; set; }
         public string language { get; set; }
         public string description { get; set; }
-        public bool browserToolbar { get; set; }
-        public bool browserStatus { get; set; }
         public Nullable<int> browserWidth { get; set; }
         public Nullable<int> browserHeight { get; set; }
         public int userId { get; set; }
@@ -30,5 +26,6 @@ namespace NXLevel.LMS.DataModel
         public Nullable<bool> completed { get; set; }
         public int assignmentId { get; set; }
         public Nullable<bool> available { get; set; }
+        public short type { get; set; }
     }
 }

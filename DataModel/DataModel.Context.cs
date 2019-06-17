@@ -276,16 +276,20 @@ namespace NXLevel.LMS.DataModel
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Categories_GroupsDelete", categoryIdParameter, groupIdParameter);
         }
     
-        public virtual ObjectResult<Assignment_UsersGet_Result> Assignment_UsersGet(Nullable<int> assignmentId)
+        public virtual ObjectResult<Assignment_UsersGet_Result> Assignment_UsersGet(Nullable<int> assignmentId, Nullable<bool> returnAll)
         {
             var assignmentIdParameter = assignmentId.HasValue ?
                 new ObjectParameter("assignmentId", assignmentId) :
                 new ObjectParameter("assignmentId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Assignment_UsersGet_Result>("Assignment_UsersGet", assignmentIdParameter);
+            var returnAllParameter = returnAll.HasValue ?
+                new ObjectParameter("returnAll", returnAll) :
+                new ObjectParameter("returnAll", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Assignment_UsersGet_Result>("Assignment_UsersGet", assignmentIdParameter, returnAllParameter);
         }
     
-        public virtual int Assignment_UsersSet(Nullable<int> assignmentId, string userlist)
+        public virtual int Assignment_UsersSet(Nullable<int> assignmentId, string userlist, Nullable<bool> add)
         {
             var assignmentIdParameter = assignmentId.HasValue ?
                 new ObjectParameter("assignmentId", assignmentId) :
@@ -295,7 +299,11 @@ namespace NXLevel.LMS.DataModel
                 new ObjectParameter("userlist", userlist) :
                 new ObjectParameter("userlist", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Assignment_UsersSet", assignmentIdParameter, userlistParameter);
+            var addParameter = add.HasValue ?
+                new ObjectParameter("add", add) :
+                new ObjectParameter("add", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Assignment_UsersSet", assignmentIdParameter, userlistParameter, addParameter);
         }
     
         public virtual ObjectResult<User_GroupsGet_Result> User_GroupsGet(Nullable<int> userId)
@@ -372,8 +380,12 @@ namespace NXLevel.LMS.DataModel
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Report_UserCourses_Result>("Report_UserCourses", userIdParameter);
         }
     
-        public virtual ObjectResult<Report_UserCourseUsage_Result> Report_UserCourseUsage(Nullable<int> userId, Nullable<int> courseId)
+        public virtual ObjectResult<Report_UserCourseUsage_Result> Report_UserCourseUsage(Nullable<int> assignmentId, Nullable<int> userId, Nullable<int> courseId)
         {
+            var assignmentIdParameter = assignmentId.HasValue ?
+                new ObjectParameter("assignmentId", assignmentId) :
+                new ObjectParameter("assignmentId", typeof(int));
+    
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("userId", userId) :
                 new ObjectParameter("userId", typeof(int));
@@ -382,7 +394,7 @@ namespace NXLevel.LMS.DataModel
                 new ObjectParameter("courseId", courseId) :
                 new ObjectParameter("courseId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Report_UserCourseUsage_Result>("Report_UserCourseUsage", userIdParameter, courseIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Report_UserCourseUsage_Result>("Report_UserCourseUsage", assignmentIdParameter, userIdParameter, courseIdParameter);
         }
     
         public virtual ObjectResult<Report_CourseUsers_Result> Report_CourseUsers(Nullable<int> courseId)
@@ -436,6 +448,75 @@ namespace NXLevel.LMS.DataModel
                 new ObjectParameter("userId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<User_UsageHistory_Result>("User_UsageHistory", userIdParameter);
+        }
+    
+        public virtual ObjectResult<Courses_Avail_Result> Courses_Avail(Nullable<bool> enabled)
+        {
+            var enabledParameter = enabled.HasValue ?
+                new ObjectParameter("enabled", enabled) :
+                new ObjectParameter("enabled", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Courses_Avail_Result>("Courses_Avail", enabledParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Assignment_CoursesCompletedGet(Nullable<int> assignmentId, Nullable<int> userId)
+        {
+            var assignmentIdParameter = assignmentId.HasValue ?
+                new ObjectParameter("assignmentId", assignmentId) :
+                new ObjectParameter("assignmentId", typeof(int));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Assignment_CoursesCompletedGet", assignmentIdParameter, userIdParameter);
+        }
+    
+        public virtual ObjectResult<User_EmailsSent_Result> User_EmailsSent(Nullable<int> userId, Nullable<int> assignmentId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            var assignmentIdParameter = assignmentId.HasValue ?
+                new ObjectParameter("assignmentId", assignmentId) :
+                new ObjectParameter("assignmentId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<User_EmailsSent_Result>("User_EmailsSent", userIdParameter, assignmentIdParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Users_EmailsNotSent(string userListStr, Nullable<int> assignmentId, Nullable<int> emailId)
+        {
+            var userListStrParameter = userListStr != null ?
+                new ObjectParameter("userListStr", userListStr) :
+                new ObjectParameter("userListStr", typeof(string));
+    
+            var assignmentIdParameter = assignmentId.HasValue ?
+                new ObjectParameter("assignmentId", assignmentId) :
+                new ObjectParameter("assignmentId", typeof(int));
+    
+            var emailIdParameter = emailId.HasValue ?
+                new ObjectParameter("emailId", emailId) :
+                new ObjectParameter("emailId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Users_EmailsNotSent", userListStrParameter, assignmentIdParameter, emailIdParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Users_Email_Add(string userListStr, Nullable<int> assignmentId, Nullable<int> emailId)
+        {
+            var userListStrParameter = userListStr != null ?
+                new ObjectParameter("userListStr", userListStr) :
+                new ObjectParameter("userListStr", typeof(string));
+    
+            var assignmentIdParameter = assignmentId.HasValue ?
+                new ObjectParameter("assignmentId", assignmentId) :
+                new ObjectParameter("assignmentId", typeof(int));
+    
+            var emailIdParameter = emailId.HasValue ?
+                new ObjectParameter("emailId", emailId) :
+                new ObjectParameter("emailId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Users_Email_Add", userListStrParameter, assignmentIdParameter, emailIdParameter);
         }
     }
 }

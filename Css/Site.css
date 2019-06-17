@@ -4,20 +4,26 @@
     font-family: 'Roboto';
 }
 html, body, form {
-    margin: 0;
+	margin: 0;
     padding: 0;
     height:100%;
-	color: #525252;
-	line-height: 1.5em;
+}
+
+body {
+    color: #525252;
+    line-height: 1.5em;
+    /*font-size: 15px;*/
 }
 
 
 /* wrapper to push footer down */
 #wrap {
+    background: url(../images/astellas_background.jpg);
+    background-size: cover;
     min-height: 100%;
     height: auto !important;
     height: 100%;
-    margin: 0 auto -60px; 
+    margin: 0 auto -60px;
     padding: 0 0 60px;
 }
     #wrap > form > .container {
@@ -57,7 +63,9 @@ div[onclick], span[onclick], a:hover, .pointer {
 .evenrowcolor tr:nth-child(even), .oddrowcolor tr:nth-child(odd) { /* colored table rows */
     background-color: #f9f9f9;
 }
-
+.white-text{
+    color: #FFF;
+}
 
 /* icons */
 .icon-sort {
@@ -82,7 +90,7 @@ div[onclick], span[onclick], a:hover, .pointer {
 	color: #fff;
 }
 .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover{
-	color: #cdcd;
+	color: #cdcdcd;
 }
 .panel-default>.panel-heading {
 	    background-image: linear-gradient(to bottom,#3176bc 0,#3176bc 100%);
@@ -93,21 +101,32 @@ div[onclick], span[onclick], a:hover, .pointer {
 
 
 /* bootstrap overrides */
-h4 {
-	color: #fff;
-}
 h5 {
 	text-decoration: underline;
 }
+/*.table>tbody>tr>td {
+	vertical-align: middle;
+}*/
 label {
     margin-left: 5px;
     font-weight: normal;
 }
-input[type='text'], textarea, select {
+input[type='text'], textarea, td select {
     width: 100%;
 }
-select{
-    height:27px;
+.btn {
+	padding: 4px 12px;
+}
+.btn-primary {
+	background-image: linear-gradient(to bottom,#eaeaea,#eaeaea 100%);
+	color: #464646;
+	border-color: #a9b3bb;
+}
+.btn-primary:focus, .btn-primary:hover {
+	background-image: linear-gradient(to bottom,#cdcdcd,#cdcdcd 100%);
+	background-position: 0 0;
+	color: #464646;
+	border-color: #8d969c;
 }
 
 
@@ -118,3 +137,5 @@ select{
 .SumoUnder {
     height: 32px !important;
 }
+
+ 

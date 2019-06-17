@@ -23,7 +23,7 @@
     </table>
     </div>
 
-    <p>&nbsp;</p>
+<%--    <p>&nbsp;</p>
     <h3><span class="fa fa-bar-chart"></span> Reports by Groups:</h3>
     <div class="panel panel-default">
     <table class="table evenrowcolor">
@@ -41,6 +41,6 @@
             <td><a href="assignments.aspx">View all Activities</a></td>
         </tr>
     </table>
-    </div>
+    </div>--%>
 
 </asp:Content>

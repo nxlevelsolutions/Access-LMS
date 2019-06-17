@@ -14,6 +14,12 @@ var Utils = {
 	    //if (courseCompleted) mm_LMSCompleted();
     },
 
+    ConsoleWrite: function (msg) {
+        if (typeof (console) != "undefined") {
+            console.log(msg);
+        }
+    },
+
     Post: function (url, formdata, callback, useAsync) {
         Utils.log("Utils.Post to:" + url);
         var ret;
@@ -110,6 +116,9 @@ var Utils = {
     },
 
     setQueryVariable: function (pairsObj) {
+        //parses the entire url, parsing and adding querystring
+        //parameters if required. Returns a full url.
+        //to delete set var to null, ex: {x:null}
         var query = window.location.search.substring(1),
             vars = (query == "" ? []: query.split('&') ),
             url = document.location.pathname + "?",
@@ -122,12 +131,17 @@ var Utils = {
             for (var i = 0; i < vars.length; i++) {
                 var pair = vars[i].split("=");
                 if (decodeURIComponent(pair[0]).toLowerCase() == key.toLowerCase()) {
-                    vars[i] = key + "=" + encodeURI(value);
-                    found = true;
-                    break;
+                    if (value == null) {
+                        vars.splice(i, 1); 
+                    }
+                    else {
+                        vars[i] = key + "=" + encodeURI(value);
+                        found = true;
+                        break;
+                    }
                 }
             }
-            if (!found) {
+            if (!found && value!=null) {
                 vars.push(key + "=" + encodeURI(value));
             }
         }
@@ -222,4 +236,11 @@ var Utils = {
 
 };
  
- 
+//--------------------------------------------------------
+// add extensions to built-in prototype objects if missing
+//--------------------------------------------------------
+if (typeof (String.prototype.trim) !== "function") {
+    String.prototype.trim = function () {
+        return this.replace(/^\s+|\s+$/gm, '');
+    };
+}

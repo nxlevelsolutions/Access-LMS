@@ -14,10 +14,12 @@ namespace NXLevel.LMS.DataModel
     public partial class Report_UserCourses_Result
     {
         public int courseId { get; set; }
-        public string title { get; set; }
         public Nullable<System.DateTime> startedDate { get; set; }
         public Nullable<System.DateTime> endDate { get; set; }
         public Nullable<decimal> avgScore { get; set; }
         public Nullable<decimal> maxScore { get; set; }
+        public int assignmentId { get; set; }
+        public string assignmentTitle { get; set; }
+        public string courseTitle { get; set; }
     }
 }

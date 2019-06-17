@@ -14,7 +14,7 @@
                 <tr>
                     <td><b>Assignments</b></td>
                     <td align="right"> 
-                        <asp:LinkButton runat="server" ID="lnkDownload1" Text="" OnClick="lnkDownload1_Click"><span class="fa fa-download"></span> Download Excel report</asp:LinkButton>
+                        <asp:LinkButton runat="server" ID="lnkDownload1" Text="" OnClick="lnkDownload1_Click" CssClass="white-text"><span class="fa fa-download"></span> Download Excel report</asp:LinkButton>
                     </td>
                 </tr>
             </table>
@@ -42,7 +42,7 @@
                 <tr>
                     <td><b>Learning Plans</b></td>
                     <td align="right"> 
-                        <asp:LinkButton runat="server" ID="lnkDownload2" Text="" OnClick="lnkDownload2_Click"><span class="fa fa-download"></span> Download Excel report</asp:LinkButton>
+                        <asp:LinkButton runat="server" ID="lnkDownload2" Text="" OnClick="lnkDownload2_Click" CssClass="white-text"><span class="fa fa-download"></span> Download Excel report</asp:LinkButton>
                     </td>
                 </tr>
             </table>

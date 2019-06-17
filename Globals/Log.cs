@@ -11,7 +11,7 @@ namespace NXLevel.LMS
 {
     public class Log
     {
-        public const string DELIMITER = ";";
+        public const string DELIMITER = "\t"; // \t = tab
 
         public static void Error(string message, bool notifyViaEmail = false)
         {

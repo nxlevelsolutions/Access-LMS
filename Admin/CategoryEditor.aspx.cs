@@ -28,7 +28,7 @@ namespace NXLevel.LMS.Admin
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public static string SaveCategory(string title)
         {
-            string cid = Utilities.getQueryString("cid");
+            string cid = Utilities.GetQueryString("cid");
             int? categoryId = Utilities.TryToParseAsInt(cid);
 
             lms_Entities db = new ClientDBEntities();

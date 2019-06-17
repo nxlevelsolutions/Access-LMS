@@ -15,9 +15,10 @@ namespace NXLevel.LMS.DataModel
     {
         public int courseId { get; set; }
         public string title { get; set; }
-        public string @event { get; set; }
         public Nullable<System.DateTime> dateStamp { get; set; }
         public string AssignmentTitle { get; set; }
         public int assignmentId { get; set; }
+        public string eventData { get; set; }
+        public int eventType { get; set; }
     }
 }
