@@ -59,74 +59,6 @@ namespace NXLevel.LMS
             return str;
         }
 
-        //public static string SetQueryString(HttpRequest request, string key, string value)
-        //{
-        //    NameValueCollection queryCollection = new NameValueCollection(request.QueryString); 
-        //    string newQueryStr = string.Empty;
-
-        //    if (value == null)
-        //    {
-        //        queryCollection.Remove(key);
-        //    }
-        //    else
-        //    {
-        //        queryCollection.Set(key, value);
-        //    }
-
-        //    for (int i = 0; i < queryCollection.Count; i++)
-        //    {
-        //        newQueryStr += queryCollection.Keys[i] + "=" + queryCollection.Keys[i] + "&";
-        //    }
-
-        //    if (queryCollection.Count == 0)
-        //    {
-        //        return request.Path;
-        //    }
-        //    else
-        //    {
-        //        return request.Path + "?" + newQueryStr.Substring(0, newQueryStr.Length - 1);
-        //    }
-        //}
-
-        //public static string SetQueryString(string requestUrl, string key, string value)
-        //{
-        //    // This function takes a url, with or without querystrings 
-        //    // and sets the key to the value string.
-        //    int keyStart = requestUrl.IndexOf(key);
-
-        //    if (keyStart > 0) // It's in the string.
-        //    {
-        //        // Delete the key and value.
-        //        int valEnd = requestUrl.IndexOf("&", keyStart);
-        //        if (valEnd == -1) // Not found, this key is the last one.
-        //        {
-        //            requestUrl = requestUrl.Substring(0, keyStart - 1); // Delete it.
-        //        }
-        //        else
-        //        {
-        //            string segment = requestUrl.Substring(keyStart, valEnd - keyStart); // Get it.
-        //            requestUrl = requestUrl.Replace(segment, ""); // Delete it.
-        //        }
-        //    }
-
-        //    int separatorIndex = requestUrl.IndexOf("?");
-        //    if (value == null) // Don't add the key.
-        //    {
-        //        return requestUrl;
-        //    }
-        //    else // Add key and value.
-        //    {
-        //        if (separatorIndex > 0)
-        //        {
-        //            return requestUrl + "&" + key + "=" + value;
-        //        }
-        //        else
-        //        {
-        //            return requestUrl + "?" + key + "=" + value;
-        //        }
-        //    }
-        //}
-
         public static void SendEmail(string fromEmail, string toEmail, string subject, string body, bool skipLoggerOnException = false)
         {
             // Sends emails in html format.
@@ -222,13 +154,12 @@ namespace NXLevel.LMS
 
         public static void DownloadAsExcel(string filename, Control ctrl)
         {
-            HttpResponse response = HttpContext.Current.Response;
-
-            response.ClearContent();
-            response.Buffer = true;
-            response.AddHeader("content-disposition", "attachment;filename=" + filename + ".xls");
-            response.Charset = "";
-            response.ContentType = "application/vnd.ms-excel";
+            HttpResponse res = HttpContext.Current.Response;
+            res.ClearContent();
+            res.Buffer = true;
+            res.AddHeader("content-disposition", "attachment;filename=" + filename + ".xls");
+            res.Charset = "";
+            res.ContentType = "application/vnd.ms-excel";
 
             StringWriter sw = new StringWriter();
             HtmlTextWriter hw = new HtmlTextWriter(sw);
@@ -237,9 +168,9 @@ namespace NXLevel.LMS
             string rendered = sw.ToString();
             rendered = RemoveHtmlTag(rendered, "a");            //remove all "a" html tags
             rendered = RemoveHtmlAttribute(rendered, "class");  //remove all "class" attributes
-            response.Write(rendered); 
-            response.Flush();
-            response.End();
+            res.Write(rendered);
+            res.Flush();
+            res.End();
         }
 
         public static string RemoveHtmlTag(string source, string tag)

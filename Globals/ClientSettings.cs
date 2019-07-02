@@ -55,6 +55,14 @@ namespace NXLevel.LMS
         {
             return ((ClientSetting)element).Name;
         }
+        public void AddElement(string name, string entityConnStr)
+        {
+            ClientSetting ne = new ClientSetting();
+            ne.Enabled = true;
+            ne.Name = name;
+            ne.EntityConnStr = entityConnStr;
+            BaseAdd(this.Count, ne);
+        }
     }
 
     public class ClientSetting : ConfigurationElement
@@ -70,7 +78,7 @@ namespace NXLevel.LMS
         public string Name
         {
             get { return (string)this["name"]; }
-            //set { this["name"] = value; }
+            set { this["name"] = value; }
         }
 
         [ConfigurationProperty("enabled", IsRequired = true)]
@@ -79,13 +87,17 @@ namespace NXLevel.LMS
             get {
                 return ((bool)this["enabled"]);
             }
+            set
+            {
+                this["enabled"] = value;
+            }
         }
 
         [ConfigurationProperty("entityConnStr", IsRequired = true)]
         public string EntityConnStr
         {
             get { return (string)this["entityConnStr"]; }
-            //set { this["entityConnStr"] = value; }
+            set { this["entityConnStr"] = value; }
         }
 
         [ConfigurationProperty("assetsFolder", IsRequired = true)]

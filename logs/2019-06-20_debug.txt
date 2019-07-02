@@ -1,0 +1,11 @@
+01:03:40PM	0	Information	A session has ended.
+01:03:45PM	0	Information	Processing:"NXLevel Solutions, Inc."
+01:03:45PM	0	Information	Assignment id=1=Compliance Mandatory Training
+01:03:45PM	0	Information	Assignment id=3=Medical Affairs
+01:04:05PM	0	Information	Sending email NEAR_DUE_DATE_REMINDER to:admin@nxlevel.com
+01:04:35PM	0	Information	Assignment id=4=Compliance Overview Course Title
+01:04:35PM	0	Information	Assignment id=14=Compliance Overview 4.5.19
+01:04:35PM	0	Information	Assignment id=16=Echo Training
+01:04:35PM	0	Information	Assignment id=17=Astellas Compliance
+01:04:49PM	0	Information	Scanner completed
+01:04:49PM	0	Information	Scanner processing:"Some Company, Inc." skipped (disabled).

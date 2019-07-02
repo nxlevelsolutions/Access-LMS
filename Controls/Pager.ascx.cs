@@ -48,7 +48,7 @@ namespace NXLevel.LMS.Controls
                 PageIndex = int.Parse(Request.QueryString[KEY_PAGE_INDEX]);
             }
 
-            Debug.WriteLine("Pager Init Event: PageSize=" + PageSize + ", PageIndex =" + PageIndex);
+            //Debug.WriteLine("Pager Init Event: PageSize=" + PageSize + ", PageIndex =" + PageIndex);
         }
 
         private void RenderPager()

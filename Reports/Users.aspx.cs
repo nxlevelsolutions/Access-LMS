@@ -21,7 +21,7 @@ namespace NXLevel.LMS.Reports
             db = new ClientDBEntities();
             if (!IsPostBack)
             {
-                Debug.WriteLine("user page load size=" + UsersPager.PageSize + " index=" + UsersPager.PageIndex);
+                //Debug.WriteLine("user page load size=" + UsersPager.PageSize + " index=" + UsersPager.PageIndex);
                 ObjectParameter totalCount = new ObjectParameter("RecordCount", typeof(int));
                 List<Report_Users_All_Result> list = db.Report_Users_All(UsersPager.PageIndex, UsersPager.PageSize, Request.QueryString[SORT_KEY], totalCount).ToList();
                 UsersPager.RecordCount = Convert.ToInt32(totalCount.Value);

@@ -1,15 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="History.aspx.cs" Inherits="NXLevel.LMS.History" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="HistoryAll.aspx.cs" Inherits="NXLevel.LMS.HistoryAll" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    <script>
-        function viewCertificate(assigId, courseId) {
-            certWin = window.open("admin/certificate.aspx?cid=" + courseId + "&aid=" + assigId, 800, 600);
-        }
-    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="page-header">
-        <h3><span class="fa fa-bar-chart"></span> <%= GetLocalResourceObject("PageTitle")%></h3>
+        <h3><span class="fa fa-bar-chart"></span> My History</h3>
     </div>
 
      <div class="panel panel-default">
@@ -30,15 +25,15 @@
                     <tr>
                         <th><%= Resources.Global.LabelActivity %></th>
                         <th><%= Resources.Global.LabelCourse %></th>
-                        <th><%= Resources.Global.LabelDownloadCert %></th>
-                        <th class="text-center"><%= Resources.Global.LabelCompleted %></th>
+                        <th class="text-center"><%= Resources.Global.LabelEvent %></th>
+                        <th class="text-center"><%= Resources.Global.LabelDate %></th>
                     </tr>
             </HeaderTemplate>
             <ItemTemplate>
                 <tr>
                     <td><%# Eval("assignmentTitle") %></td>
                     <td><%# Eval("title") %></td>
-                    <td align="center"><a class="certificate" href='javascript:viewCertificate(<%# Eval("assignmentId") %>, <%# Eval("courseId") %>);'><span class="fa fa-download"></span> </a></td>
+                    <td align="center"><%# Eval("eventData") %></td>
                     <td align="center"><%# Eval("dateStamp", "{0:MM/dd/yyyy hh:mm tt}") %></td>
                 </tr>
             </ItemTemplate>

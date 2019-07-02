@@ -7,7 +7,7 @@
                     userIds: $('#cbUsers input:checked').map(function(){if (!this.disabled) return this.value }).get().toString()
                 },
                 function (response) {
-                    parent.window.closeWin(true); 
+                    parent.window.closeWin(true, (parent.$('.nav-tabs li:eq(0)').hasClass("active") ? "#tab1" : "#tab2")); 
                 }
             );
         }

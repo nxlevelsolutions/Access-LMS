@@ -1,0 +1,80 @@
+01:16:20PM	0	Information	A session has ended.
+01:16:22PM	0	Information	Processing:"NXLevel Solutions, Inc."
+01:16:23PM	0	Information	Assignment id=1=Compliance Mandatory Training
+01:16:23PM	0	Information	Assignment id=3=Medical Affairs
+01:16:53PM	0	Information	Assignment id=4=Compliance Overview Course Title
+01:16:53PM	0	Information	Assignment id=14=Compliance Overview 4.5.19
+01:16:53PM	0	Information	Assignment id=16=Echo Training
+01:16:53PM	0	Information	Assignment id=17=Astellas Compliance
+01:17:08PM	0	Information	Scanner completed
+01:17:08PM	0	Information	Scanner processing:"Some Company, Inc." skipped (disabled).
+01:17:18PM	0	Information	Processing:"NXLevel Solutions, Inc."
+01:17:18PM	0	Information	Assignment id=1=Compliance Mandatory Training
+01:17:18PM	0	Information	Assignment id=3=Medical Affairs
+01:22:05PM	0	Information	Sending email OVERDUE_REMINDER to:admin@nxlevel.com
+01:22:07PM	0	Information	Assignment id=4=Compliance Overview Course Title
+01:22:07PM	0	Information	Assignment id=14=Compliance Overview 4.5.19
+01:22:07PM	0	Information	Assignment id=16=Echo Training
+01:22:07PM	0	Information	Assignment id=17=Astellas Compliance
+01:22:11PM	0	Information	Scanner completed
+01:22:11PM	0	Information	Scanner processing:"Some Company, Inc." skipped (disabled).
+02:12:40PM	0	Information	A session has ended.
+02:12:42PM	0	Information	Processing:"NXLevel Solutions, Inc."
+02:12:43PM	0	Information	Assignment id=1=Compliance Mandatory Training
+02:12:43PM	0	Information	Assignment id=3=Medical Affairs
+02:13:16PM	0	Information	Sending email OVERDUE_REMINDER to:admin@nxlevel.com
+02:13:18PM	0	Information	Assignment id=4=Compliance Overview Course Title
+02:13:18PM	0	Information	Assignment id=14=Compliance Overview 4.5.19
+02:13:18PM	0	Information	Assignment id=16=Echo Training
+02:13:18PM	0	Information	Assignment id=17=Astellas Compliance
+02:13:23PM	0	Information	Scanner completed
+02:13:23PM	0	Information	Scanner processing:"Some Company, Inc." skipped (disabled).
+02:00:15PM	122	Information	Login: "admin@nxlevel.com" (122) logged in.
+02:00:58PM	122	Information	Unzipping NXL_Alcon_Lens_AICC_26Mar19_v6.zip to C:\Projects\LMS\courses\nxlevel\39
+02:01:44PM	122	Information	CourseId 39 updated from manifest.
+03:36:10PM	122	Information	Login: "admin@nxlevel.com" (122) logged in.
+03:36:43PM	122	Information	Aicc GETPARAM return:error=0
+error_text=successful
+version=2.0
+aicc_data=[core]
+Student_ID=122
+Student_Name=Administrator Assessor
+Output_file=
+Credit=c
+Lesson_Location=
+Lesson_Status=I
+path=
+Score=
+Time=00:00:00
+03:38:05PM	122	Error	AICC command not understood:EXITAU
+03:38:05PM	122	Information	Aicc GETPARAM return:error=0
+error_text=successful
+version=2.0
+aicc_data=[core]
+Student_ID=122
+Student_Name=Administrator Assessor
+Output_file=
+Credit=c
+Lesson_Location=
+Lesson_Status=I
+path=
+Score=
+Time=00:00:00
+04:08:12PM	0	Information	User Id=0's session has ended.
+04:13:50PM	122	Information	Login: "admin@nxlevel.com" (122) logged in.
+04:15:07PM	122	Information	Aicc GETPARAM return:error=0
+error_text=successful
+version=3.5
+aicc_data=[core]
+Student_ID=122
+Student_Name=Administrator Assessor
+Output_file=
+Credit=c
+Lesson_Location=
+Lesson_Status=I
+path=
+Score=
+Time=00:00:00
+[Core_Lesson]
+2Y3ya0j0h0e060c0l090i0g080m0b0k070f0d0~2A1~2w11001g12~2l10101201112012120131201412015120161201712018120191201a1201b1201c1201d1201e1201f1201g12Ta$x$$a00w0017131^1^v_player.5xv2qSpCAGD.6DIGKkTowal1^1^00Qdcb10102101013dcb10102101011876000000dcb10102101011000
+04:18:30PM	122	Error	AICC command not understood:EXITAU

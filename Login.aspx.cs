@@ -93,7 +93,7 @@ namespace NXLevel.LMS
                             LmsUser.SetInfo(userInfo.userId, userInfo.firstName, userInfo.lastName, userInfo.role, cs.Name, cs.AssetsFolder);
 
                             // Write the session data to the log.
-                            Log.Info("Login: \"" + email + "\" (" + userInfo.userId + ") logged in.");
+                            Log.Info(email + " has logged in. (SessionID=" + Session.SessionID + ")");
                             FormsAuthentication.RedirectFromLoginPage(email, false);
                         }
                         else

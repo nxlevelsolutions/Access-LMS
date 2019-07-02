@@ -141,14 +141,7 @@ namespace NXLevel.LMS
 
         protected void Session_End(object sender, EventArgs e)
         {
-            if (Session[USERINFO_SESSION_KEY] == null)
-            {
-                Log.Info("A session has ended.");
-            }
-            else
-            {
-                Log.Info("User Id=" + LmsUser.UserId + "'s session has ended.");
-            }
+            Log.Info("SessionID " + Session.SessionID + " ended.");
         }
 
         protected void Application_End(object sender, EventArgs e)

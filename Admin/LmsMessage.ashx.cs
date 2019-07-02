@@ -16,8 +16,8 @@ namespace NXLevel.LMS.Admin
         {
 
             lms_Entities db = new ClientDBEntities();
-            int? assignmentId = null;
-            int? courseId =null;
+            int? assignmentId = int.Parse(context.Request.QueryString["aid"]);
+            int? courseId = int.Parse(context.Request.QueryString["cid"]);
             int userId;
 
             //set UserID coming from course primarily
@@ -30,10 +30,9 @@ namespace NXLevel.LMS.Admin
                 userId = int.Parse(context.Request.QueryString["uid"]);
             }
 
-            if (context.Request.QueryString["aid"] != null)
-                assignmentId = int.Parse(context.Request.QueryString["aid"]);
-            if (context.Request.QueryString["cid"] != null)
-                courseId = int.Parse(context.Request.QueryString["cid"]);
+
+            // ensure no caching
+            context.Response.CacheControl = "no-cache";
 
 
             //call functions
@@ -231,8 +230,6 @@ namespace NXLevel.LMS.Admin
                     break;
 
             }
-
-
 
              
         }

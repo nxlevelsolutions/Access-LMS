@@ -17,12 +17,23 @@ namespace NXLevel.LMS
             if (!IsPostBack)
             {
                 lblErrMsg.Text = "";
-                if (Request.QueryString["e"] != null)
+                var email = Request.QueryString["e"];
+                if (email != null)
                 {
-                    txtEmail.Text = Request.QueryString["e"];
-                    if (Request.QueryString["c"] == "1")
+                    txtEmail.Text = email;
+                    if (Request.QueryString["c"] == "1") //code 1.. send activation, if possible
                     {
-                        SendNewActivationCode(Request.QueryString["e"]);
+                        //don't keep sending access code on refresh
+                        ClientSetting cs = ClientSettings.Get("astellas");
+                        LmsUser.DBConnString = cs.EntityConnStr;
+                        lms_Entities db = new ClientDBEntities();
+
+                        User usr = db.Users.Where(u => u.email == email).FirstOrDefault();
+                        if (usr.activationCode == null)
+                        {
+                            SendNewActivationCode(email);
+                        }
+                        
                     }
                 }
             }

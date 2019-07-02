@@ -1,7 +1,0 @@
-01:58:06PM;0;Information;User: 122 logged in.
-01:58:10PM;0;Pager Init Event: PageSize=10, PageIndex =1
-01:58:10PM;0;user page load size=10 index=1
-01:58:26PM;0;Pager Init Event: PageSize=10, PageIndex =2
-01:58:26PM;0;user page load size=10 index=2
-02:07:39PM;0;Pager Init Event: PageSize=10, PageIndex =2
-02:07:39PM;0;user page load size=10 index=2

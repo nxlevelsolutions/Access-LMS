@@ -10,24 +10,24 @@
 namespace NXLevel.LMS {
     
     
-    public partial class Curriculum {
+    public partial class HistoryAll {
         
         /// <summary>
-        /// LblAllDone control.
+        /// lnkDownload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblAllDone;
+        protected global::System.Web.UI.WebControls.LinkButton lnkDownload;
         
         /// <summary>
-        /// rptAssignments control.
+        /// rptEvents control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptAssignments;
+        protected global::System.Web.UI.WebControls.Repeater rptEvents;
     }
 }

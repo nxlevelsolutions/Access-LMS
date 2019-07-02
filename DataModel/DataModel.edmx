@@ -551,6 +551,7 @@
           <Property Type="String" Name="NameDisplay" Nullable="true" MaxLength="102" />
           <Property Type="Boolean" Name="IsInGroup" Nullable="true" />
           <Property Type="Boolean" Name="enabled" Nullable="false" />
+          <Property Type="Boolean" Name="IsComplete" Nullable="true" />
         </ComplexType>
         <ComplexType Name="User_GroupsGet_Result">
           <Property Type="Int32" Name="groupId" Nullable="false" />
@@ -860,6 +861,7 @@
                 <ScalarProperty Name="NameDisplay" ColumnName="NameDisplay" />
                 <ScalarProperty Name="IsInGroup" ColumnName="IsInGroup" />
                 <ScalarProperty Name="enabled" ColumnName="enabled" />
+                <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

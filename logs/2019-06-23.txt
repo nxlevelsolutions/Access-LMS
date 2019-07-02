@@ -1,0 +1,9 @@
+01:11:31PM	0	Information	Processing:"NXLevel Solutions, Inc."
+01:11:31PM	0	Information	Assignment id=1=Compliance Mandatory Training
+01:11:31PM	0	Information	Assignment id=3=Medical Affairs
+01:11:31PM	0	Information	Assignment id=4=Compliance Overview Course Title
+01:11:31PM	0	Information	Assignment id=14=Compliance Overview 4.5.19
+01:11:31PM	0	Information	Assignment id=16=Echo Training
+01:11:31PM	0	Information	Assignment id=17=Astellas Compliance
+01:11:31PM	0	Information	Scanner completed
+01:11:31PM	0	Information	Scanner processing:"Some Company, Inc." skipped (disabled).

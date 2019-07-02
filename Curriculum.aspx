@@ -8,7 +8,7 @@
             var params = "dependent,menubar=no,scrollbars=no,resizable=no,width=" + width + ",height=" + height;
 
             if (type == <% =(int)CourseType.AICC %>) {
-                lmsListener = document.location.href.substr(0, document.location.href.lastIndexOf('/')) + "/aicc.aspx";
+                lmsListener = document.location.href.substr(0, document.location.href.lastIndexOf('/')) + "/aicc.ashx";
                 url += "?aicc_url=" + escape(lmsListener) + "&aicc_sid=<% =LmsUser.UserId %>|" + courseId + "|" + assigId;
                 courseWin = window.open(url, "courseWin", params);
                 watchStatus(assigId, courseId);
@@ -44,9 +44,7 @@
             }
         }
 
-        function viewCertificate(assigId, courseId) {
-            certWin = window.open("admin/certificate.aspx?cid=" + courseId + "&aid=" + assigId, 800, 600);
-        }
+
 
         $(document).ready(function () {
             $("#pnReadAndSign").draggable({ handle: ".modal-header" });
@@ -58,14 +56,7 @@
 
     </script>
     <style type="text/css">
-        a.certificate {
-            font-size: 70%;
-            display: none;
-            color:unset;
-        }
-        a.certificate:hover{
-            text-decoration:none;
-        }
+
         .tile {
             padding: 10px 25px;
             width: 100%;
@@ -81,7 +72,10 @@
             font-weight:bolder;
             letter-spacing:1px;
         }
-
+        .assignment{
+            border-bottom: 1px solid lightgray;
+            padding: 0 0 10px 0;
+        }
 
         /* hide certain things  */
         #highScore{
@@ -95,31 +89,33 @@
         <h3><span class="glyphicon glyphicon-education"></span> <%= GetLocalResourceObject("PageTitle")%></h3>
     </div>
 
+    <h4><asp:Label runat="server" ID="LblAllDone" Text="Nice work! You are up to date and have no current assignments."></asp:Label></h4>
+
     <asp:Repeater ID="rptAssignments" runat="server">
         <ItemTemplate>
-            <h4><%# Eval("title") %></h4>
-            <p><%# Eval("description") %></p>
+            <div class="assignment">
 
-            <asp:Repeater ID="rptCourses" runat="server" EnableViewState="false" DataSource='<%# GetCourses((int)Eval("assignmentId")) %>'>
-                <ItemTemplate>
-                    <div class="tile <%# (bool)Eval("available") ? "": "disabled" %>">
-                        <div courseid='<%# Eval("courseId") %>' assigid='<%# Eval("assignmentId") %>'>
-                            <div class="title">
-                                <span class="fa fa-book"></span>
-                                <a href="javascript:openCourse('<%# Eval("url") %>', <%# Eval("assignmentId") %>, <%# Eval("courseId") %>,'<%# Eval("title") %>', <%# Eval("type") %>, <%# Eval("browserWidth") %>, <%# Eval("browserHeight") %>)">
-                                   <%# (bool)Eval("availCoursesInOrder")==true ? Eval("orderId")+")": "" %> <%# Eval("title") %>
-                                </a>
-                                &nbsp;&nbsp;<a class="certificate" href='javascript:viewCertificate(<%# Eval("assignmentId") %>, <%# Eval("courseId") %>);'><span class="fa fa-download"></span> <%= Resources.Global.LabelDownloadCert %></a>
+                <h4><%# Eval("title") %></h4>
+                <p><%# Eval("description") %></p>
+
+                <asp:Repeater ID="rptCourses" runat="server" EnableViewState="false" DataSource='<%# GetCourses((int)Eval("assignmentId")) %>'>
+                    <ItemTemplate>
+                        <div class="tile <%# (bool)Eval("available") ? "": "disabled" %>">
+                            <div courseid='<%# Eval("courseId") %>' assigid='<%# Eval("assignmentId") %>'>
+                                <div class="title">
+                                    <span class="fa fa-book"></span>
+                                    <a href="javascript:openCourse('<%# Eval("url") %>', <%# Eval("assignmentId") %>, <%# Eval("courseId") %>,'<%# Eval("title") %>', <%# Eval("type") %>, <%# Eval("browserWidth")==null ? "null": Eval("browserWidth") %>, <%# Eval("browserHeight")==null ? "null": Eval("browserHeight") %>)">
+                                       <%# (bool)Eval("availCoursesInOrder")==true ? Eval("orderId")+")": "" %> <%# Eval("title") %>
+                                    </a>
+                                </div>
+                                <p><%# Eval("description") %></p>
+                                <%= Resources.Global.LabelStarted %>: <span id="startDate"></span> &nbsp;|&nbsp; <%= Resources.Global.LabelCompleted %>: <span id="completedDate"></span> <%--&nbsp;|&nbsp;  <%= Resources.Global.LabelHighScore %>:--%><span id="highScore"></span>
                             </div>
-                            <p><%# Eval("description") %></p>
-                            <%= Resources.Global.LabelStarted %>: <span id="startDate"></span> &nbsp;|&nbsp; <%= Resources.Global.LabelCompleted %>: <span id="completedDate"></span> <%--&nbsp;|&nbsp;  <%= Resources.Global.LabelHighScore %>:--%><span id="highScore"></span>
                         </div>
-                    </div>
-                </ItemTemplate>
-            </asp:Repeater>
+                    </ItemTemplate>
+                </asp:Repeater>
 
-            <hr/>
-
+            </div>
         </ItemTemplate>
     </asp:Repeater>
 
@@ -143,5 +139,8 @@
             </div>
         </div>
     </div>
+
+    <iframe id="hiddenFrame" style="width:1px;height:1px" frameborder="0" src="admin/LmsMessage.ashx?m=KEEP_SESSION_ALIVE&secs=600" name="fFrame" scrolling="no" height="1" width="1"></iframe>
+
 
 </asp:Content>

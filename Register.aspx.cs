@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Security;
 using System.Diagnostics;
 using NXLevel.LMS.DataModel;
+using System.Xml;
+using System.Data;
 
 namespace NXLevel.LMS
 {
@@ -12,7 +14,14 @@ namespace NXLevel.LMS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //load list of companies
+            DataSet ds = new DataSet();
+            ds.ReadXml(Server.MapPath("~/companies.xml"));
 
+            ddOrganization.DataValueField = "name";
+            ddOrganization.DataTextField = "name";
+            ddOrganization.DataSource = ds.Tables[0];
+            ddOrganization.DataBind();
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)

@@ -78,7 +78,7 @@ div[onclick], span[onclick], a:hover, .pointer {
 
 /* nav bar overrides */
 .navbar-default {
-	background-image: linear-gradient(to bottom,#3176bc 0,#3176bc 100%);
+    background-image: linear-gradient(to bottom, #3176bc 0, #004C97 100%);
 }
 .navbar-default .navbar-brand {
 	color: #fff;

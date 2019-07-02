@@ -8,12 +8,8 @@ using NXLevel.LMS.DataModel;
 
 namespace NXLevel.LMS
 {
-    public partial class History : System.Web.UI.Page
+    public partial class HistoryAll : System.Web.UI.Page
     {
-        const int SCORE = 1;
-        const int STARTED = 2;
-        const int COMPLETED = 3;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             lms_Entities db = new ClientDBEntities();
@@ -24,25 +20,25 @@ namespace NXLevel.LMS
             {
                 switch (item.eventType)
                 {
-                    case SCORE:  
+                    case 1: //SCORE
                         item.eventData = Resources.Global.LabelScore + "=" + item.eventData;
                         break;
-                    case STARTED: 
+                    case 2: //STARTED
                         item.eventData = Resources.Global.LabelStarted;
                         break;
-                    case COMPLETED: 
+                    case 3: //COMPLETED
                         item.eventData = Resources.Global.LabelCompleted;
                         break;
                 }
             }
 
-            rptEvents.DataSource = history.Where(h => h.eventType == COMPLETED); //show ONLY completed events
+            rptEvents.DataSource = history;
             rptEvents.DataBind();
         }
 
         protected void lnkDownload_Click(object sender, EventArgs e)
         {
-            Utilities.DownloadAsExcel("MyHistory", rptEvents);
+            Utilities.DownloadAsExcel("MyHistoryAll", rptEvents);
         }
     }
 }

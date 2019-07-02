@@ -1,8 +1,0 @@
-02:08:09PM;0;Information;Initializing localhost
-02:11:54PM;0;Information;Initializing localhost
-02:11:54PM;0;Information;System.InvalidOperationException: The SMTP host was not specified.
-   at System.Net.Mail.SmtpClient.CheckHostAndPort()
-   at System.Net.Mail.SmtpClient.Send(MailMessage message)
-   at NXLevel.LMS.Utilities.SendEmail(String fromEmail, String toEmail, String subject, String body, Boolean skipLoggerOnException) in C:\Projects\LMS\App_Data\Utilities.cs:line 190
-04:56:47PM;0;Information;Initializing localhost
-04:57:36PM;0;Information;Initializing localhost

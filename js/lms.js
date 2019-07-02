@@ -21,18 +21,30 @@ var lms = function () {
                 Utils.log("Refreshing display for assigId=" + assigId + " courseId=" + courseId);
                 cList = $('*[assigId=' + assigId + '][courseid=' + courseId + ']');
             }
-            cList.each(function (i, tr) {
-                var _tr = $(tr),
-                    _assigid = _tr.attr("assigid"),
-                    _courseid = _tr.attr("courseid");
+            cList.each(function (i, div) {
+                var _div = $(div),
+                    _assigid = _div.attr("assigid"),
+                    _courseid = _div.attr("courseid");
                 lms.getCourseStats(function (data) {
-                    _tr.find("#startDate").html(data.startDate == null ? "N/A": data.startDate);
-                    _tr.find("#completedDate").html(data.completedDate == null ? "N/A" : data.completedDate);
-                    _tr.find("#highScore").html(data.maxScore);
+                    _div.find("#startDate").html(data.startDate == null ? "N/A": data.startDate);
+                    _div.find("#completedDate").html(data.completedDate == null ? "N/A" : data.completedDate);
+                    _div.find("#highScore").html(data.maxScore);
                     //show links to download certificate if valid date 
                     var tmp = new Date(data.completedDate); 
-                    if (data.completedDate !== null && tmp.toString() !== "Invalid Date")
-                        _tr.find(".certificate").show(); //show certificate link 
+                    if (data.completedDate !== null && tmp.toString() !== "Invalid Date") {
+                        //_div.find(".certificate").show(); //show certificate link
+                        _div.parent().hide(); //hide course block
+                        //see if need to hide entire assig block
+                        var allHidden = true;
+                        _div.parents(".assignment").find(".tile").each(function (t, tileDiv) {
+                            if ($(tileDiv).is(":visible")) {
+                                allHidden = false;
+                            }
+                        });
+                        if (allHidden) {
+                            _div.parents(".assignment").hide();
+                        }
+                    }
                     
                 }, _assigid, _courseid)
             });

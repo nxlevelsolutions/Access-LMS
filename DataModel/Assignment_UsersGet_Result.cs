@@ -20,5 +20,6 @@ namespace NXLevel.LMS.DataModel
         public string NameDisplay { get; set; }
         public Nullable<bool> IsInGroup { get; set; }
         public bool enabled { get; set; }
+        public Nullable<bool> IsComplete { get; set; }
     }
 }

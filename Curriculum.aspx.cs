@@ -16,7 +16,7 @@ namespace NXLevel.LMS
         protected void Page_Load(object sender, EventArgs e)
         {
             lms_Entities db = new ClientDBEntities();
-            courses = db.User_Curriculum(LmsUser.UserId).ToList();
+            courses = db.User_Curriculum(LmsUser.UserId).Where(c => c.completed==false).ToList(); //get only incompleted courses
 
             //get distinct assignment ids
             List<assignmentInfo> aIds = courses
@@ -65,6 +65,9 @@ namespace NXLevel.LMS
 
             rptAssignments.DataSource = assigIdsInfo;
             rptAssignments.DataBind();
+
+            //show "all done" if necessary
+            LblAllDone.Visible = rptAssignments.Items.Count == 0;
 
         }
 

@@ -1,0 +1,47 @@
+01:09:30PM	0	Information	Processing:"NXLevel Solutions, Inc."
+01:09:32PM	0	Information	Assignment id=1=Compliance Mandatory Training
+01:09:33PM	0	Information	Assignment id=3=Medical Affairs
+01:09:33PM	0	Information	Assignment id=4=Compliance Overview Course Title
+01:09:33PM	0	Information	Assignment id=14=Compliance Overview 4.5.19
+01:09:33PM	0	Information	Assignment id=16=Echo Training
+01:09:33PM	0	Information	Assignment id=17=Astellas Compliance
+01:09:33PM	0	Information	Scanner completed
+01:09:33PM	0	Information	Scanner processing:"Some Company, Inc." skipped (disabled).
+09:07:05AM	0	Information	A session has ended.
+09:07:05AM	0	Information	A session has ended.
+09:07:05AM	0	Information	A session has ended.
+09:27:19AM	0	Information	A session has ended.
+09:28:04AM	0	Information	LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+09:29:35AM	122	Information	Login: "admin@nxlevel.com" (122) logged in.
+09:30:41AM	122	Information	User 122 launched course:33, assignmentId:16
+09:34:34AM	122	Information	User 122 status set to:"completed", course:33, assignmentId:16
+09:59:31AM	0	Information	User Id=0's session has ended.
+09:59:31AM	0	Information	LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+10:38:11AM	122	Information	Login: "admin@nxlevel.com" (122) logged in.
+11:16:40AM	0	Information	User Id=0's session has ended.
+11:17:06AM	0	Information	LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+
+03:08:28PM	122	Information	Login: "admin@nxlevel.com" (122) logged in.

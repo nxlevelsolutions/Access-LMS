@@ -83,8 +83,13 @@
     <Content Include="AccessCode.aspx" />
     <Content Include="Admin\aicc.asp" />
     <Content Include="Admin\AssignmentSettings1.aspx" />
+    <Content Include="companies.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Controls\Breadcrumbs.ascx" />
     <Content Include="courses\ReadAndSign.aspx" />
+    <Content Include="Css\sumoselect.min.css" />
+    <Content Include="HistoryAll.aspx" />
     <Content Include="History.aspx" />
     <Content Include="js\cookies.js" />
     <Content Include="js\demo_AICC.js" />
@@ -200,7 +205,6 @@
     <Content Include="Admin\Assignments.aspx" />
     <Content Include="Admin\Users.aspx" />
     <Content Include="Admin\UsersImport.aspx" />
-    <Content Include="aicc.aspx" />
     <Content Include="Controls\Pager.ascx" />
     <Content Include="course_scorm.aspx" />
     <Content Include="Css\Site.css" />
@@ -248,6 +252,7 @@
     <Content Include="js\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="js\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="Admin\certificate.pdf" />
+    <Content Include="aicc.ashx" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -278,6 +283,9 @@
     </Compile>
     <Compile Include="Admin\Event_Scanner.ashx.cs">
       <DependentUpon>Event_Scanner.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="aicc.ashx.cs">
+      <DependentUpon>aicc.ashx</DependentUpon>
     </Compile>
     <Compile Include="App_GlobalResources\Global.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -332,6 +340,13 @@
     </Compile>
     <Compile Include="Globals\MultiLanguagePage.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HistoryAll.aspx.cs">
+      <DependentUpon>HistoryAll.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HistoryAll.aspx.designer.cs">
+      <DependentUpon>HistoryAll.aspx</DependentUpon>
     </Compile>
     <Compile Include="History.aspx.cs">
       <DependentUpon>History.aspx</DependentUpon>
@@ -570,13 +585,6 @@
     </Compile>
     <Compile Include="Admin\UsersImport.aspx.designer.cs">
       <DependentUpon>UsersImport.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="aicc.aspx.cs">
-      <DependentUpon>aicc.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="aicc.aspx.designer.cs">
-      <DependentUpon>aicc.aspx</DependentUpon>
     </Compile>
     <Compile Include="DataModel\AssignmentsStats_Result.cs">
       <DependentUpon>DataModel.tt</DependentUpon>

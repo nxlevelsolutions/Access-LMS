@@ -50,7 +50,7 @@
                         <li class=""><a href="<%= Page.ResolveUrl("~/default.aspx") %>"><%= Resources.Global.MenuHome %></a></li>
                         <li><a href="<%= Page.ResolveUrl("~/curriculum.aspx") %>"><%= Resources.Global.MenuCurriculum %></a></li>
 						<li><a href="<%= Page.ResolveUrl("~/history.aspx") %>"><%= Resources.Global.MenuHistory %></a></li>
-                        <% if (LmsUser.HasRole(Role.Manager)) { %>
+                        <% if (LmsUser.HasRole(Role.Manager) || LmsUser.HasRole(Role.Administrator) || LmsUser.HasRole(Role.GlobalAdmin)) { %>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration <b class="caret"></b></a>
                             <ul class="dropdown-menu">

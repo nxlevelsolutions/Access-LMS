@@ -15,7 +15,7 @@
                 <tr>
                     <td></td>
                     <td align="right"> 
-                        <asp:LinkButton runat="server" ID="lnkDownload" Text="" OnClick="lnkDownload_Click"><span class="fa fa-download"></span> Download Excel report</asp:LinkButton>
+                        <asp:LinkButton runat="server" ID="lnkDownload" Text="" class="white-text" OnClick="lnkDownload_Click"><span class="fa fa-download"></span> Download Excel report</asp:LinkButton>
                     </td>
                 </tr>
             </table>

@@ -1,0 +1,20 @@
+01:12:32PM	0	Information	Processing:"NXLevel Solutions, Inc."
+01:12:32PM	0	Information	Assignment id=1=Compliance Mandatory Training
+01:12:32PM	0	Information	Assignment id=3=Medical Affairs
+01:12:32PM	0	Information	Sending email OVERDUE_REMINDER to:admin@nxlevel.com
+01:12:32PM	0	Information	Assignment id=4=Compliance Overview Course Title
+01:12:32PM	0	Information	Assignment id=14=Compliance Overview 4.5.19
+01:12:32PM	0	Information	Assignment id=16=Echo Training
+01:12:32PM	0	Information	Assignment id=17=Astellas Compliance
+01:12:32PM	0	Information	Scanner completed
+01:12:32PM	0	Information	Scanner processing:"Some Company, Inc." skipped (disabled).
+09:34:40AM	0	Information	A session has ended.
+09:35:21AM	0	Information	LMS application module shut down/restart.
+Shutdown Message=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+Shutdown Stack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+

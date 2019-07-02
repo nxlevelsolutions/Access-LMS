@@ -19,7 +19,7 @@ namespace NXLevel.LMS.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
             lms_Entities db = new ClientDBEntities();
-            Debug.WriteLine("user page load size=" + UsersPager.PageSize + " index=" + UsersPager.PageIndex);
+            //Debug.WriteLine("user page load size=" + UsersPager.PageSize + " index=" + UsersPager.PageIndex);
 
             ObjectParameter totalCount = new ObjectParameter("RecordCount", typeof(int));
             List <Users_All_Result> list = db.Users_All(UsersPager.PageIndex, UsersPager.PageSize, Request.QueryString[SORT_KEY], totalCount).ToList();

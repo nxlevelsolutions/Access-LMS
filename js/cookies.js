@@ -9,7 +9,7 @@ var cookie = function () {
             }
             document.cookie = name + "=" + escape(value) + expire;
         },
-        read(name) {
+        read: function(name) {
             var cookieValue = "";
             var search = name + "=";
             if (document.cookie.length > 0) {
