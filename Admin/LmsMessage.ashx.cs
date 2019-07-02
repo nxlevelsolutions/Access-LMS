@@ -33,7 +33,7 @@ namespace NXLevel.LMS.Admin
 
             // ensure no caching
             context.Response.CacheControl = "no-cache";
-
+            context.Response.ContentType = "application/json; charset=utf-8"; //set json as default response
 
             //call functions
             switch (context.Request.QueryString["m"].ToUpper())
@@ -50,7 +50,6 @@ namespace NXLevel.LMS.Admin
                     else
                     {
                         Course_BasicInfo_Result res = db.Course_BasicInfo(assignmentId, courseId, userId).FirstOrDefault();
-                        context.Response.ContentType = "application/json; charset=utf-8";
                         context.Response.Write(
                             "{" +
                                 @"""startDate"":" + (res.startDate == null ? "null" : @"""" + String.Format("{0:d}", res.startDate) + @"""") + "," +
@@ -70,7 +69,6 @@ namespace NXLevel.LMS.Admin
                     string suspend_data = initInfo.suspend_data?.Replace("\"", "\\\""); //encode double quotes
                     string total_time = initInfo.totalTimeUsage == null ? "0000:00:00.00" : String.Format("00{0:%hh}:{0:%mm}:{0:%s}", initInfo.totalTimeUsage);
 
-                    context.Response.ContentType = "application/json; charset=utf-8";
                     context.Response.Write(
                         @"{""cmi"":{" +
                             @"""launch_data"":""""," +
@@ -93,7 +91,7 @@ namespace NXLevel.LMS.Admin
                     break;
 
                 case "KEEP_SESSION_ALIVE":
-                    context.Response.ContentType = "text/plain";
+                    context.Response.ContentType = "text/plain"; //override to plain text
                     context.Response.Write("<html>");
                     context.Response.Write("<head>");
                     context.Response.Write("<meta http-equiv=\"refresh\" content=\"" + context.Request.QueryString["secs"] + "\">"); //every 5 minutes (300 seconds)
@@ -106,12 +104,10 @@ namespace NXLevel.LMS.Admin
 
                 case "CMI.INTERACTIONS.0.STUDENT_RESPONSE":
                     //THIS MESSAGE IGNORED IN THIS PARTICULAR LMS INSTANCE
-                    context.Response.ContentType = "application/json; charset=utf-8";
                     context.Response.Write("{\"result\":true}");
                     break;
 
                 case "CMI.CORE.LESSON_STATUS":
-                    context.Response.ContentType = "application/json; charset=utf-8";
                     Log.Info("User " + userId + " status set to:\"" + context.Request.Form["data"] + "\", course:" + courseId + ", assignmentId:" + assignmentId);
                     if (context.Request.QueryString["dir"] == "set")
                     {
@@ -126,7 +122,6 @@ namespace NXLevel.LMS.Admin
                     break;
 
                 case "CMI.CORE.LESSON_LOCATION":
-                    context.Response.ContentType = "application/json; charset=utf-8";
                     if (context.Request.QueryString["dir"] == "set")
                     {
                         int? affected = db.Course_ScormValueSet(userId, assignmentId, courseId, "CMI.CORE.LESSON_LOCATION", context.Request.Form["data"]).FirstOrDefault();
@@ -139,7 +134,6 @@ namespace NXLevel.LMS.Admin
                     break;
 
                 case "CMI.SUSPEND_DATA":
-                    context.Response.ContentType = "application/json; charset=utf-8";
                     if (context.Request.QueryString["dir"] == "set")
                     {
                         int? affected = db.Course_ScormValueSet(userId, assignmentId, courseId, "CMI.SUSPEND_DATA", context.Request.Form["data"]).FirstOrDefault();
@@ -152,7 +146,6 @@ namespace NXLevel.LMS.Admin
                     break;
 
                 case "CMI.CORE.SESSION_TIME":
-                    context.Response.ContentType = "application/json; charset=utf-8";
                     if (context.Request.QueryString["dir"] == "set")
                     {
                         string session_time = context.Request.Form["data"];
@@ -176,12 +169,11 @@ namespace NXLevel.LMS.Admin
                     }
                     else
                     {
-                        context.Response.Write("{\"result\":false}");
+                        context.Response.Write("{\"result\": false}");
                     }
                     break;
 
                 case "CMI.CORE.SCORE.RAW":
-                    context.Response.ContentType = "application/json; charset=utf-8";
                     Log.Info("Score received:\"" + context.Request.Form["data"] + "\" for course id:" + courseId + ", userId:" + userId + ", assignmentId:" + assignmentId);
                     if (context.Request.QueryString["dir"] == "set")
                     {
@@ -189,7 +181,7 @@ namespace NXLevel.LMS.Admin
                         if (score == null)
                         {
                             Log.Info("Score ignored.");
-                            context.Response.Write("{\"result\":true}"); //just to keep the course happy
+                            context.Response.Write("{\"result\": true}"); //just to keep the course happy
                         }
                         else
                         {
@@ -205,12 +197,10 @@ namespace NXLevel.LMS.Admin
                     break;
 
                 case "CMI.CORE.EXIT":
-                    context.Response.ContentType = "application/json; charset=utf-8";
                     context.Response.Write("{\"result\": true}");
                     break;
 
                 case "COURSE_LAUNCH_PARAMS":
-                    context.Response.ContentType = "application/json; charset=utf-8";
                     Course crs = db.Courses.Where(c => c.courseId == courseId).FirstOrDefault();
                     context.Response.Write(
                         "{" +
@@ -224,7 +214,6 @@ namespace NXLevel.LMS.Admin
                     break;
 
                 default:
-                    context.Response.ContentType = "application/json; charset=utf-8";
                     Log.Info("User:" + userId + " unknown message \"" + context.Request.QueryString["m"] + "\", course:" + courseId + ", assignmentId:" + assignmentId);
                     context.Response.Write("{\"result\":false}");
                     break;
