@@ -58,7 +58,7 @@ namespace NXLevel.LMS
                 string emailSent = GetLocalResourceObject("EmailSent").ToString();
 
                 Utilities.SendEmail(
-                    ConfigurationManager.AppSettings.Get("SystemEmail"), 
+                    ConfigurationManager.AppSettings.Get("DoNotReplyEmail"), 
                     txtEmail.Text, 
                     emailSubject,
                     string.Format(emailMsg, userInfo.password)

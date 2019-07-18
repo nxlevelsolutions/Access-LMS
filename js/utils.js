@@ -34,16 +34,11 @@ var Utils = {
             success: function (res) {
                 if (useAsync) {
                     var obj;
-                    if (res.d == "ok") {
-                        obj = res.d;
+                    if (typeof (res.d) === "string") {
+                        eval("obj=" + res.d);
                     }
                     else {
-                        if (typeof (res.d) === "string") {
-                            eval("obj=" + res.d);
-                        }
-                        else {
-                            obj = res.d;
-                        }
+                        obj = res.d;
                     }
                     if (callback) callback.call(undefined, obj);
                 }

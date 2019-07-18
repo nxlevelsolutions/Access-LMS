@@ -11,6 +11,8 @@
         <EntityTypeShape EntityType="lms_masterModel.Email" Width="1.5" PointX="7" PointY="0.5" />
         <EntityTypeShape EntityType="lms_masterModel.Category" Width="1.5" PointX="8.625" PointY="0.5" />
         <EntityTypeShape EntityType="lms_masterModel.Assignment" Width="1.5" PointX="3.75" PointY="0.5" />
+        <EntityTypeShape EntityType="lms_masterModel.Courses_Scores" Width="1.5" PointX="5.875" PointY="2.875" />
+        <EntityTypeShape EntityType="lms_masterModel.Courses_Usage" Width="1.5" PointX="7.625" PointY="2.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

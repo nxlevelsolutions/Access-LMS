@@ -10,11 +10,15 @@
 namespace NXLevel.LMS.DataModel
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class Report_UserCourseUsage_Result
+    public partial class Courses_Scores
     {
-        public Nullable<long> rowId { get; set; }
-        public System.DateTime dateStamp { get; set; }
+        public int rowId { get; set; }
+        public int assignmentId { get; set; }
+        public int courseId { get; set; }
+        public int userId { get; set; }
         public Nullable<decimal> score { get; set; }
+        public System.DateTime dateStamp { get; set; }
     }
 }

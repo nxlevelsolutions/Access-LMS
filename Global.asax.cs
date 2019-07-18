@@ -12,7 +12,6 @@ using System.Globalization;
 
 namespace NXLevel.LMS
 {
-
     //note: the codes below MUST match the emailId
     //of each email template in table "Emails"
     public enum EmailTemplate
@@ -23,13 +22,6 @@ namespace NXLevel.LMS
         ON_DUE_DATE_REMINDER = 4,
         OVERDUE_REMINDER = 5
     }
-
-    //public enum CourseStatus
-    //{
-    //    INACTIVE = 0,
-    //    ACTIVE = 1,
-    //    RETIRED = 2
-    //}
 
     public enum CourseType
     {
@@ -44,6 +36,13 @@ namespace NXLevel.LMS
         LEARNING_PLAN = 2
     }
 
+    //data returned by [dbo].[User_UsageHistory] can be 1 of these types:
+    public enum UsageEventType
+    {
+        SCORE = 1,
+        STARTED = 2,
+        COMPLETED = 3
+    }
 
     public class Global : System.Web.HttpApplication
     {
@@ -88,14 +87,12 @@ namespace NXLevel.LMS
 
             //HttpException ErrorException = (HttpException)Server.GetLastError().GetBaseException();
 
-            //Log.Error("Application error:" + err.Message + 
-            //             "Source:" + err.Source +
-            //             "Stack Trace:" + err.StackTrace, true);
-
             if (ex is HttpException && ((HttpException)ex).ErrorCode == 404)
             {
                 return;
             }
+
+            Log.Error(ex);
 
             string errDescription = ex.ToString().Replace("\r", "<br>");
             string innerException = "";

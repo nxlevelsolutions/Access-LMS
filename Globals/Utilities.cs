@@ -287,6 +287,24 @@ namespace NXLevel.LMS
             }
         }
 
+        public static bool? TryToParseAsBool(string value)
+        {
+            bool dt;
+
+            if (value == "1") return true;  //added
+            if (value == "0") return false; //added
+
+            bool result = bool.TryParse(value, out dt);
+            if (result)
+            {
+                return dt;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         #endregion
     }
 }

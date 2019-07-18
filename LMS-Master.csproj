@@ -91,6 +91,12 @@
     <Content Include="Css\sumoselect.min.css" />
     <Content Include="HistoryAll.aspx" />
     <Content Include="History.aspx" />
+    <Content Include="Images\asterisk.svg" />
+    <Content Include="Images\icon_company.svg" />
+    <Content Include="Images\icon_lock.svg" />
+    <Content Include="Images\icon_sort.svg" />
+    <Content Include="Images\icon_username.svg" />
+    <Content Include="Images\info.svg" />
     <Content Include="js\cookies.js" />
     <Content Include="js\demo_AICC.js" />
     <Content Include="js\demo_SCORM.js" />
@@ -195,6 +201,7 @@
     <Content Include="Reports\Courses.aspx" />
     <Content Include="Reports\CourseUsers.aspx" />
     <Content Include="Reports\Default.aspx" />
+    <Content Include="Reports\EventEditor.aspx" />
     <Content Include="Reports\Groups.aspx" />
     <Content Include="Reports\Assignments.aspx" />
     <Content Include="Reports\Group.aspx" />
@@ -309,6 +316,12 @@
     <Compile Include="DataModel\Courses_Avail_Result.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataModel\Courses_Scores.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Courses_Usage.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataModel\DataModel1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -324,9 +337,6 @@
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\Report_UserCourses_Result.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\Report_UserCourseUsage_Result.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\Report_Users_All_Result.cs">
@@ -515,6 +525,13 @@
     </Compile>
     <Compile Include="Reports\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EventEditor.aspx.cs">
+      <DependentUpon>EventEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\EventEditor.aspx.designer.cs">
+      <DependentUpon>EventEditor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reports\Groups.aspx.cs">
       <DependentUpon>Groups.aspx</DependentUpon>
@@ -721,9 +738,7 @@
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

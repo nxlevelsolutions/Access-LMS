@@ -14,10 +14,8 @@ namespace NXLevel.LMS.Admin
 
         public void ProcessRequest(HttpContext context)
         {
-
-            lms_Entities db = new ClientDBEntities();
-            int? assignmentId = int.Parse(context.Request.QueryString["aid"]);
-            int? courseId = int.Parse(context.Request.QueryString["cid"]);
+            int? assignmentId = Utilities.TryToParseAsInt(context.Request.QueryString["aid"]);
+            int? courseId = Utilities.TryToParseAsInt(context.Request.QueryString["cid"]);
             int userId;
 
             //set UserID coming from course primarily
@@ -27,13 +25,13 @@ namespace NXLevel.LMS.Admin
             }
             else
             {
-                userId = int.Parse(context.Request.QueryString["uid"]);
+                userId = (int) Utilities.TryToParseAsInt(context.Request.QueryString["uid"]);
             }
 
-
-            // ensure no caching
-            context.Response.CacheControl = "no-cache";
+            context.Response.CacheControl = "no-cache"; // must never be cached
             context.Response.ContentType = "application/json; charset=utf-8"; //set json as default response
+
+            lms_Entities db = new ClientDBEntities();
 
             //call functions
             switch (context.Request.QueryString["m"].ToUpper())

@@ -22,12 +22,18 @@
                         title: $('#tbTitle').val(),
                         email: $('#Email').val(),
                         password: $('#Password').val(),
+                        organization: $('#ddlOrganization').val(),
                         enabled: $('#cbEnabled').prop('checked'),
                         role: $('#lstAccessLevels').val(),
                         groupIds: $('#lstGroups').val()==null ? "": $('#lstGroups').val().toString()
                     },
                     function (response) {
-                        parent.window.closeWin(true); 
+                        if (response.error) {
+                            alert(response.error);
+                        }
+                        else {
+                            parent.window.closeWin(true); 
+                        }
                     }
                 );
             }
@@ -102,6 +108,17 @@ Display="Dynamic" CssClass="required-red" />
                 <span id="passwordToggle" class="fa fa-eye password-toggle" aria-hidden="true"></span>
             </td>
         </tr>
+
+        <tr>
+            <td>Organization:</td>
+            <td>
+                <asp:DropDownList ID="ddlOrganization" runat="server"  ClientIDMode="Static" CssClass="form-control" AppendDataBoundItems="true">
+                    <asp:ListItem Text="" Value=""></asp:ListItem>
+                    <asp:ListItem Text="Astellas" Value="Astellas"></asp:ListItem>
+                </asp:DropDownList>
+            </td>
+        </tr>
+
         <tr>
             <td>Access level: <div class="asterisk"></div>
                 <br /><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="An access level is required." ControlToValidate="lstAccessLevels" Display="Dynamic" CssClass="required-red"></asp:RequiredFieldValidator>

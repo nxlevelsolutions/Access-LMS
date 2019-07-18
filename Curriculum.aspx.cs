@@ -39,7 +39,7 @@ namespace NXLevel.LMS
                         .Where(c => c.assignmentId == assignmentId && c.completed == false)
                         .Min(r => r.orderId).Value;
 
-                    //course.available is true by default, set to false if should not be available
+                    //course.available is true by default, set to false if course should not be available
                     courses = courses
                         .Select(c => {
                             if (c.assignmentId == assignmentId && c.completed == false && c.orderId > lowestOrderid)

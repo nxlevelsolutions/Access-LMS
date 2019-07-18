@@ -44,8 +44,6 @@
             }
         }
 
-
-
         $(document).ready(function () {
             $("#pnReadAndSign").draggable({ handle: ".modal-header" });
             lms.initialize(<%=LmsUser.UserId%>);
@@ -53,6 +51,9 @@
             $('div.disabled div.title a').attr("href", null); //remove click from disabled courses
         });
 
+        $(window).unload(function () {
+            if (courseWin) courseWin.close();
+        });
 
     </script>
     <style type="text/css">

@@ -104,7 +104,7 @@ namespace NXLevel.LMS
             }
 
             context.Response.ContentType = "text/plain";
-            context.Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            context.Response.Cache.SetCacheability(HttpCacheability.NoCache); //sets: Cache-Control: no-cache, Expires: -1, Pragma: no-cache
             context.Response.Write(str);
             context.Response.End();
             

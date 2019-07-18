@@ -11,6 +11,7 @@ using NXLevel.LMS.DataModel;
 
 namespace NXLevel.LMS.Admin
 {
+    [ScriptService]
     public partial class AssignmentSettings2 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -139,9 +140,6 @@ namespace NXLevel.LMS.Admin
             {
                 return JsonResponse.Error(e);
             }
-
-            
         }
-
     }
 }

@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="UserCourses.aspx.cs" Inherits="NXLevel.LMS.Reports.UserCourses" %>
+<%@ Import Namespace="NXLevel.LMS" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -29,19 +30,22 @@
                         <th>Course</th>
                         <th class="text-center">Started date</th>
                         <th class="text-center">Completed date</th>
-                        <%--<th class="text-center">Average score</th>
-                        <th class="text-center">Highest score</th>--%>
+                        <% if (LmsUser.HasRole(Role.GlobalAdmin) || LmsUser.HasRole(Role.SystemAdmin))
+                           { %>
+                        <th class="text-center" width="80"></th>
+                        <% } %>
                     </tr>
             </HeaderTemplate>
             <ItemTemplate>
                 <tr>
                     <td><%# Eval("assignmentTitle") %></td>
-                    <%--<td><a href='usercourse.aspx?uid=<% =Request.QueryString["uid"] %>&aid=<%# Eval("assignmentId") %>&cid=<%# Eval("courseId") %>&title=<%# Server.UrlEncode((string)Eval("courseTitle")) %>&fn=<% =Request.QueryString["fn"] %>&ln=<% =Request.QueryString["ln"] %>'><%# Eval("courseTitle") %></a></td>--%>
                     <td><%# Eval("courseTitle") %></td>
                     <td align="center"><%# Eval("startedDate", "{0:MM/dd/yyyy hh:mm tt}") %></td>
                     <td align="center"><%# Eval("endDate", "{0:MM/dd/yyyy hh:mm tt}") %></td>
-                    <%--<td align="center"><%# Eval("avgScore", "{0:F2}%") %></td>
-                    <td align="center"><%# Eval("maxScore", "{0:F2}%") %></td>--%>
+                    <% if (LmsUser.HasRole(Role.GlobalAdmin) || LmsUser.HasRole(Role.SystemAdmin))
+                       { %>
+                    <td align="center"><a href="UserCourse.aspx?uid=<% =Request.QueryString["uid"] %>&aid=<%# Eval("assignmentId") %>&cid=<%# Eval("courseId") %>&asgTitle=<%# Server.UrlEncode((string)Eval("assignmentTitle")) %>&title=<%# Server.UrlEncode((string)Eval("courseTitle")) %>&fn=<% =Request.QueryString["fn"] %>&ln=<% =Request.QueryString["ln"] %>"><span class="fa fa-edit"></span></a></td>
+                    <% } %>
                 </tr>
             </ItemTemplate>
             <FooterTemplate>

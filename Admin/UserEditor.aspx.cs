@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using System.Web.Script.Services;
 using System.Web.Services;
 using NXLevel.LMS.DataModel;
+using System.Data;
 
 namespace NXLevel.LMS.Admin
 {
@@ -32,6 +33,15 @@ namespace NXLevel.LMS.Admin
                 cbEnabled.Checked = usr.enabled;
                 lstAccessLevels.SelectedValue = usr.role.ToString();
 
+                //load list of organizations
+                DataSet ds = new DataSet();
+                ds.ReadXml(Server.MapPath("~/companies.xml"));
+                ddlOrganization.DataValueField = "name";
+                ddlOrganization.DataTextField = "name";
+                ddlOrganization.DataSource = ds.Tables[0];
+                ddlOrganization.DataBind();
+                ddlOrganization.SelectedValue = usr.organization;
+
                 //get group associations
                 List<User_GroupsGet_Result> groups = db.User_GroupsGet(userId).ToList();
                 List<int> groupIds = groups.Select(u => u.groupId).ToList();
@@ -47,48 +57,66 @@ namespace NXLevel.LMS.Admin
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static string SaveUser(string fname, string lname, string title, string email, string password, bool enabled, int role, string groupIds)
+        public static string SaveUser(
+            string fname,
+            string lname,
+            string title,
+            string email,
+            string password,
+            string organization,
+            bool enabled, 
+            int role, 
+            string groupIds)
         {
-            string uid = Utilities.GetQueryString("uid");
-            int ? userId = Utilities.TryToParseAsInt(uid);
-
-            lms_Entities db = new ClientDBEntities();
-            if (userId == null)
+            try
             {
-                //this is a new user
-                User newUser = new User
+                string uid = Utilities.GetQueryString("uid");
+                int? userId = Utilities.TryToParseAsInt(uid);
+
+                lms_Entities db = new ClientDBEntities();
+                if (userId == null)
                 {
-                    firstName = fname,
-                    lastName = lname,
-                    title = title,
-                    enabled = enabled,
-                    email = email,
-                    role = role,
-                    password = password,
-                    timestamp = DateTime.Now
-                };
-                db.Users.Add(newUser);
-                db.SaveChanges();
-                userId = newUser.userId;
+                    //this is a new user
+                    User newUser = new User
+                    {
+                        firstName = fname,
+                        lastName = lname,
+                        title = title,
+                        enabled = enabled,
+                        email = email,
+                        role = role,
+                        password = password,
+                        organization = organization,
+                        timestamp = DateTime.Now
+                    };
+                    db.Users.Add(newUser);
+                    db.SaveChanges();
+                    userId = newUser.userId;
+                }
+                else
+                {
+                    //this is an update
+                    User usr = db.Users.Where(u => u.userId == userId).FirstOrDefault();
+                    usr.firstName = fname;
+                    usr.lastName = lname;
+                    usr.title = title;
+                    usr.email = email;
+                    usr.enabled = enabled;
+                    usr.role = role;
+                    usr.password = password;
+                    usr.organization = organization;
+                    db.SaveChanges();
+                }
+
+                //save group assignments
+                db.User_GroupsSet(userId, groupIds);
+
+                return JsonResponse.NoError;
             }
-            else
+            catch (Exception ex)
             {
-                //this is an update
-                User usr = db.Users.Where(u => u.userId == userId).FirstOrDefault();
-                usr.firstName = fname;
-                usr.lastName = lname;
-                usr.title = title;
-                usr.email = email;
-                usr.enabled = enabled;
-                usr.role = role;
-                usr.password = password;
-                db.SaveChanges();
+                return JsonResponse.Error(ex);
             }
-
-            //save group assignments
-            db.User_GroupsSet(userId, groupIds);
-
-            return JsonResponse.NoError;
         }
     }
 }

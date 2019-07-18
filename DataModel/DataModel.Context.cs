@@ -33,6 +33,8 @@ namespace NXLevel.LMS.DataModel
         public virtual DbSet<Email> Emails { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Assignment> Assignments { get; set; }
+        public virtual DbSet<Courses_Scores> Courses_Scores { get; set; }
+        public virtual DbSet<Courses_Usage> Courses_Usage { get; set; }
     
         public virtual ObjectResult<User_Curriculum_Result> User_Curriculum(Nullable<int> userId)
         {
@@ -380,23 +382,6 @@ namespace NXLevel.LMS.DataModel
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Report_UserCourses_Result>("Report_UserCourses", userIdParameter);
         }
     
-        public virtual ObjectResult<Report_UserCourseUsage_Result> Report_UserCourseUsage(Nullable<int> assignmentId, Nullable<int> userId, Nullable<int> courseId)
-        {
-            var assignmentIdParameter = assignmentId.HasValue ?
-                new ObjectParameter("assignmentId", assignmentId) :
-                new ObjectParameter("assignmentId", typeof(int));
-    
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("userId", userId) :
-                new ObjectParameter("userId", typeof(int));
-    
-            var courseIdParameter = courseId.HasValue ?
-                new ObjectParameter("courseId", courseId) :
-                new ObjectParameter("courseId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Report_UserCourseUsage_Result>("Report_UserCourseUsage", assignmentIdParameter, userIdParameter, courseIdParameter);
-        }
-    
         public virtual ObjectResult<Report_CourseUsers_Result> Report_CourseUsers(Nullable<int> courseId)
         {
             var courseIdParameter = courseId.HasValue ?
@@ -441,13 +426,21 @@ namespace NXLevel.LMS.DataModel
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("User_Email", assignmentIdParameter, userIdParameter, emailIdParameter);
         }
     
-        public virtual ObjectResult<User_UsageHistory_Result> User_UsageHistory(Nullable<int> userId)
+        public virtual ObjectResult<User_UsageHistory_Result> User_UsageHistory(Nullable<int> userId, Nullable<int> assignmentId, Nullable<int> courseId)
         {
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("userId", userId) :
                 new ObjectParameter("userId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<User_UsageHistory_Result>("User_UsageHistory", userIdParameter);
+            var assignmentIdParameter = assignmentId.HasValue ?
+                new ObjectParameter("assignmentId", assignmentId) :
+                new ObjectParameter("assignmentId", typeof(int));
+    
+            var courseIdParameter = courseId.HasValue ?
+                new ObjectParameter("courseId", courseId) :
+                new ObjectParameter("courseId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<User_UsageHistory_Result>("User_UsageHistory", userIdParameter, assignmentIdParameter, courseIdParameter);
         }
     
         public virtual ObjectResult<Courses_Avail_Result> Courses_Avail(Nullable<bool> enabled)

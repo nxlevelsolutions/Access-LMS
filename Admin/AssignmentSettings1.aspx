@@ -53,7 +53,7 @@
                 },
                 function (response) {
                     if (response.error == "") {
-                        parent.window.closeWin(true, '');
+                        parent.window.closeWin(true, '#tab1');
                     }
                     else {
                         parent.window.disableOK(false);

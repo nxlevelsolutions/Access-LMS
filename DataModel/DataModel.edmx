@@ -58,6 +58,32 @@
           <Property Name="extra2" Type="varchar" MaxLength="255" />
           <Property Name="timestamp" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Courses_Scores">
+          <Key>
+            <PropertyRef Name="rowId" />
+          </Key>
+          <Property Name="rowId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="assignmentId" Type="int" Nullable="false" />
+          <Property Name="courseId" Type="int" Nullable="false" />
+          <Property Name="userId" Type="int" Nullable="false" />
+          <Property Name="score" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="dateStamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Courses_Usage">
+          <Key>
+            <PropertyRef Name="rowId" />
+          </Key>
+          <Property Name="rowId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="assignmentId" Type="int" Nullable="false" />
+          <Property Name="courseId" Type="int" Nullable="false" />
+          <Property Name="userId" Type="int" Nullable="false" />
+          <Property Name="suspendData" Type="varchar" MaxLength="7000" />
+          <Property Name="lessonLocation" Type="varchar" MaxLength="255" />
+          <Property Name="lessonStatus" Type="varchar" MaxLength="15" />
+          <Property Name="totalUsage" Type="time" Precision="7" />
+          <Property Name="startDate" Type="datetime" Nullable="false" />
+          <Property Name="endDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="Emails">
           <Key>
             <PropertyRef Name="emailId" />
@@ -181,11 +207,6 @@
         <Function Name="Report_UserCourses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userId" Type="int" Mode="In" />
         </Function>
-        <Function Name="Report_UserCourseUsage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="assignmentId" Type="int" Mode="In" />
-          <Parameter Name="userId" Type="int" Mode="In" />
-          <Parameter Name="courseId" Type="int" Mode="In" />
-        </Function>
         <Function Name="Report_Users_All" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PageIndex" Type="int" Mode="In" />
           <Parameter Name="PageSize" Type="int" Mode="In" />
@@ -216,6 +237,8 @@
         </Function>
         <Function Name="User_UsageHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="assignmentId" Type="int" Mode="In" />
+          <Parameter Name="courseId" Type="int" Mode="In" />
         </Function>
         <Function Name="Users_All" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PageIndex" Type="int" Mode="In" />
@@ -237,6 +260,8 @@
           <EntitySet Name="Assignments" EntityType="Self.Assignments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Courses_Scores" EntityType="Self.Courses_Scores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Courses_Usage" EntityType="Self.Courses_Usage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Emails" EntityType="Self.Emails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
@@ -360,11 +385,6 @@
           <FunctionImport Name="Report_UserCourses" ReturnType="Collection(lms_masterModel.Report_UserCourses_Result)">
           <Parameter Name="userId" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="Report_UserCourseUsage" ReturnType="Collection(lms_masterModel.Report_UserCourseUsage_Result)">
-            <Parameter Name="assignmentId" Mode="In" Type="Int32" />
-            <Parameter Name="userId" Mode="In" Type="Int32" />
-            <Parameter Name="courseId" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="Report_CourseUsers" ReturnType="Collection(lms_masterModel.Report_CourseUsers_Result)">
           <Parameter Name="courseId" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -380,7 +400,9 @@
             <Parameter Name="emailId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="User_UsageHistory" ReturnType="Collection(lms_masterModel.User_UsageHistory_Result)">
-          <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="assignmentId" Mode="In" Type="Int32" />
+            <Parameter Name="courseId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Courses_Avail" ReturnType="Collection(lms_masterModel.Courses_Avail_Result)">
           <Parameter Name="enabled" Mode="In" Type="Boolean" />
@@ -403,6 +425,8 @@
             <Parameter Name="assignmentId" Mode="In" Type="Int32" />
             <Parameter Name="emailId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="Courses_Scores" EntityType="lms_masterModel.Courses_Scores" />
+          <EntitySet Name="Courses_Usage" EntityType="lms_masterModel.Courses_Usage" />
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -603,11 +627,6 @@
           <Property Type="String" Name="assignmentTitle" Nullable="false" MaxLength="150" />
           <Property Type="String" Name="courseTitle" Nullable="true" MaxLength="255" />
         </ComplexType>
-        <ComplexType Name="Report_UserCourseUsage_Result">
-          <Property Type="Int64" Name="rowId" Nullable="true" />
-          <Property Type="DateTime" Name="dateStamp" Nullable="false" Precision="23" />
-          <Property Type="Decimal" Name="score" Nullable="true" Precision="10" Scale="2" />
-        </ComplexType>
         <ComplexType Name="Report_CourseUsers_Result">
           <Property Type="Int32" Name="userId" Nullable="false" />
           <Property Type="String" Name="group" Nullable="true" MaxLength="100" />
@@ -635,6 +654,7 @@
           <Property Type="Int32" Name="assignmentId" Nullable="false" />
           <Property Type="String" Name="eventData" Nullable="true" MaxLength="30" />
           <Property Type="Int32" Name="eventType" Nullable="false" />
+          <Property Type="Int32" Name="rowId" Nullable="false" />
         </ComplexType>
         <ComplexType Name="Courses_Avail_Result">
           <Property Type="Int32" Name="courseId" Nullable="false" />
@@ -654,6 +674,32 @@
           <Property Type="Int32" Name="emailId" Nullable="false" />
           <Property Type="DateTime" Name="timestamp" Nullable="false" Precision="23" />
         </ComplexType>
+        <EntityType Name="Courses_Scores">
+          <Key>
+            <PropertyRef Name="rowId" />
+          </Key>
+          <Property Name="rowId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="assignmentId" Type="Int32" Nullable="false" />
+          <Property Name="courseId" Type="Int32" Nullable="false" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="score" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="dateStamp" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Courses_Usage">
+          <Key>
+            <PropertyRef Name="rowId" />
+          </Key>
+          <Property Name="rowId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="assignmentId" Type="Int32" Nullable="false" />
+          <Property Name="courseId" Type="Int32" Nullable="false" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="suspendData" Type="String" MaxLength="7000" FixedLength="false" Unicode="false" />
+          <Property Name="lessonLocation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="lessonStatus" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="totalUsage" Type="Time" Precision="7" />
+          <Property Name="startDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="endDate" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -932,15 +978,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Report_UserCourseUsage" FunctionName="lms_masterModel.Store.Report_UserCourseUsage">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="lms_masterModel.Report_UserCourseUsage_Result">
-                <ScalarProperty Name="rowId" ColumnName="rowId" />
-                <ScalarProperty Name="dateStamp" ColumnName="dateStamp" />
-                <ScalarProperty Name="score" ColumnName="score" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Report_CourseUsers" FunctionName="lms_masterModel.Store.Report_CourseUsers">
             <ResultMapping>
               <ComplexTypeMapping TypeName="lms_masterModel.Report_CourseUsers_Result">
@@ -982,6 +1019,7 @@
                 <ScalarProperty Name="assignmentId" ColumnName="assignmentId" />
                 <ScalarProperty Name="eventData" ColumnName="eventData" />
                 <ScalarProperty Name="eventType" ColumnName="eventType" />
+                <ScalarProperty Name="rowId" ColumnName="rowId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1014,6 +1052,34 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Users_EmailsNotSent" FunctionName="lms_masterModel.Store.Users_EmailsNotSent" />
           <FunctionImportMapping FunctionImportName="Users_Email_Add" FunctionName="lms_masterModel.Store.Users_Email_Add" />
+          <EntitySetMapping Name="Courses_Scores">
+            <EntityTypeMapping TypeName="lms_masterModel.Courses_Scores">
+              <MappingFragment StoreEntitySet="Courses_Scores">
+                <ScalarProperty Name="dateStamp" ColumnName="dateStamp" />
+                <ScalarProperty Name="score" ColumnName="score" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="courseId" ColumnName="courseId" />
+                <ScalarProperty Name="assignmentId" ColumnName="assignmentId" />
+                <ScalarProperty Name="rowId" ColumnName="rowId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses_Usage">
+            <EntityTypeMapping TypeName="lms_masterModel.Courses_Usage">
+              <MappingFragment StoreEntitySet="Courses_Usage">
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="totalUsage" ColumnName="totalUsage" />
+                <ScalarProperty Name="lessonStatus" ColumnName="lessonStatus" />
+                <ScalarProperty Name="lessonLocation" ColumnName="lessonLocation" />
+                <ScalarProperty Name="suspendData" ColumnName="suspendData" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="courseId" ColumnName="courseId" />
+                <ScalarProperty Name="assignmentId" ColumnName="assignmentId" />
+                <ScalarProperty Name="rowId" ColumnName="rowId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

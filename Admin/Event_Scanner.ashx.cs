@@ -231,14 +231,14 @@ namespace NXLevel.LMS.Admin
                                 }
                             }
                             #endregion
-
-                            emailKeys.Clear(); //clear for next assignment sweep
                         }
                         else
                         {
                             //assignment disabled
                             WriteMsg("Assignment disabled");
                         }
+
+                        emailKeys.Clear(); //clear for next assignment sweep
                     }
                     //done with db .. save if needed
                     db.SaveChanges();
@@ -291,7 +291,7 @@ namespace NXLevel.LMS.Admin
 
                 if (req.Url.Port == 443 || (req.Url.Port == 80 && req.Url.Host!="localhost"))
                 {
-                    Utilities.SendEmail(userEmail, subject, body);
+                    Utilities.SendEmail(ConfigurationManager.AppSettings.Get("DoNotReplyEmail"), userEmail, subject, body);
                 }
             }
         }

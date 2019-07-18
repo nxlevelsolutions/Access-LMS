@@ -20,5 +20,6 @@ namespace NXLevel.LMS.DataModel
         public int assignmentId { get; set; }
         public string eventData { get; set; }
         public int eventType { get; set; }
+        public int rowId { get; set; }
     }
 }

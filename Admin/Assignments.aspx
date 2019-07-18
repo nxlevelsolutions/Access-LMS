@@ -2,7 +2,7 @@
 <%@ Register src="../Controls/Pager.ascx" tagname="Pager" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 
-    <script language="javascript">
+    <script type="text/javascript">
 
         var popName;
 

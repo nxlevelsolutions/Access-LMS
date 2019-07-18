@@ -10,33 +10,30 @@ namespace NXLevel.LMS
 {
     public partial class History : System.Web.UI.Page
     {
-        const int SCORE = 1;
-        const int STARTED = 2;
-        const int COMPLETED = 3;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             lms_Entities db = new ClientDBEntities();
-            List<User_UsageHistory_Result> history = db.User_UsageHistory(LmsUser.UserId).ToList();
+            List<User_UsageHistory_Result> history = db.User_UsageHistory(LmsUser.UserId, null, null).ToList();
 
             //translate labels
             foreach (User_UsageHistory_Result item in history)
             {
-                switch (item.eventType)
+                switch ((UsageEventType)item.eventType)
                 {
-                    case SCORE:  
+                    case UsageEventType.SCORE:  
                         item.eventData = Resources.Global.LabelScore + "=" + item.eventData;
                         break;
-                    case STARTED: 
+                    case UsageEventType.STARTED: 
                         item.eventData = Resources.Global.LabelStarted;
                         break;
-                    case COMPLETED: 
+                    case UsageEventType.COMPLETED: 
                         item.eventData = Resources.Global.LabelCompleted;
                         break;
                 }
             }
 
-            rptEvents.DataSource = history.Where(h => h.eventType == COMPLETED); //show ONLY completed events
+            rptEvents.DataSource = history.Where(h => h.eventType == (int)UsageEventType.COMPLETED); //show ONLY completed events
             rptEvents.DataBind();
         }
 
